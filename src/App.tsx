@@ -11,12 +11,11 @@ import { MvpProvider } from './contexts/MvpsContext';
 export default function App() {
   const [theme, setTheme] = usePeristedState<DefaultTheme>(
     'theme',
-    Themes.light
+    Themes.dark
   );
 
-  const toggleTheme = () => {
+  const toggleTheme = () =>
     setTheme(theme.id === 'light' ? Themes.dark : Themes.light);
-  };
 
   return (
     <ThemeProvider theme={theme}>
