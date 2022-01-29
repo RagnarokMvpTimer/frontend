@@ -18,6 +18,7 @@ export const Sprite = styled.img`
   width: auto;
   height: 100px;
   margin-top: 8px;
+  border-top-left-radius: 30px;
 `;
 
 export const Bold = styled.span`
