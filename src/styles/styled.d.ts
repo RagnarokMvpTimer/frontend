@@ -20,6 +20,11 @@ declare module 'styled-components' {
         bg: string;
         handle: string;
       };
+
+      modal: {
+        bg: string;
+        text: string;
+      };
     };
   }
 }

@@ -18,6 +18,11 @@ export const Themes = {
         bg: '#FFFFFF',
         handle: '#000000',
       },
+
+      modal: {
+        bg: '#262626',
+        text: '#fff',
+      },
     },
   },
 
@@ -39,6 +44,11 @@ export const Themes = {
       switch: {
         bg: '#000000',
         handle: '#F6F8FA',
+      },
+
+      modal: {
+        bg: '#FFFFFF',
+        text: '#421411',
       },
     },
   },
