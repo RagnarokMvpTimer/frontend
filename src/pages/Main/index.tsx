@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import { MvpCard } from '../../components/MvpCard';
 
+import { MvpCard } from '../../components/MvpCard';
 import { MvpsContext } from '../../contexts/MvpsContext';
 
 import {
