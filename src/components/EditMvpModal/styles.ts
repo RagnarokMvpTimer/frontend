@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { mobile } from '../../utils/media';
 
 export const Container = styled.div`
   display: flex;
@@ -17,12 +18,84 @@ export const Container = styled.div`
 export const Modal = styled.div`
   width: 100%;
   max-width: 500px;
+
+  padding: 8px;
+  gap: 8px;
+
   border-radius: 6px;
 
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: center;
+  //justify-content: center;
 
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.modal.bg};
+
+  ${mobile(css``)}
+`;
+
+export const CloseButton = styled.button`
+  align-self: flex-end;
+  background: none;
+  color: ${({ theme }) => theme.colors.modal.text};
+`;
+
+export const Sprite = styled.img`
+  width: auto;
+  height: auto;
+  max-width: 150px;
+  max-height: 150px;
+  border-top-left-radius: 30px;
+`;
+
+export const Name = styled.span`
+  color: #ffa800;
+
+  font-size: 24px;
+  font-weight: 600;
+`;
+
+export const Question = styled.span`
+  color: ${({ theme }) => theme.colors.modal.text};
+
+  font-size: 16px;
+  font-weight: 500;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const Optional = styled.span`
+  color: ${({ theme }) => theme.colors.modal.text};
+
+  font-size: 12px;
+`;
+
+export const Time = styled.span`
+  color: #ffa800;
+
+  font-size: 18px;
+  font-weight: 500;
+`;
+
+export const DatePickerContainer = styled.div``;
+
+export const SelectMap = styled.select``;
+
+export const Map = styled.img`
+  width: 250px;
+  height: 250px;
+`;
+
+export const ConfirmButton = styled.button`
+  width: 250px;
+  height: 50px;
+
+  font-weight: 600;
+  font-size: 18px;
+  border-radius: 8px;
+
+  color: white;
+  background-color: #ffa800;
 `;

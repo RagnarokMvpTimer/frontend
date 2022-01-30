@@ -4,10 +4,7 @@ import moment, { Moment } from 'moment';
 
 import { Mvp } from '../../interfaces';
 import { MvpsContext } from '../../contexts/MvpsContext';
-import { respawnAt, respawnCountdown } from '../../utils';
-
-import Question from '../../assets/question.gif';
-import { mvpIcons } from '../../assets/mvp_icons';
+import { getMvpSprite, respawnAt, respawnCountdown } from '../../utils';
 
 import {
   Container,
@@ -29,21 +26,24 @@ interface MvpCardProps {
 
 export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
   const {
+    killMvp,
+    resetMvpTimer,
     removeMvp,
-    toggleEditModal,
+    openAndEditModal,
     toggleDeathMapModal,
     respawnAsCountdown,
   } = useContext(MvpsContext);
+
   const [respawnTime, setRespawnTime] = useState<string>('');
 
-  function timeUntilRespawn() {
-    const deathTime = moment(mvp.deathTime);
-    return respawnAsCountdown
-      ? respawnCountdown(deathTime)
-      : respawnAt(deathTime);
-  }
-
   useEffect(() => {
+    function timeUntilRespawn() {
+      const deathTime = moment(mvp.deathTime);
+      return respawnAsCountdown
+        ? respawnCountdown(deathTime)
+        : respawnAt(deathTime);
+    }
+
     if (isActive) {
       const interval = setInterval(
         () => setRespawnTime(timeUntilRespawn()),
@@ -51,18 +51,16 @@ export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
       );
       return () => clearInterval(interval);
     }
-  }, []);
+  }, [isActive, mvp.deathTime, respawnAsCountdown]);
 
   return (
     <Container>
       <Name>{mvp.name}</Name>
-      <Sprite src={mvpIcons[mvp.id] || Question} alt={mvp.name} />
+      <Sprite src={getMvpSprite(mvp.id)} alt={mvp.name} />
       {!isActive && (
         <Controls isActive={!isActive}>
-          <KilledNow onClick={() => toggleEditModal(mvp)}>
-            I killed now!
-          </KilledNow>
-          <EditButton>Edit</EditButton>
+          <KilledNow onClick={() => killMvp(mvp)}>I killed now !</KilledNow>
+          <EditButton onClick={() => openAndEditModal(mvp)}>Edit</EditButton>
         </Controls>
       )}
       {isActive && (
@@ -80,7 +78,7 @@ export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
             <Control onClick={() => toggleDeathMapModal(mvp)}>
               <Map color='#fff' height={17} width={17} />
             </Control>
-            <Control onClick={() => toggleEditModal(mvp)}>
+            <Control onClick={() => resetMvpTimer(mvp)}>
               <RefreshCcw color='#fff' height={17} width={17} />
             </Control>
             <Control onClick={() => removeMvp(mvp)}>

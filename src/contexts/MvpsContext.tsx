@@ -2,7 +2,6 @@ import { createContext, useState, useEffect, ReactNode } from 'react';
 
 import { EditMvpModal } from '../components/EditMvpModal';
 import { Mvp } from '../interfaces';
-
 import mvpsData from '../data/data.json';
 
 interface MvpProviderProps {
@@ -13,10 +12,14 @@ interface MvpsContextData {
   activeMvps: Array<Mvp>;
   allMvps: Array<Mvp>;
   respawnAsCountdown: boolean;
+
   resetMvpTimer: (mvp: Mvp) => void;
-  killedNow: (mvp: Mvp) => void;
+  killMvp: (mvp: Mvp, time?: Date) => void;
   removeMvp: (mvp: Mvp) => void;
-  toggleEditModal: (mvp: Mvp) => void;
+
+  setEditingMvp: (mvp: Mvp) => void;
+  openAndEditModal: (mvp: Mvp) => void;
+  toggleEditModal: () => void;
   toggleDeathMapModal: (mvp: Mvp) => void;
 }
 
@@ -24,6 +27,8 @@ export const MvpsContext = createContext({} as MvpsContextData);
 
 export function MvpProvider({ children, ...rest }: MvpProviderProps) {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [editingMvp, setEditingMvp] = useState<Mvp>({} as Mvp);
+
   const [respawnAsCountdown, setRespawnAsCountdown] = useState(true);
 
   const [activeMvps, setActiveMvps] = useState<Array<Mvp>>([]);
@@ -31,19 +36,22 @@ export function MvpProvider({ children, ...rest }: MvpProviderProps) {
     mvpsData.sort((a, b) => a.stats.level - b.stats.level)
   );
 
-  function resetMvpTimer(mvp: Mvp) {}
-
-  function removeMvp(mvp: Mvp) {
-    //setActiveMvps(activeMvps.filter((m) => m.deathMap !== mvp.deathMap));
+  function resetMvpTimer(mvp: Mvp) {
+    const newMvp = { ...mvp, deathTime: new Date() };
+    setAllMvps(allMvps.map((m) => (m.id === mvp.id ? newMvp : m)));
   }
 
-  function killedNow(mvp: Mvp) {
-    /*let killedMvp = {
+  function removeMvp(mvp: Mvp) {
+    setActiveMvps(activeMvps.filter((m) => m.deathMap !== mvp.deathMap));
+  }
+
+  function killMvp(mvp: Mvp, time?: Date) {
+    let killedMvp = {
       ...mvp,
-      deathTime: new Date(),
+      deathTime: time ? time : new Date(),
       deathMap: mvp.maps[0].mapName,
     };
-    setActiveMvps([...activeMvps, killedMvp]);*/
+    setActiveMvps([...activeMvps, killedMvp]);
   }
 
   function respawnNotification(mvp: Mvp) {
@@ -56,8 +64,11 @@ export function MvpProvider({ children, ...rest }: MvpProviderProps) {
     }
   }
 
-  function toggleEditModal(mvp: Mvp) {
-    //setIsEditModalOpen(!isEditModalOpen);
+  const toggleEditModal = () => setIsEditModalOpen((prev) => !prev);
+
+  function openAndEditModal(mvp: Mvp) {
+    setEditingMvp(mvp);
+    toggleEditModal();
   }
 
   function toggleDeathMapModal(mvp: Mvp) {}
@@ -73,14 +84,16 @@ export function MvpProvider({ children, ...rest }: MvpProviderProps) {
         allMvps,
         respawnAsCountdown,
         resetMvpTimer,
-        killedNow,
+        killMvp,
         removeMvp,
         toggleEditModal,
+        setEditingMvp,
+        openAndEditModal,
         toggleDeathMapModal,
       }}
     >
       {children}
-      {isEditModalOpen && <EditMvpModal />}
+      {isEditModalOpen && <EditMvpModal mvp={editingMvp} />}
     </MvpsContext.Provider>
   );
 }
