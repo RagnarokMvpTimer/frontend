@@ -9,6 +9,8 @@ import {
   Logo,
   Title,
   Hour,
+  Customization,
+  CurrentLanguage,
   SwitchContainer,
 } from './styles';
 
@@ -37,21 +39,24 @@ export const Header: React.FC<Props> = ({ toggleTheme }) => {
 
       <Hour>{time.toLocaleTimeString()}</Hour>
 
-      <SwitchContainer>
-        <Switch
-          onChange={toggleTheme}
-          checked={id === 'dark'}
-          height={25}
-          width={50}
-          handleDiameter={15}
-          checkedIcon={false}
-          uncheckedIcon={false}
-          offColor={colors.switch.bg}
-          onColor={colors.switch.bg}
-          offHandleColor={colors.switch.handle}
-          onHandleColor={colors.switch.handle}
-        />
-      </SwitchContainer>
+      <Customization>
+        <CurrentLanguage>EN</CurrentLanguage>
+        <SwitchContainer>
+          <Switch
+            onChange={toggleTheme}
+            checked={id === 'dark'}
+            height={25}
+            width={50}
+            handleDiameter={15}
+            checkedIcon={false}
+            uncheckedIcon={false}
+            offColor={colors.switch.bg}
+            onColor={colors.switch.bg}
+            offHandleColor={colors.switch.handle}
+            onHandleColor={colors.switch.handle}
+          />
+        </SwitchContainer>
+      </Customization>
     </Container>
   );
 };

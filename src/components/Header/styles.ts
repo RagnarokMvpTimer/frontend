@@ -43,8 +43,19 @@ export const Hour = styled.span`
   color: #fff;
 
   @media only screen and (min-width: 768px) {
-    margin-left: -250px;
+    margin-left: -220px;
   }
+`;
+
+export const Customization = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const CurrentLanguage = styled.span`
+  color: #fff;
+  margin-right: 15px;
 `;
 
 export const SwitchContainer = styled.div`
