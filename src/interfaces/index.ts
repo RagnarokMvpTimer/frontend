@@ -13,4 +13,5 @@ export interface Mvp {
   };
   deathTime?: Date;
   deathMap?: string;
+  deathPosition?: {};
 }
