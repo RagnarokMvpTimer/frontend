@@ -2,6 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://github.com/RagnarokMvpTimer/frontend",
   "dependencies": {
     "@styled-icons/feather": "^10.34.0",
     "@testing-library/jest-dom": "^5.16.2",
@@ -26,14 +27,21 @@
   "devDependencies": {
     "@types/react-datepicker": "^4.3.4",
     "babel-plugin-formatjs": "^10.3.18",
+    "gh-pages": "^3.2.3",
     "prettier": "2.5.1"
   },
   "scripts": {
     "cmi": "node ./src/assets/createMvpIndex.mjs",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RagnarokMvpTimer/frontend.git"
   },
   "eslintConfig": {
     "extends": [
