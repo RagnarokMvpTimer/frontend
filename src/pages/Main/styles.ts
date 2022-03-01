@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { mobile, phone } from '../../utils/media';
 
 export const Container = styled.main`
   display: flex;
@@ -7,29 +8,29 @@ export const Container = styled.main`
   align-items: center;
 
   //padding: 1% 10% 5% 10%;
+  padding-bottom: 15px;
 
   background-color: ${({ theme }) => theme.colors.secondary};
 `;
 
-export const ContainerType = styled.span`
+export const ContainerTypeText = styled.span`
   font-weight: bold;
 
-  margin-bottom: 15px;
+  margin: 10px 0;
+
   color: ${({ theme }) => theme.colors.text};
 `;
 
-export const ActiveMvpsContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 1.5rem;
-`;
-
-export const AllMvpsContainer = styled.div`
+export const MvpsContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 1.5rem;
 
-  @media only screen and (max-width: 768px) {
+  ${mobile(css`
     grid-template-columns: repeat(2, 1fr);
-  }
+  `)}
+
+  ${phone(css`
+    grid-template-columns: repeat(1, 1fr);
+  `)}
 `;
