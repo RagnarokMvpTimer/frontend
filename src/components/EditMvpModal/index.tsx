@@ -38,7 +38,7 @@ export function EditMvpModal({ mvp }: EditMvpModalProps) {
     mvp.deathMap
   );
 
-  const canChangeMap = mvp.deathMap === null;
+  const canChangeMap = !mvp.deathMap;
   const hasMoreThanOneMap = mvp.maps.length > 1;
 
   useEffect(() => {

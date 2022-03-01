@@ -79,7 +79,12 @@ export const Time = styled.span`
   font-weight: 500;
 `;
 
-export const DatePickerContainer = styled.div``;
+export const DatePickerContainer = styled.div`
+  input {
+    border-radius: 4px;
+    text-align: center;
+  }
+`;
 
 export const SelectMap = styled.select``;
 
