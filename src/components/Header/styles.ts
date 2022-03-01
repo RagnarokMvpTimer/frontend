@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { mobile, phone, tablet } from '../../utils/media';
 
 export const Container = styled.header`
   display: flex;
@@ -14,6 +15,10 @@ export const Container = styled.header`
 export const LogoContainer = styled.div`
   display: flex;
   align-items: center;
+
+  ${tablet(css`
+    width: 86.2px;
+  `)}
 `;
 
 export const Logo = styled.img`
@@ -30,9 +35,9 @@ export const Title = styled.p`
   //color: ${({ theme }) => theme.colors.text};
   color: #fff;
 
-  @media only screen and (max-width: 768px) {
+  ${tablet(css`
     display: none;
-  }
+  `)}
 `;
 
 export const Hour = styled.span`
@@ -45,19 +50,32 @@ export const Hour = styled.span`
   @media only screen and (min-width: 768px) {
     margin-left: -220px;
   }
+
+  ${tablet(css`
+    margin-left: 0;
+  `)}
 `;
 
 export const Customization = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  ${tablet(css`
+    width: 86.2px;
+  `)}
 `;
 
 export const CurrentLanguage = styled.span`
   color: #fff;
   margin-right: 15px;
+
+  ${phone(css`
+    display: none;
+  `)}
 `;
 
 export const SwitchContainer = styled.div`
   width: auto;
+  margin-top: 6px;
 `;
