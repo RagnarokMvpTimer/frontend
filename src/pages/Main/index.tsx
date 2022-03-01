@@ -3,12 +3,7 @@ import { useContext } from 'react';
 import { MvpCard } from '../../components/MvpCard';
 import { MvpsContext } from '../../contexts/MvpsContext';
 
-import {
-  Container,
-  ContainerType,
-  ActiveMvpsContainer,
-  AllMvpsContainer,
-} from './styles';
+import { Container, ContainerTypeText, MvpsContainer } from './styles';
 
 export function Main() {
   const { activeMvps, allMvps } = useContext(MvpsContext);
@@ -17,22 +12,22 @@ export function Main() {
     <Container>
       {activeMvps.length > 0 && (
         <>
-          <ContainerType>Active</ContainerType>
-          <ActiveMvpsContainer>
+          <ContainerTypeText>Active</ContainerTypeText>
+          <MvpsContainer>
             {activeMvps.map((mvp) => (
               <MvpCard key={`${mvp.id}-${mvp.deathMap}`} mvp={mvp} isActive />
             ))}
-          </ActiveMvpsContainer>
+          </MvpsContainer>
         </>
       )}
       {allMvps.length > 0 && (
         <>
-          <ContainerType>All</ContainerType>
-          <AllMvpsContainer>
+          <ContainerTypeText>All</ContainerTypeText>
+          <MvpsContainer>
             {allMvps.map((mvp) => (
               <MvpCard key={mvp.id} mvp={mvp} />
             ))}
-          </AllMvpsContainer>
+          </MvpsContainer>
         </>
       )}
     </Container>
