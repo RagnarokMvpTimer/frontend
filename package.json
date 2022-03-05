@@ -10,8 +10,8 @@
     "@types/jest": "^27.4.1",
     "@types/node": "^17.0.21",
     "@types/react": "^17.0.39",
-    "@types/react-dom": "^17.0.11",
-    "@types/styled-components": "^5.1.23",
+    "@types/react-dom": "^17.0.13",
+    "@types/styled-components": "^5.1.24",
     "moment": "^2.29.1",
     "react": "^17.0.2",
     "react-datepicker": "^4.7.0",
@@ -27,16 +27,18 @@
     "@types/react-datepicker": "^4.3.4",
     "babel-plugin-formatjs": "^10.3.18",
     "gh-pages": "^3.2.3",
-    "prettier": "2.5.1"
+    "prettier": "2.5.1",
+    "vercel": "^24.0.0"
   },
   "scripts": {
-    "cmi": "node ./src/assets/createMvpIndex.mjs",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "cmi": "node ./src/assets/createMvpIndex.mjs",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "vercel-deploy": "vercel --env CI=false --prod"
   },
   "repository": {
     "type": "git",
