@@ -12,4 +12,3 @@ jobs:
           vercel-args: '--prod --CI=false'
           vercel-org-id: ${{ secrets.ORGID}}
           vercel-project-id: ${{ secrets.PROJECTID}}
-          working-directory: ./sub-directory
