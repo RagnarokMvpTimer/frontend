@@ -9,6 +9,6 @@ jobs:
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          vercel-args: '--prod --CI=false'
+          vercel-args: '--prod --env CI=false'
           vercel-org-id: ${{ secrets.ORGID}}
           vercel-project-id: ${{ secrets.PROJECTID}}
