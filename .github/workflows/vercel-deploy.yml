@@ -1,4 +1,4 @@
-name: deploy website
+name: vercel deploy
 on: [workflow_dispatch]
 jobs:
   deploy:
