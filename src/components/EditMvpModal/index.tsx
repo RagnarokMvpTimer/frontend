@@ -70,7 +70,7 @@ export function EditMvpModal({ mvp }: EditMvpModalProps) {
           />
         </DatePickerContainer>
 
-        {!canChangeMap && hasMoreThanOneMap && (
+        {canChangeMap && hasMoreThanOneMap && (
           <>
             <Question>Please select the map</Question>
             <SelectMap
@@ -98,9 +98,9 @@ export function EditMvpModal({ mvp }: EditMvpModalProps) {
           <>
             <Question>
               Where's mvp tombstone:
-              <Optional>(optional)</Optional>
+              <Optional>(optional - click to mark)</Optional>
             </Question>
-            <Map src={'http://via.placeholder.com/250'} alt={mvp.deathMap} />
+            <Map src={getMapImg(selectedMap)} alt={selectedMap} />
           </>
         )}
 
