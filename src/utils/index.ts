@@ -1,6 +1,7 @@
 import moment, { Moment } from 'moment';
 
 import { mvpIcons } from '../assets/mvp_icons';
+import { mvpMaps } from '../assets/mvp_maps';
 import Question from '../assets/question.gif';
 
 export const milisecondsToHours = (miliseconds: number) =>
@@ -13,4 +14,4 @@ export const respawnAt = (time: Moment) =>
 
 export const getMvpSprite = (id: number) => mvpIcons[id] || Question;
 
-export const getMapImg = (mapName: string) => '' || '';
+export const getMapImg = (mapname: string) => mvpMaps[mapname] || null;
