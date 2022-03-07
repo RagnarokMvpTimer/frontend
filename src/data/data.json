@@ -3,9 +3,9 @@
     "id": 3505,
     "dbname": "DR_BIG_EGGRING",
     "name": "Giant Eggring",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "lasa_dun01",
+        "mapname": "lasa_dun01",
         "respawnTime": 3600000
       }
     ],
@@ -20,9 +20,9 @@
     "id": 1087,
     "dbname": "ORK_HERO",
     "name": "Orc Hero",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "gef_fild03",
+        "mapname": "gef_fild03",
         "respawnTime": 3600000
       }
     ],
@@ -37,13 +37,13 @@
     "id": 1147,
     "dbname": "MAYA",
     "name": "Maya",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "anthell02",
+        "mapname": "anthell02",
         "respawnTime": 7200000
       },
       {
-        "mapName": "gld_dun02_2",
+        "mapname": "gld_dun02_2",
         "respawnTime": 28800000
       }
     ],
@@ -58,9 +58,9 @@
     "id": 1190,
     "dbname": "ORC_LORD",
     "name": "Orc Lord",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "gef_fild10",
+        "mapname": "gef_fild10",
         "respawnTime": 7200000
       }
     ],
@@ -75,9 +75,9 @@
     "id": 1086,
     "dbname": "GOLDEN_BUG",
     "name": "Golden Thief Bug",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "prt_sewb4",
+        "mapname": "prt_sewb4",
         "respawnTime": 3600000
       }
     ],
@@ -92,13 +92,13 @@
     "id": 1115,
     "dbname": "EDDGA",
     "name": "Eddga",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "gld_dun01_2",
+        "mapname": "gld_dun01_2",
         "respawnTime": 28800000
       },
       {
-        "mapName": "pay_fild10",
+        "mapname": "pay_fild10",
         "respawnTime": 7200000
       }
     ],
@@ -113,9 +113,9 @@
     "id": 1038,
     "dbname": "OSIRIS",
     "name": "Osiris",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "moc_pryd04",
+        "mapname": "moc_pryd04",
         "respawnTime": 3600000
       }
     ],
@@ -130,9 +130,9 @@
     "id": 1511,
     "dbname": "AMON_RA",
     "name": "Amon Ra",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "moc_pryd06",
+        "mapname": "moc_pryd06",
         "respawnTime": 3600000
       }
     ],
@@ -147,9 +147,9 @@
     "id": 1159,
     "dbname": "PHREEONI",
     "name": "Phreeoni",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "moc_fild17",
+        "mapname": "moc_fild17",
         "respawnTime": 7200000
       }
     ],
@@ -164,9 +164,9 @@
     "id": 1389,
     "dbname": "DRACULA",
     "name": "Dracula",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "gef_dun01",
+        "mapname": "gef_dun01",
         "respawnTime": 3600000
       }
     ],
@@ -181,13 +181,13 @@
     "id": 1046,
     "dbname": "DOPPELGANGER",
     "name": "Doppelganger",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "gef_dun02",
+        "mapname": "gef_dun02",
         "respawnTime": 7200000
       },
       {
-        "mapName": "gld_dun04",
+        "mapname": "gld_dun04",
         "respawnTime": 28800000
       }
     ],
@@ -202,13 +202,13 @@
     "id": 1059,
     "dbname": "MISTRESS",
     "name": "Mistress",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "gld_dun02",
+        "mapname": "gld_dun02",
         "respawnTime": 28800000
       },
       {
-        "mapName": "mjolnir_04",
+        "mapname": "mjolnir_04",
         "respawnTime": 7200000
       }
     ],
@@ -223,13 +223,13 @@
     "id": 1150,
     "dbname": "MOONLIGHT",
     "name": "Moonlight Flower",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "gld_dun01",
+        "mapname": "gld_dun01",
         "respawnTime": 28800000
       },
       {
-        "mapName": "pay_dun04",
+        "mapname": "pay_dun04",
         "respawnTime": 3600000
       }
     ],
@@ -244,9 +244,9 @@
     "id": 1688,
     "dbname": "LADY_TANEE",
     "name": "Lady Tanee",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "ayo_dun02",
+        "mapname": "ayo_dun02",
         "respawnTime": 25200000
       }
     ],
@@ -261,13 +261,13 @@
     "id": 1039,
     "dbname": "BAPHOMET",
     "name": "Baphomet",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "gld_dun03",
+        "mapname": "gld_dun03",
         "respawnTime": 28800000
       },
       {
-        "mapName": "prt_maze03",
+        "mapname": "prt_maze03",
         "respawnTime": 7200000
       }
     ],
@@ -282,9 +282,9 @@
     "id": 1157,
     "dbname": "PHARAOH",
     "name": "Pharaoh",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "in_sphinx5",
+        "mapname": "in_sphinx5",
         "respawnTime": 3600000
       }
     ],
@@ -299,9 +299,9 @@
     "id": 1112,
     "dbname": "DRAKE",
     "name": "Drake",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "treasure02",
+        "mapname": "treasure02",
         "respawnTime": 7200000
       }
     ],
@@ -316,9 +316,9 @@
     "id": 1251,
     "dbname": "KNIGHT_OF_WINDSTORM",
     "name": "Stormy Knight",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "xmas_dun02",
+        "mapname": "xmas_dun02",
         "respawnTime": 3600000
       }
     ],
@@ -333,9 +333,9 @@
     "id": 2068,
     "dbname": "BOITATA",
     "name": "Boitata",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "bra_dun02",
+        "mapname": "bra_dun02",
         "respawnTime": 7200000
       }
     ],
@@ -350,9 +350,9 @@
     "id": 1373,
     "dbname": "LORD_OF_DEATH",
     "name": "Lord of the Dead",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "niflheim",
+        "mapname": "niflheim",
         "respawnTime": 7980000
       }
     ],
@@ -367,9 +367,9 @@
     "id": 2156,
     "dbname": "LEAK",
     "name": "Leak",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "dew_dun01",
+        "mapname": "dew_dun01",
         "respawnTime": 7200000
       }
     ],
@@ -381,32 +381,20 @@
     }
   },
   {
-    "id": 2194,
-    "dbname": "MD_GIANT_OCTOPUS",
-    "name": "Md Giant Octopus",
-    "maps": [],
-    "stats": {
-      "level": 95,
-      "health": 500000,
-      "baseExperience": 20000,
-      "jobExperience": 10000
-    }
-  },
-  {
     "id": 1272,
     "dbname": "DARK_LORD",
     "name": "Dark Lord",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "gl_chyard",
+        "mapname": "gl_chyard",
         "respawnTime": 3600000
       },
       {
-        "mapName": "gl_chyard_",
+        "mapname": "gl_chyard_",
         "respawnTime": 3600000
       },
       {
-        "mapName": "gld_dun04_2",
+        "mapname": "gld_dun04_2",
         "respawnTime": 28800000
       }
     ],
@@ -421,9 +409,9 @@
     "id": 1630,
     "dbname": "BACSOJIN_",
     "name": "White Lady",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "lou_dun03",
+        "mapname": "lou_dun03",
         "respawnTime": 7000000
       }
     ],
@@ -438,9 +426,9 @@
     "id": 1885,
     "dbname": "GOPINICH",
     "name": "Gopinich",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "mosk_dun03",
+        "mapname": "mosk_dun03",
         "respawnTime": 7200000
       }
     ],
@@ -455,9 +443,9 @@
     "id": 1252,
     "dbname": "GARM",
     "name": "Hatii",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "xmas_fild01",
+        "mapname": "xmas_fild01",
         "respawnTime": 7200000
       }
     ],
@@ -469,36 +457,12 @@
     }
   },
   {
-    "id": 1779,
-    "dbname": "KTULLANUX",
-    "name": "Ktullanux",
-    "maps": [],
-    "stats": {
-      "level": 98,
-      "health": 2626000,
-      "baseExperience": 621345,
-      "jobExperience": 474971
-    }
-  },
-  {
-    "id": 1708,
-    "dbname": "THANATOS",
-    "name": "Thanatos Phantom",
-    "maps": [],
-    "stats": {
-      "level": 99,
-      "health": 1445660,
-      "baseExperience": 779640,
-      "jobExperience": 965277
-    }
-  },
-  {
     "id": 2441,
     "dbname": "B_NOVICE",
     "name": "the\tLast one",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "teg_dun01",
+        "mapname": "teg_dun01",
         "respawnTime": 28800000
       }
     ],
@@ -513,9 +477,9 @@
     "id": 2442,
     "dbname": "B_SUPERNOVICE",
     "name": "King of the alley",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "teg_dun02",
+        "mapname": "teg_dun02",
         "respawnTime": 7200000
       }
     ],
@@ -530,9 +494,9 @@
     "id": 1492,
     "dbname": "INCANTATION_SAMURAI",
     "name": "Samurai Specter",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "ama_dun03",
+        "mapname": "ama_dun03",
         "respawnTime": 5460000
       }
     ],
@@ -547,9 +511,9 @@
     "id": 1623,
     "dbname": "RSX_0806",
     "name": "RSX-0806",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "ein_dun02",
+        "mapname": "ein_dun02",
         "respawnTime": 7500000
       }
     ],
@@ -561,48 +525,12 @@
     }
   },
   {
-    "id": 2187,
-    "dbname": "COELACANTH_N_A",
-    "name": "Coelacanth N A",
-    "maps": [],
-    "stats": {
-      "level": 100,
-      "health": 2200000,
-      "baseExperience": 500000,
-      "jobExperience": 550000
-    }
-  },
-  {
-    "id": 2188,
-    "dbname": "COELACANTH_N_M",
-    "name": "Coelacanth N M",
-    "maps": [],
-    "stats": {
-      "level": 100,
-      "health": 2200000,
-      "baseExperience": 500000,
-      "jobExperience": 550000
-    }
-  },
-  {
-    "id": 3426,
-    "dbname": "MIN_EDDGA",
-    "name": "Eddga",
-    "maps": [],
-    "stats": {
-      "level": 101,
-      "health": 1850000,
-      "baseExperience": 100000,
-      "jobExperience": 100000
-    }
-  },
-  {
     "id": 1418,
     "dbname": "DARK_SNAKE_LORD",
     "name": "Evil Snake Lord",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "gon_dun03",
+        "mapname": "gon_dun03",
         "respawnTime": 5650000
       }
     ],
@@ -617,9 +545,9 @@
     "id": 1312,
     "dbname": "TURTLE_GENERAL",
     "name": "Turtle General",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "tur_dun04",
+        "mapname": "tur_dun04",
         "respawnTime": 3600000
       }
     ],
@@ -634,9 +562,9 @@
     "id": 1583,
     "dbname": "TAO_GUNKA",
     "name": "Tao Gunka",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "beach_dun",
+        "mapname": "beach_dun",
         "respawnTime": 18000000
       }
     ],
@@ -651,9 +579,9 @@
     "id": 3633,
     "dbname": "EP16_2_VENOM_KIMERA",
     "name": "Venomous Chimera",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "slabw01",
+        "mapname": "slabw01",
         "respawnTime": 5000
       }
     ],
@@ -668,25 +596,25 @@
     "id": 1785,
     "dbname": "ATROCE",
     "name": "Atroce",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "gld_dun03_2",
+        "mapname": "gld_dun03_2",
         "respawnTime": 28800000
       },
       {
-        "mapName": "ra_fild03",
+        "mapname": "ra_fild03",
         "respawnTime": 10800000
       },
       {
-        "mapName": "ra_fild04",
+        "mapname": "ra_fild04",
         "respawnTime": 18000000
       },
       {
-        "mapName": "ve_fild01",
+        "mapname": "ve_fild01",
         "respawnTime": 10800000
       },
       {
-        "mapName": "ve_fild02",
+        "mapname": "ve_fild02",
         "respawnTime": 21600000
       }
     ],
@@ -698,24 +626,12 @@
     }
   },
   {
-    "id": 2022,
-    "dbname": "S_NYDHOG",
-    "name": "S Nydhog",
-    "maps": [],
-    "stats": {
-      "level": 117,
-      "health": 3452000,
-      "baseExperience": 2808000,
-      "jobExperience": 1930500
-    }
-  },
-  {
     "id": 2202,
     "dbname": "KRAKEN",
     "name": "Kraken",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "iz_dun05",
+        "mapname": "iz_dun05",
         "respawnTime": 7200000
       }
     ],
@@ -730,9 +646,9 @@
     "id": 1734,
     "dbname": "KIEL_",
     "name": "Kiel D-01",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "kh_dun02",
+        "mapname": "kh_dun02",
         "respawnTime": 7200000
       }
     ],
@@ -747,9 +663,9 @@
     "id": 1685,
     "dbname": "APOCALIPS_H",
     "name": "Vesper",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "jupe_core",
+        "mapname": "jupe_core",
         "respawnTime": 7200000
       }
     ],
@@ -764,9 +680,9 @@
     "id": 1719,
     "dbname": "DETALE",
     "name": "Detardeurus",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "abyss_03",
+        "mapname": "abyss_03",
         "respawnTime": 10800000
       }
     ],
@@ -778,24 +694,12 @@
     }
   },
   {
-    "id": 2131,
-    "dbname": "LOST_DRAGON",
-    "name": "Lost Dragon",
-    "maps": [],
-    "stats": {
-      "level": 135,
-      "health": 608920,
-      "baseExperience": 19500,
-      "jobExperience": 19800
-    }
-  },
-  {
     "id": 1871,
     "dbname": "FALLINGBISHOP",
     "name": "Falling Bishop",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "abbey02",
+        "mapname": "abbey02",
         "respawnTime": 7200000
       }
     ],
@@ -810,9 +714,9 @@
     "id": 1768,
     "dbname": "GLOOMUNDERNIGHT",
     "name": "Gloom Under Night",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "ra_san05",
+        "mapname": "ra_san05",
         "respawnTime": 18000000
       }
     ],
@@ -827,9 +731,9 @@
     "id": 2087,
     "dbname": "QUEEN_SCARABA",
     "name": "Queen Scaraba",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "dic_dun02",
+        "mapname": "dic_dun02",
         "respawnTime": 7200000
       }
     ],
@@ -844,9 +748,9 @@
     "id": 2165,
     "dbname": "I_QUEEN_SCARABA",
     "name": "Queen Scaraba",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "dic_dun03",
+        "mapname": "dic_dun03",
         "respawnTime": 7200000
       }
     ],
@@ -861,9 +765,9 @@
     "id": 1658,
     "dbname": "B_YGNIZEM",
     "name": "Egnigem Cenia",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "lhz_dun02",
+        "mapname": "lhz_dun02",
         "respawnTime": 7200000
       }
     ],
@@ -878,9 +782,9 @@
     "id": 1751,
     "dbname": "RANDGRIS",
     "name": "Valkyrie Randgris",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "odin_tem03",
+        "mapname": "odin_tem03",
         "respawnTime": 28800000
       }
     ],
@@ -895,9 +799,9 @@
     "id": 2249,
     "dbname": "PYURIEL",
     "name": "Pyuriel",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "gld2_prt",
+        "mapname": "gld2_prt",
         "respawnTime": 28800000
       }
     ],
@@ -912,9 +816,9 @@
     "id": 2253,
     "dbname": "DAEHYON",
     "name": "Daehyon",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "gld2_pay",
+        "mapname": "gld2_pay",
         "respawnTime": 28800000
       }
     ],
@@ -929,9 +833,9 @@
     "id": 2255,
     "dbname": "KADES",
     "name": "Kades",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "gld2_gef",
+        "mapname": "gld2_gef",
         "respawnTime": 28800000
       }
     ],
@@ -946,9 +850,9 @@
     "id": 2362,
     "dbname": "N_AMON_RA",
     "name": "Amon Ra (Nightmare)",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "moc_prydn2",
+        "mapname": "moc_prydn2",
         "respawnTime": 3600000
       }
     ],
@@ -963,9 +867,9 @@
     "id": 1832,
     "dbname": "IFRIT",
     "name": "Ifrit",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "thor_v03",
+        "mapname": "thor_v03",
         "respawnTime": 39600000
       }
     ],
@@ -980,9 +884,9 @@
     "id": 2251,
     "dbname": "GIOIA",
     "name": "Gioia",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "gld2_ald",
+        "mapname": "gld2_ald",
         "respawnTime": 28800000
       }
     ],
@@ -994,36 +898,12 @@
     }
   },
   {
-    "id": 2475,
-    "dbname": "MG_CORRUPTION_ROOT",
-    "name": "Corrupted Soul",
-    "maps": [],
-    "stats": {
-      "level": 150,
-      "health": 1820000,
-      "baseExperience": 1099953,
-      "jobExperience": 1104662
-    }
-  },
-  {
-    "id": 2476,
-    "dbname": "MG_AMDARAIS",
-    "name": "Amdarais",
-    "maps": [],
-    "stats": {
-      "level": 150,
-      "health": 4290000,
-      "baseExperience": 1145662,
-      "jobExperience": 1208363
-    }
-  },
-  {
     "id": 1917,
     "dbname": "MOROCC_",
     "name": "Wounded Morocc",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "moc_fild22",
+        "mapname": "moc_fild22",
         "respawnTime": 43200000
       }
     ],
@@ -1038,9 +918,9 @@
     "id": 2483,
     "dbname": "NG_BAPHOMET",
     "name": "Baphomet (Nightmare)",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "gl_cas02_",
+        "mapname": "gl_cas02_",
         "respawnTime": 7200000
       }
     ],
@@ -1052,36 +932,12 @@
     }
   },
   {
-    "id": 2189,
-    "dbname": "COELACANTH_H_M",
-    "name": "Coelacanth H M",
-    "maps": [],
-    "stats": {
-      "level": 155,
-      "health": 5200000,
-      "baseExperience": 1500000,
-      "jobExperience": 1650000
-    }
-  },
-  {
-    "id": 2190,
-    "dbname": "COELACANTH_H_A",
-    "name": "Coelacanth H A",
-    "maps": [],
-    "stats": {
-      "level": 155,
-      "health": 5200000,
-      "baseExperience": 1500000,
-      "jobExperience": 1650000
-    }
-  },
-  {
     "id": 3741,
     "dbname": "MECHASPIDER",
     "name": "Spider Chariot",
-    "maps": [
+    "spawn": [
       {
-        "mapName": "rockmi1",
+        "mapname": "rockmi1",
         "respawnTime": 7200000
       }
     ],
@@ -1090,480 +946,6 @@
       "health": 9799123,
       "baseExperience": 3150895,
       "jobExperience": 2112795
-    }
-  },
-  {
-    "id": 1646,
-    "dbname": "B_SEYREN",
-    "name": "Lord Knight Seyren",
-    "maps": [],
-    "stats": {
-      "level": 160,
-      "health": 4680000,
-      "baseExperience": 3017664,
-      "jobExperience": 1915056
-    }
-  },
-  {
-    "id": 1647,
-    "dbname": "B_EREMES",
-    "name": "Assassin Cross Eremes",
-    "maps": [],
-    "stats": {
-      "level": 160,
-      "health": 4230000,
-      "baseExperience": 2720250,
-      "jobExperience": 1730916
-    }
-  },
-  {
-    "id": 1648,
-    "dbname": "B_HARWORD",
-    "name": "Whitesmith Howard",
-    "maps": [],
-    "stats": {
-      "level": 160,
-      "health": 6750000,
-      "baseExperience": 2310750,
-      "jobExperience": 1465200
-    }
-  },
-  {
-    "id": 1649,
-    "dbname": "B_MAGALETA",
-    "name": "High Priest Margaretha",
-    "maps": [],
-    "stats": {
-      "level": 160,
-      "health": 4800000,
-      "baseExperience": 2252250,
-      "jobExperience": 1386000
-    }
-  },
-  {
-    "id": 1650,
-    "dbname": "B_SHECIL",
-    "name": "Sniper Cecil",
-    "maps": [],
-    "stats": {
-      "level": 160,
-      "health": 4140000,
-      "baseExperience": 2669472,
-      "jobExperience": 1694088
-    }
-  },
-  {
-    "id": 1651,
-    "dbname": "B_KATRINN",
-    "name": "High Wizard Kathryne",
-    "maps": [],
-    "stats": {
-      "level": 160,
-      "health": 4500000,
-      "baseExperience": 2106000,
-      "jobExperience": 1336500
-    }
-  },
-  {
-    "id": 2235,
-    "dbname": "B_RANDEL",
-    "name": "B Randel",
-    "maps": [],
-    "stats": {
-      "level": 160,
-      "health": 6870000,
-      "baseExperience": 3674489,
-      "jobExperience": 2149566
-    }
-  },
-  {
-    "id": 2236,
-    "dbname": "B_FLAMEL",
-    "name": "B Flamel",
-    "maps": [],
-    "stats": {
-      "level": 160,
-      "health": 4230000,
-      "baseExperience": 2611785,
-      "jobExperience": 1446694
-    }
-  },
-  {
-    "id": 2237,
-    "dbname": "B_CELIA",
-    "name": "B Celia",
-    "maps": [],
-    "stats": {
-      "level": 160,
-      "health": 3847804,
-      "baseExperience": 2513654,
-      "jobExperience": 1380385
-    }
-  },
-  {
-    "id": 2238,
-    "dbname": "B_CHEN",
-    "name": "B Chen",
-    "maps": [],
-    "stats": {
-      "level": 160,
-      "health": 4249350,
-      "baseExperience": 2556784,
-      "jobExperience": 1614235
-    }
-  },
-  {
-    "id": 2239,
-    "dbname": "B_GERTIE",
-    "name": "B Gertie",
-    "maps": [],
-    "stats": {
-      "level": 160,
-      "health": 4057279,
-      "baseExperience": 2210349,
-      "jobExperience": 1480200
-    }
-  },
-  {
-    "id": 2240,
-    "dbname": "B_ALPHOCCIO",
-    "name": "B Alphoccio",
-    "maps": [],
-    "stats": {
-      "level": 160,
-      "health": 3894278,
-      "baseExperience": 2113018,
-      "jobExperience": 1357934
-    }
-  },
-  {
-    "id": 2241,
-    "dbname": "B_TRENTINI",
-    "name": "B Trentini",
-    "maps": [],
-    "stats": {
-      "level": 160,
-      "health": 3894278,
-      "baseExperience": 2231879,
-      "jobExperience": 1409702
-    }
-  },
-  {
-    "id": 3473,
-    "dbname": "AS_RAGGED_GOLEM",
-    "name": "Stefan.J.E.Wolf",
-    "maps": [],
-    "stats": {
-      "level": 160,
-      "health": 20000000,
-      "baseExperience": 96453,
-      "jobExperience": 121156
-    }
-  },
-  {
-    "id": 3254,
-    "dbname": "T_W_O",
-    "name": "T_W_O",
-    "maps": [
-      {
-        "mapName": "1@uns",
-        "respawnTime": 5000
-      }
-    ],
-    "stats": {
-      "level": 165,
-      "health": 48000000,
-      "baseExperience": 0,
-      "jobExperience": 0
-    }
-  },
-  {
-    "id": 3074,
-    "dbname": "TIMEHOLDER",
-    "name": "Time Holder",
-    "maps": [
-      {
-        "mapName": "c_tower3_",
-        "respawnTime": 7200000
-      }
-    ],
-    "stats": {
-      "level": 170,
-      "health": 25000000,
-      "baseExperience": 4582500,
-      "jobExperience": 3877500
-    }
-  },
-  {
-    "id": 3241,
-    "dbname": "V_B_FLAMEL",
-    "name": "Genetic Flamel",
-    "maps": [
-      {
-        "mapName": "lhz_dun_n",
-        "respawnTime": 999999
-      }
-    ],
-    "stats": {
-      "level": 186,
-      "health": 14400000,
-      "baseExperience": 3000000,
-      "jobExperience": 3000000
-    }
-  },
-  {
-    "id": 3245,
-    "dbname": "V_B_ALPHOCCIO",
-    "name": "Minstrel Alphoccio",
-    "maps": [
-      {
-        "mapName": "lhz_dun_n",
-        "respawnTime": 999999
-      }
-    ],
-    "stats": {
-      "level": 186,
-      "health": 10800000,
-      "baseExperience": 3000000,
-      "jobExperience": 3000000
-    }
-  },
-  {
-    "id": 3246,
-    "dbname": "V_B_TRENTINI",
-    "name": "Wanderer Trentini",
-    "maps": [
-      {
-        "mapName": "lhz_dun_n",
-        "respawnTime": 999999
-      }
-    ],
-    "stats": {
-      "level": 186,
-      "health": 10800000,
-      "baseExperience": 3000000,
-      "jobExperience": 3000000
-    }
-  },
-  {
-    "id": 3221,
-    "dbname": "V_B_MAGALETA",
-    "name": "Archbishop Margaretha",
-    "maps": [
-      {
-        "mapName": "lhz_dun_n",
-        "respawnTime": 999999
-      }
-    ],
-    "stats": {
-      "level": 187,
-      "health": 14400000,
-      "baseExperience": 3000000,
-      "jobExperience": 3000000
-    }
-  },
-  {
-    "id": 3223,
-    "dbname": "V_B_HARWORD",
-    "name": "Mechanic Howard",
-    "maps": [
-      {
-        "mapName": "lhz_dun_n",
-        "respawnTime": 999999
-      }
-    ],
-    "stats": {
-      "level": 187,
-      "health": 18000000,
-      "baseExperience": 3000000,
-      "jobExperience": 3000000
-    }
-  },
-  {
-    "id": 3224,
-    "dbname": "V_B_KATRINN",
-    "name": "Warlock Kathryne",
-    "maps": [
-      {
-        "mapName": "lhz_dun_n",
-        "respawnTime": 999999
-      }
-    ],
-    "stats": {
-      "level": 187,
-      "health": 10800000,
-      "baseExperience": 3000000,
-      "jobExperience": 3000000
-    }
-  },
-  {
-    "id": 3240,
-    "dbname": "V_B_RANDEL",
-    "name": "Royal Guard Randel",
-    "maps": [
-      {
-        "mapName": "lhz_dun_n",
-        "respawnTime": 999999
-      }
-    ],
-    "stats": {
-      "level": 188,
-      "health": 18000000,
-      "baseExperience": 3000000,
-      "jobExperience": 3000000
-    }
-  },
-  {
-    "id": 3242,
-    "dbname": "V_B_CELIA",
-    "name": "Sorcerer Celia",
-    "maps": [
-      {
-        "mapName": "lhz_dun_n",
-        "respawnTime": 999999
-      }
-    ],
-    "stats": {
-      "level": 188,
-      "health": 16200000,
-      "baseExperience": 3000000,
-      "jobExperience": 3000000
-    }
-  },
-  {
-    "id": 3243,
-    "dbname": "V_B_CHEN",
-    "name": "Sura Chen",
-    "maps": [
-      {
-        "mapName": "lhz_dun_n",
-        "respawnTime": 999999
-      }
-    ],
-    "stats": {
-      "level": 188,
-      "health": 12600000,
-      "baseExperience": 3000000,
-      "jobExperience": 3000000
-    }
-  },
-  {
-    "id": 3244,
-    "dbname": "V_B_GERTIE",
-    "name": "Shadow Chaser Gertie",
-    "maps": [
-      {
-        "mapName": "lhz_dun_n",
-        "respawnTime": 999999
-      }
-    ],
-    "stats": {
-      "level": 188,
-      "health": 14400000,
-      "baseExperience": 3000000,
-      "jobExperience": 3000000
-    }
-  },
-  {
-    "id": 20419,
-    "dbname": "MUSPELLSKOLL_H",
-    "name": "Rigid Muspellskoll",
-    "maps": [
-      {
-        "mapName": "mag_dun03",
-        "respawnTime": 5000
-      }
-    ],
-    "stats": {
-      "level": 188,
-      "health": 48530254,
-      "baseExperience": 9706050,
-      "jobExperience": 6794235
-    }
-  },
-  {
-    "id": 3220,
-    "dbname": "V_B_EREMES",
-    "name": "Guillotine Cross Eremes",
-    "maps": [
-      {
-        "mapName": "lhz_dun_n",
-        "respawnTime": 999999
-      }
-    ],
-    "stats": {
-      "level": 189,
-      "health": 12600000,
-      "baseExperience": 3000000,
-      "jobExperience": 3000000
-    }
-  },
-  {
-    "id": 3222,
-    "dbname": "V_B_SHECIL",
-    "name": "Ranger Cecil",
-    "maps": [
-      {
-        "mapName": "lhz_dun_n",
-        "respawnTime": 999999
-      }
-    ],
-    "stats": {
-      "level": 189,
-      "health": 12600000,
-      "baseExperience": 3000000,
-      "jobExperience": 3000000
-    }
-  },
-  {
-    "id": 3225,
-    "dbname": "V_B_SEYREN",
-    "name": "Rune Knight Seyren",
-    "maps": [
-      {
-        "mapName": "lhz_dun_n",
-        "respawnTime": 999999
-      }
-    ],
-    "stats": {
-      "level": 189,
-      "health": 14400000,
-      "baseExperience": 3000000,
-      "jobExperience": 3000000
-    }
-  },
-  {
-    "id": 20422,
-    "dbname": "DARK_LORD_H",
-    "name": "Corrupted Dark Lord",
-    "maps": [
-      {
-        "mapName": "gl_cas01_",
-        "respawnTime": 5000
-      }
-    ],
-    "stats": {
-      "level": 194,
-      "health": 74476822,
-      "baseExperience": 14895364,
-      "jobExperience": 10426755
-    }
-  },
-  {
-    "id": 20421,
-    "dbname": "BRINARANEA_H",
-    "name": "Corrupted Spider Queen",
-    "maps": [
-      {
-        "mapName": "gl_cas01_",
-        "respawnTime": 5000
-      }
-    ],
-    "stats": {
-      "level": 195,
-      "health": 74623473,
-      "baseExperience": 14924695,
-      "jobExperience": 10447286
     }
   }
 ]

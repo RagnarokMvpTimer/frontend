@@ -1,8 +1,8 @@
 export interface Mvp {
   id: number;
   name: string;
-  maps: Array<{
-    mapName: string;
+  spawn: Array<{
+    mapname: string;
     respawnTime: number;
   }>;
   stats: {

@@ -49,7 +49,7 @@ export function MvpProvider({ children, ...rest }: MvpProviderProps) {
     let killedMvp = {
       ...mvp,
       deathTime: time ? time : new Date(),
-      deathMap: mvp.maps[0].mapName,
+      deathMap: mvp.spawn[0].mapname,
     };
     setActiveMvps([...activeMvps, killedMvp]);
   }
