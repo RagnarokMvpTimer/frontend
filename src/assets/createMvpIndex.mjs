@@ -4,16 +4,21 @@ import path from 'path';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const iconsDir = path.resolve(__dirname, 'mvp_icons');
 
-const files = readdirSync(iconsDir).filter((img) => img.includes('png'));
+function createIndex(folderName, exportName) {
+  const imagesDir = path.resolve(__dirname, folderName);
+  const files = readdirSync(imagesDir).filter((img) => img.includes('png'));
 
-const item = (file) => `"${file.split('.png')[0]}": require("./${file}")`;
+  const item = (file) => `"${file.split('.png')[0]}": require("./${file}")`;
 
-const ex = files.map(item).join(',\n  ');
+  const ex = files.map(item).join(',\n  ');
 
-const res = `export const mvpIcons = {
+  const res = `export const ${exportName} = {
   ${ex}
 }`;
 
-writeFileSync(`${iconsDir}/index.ts`, res);
+  writeFileSync(`${imagesDir}/index.ts`, res);
+}
+
+createIndex('mvp_icons', 'mvpIcons');
+createIndex('mvp_maps', 'mvpMaps');
