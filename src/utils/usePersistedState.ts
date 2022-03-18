@@ -2,7 +2,7 @@ import { useState, useEffect, Dispatch, SetStateAction } from 'react';
 
 type Response<T> = [T, Dispatch<SetStateAction<T>>];
 
-export default function usePersistedState<T>(
+export function usePersistedState<T>(
   key: string,
   initialState: T
 ): Response<T> {

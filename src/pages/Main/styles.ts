@@ -8,7 +8,7 @@ export const Container = styled.main`
   align-items: center;
 
   //padding: 1% 10% 5% 10%;
-  padding-bottom: 15px;
+  padding-bottom: 30px;
 
   background-color: ${({ theme }) => theme.colors.secondary};
 `;

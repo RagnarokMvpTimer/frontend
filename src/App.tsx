@@ -1,15 +1,19 @@
 import { ThemeProvider, DefaultTheme } from 'styled-components';
 
-import { Header } from './components/Header';
-import { Main } from './pages/Main';
 import { GlobalStyle } from './styles/Global';
-
-import usePeristedState from './utils/usePersistedState';
 import { Themes } from './styles/Themes';
+
+import { Main } from './pages/Main';
+
+import { Header } from './components/Header';
+import { WarningHeader } from './components/WarningHeader';
+import { Footer } from './components/Footer';
+
+import { usePersistedState } from './utils/usePersistedState';
 import { MvpProvider } from './contexts/MvpsContext';
 
 export default function App() {
-  const [theme, setTheme] = usePeristedState<DefaultTheme>(
+  const [theme, setTheme] = usePersistedState<DefaultTheme>(
     'theme',
     Themes.dark
   );
@@ -19,10 +23,12 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
+      <WarningHeader />
       <Header toggleTheme={toggleTheme} />
       <MvpProvider>
         <Main />
       </MvpProvider>
+      <Footer />
       <GlobalStyle />
     </ThemeProvider>
   );
