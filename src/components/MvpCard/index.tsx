@@ -6,6 +6,8 @@ import { Mvp } from '../../interfaces';
 import { MvpsContext } from '../../contexts/MvpsContext';
 import { getMvpSprite, respawnAt, respawnCountdown } from '../../utils';
 
+import { MvpMapModal } from '../MvpMapModal';
+
 import {
   Container,
   Name,
@@ -35,6 +37,7 @@ export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
   } = useContext(MvpsContext);
 
   const [respawnTime, setRespawnTime] = useState<string>('');
+  const [isMapModalOpen, setIsMapModalOpen] = useState<boolean>(false);
 
   useEffect(() => {
     function timeUntilRespawn() {
@@ -75,7 +78,7 @@ export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
             <Bold>{mvp.deathMap}</Bold>
           </MapName>
           <Controls>
-            <Control onClick={() => toggleDeathMapModal(mvp)}>
+            <Control onClick={() => setIsMapModalOpen(true)}>
               <Map color='#fff' height={17} width={17} />
             </Control>
             <Control onClick={() => resetMvpTimer(mvp)}>
@@ -86,6 +89,13 @@ export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
             </Control>
           </Controls>
         </>
+      )}
+
+      {mvp.deathMap && isMapModalOpen && (
+        <MvpMapModal
+          deathMap={mvp.deathMap}
+          close={() => setIsMapModalOpen(false)}
+        />
       )}
     </Container>
   );
