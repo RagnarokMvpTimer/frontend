@@ -27,7 +27,7 @@
     "@types/react-datepicker": "^4.3.4",
     "babel-plugin-formatjs": "^10.3.18",
     "gh-pages": "^3.2.3",
-    "prettier": "2.5.1",
+    "prettier": "2.6.0",
     "vercel": "^24.0.0"
   },
   "scripts": {
