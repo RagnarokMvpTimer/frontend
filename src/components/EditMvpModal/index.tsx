@@ -34,9 +34,7 @@ export function EditMvpModal({ mvp }: EditMvpModalProps) {
   const [newTime, setNewTime] = useState<Date | null>(
     mvp.deathTime || new Date()
   );
-  const [selectedMap, setSelectedMap] = useState<string | undefined>(
-    mvp.deathMap
-  );
+  const [selectedMap, setSelectedMap] = useState<string>(mvp.deathMap || '');
 
   const canChangeMap = !mvp.deathMap;
   const hasMoreThanOneMap = mvp.spawn.length > 1;
@@ -45,7 +43,9 @@ export function EditMvpModal({ mvp }: EditMvpModalProps) {
     if (!hasMoreThanOneMap) setSelectedMap(mvp.spawn[0].mapname);
   }, [hasMoreThanOneMap, mvp.spawn]);
 
-  function handleConfirm() {}
+  function handleConfirm() {
+    if (!selectedMap) return;
+  }
 
   return (
     <Container>
@@ -79,7 +79,12 @@ export function EditMvpModal({ mvp }: EditMvpModalProps) {
             >
               {hasMoreThanOneMap ? (
                 <>
-                  <option>Select the map</option>
+                  {!selectedMap && (
+                    <option disabled value=''>
+                      Select the map
+                    </option>
+                  )}
+
                   {mvp.spawn.map((map) => (
                     <option key={map.mapname} value={map.mapname}>
                       {map.mapname} -{' '}
