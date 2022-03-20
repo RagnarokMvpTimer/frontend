@@ -29,7 +29,7 @@ export function MvpProvider({ children, ...rest }: MvpProviderProps) {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [editingMvp, setEditingMvp] = useState<Mvp>({} as Mvp);
 
-  const [respawnAsCountdown, setRespawnAsCountdown] = useState(true);
+  const [respawnAsCountdown, setRespawnAsCountdown] = useState(false);
 
   const [activeMvps, setActiveMvps] = useState<Array<Mvp>>([]);
   const [allMvps, setAllMvps] = useState<Array<Mvp>>(
