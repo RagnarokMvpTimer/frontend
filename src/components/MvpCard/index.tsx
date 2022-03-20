@@ -39,34 +39,28 @@ export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
   const [respawnTime, setRespawnTime] = useState<string>('');
   const [isMapModalOpen, setIsMapModalOpen] = useState<boolean>(false);
 
-  useEffect(() => {
-    function timeUntilRespawn() {
-      const deathTime = moment(mvp.deathTime);
-      return respawnAsCountdown
-        ? respawnCountdown(deathTime)
-        : respawnAt(deathTime);
+  function getMvpRespawnTime() {
+    const deathMap = mvp.spawn.find((spawn) => spawn.mapname === mvp.deathMap);
+    const respawnTime = deathMap?.respawnTime;
+    if (respawnTime) {
+      return respawnTime;
     }
+  }
 
-    if (isActive) {
-      const interval = setInterval(
-        () => setRespawnTime(timeUntilRespawn()),
-        1000
+  useEffect(() => {
+    if (mvp.deathTime && mvp.deathMap) {
+      const time = respawnAt(
+        moment(mvp.deathTime).add(getMvpRespawnTime(), 'ms')
       );
-      return () => clearInterval(interval);
+      setRespawnTime(time);
     }
-  }, [isActive, mvp.deathTime, respawnAsCountdown]);
+  }, []);
 
   return (
     <Container>
       <Name>{mvp.name}</Name>
       <Sprite src={getMvpSprite(mvp.id)} alt={mvp.name} />
-      {!isActive && (
-        <Controls isActive={!isActive}>
-          <KilledNow onClick={() => killMvp(mvp)}>I killed now !</KilledNow>
-          <EditButton onClick={() => openAndEditModal(mvp)}>Edit</EditButton>
-        </Controls>
-      )}
-      {isActive && (
+      {isActive ? (
         <>
           <Respawn>
             Respawn {respawnAsCountdown ? 'in' : 'at'}
@@ -89,6 +83,11 @@ export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
             </Control>
           </Controls>
         </>
+      ) : (
+        <Controls isActive={!isActive}>
+          <KilledNow onClick={() => killMvp(mvp)}>I killed now !</KilledNow>
+          <EditButton onClick={() => openAndEditModal(mvp)}>Edit</EditButton>
+        </Controls>
       )}
 
       {mvp.deathMap && isMapModalOpen && (
