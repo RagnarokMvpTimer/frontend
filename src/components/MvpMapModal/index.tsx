@@ -1,6 +1,6 @@
 import { getMapImg } from '../../utils';
 
-import { Container, Modal, Map, CloseButton } from './styles';
+import { Container, Modal, Name, Map, CloseButton } from './styles';
 
 interface MvpMapModalProps {
   deathMap: string;
@@ -11,6 +11,7 @@ export function MvpMapModal({ deathMap, close }: MvpMapModalProps) {
   return (
     <Container>
       <Modal>
+        <Name>{deathMap}</Name>
         <Map src={getMapImg(deathMap)} alt={deathMap} />
         <CloseButton onClick={close}>Close</CloseButton>
       </Modal>

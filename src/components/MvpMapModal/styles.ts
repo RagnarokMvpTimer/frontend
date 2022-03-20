@@ -28,7 +28,15 @@ export const Modal = styled.div`
   background-color: ${({ theme }) => theme.colors.modal.bg};
 `;
 
-export const Map = styled.img``;
+export const Name = styled.span`
+  color: ${({ theme }) => theme.colors.modal.text};
+  font-weight: bold;
+`;
+
+export const Map = styled.img`
+  width: 250px;
+  height: 250px;
+`;
 
 export const CloseButton = styled.button`
   width: 150px;
