@@ -1,3 +1,8 @@
+export interface IMapMark {
+  x: number;
+  y: number;
+}
+
 export interface Mvp {
   id: number;
   name: string;
@@ -13,5 +18,5 @@ export interface Mvp {
   };
   deathTime?: Date;
   deathMap?: string;
-  deathPosition?: {};
+  deathPosition?: IMapMark;
 }

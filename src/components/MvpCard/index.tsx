@@ -72,13 +72,13 @@ export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
             <Bold>{mvp.deathMap}</Bold>
           </MapName>
           <Controls>
-            <Control onClick={() => setIsMapModalOpen(true)}>
+            <Control onClick={() => setIsMapModalOpen(true)} title='Show map'>
               <Map color='#fff' height={17} width={17} />
             </Control>
-            <Control onClick={() => resetMvpTimer(mvp)}>
+            <Control onClick={() => resetMvpTimer(mvp)} title='Reset timer'>
               <RefreshCcw color='#fff' height={17} width={17} />
             </Control>
-            <Control onClick={() => removeMvp(mvp)}>
+            <Control onClick={() => removeMvp(mvp)} title='Remove this mvp'>
               <Trash2 color='#fff' height={17} width={17} />
             </Control>
           </Controls>
@@ -93,6 +93,7 @@ export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
       {mvp.deathMap && isMapModalOpen && (
         <MvpMapModal
           deathMap={mvp.deathMap}
+          deathPosition={mvp.deathPosition}
           close={() => setIsMapModalOpen(false)}
         />
       )}

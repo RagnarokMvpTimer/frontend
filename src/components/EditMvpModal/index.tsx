@@ -6,8 +6,10 @@ import { X } from '@styled-icons/feather';
 import 'react-datepicker/dist/react-datepicker.css';
 
 import { MvpsContext } from '../../contexts/MvpsContext';
-import { Mvp } from '../../interfaces';
+import { Mvp, IMapMark } from '../../interfaces';
 import { getMapImg, getMvpSprite } from '../../utils';
+
+import { MapMark } from '../MapMark';
 
 import {
   Container,
@@ -23,6 +25,8 @@ import {
   Map,
   ConfirmButton,
 } from './styles';
+import { type } from 'os';
+import { Runtime } from 'inspector';
 
 interface EditMvpModalProps {
   mvp: Mvp;
@@ -35,17 +39,29 @@ export function EditMvpModal({ mvp }: EditMvpModalProps) {
     mvp.deathTime || new Date()
   );
   const [selectedMap, setSelectedMap] = useState<string>(mvp.deathMap || '');
+  const [markCoordinates, setMarkCoordinates] = useState<IMapMark>({
+    x: -1,
+    y: -1,
+  });
 
   const canChangeMap = !mvp.deathMap;
   const hasMoreThanOneMap = mvp.spawn.length > 1;
 
-  useEffect(() => {
-    if (!hasMoreThanOneMap) setSelectedMap(mvp.spawn[0].mapname);
-  }, [hasMoreThanOneMap, mvp.spawn]);
-
   function handleConfirm() {
     if (!selectedMap) return;
   }
+
+  function mapMark(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
+    const { offsetX, offsetY } = e.nativeEvent;
+    setMarkCoordinates({
+      x: offsetX,
+      y: offsetY,
+    });
+  }
+
+  useEffect(() => {
+    if (!hasMoreThanOneMap) setSelectedMap(mvp.spawn[0].mapname);
+  }, [hasMoreThanOneMap, mvp.spawn]);
 
   return (
     <Container>
@@ -105,7 +121,17 @@ export function EditMvpModal({ mvp }: EditMvpModalProps) {
               Where's mvp tombstone:
               <Optional>(optional - click to mark)</Optional>
             </Question>
-            <Map src={getMapImg(selectedMap)} alt={selectedMap} />
+            <div>
+              <Map
+                src={getMapImg(selectedMap)}
+                alt={selectedMap}
+                //title={selectedMap}
+                onClick={mapMark}
+              />
+              {(markCoordinates.x !== -1 || markCoordinates.y !== -1) && (
+                <MapMark x={markCoordinates.x} y={markCoordinates.y} />
+              )}
+            </div>
           </>
         )}
 

@@ -83,6 +83,7 @@ export const DatePickerContainer = styled.div`
   input {
     border-radius: 4px;
     text-align: center;
+    cursor: pointer;
   }
 `;
 
@@ -91,6 +92,7 @@ export const SelectMap = styled.select``;
 export const Map = styled.img`
   width: 250px;
   height: 250px;
+  cursor: pointer;
 `;
 
 export const ConfirmButton = styled.button`
