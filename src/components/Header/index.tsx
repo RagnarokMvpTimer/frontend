@@ -18,7 +18,7 @@ interface Props {
   toggleTheme(): void;
 }
 
-export const Header: React.FC<Props> = ({ toggleTheme }) => {
+export function Header({ toggleTheme }: Props) {
   const { colors, id } = useContext(ThemeContext);
 
   const currentTime = () => new Date();
@@ -59,4 +59,4 @@ export const Header: React.FC<Props> = ({ toggleTheme }) => {
       </Customization>
     </Container>
   );
-};
+}

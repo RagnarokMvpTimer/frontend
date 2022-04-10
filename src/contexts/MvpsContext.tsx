@@ -46,7 +46,7 @@ export function MvpProvider({ children, ...rest }: MvpProviderProps) {
   }
 
   function killMvp(mvp: Mvp, time?: Date) {
-    let killedMvp = {
+    const killedMvp = {
       ...mvp,
       deathTime: time ? time : new Date(),
       deathMap: mvp.spawn[0].mapname,

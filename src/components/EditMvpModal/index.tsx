@@ -25,8 +25,6 @@ import {
   Map,
   ConfirmButton,
 } from './styles';
-import { type } from 'os';
-import { Runtime } from 'inspector';
 
 interface EditMvpModalProps {
   mvp: Mvp;
