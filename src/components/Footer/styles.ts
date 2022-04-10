@@ -4,7 +4,6 @@ import { mobile, phone, tablet } from '../../utils/media';
 export const FooterContainer = styled.footer`
   display: flex;
   width: 100%;
-  height: 150px;
 
   background-color: ${({ theme }) => theme.colors.primary};
 `;
@@ -26,7 +25,9 @@ export const Text = styled.span`
   flex-wrap: wrap;
   justify-content: center;
 
-  color: ${({ theme }) => theme.colors.text};
+  font-weight: 500;
+
+  color: ${({ theme }) => theme.colors.footer.text};
 `;
 
 export const Bold = styled.span`
@@ -40,5 +41,9 @@ export const Link = styled.a`
   gap: 5px;
 
   text-decoration: none;
-  color: #ffa800;
+  color: ${({ theme }) => theme.colors.footer.link};
+
+  > svg {
+    stroke-width: 3px;
+  }
 `;

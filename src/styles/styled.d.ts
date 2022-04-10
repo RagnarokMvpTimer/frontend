@@ -25,6 +25,11 @@ declare module 'styled-components' {
         bg: string;
         text: string;
       };
+
+      footer: {
+        text: string;
+        link: string;
+      };
     };
   }
 }

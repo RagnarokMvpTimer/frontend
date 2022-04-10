@@ -23,6 +23,11 @@ export const Themes = {
         bg: '#262626',
         text: '#fff',
       },
+
+      footer: {
+        text: '#fff',
+        link: '#ffa800',
+      },
     },
   },
 
@@ -49,6 +54,11 @@ export const Themes = {
       modal: {
         bg: '#FFFFFF',
         text: '#421411',
+      },
+
+      footer: {
+        text: '#000',
+        link: '#53338D',
       },
     },
   },

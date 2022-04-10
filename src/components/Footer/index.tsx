@@ -24,6 +24,13 @@ export function Footer() {
         </Text>
 
         <Text>
+          Hosted on{' '}
+          <Link href='https://vercel.com/' target='_blank'>
+            ▲ Vercel <ExternalLink size={14} />
+          </Link>
+        </Text>
+
+        <Text>
           Sprites from{' '}
           <Link href='https://www.divine-pride.net/' target='_blank'>
             DivinePride <ExternalLink size={14} />
