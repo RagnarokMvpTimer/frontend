@@ -13,11 +13,7 @@ export function ThemeSwitcher({ toggleTheme }: Props) {
 
   return (
     <Container onClick={toggleTheme}>
-      {id === 'dark' ? (
-        <Sun size={24} color={'#fff'} />
-      ) : (
-        <Moon size={24} color={'#fff'} />
-      )}
+      {id === 'dark' ? <Sun /> : <Moon />}
     </Container>
   );
 }
