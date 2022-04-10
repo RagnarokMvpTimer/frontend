@@ -2,6 +2,9 @@ import { useState, useEffect, useContext } from 'react';
 import { ThemeContext } from 'styled-components';
 import Switch from 'react-switch';
 
+import { LanguageSelector } from '../LanguageSelector';
+import { ThemeSwitcher } from '../ThemeSwitcher';
+
 import mvpImg from '../../assets/mvp.png';
 import {
   Container,
@@ -10,9 +13,10 @@ import {
   Title,
   Hour,
   Customization,
-  CurrentLanguage,
   SwitchContainer,
 } from './styles';
+
+const currentTime = () => new Date();
 
 interface Props {
   toggleTheme(): void;
@@ -20,14 +24,14 @@ interface Props {
 
 export function Header({ toggleTheme }: Props) {
   const { colors, id } = useContext(ThemeContext);
-
-  const currentTime = () => new Date();
   const [time, setTime] = useState(currentTime());
 
   useEffect(() => {
-    setInterval(() => {
+    const interval = setInterval(() => {
       setTime(currentTime());
     }, 1000);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -40,8 +44,11 @@ export function Header({ toggleTheme }: Props) {
       <Hour>{time.toLocaleTimeString()}</Hour>
 
       <Customization>
-        <CurrentLanguage>EN</CurrentLanguage>
-        <SwitchContainer>
+        <LanguageSelector />
+
+        <ThemeSwitcher toggleTheme={toggleTheme} />
+
+        {/* <SwitchContainer>
           <Switch
             onChange={toggleTheme}
             checked={id === 'dark'}
@@ -55,7 +62,7 @@ export function Header({ toggleTheme }: Props) {
             offHandleColor={colors.switch.handle}
             onHandleColor={colors.switch.handle}
           />
-        </SwitchContainer>
+        </SwitchContainer> */}
       </Customization>
     </Container>
   );

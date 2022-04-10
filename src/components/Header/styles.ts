@@ -61,17 +61,10 @@ export const Customization = styled.div`
   align-items: center;
   justify-content: center;
 
+  gap: 15px;
+
   ${tablet(css`
     width: 86.2px;
-  `)}
-`;
-
-export const CurrentLanguage = styled.span`
-  color: #fff;
-  margin-right: 15px;
-
-  ${phone(css`
-    display: none;
   `)}
 `;
 
