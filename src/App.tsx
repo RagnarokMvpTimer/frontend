@@ -1,4 +1,4 @@
-import { ThemeProvider, DefaultTheme } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 
 import { GlobalStyle } from './styles/Global';
 import { Themes } from './styles/Themes';
@@ -13,16 +13,13 @@ import { usePersistedState } from './utils/usePersistedState';
 import { MvpProvider } from './contexts/MvpsContext';
 
 export default function App() {
-  const [theme, setTheme] = usePersistedState<DefaultTheme>(
-    'theme',
-    Themes.dark
-  );
+  const [theme, setTheme] = usePersistedState<string>('theme', Themes.dark.id);
 
   const toggleTheme = () =>
-    setTheme(theme.id === 'light' ? Themes.dark : Themes.light);
+    setTheme(theme === 'light' ? Themes.dark.id : Themes.light.id);
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={Themes[theme] || Themes.dark}>
       <WarningHeader />
       <Header toggleTheme={toggleTheme} />
       <MvpProvider>
