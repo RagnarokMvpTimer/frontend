@@ -5,5 +5,7 @@ export const Container = styled.div`
 
   > svg {
     stroke-width: 2px;
+    color: white;
+    fill: white;
   }
 `;
