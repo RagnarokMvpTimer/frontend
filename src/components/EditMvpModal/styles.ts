@@ -89,12 +89,6 @@ export const DatePickerContainer = styled.div`
 
 export const SelectMap = styled.select``;
 
-export const Map = styled.img`
-  width: 250px;
-  height: 250px;
-  cursor: pointer;
-`;
-
 export const ConfirmButton = styled.button`
   width: 250px;
   height: 50px;

@@ -33,10 +33,10 @@ export const Name = styled.span`
   font-weight: bold;
 `;
 
-export const Map = styled.img`
+/*export const Map = styled.img`
   width: 250px;
   height: 250px;
-`;
+`;*/
 
 export const CloseButton = styled.button`
   width: 150px;

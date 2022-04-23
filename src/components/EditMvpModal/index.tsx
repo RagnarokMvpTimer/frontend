@@ -6,10 +6,9 @@ import { X } from '@styled-icons/feather';
 import 'react-datepicker/dist/react-datepicker.css';
 
 import { MvpsContext } from '../../contexts/MvpsContext';
-import { Mvp, IMapMark } from '../../interfaces';
-import { getMapImg, getMvpSprite } from '../../utils';
-
-import { MapMark } from '../MapMark';
+import { IMapMark, Mvp } from '../../interfaces';
+import { getMvpSprite } from '../../utils';
+import { Map } from '../Map';
 
 import {
   Container,
@@ -22,7 +21,6 @@ import {
   Time,
   DatePickerContainer,
   SelectMap,
-  Map,
   ConfirmButton,
 } from './styles';
 
@@ -47,14 +45,6 @@ export function EditMvpModal({ mvp }: EditMvpModalProps) {
 
   function handleConfirm() {
     if (!selectedMap) return;
-  }
-
-  function mapMark(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
-    const { offsetX, offsetY } = e.nativeEvent;
-    setMarkCoordinates({
-      x: offsetX,
-      y: offsetY,
-    });
   }
 
   useEffect(() => {
@@ -119,17 +109,7 @@ export function EditMvpModal({ mvp }: EditMvpModalProps) {
               Where's mvp tombstone:
               <Optional>(optional - click to mark)</Optional>
             </Question>
-            <div>
-              <Map
-                src={getMapImg(selectedMap)}
-                alt={selectedMap}
-                //title={selectedMap}
-                onClick={mapMark}
-              />
-              {(markCoordinates.x !== -1 || markCoordinates.y !== -1) && (
-                <MapMark x={markCoordinates.x} y={markCoordinates.y} />
-              )}
-            </div>
+            <Map mapName={selectedMap} onChange={setMarkCoordinates} />
           </>
         )}
 

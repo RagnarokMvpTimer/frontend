@@ -1,8 +1,7 @@
-import { getMapImg } from '../../utils';
 import { IMapMark } from '../../interfaces';
-import { MapMark } from '../MapMark';
+import { Map } from '../Map';
 
-import { Container, Modal, Name, Map, CloseButton } from './styles';
+import { Container, Modal, Name, CloseButton } from './styles';
 
 interface MvpMapModalProps {
   deathMap: string;
@@ -19,13 +18,7 @@ export function MvpMapModal({
     <Container>
       <Modal>
         <Name>{deathMap}</Name>
-        <div>
-          <Map src={getMapImg(deathMap)} alt={deathMap} />
-          {deathPosition &&
-            (deathPosition.x !== -1 || deathPosition.y !== -1) && (
-              <MapMark x={deathPosition.x} y={deathPosition.y} />
-            )}
-        </div>
+        <Map mapName={deathMap} coordinates={deathPosition} />
         <CloseButton onClick={close}>Close</CloseButton>
       </Modal>
     </Container>
