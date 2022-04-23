@@ -74,6 +74,7 @@ export function MvpProvider({ children, ...rest }: MvpProviderProps) {
   function toggleDeathMapModal(mvp: Mvp) {}
 
   useEffect(() => {
+    if (Notification.permission === 'granted') return;
     Notification.requestPermission();
   }, []);
 

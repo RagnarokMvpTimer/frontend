@@ -1,5 +1,9 @@
 import { Container } from './styles';
 
-export function WarningHeader() {
-  return <Container>Under development</Container>;
+interface WarningHeaderProps {
+  text: string;
+}
+
+export function WarningHeader({ text }: WarningHeaderProps) {
+  return <Container>{text}</Container>;
 }

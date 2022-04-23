@@ -20,12 +20,18 @@ export default function App() {
 
   return (
     <ThemeProvider theme={Themes[theme] || Themes.dark}>
-      <WarningHeader />
+      <WarningHeader text='Under development' />
+      {Notification.permission !== 'granted' && (
+        <WarningHeader text='Notifications are disabled' />
+      )}
+
       <Header toggleTheme={toggleTheme} />
+
       <MvpProvider>
         <Main />
       </MvpProvider>
       <Footer />
+
       <GlobalStyle />
     </ThemeProvider>
   );
