@@ -12,10 +12,17 @@ interface MapProps {
   coordinates?: IMapMark;
 }
 
-export function Map({ mapName, coordinates, onChange }: MapProps) {
-  const [markCoordinates, setMarkCoordinates] = useState<IMapMark>(
-    coordinates || { x: -1, y: -1 }
-  );
+const defaultCoordinates: IMapMark = {
+  x: -1,
+  y: -1,
+};
+
+export function Map({
+  mapName,
+  onChange,
+  coordinates = defaultCoordinates,
+}: MapProps) {
+  const [markCoordinates, setMarkCoordinates] = useState<IMapMark>(coordinates);
 
   function mapMark(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
     if (!onChange) return;
@@ -31,6 +38,10 @@ export function Map({ mapName, coordinates, onChange }: MapProps) {
     if (!onChange || !markCoordinates) return;
     onChange(markCoordinates);
   }, [markCoordinates]);
+
+  useEffect(() => {
+    setMarkCoordinates(defaultCoordinates);
+  }, [mapName]);
 
   return (
     <div>
