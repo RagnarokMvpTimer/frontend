@@ -42,7 +42,7 @@ export function MvpProvider({ children, ...rest }: MvpProviderProps) {
   }
 
   function removeMvp(mvp: Mvp) {
-    setActiveMvps(activeMvps.filter((m) => m.deathMap !== mvp.deathMap));
+    setActiveMvps((state) => state.filter((m) => m.deathMap !== mvp.deathMap));
   }
 
   function killMvp(mvp: Mvp, time?: Date | null) {
@@ -74,6 +74,19 @@ export function MvpProvider({ children, ...rest }: MvpProviderProps) {
     if (Notification.permission === 'granted') return;
     Notification.requestPermission();
   }, []);
+
+  useEffect(() => {
+    const activeSpawns = activeMvps.map((m) => m.deathMap);
+    const filteredAllMvps = mvpsData
+      .map((mvp) => ({
+        ...mvp,
+        spawn: mvp.spawn.filter(
+          (spawn) => !activeSpawns.includes(spawn.mapname)
+        ),
+      }))
+      .filter((mvp) => mvp.spawn.length > 0);
+    setAllMvps(filteredAllMvps);
+  }, [activeMvps]);
 
   return (
     <MvpsContext.Provider
