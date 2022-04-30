@@ -4,7 +4,12 @@ import moment, { Moment } from 'moment';
 
 import { Mvp } from '../../interfaces';
 import { MvpsContext } from '../../contexts/MvpsContext';
-import { getMvpSprite, respawnAt, respawnCountdown } from '../../utils';
+import {
+  getMvpRespawnTime,
+  getMvpSprite,
+  respawnAt,
+  respawnCountdown,
+} from '../../utils';
 
 import { MvpMapModal } from '../MvpMapModal';
 
@@ -40,14 +45,6 @@ export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
 
   const hasMoreThanOneMap = mvp.spawn.length > 1;
 
-  function getMvpRespawnTime() {
-    const deathMap = mvp.spawn.find((spawn) => spawn.mapname === mvp.deathMap);
-    const respawnTime = deathMap?.respawnTime;
-    if (respawnTime) {
-      return respawnTime;
-    }
-  }
-
   function handleKilledNow() {
     mvp.deathMap
       ? killMvp(mvp)
@@ -59,7 +56,7 @@ export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
   useEffect(() => {
     if (mvp.deathTime && mvp.deathMap) {
       const time = respawnAt(
-        moment(mvp.deathTime).add(getMvpRespawnTime(), 'ms')
+        moment(mvp.deathTime).add(getMvpRespawnTime(mvp), 'ms')
       );
       setRespawnTime(time);
     }

@@ -1,5 +1,6 @@
 import moment, { Moment } from 'moment';
 
+import { Mvp } from '../interfaces';
 import { mvpIcons } from '../assets/mvp_icons';
 import { mvpMaps } from '../assets/mvp_maps';
 import Question from '../assets/question.gif';
@@ -41,3 +42,9 @@ export const getMvpSprite = (id: number): string => mvpIcons[id] || Question;
  */
 export const getMapImg = (mapname: string): string =>
   mvpMaps[mapname] || Question;
+
+export function getMvpRespawnTime(mvp: Mvp): number | undefined {
+  const deathMap = mvp.spawn.find((spawn) => spawn.mapname === mvp.deathMap);
+  const respawnTime = deathMap?.respawnTime;
+  return respawnTime;
+}

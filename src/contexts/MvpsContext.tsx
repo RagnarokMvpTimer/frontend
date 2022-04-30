@@ -1,5 +1,7 @@
 import { createContext, useState, useEffect, ReactNode } from 'react';
+import moment from 'moment';
 
+import { getMvpRespawnTime } from '../utils';
 import { EditMvpModal } from '../components/EditMvpModal';
 import { Mvp } from '../interfaces';
 import mvpsData from '../data/data.json';
@@ -50,7 +52,16 @@ export function MvpProvider({ children, ...rest }: MvpProviderProps) {
       ...mvp,
       deathTime: time || new Date(),
     };
-    setActiveMvps([...activeMvps, killedMvp]);
+    setActiveMvps(
+      [...activeMvps, killedMvp].sort((a: Mvp, b: Mvp) => {
+        if (a.deathTime && b.deathTime) {
+          return moment(a.deathTime)
+            .add(getMvpRespawnTime(a), 'ms')
+            .diff(moment(b.deathTime).add(getMvpRespawnTime(b), 'ms'));
+        }
+        return 0;
+      })
+    );
   }
 
   function respawnNotification(mvp: Mvp) {
