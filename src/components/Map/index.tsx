@@ -28,20 +28,18 @@ export function Map({
     if (!onChange) return;
 
     const { offsetX, offsetY } = e.nativeEvent;
-    setMarkCoordinates({
+    const newCoords = {
       x: offsetX,
       y: offsetY,
-    });
+    };
+    setMarkCoordinates(newCoords);
+    onChange(newCoords);
   }
 
   useEffect(() => {
-    if (!onChange || !markCoordinates) return;
-    onChange(markCoordinates);
-  }, [markCoordinates]);
-
-  /*useEffect(() => {
+    if (!onChange) return;
     setMarkCoordinates(defaultCoordinates);
-  }, [mapName]);*/
+  }, [mapName]);
 
   return (
     <div>
