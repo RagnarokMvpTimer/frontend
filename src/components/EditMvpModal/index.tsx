@@ -5,6 +5,7 @@ import { X } from '@styled-icons/feather';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
+import { useScrollBlock } from '../../hooks/useScrollBlock';
 import { MvpsContext } from '../../contexts/MvpsContext';
 import { IMapMark, Mvp } from '../../interfaces';
 import { getMvpSprite } from '../../utils';
@@ -29,6 +30,7 @@ interface EditMvpModalProps {
 }
 
 export function EditMvpModal({ mvp }: EditMvpModalProps) {
+  useScrollBlock(true);
   const { toggleEditModal, killMvp } = useContext(MvpsContext);
 
   const [newTime, setNewTime] = useState<Date | null>(
@@ -45,6 +47,14 @@ export function EditMvpModal({ mvp }: EditMvpModalProps) {
 
   function handleConfirm() {
     if (!selectedMap) return;
+
+    const updatedMvp: Mvp = {
+      ...mvp,
+      deathMap: selectedMap,
+    };
+
+    killMvp(updatedMvp, newTime);
+    toggleEditModal();
   }
 
   useEffect(() => {
@@ -58,11 +68,10 @@ export function EditMvpModal({ mvp }: EditMvpModalProps) {
           <X size={20} />
         </CloseButton>
 
-        <Sprite src={getMvpSprite(mvp.id)} />
         <Name>{mvp.name}</Name>
+        <Sprite src={getMvpSprite(mvp.id)} />
 
         <Question>When was the mvp killed?</Question>
-        <Time>At {newTime && moment(newTime).format('HH:mm')}</Time>
 
         <DatePickerContainer>
           <DatePicker
@@ -71,8 +80,12 @@ export function EditMvpModal({ mvp }: EditMvpModalProps) {
             showTimeInput
             placeholderText='Select mvp death time'
             withPortal
+            minDate={moment().subtract(4, 'days').toDate()}
+            maxDate={moment().add(1, 'days').toDate()}
           />
         </DatePickerContainer>
+
+        <Time>At {newTime && moment(newTime).format('HH:mm')}</Time>
 
         {canChangeMap && hasMoreThanOneMap && (
           <>
@@ -113,7 +126,9 @@ export function EditMvpModal({ mvp }: EditMvpModalProps) {
           </>
         )}
 
-        <ConfirmButton onClick={handleConfirm}>Confirm</ConfirmButton>
+        <ConfirmButton onClick={handleConfirm} disabled={!selectedMap}>
+          Confirm
+        </ConfirmButton>
       </Modal>
     </Container>
   );

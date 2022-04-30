@@ -14,7 +14,7 @@ interface MvpsContextData {
   respawnAsCountdown: boolean;
 
   resetMvpTimer: (mvp: Mvp) => void;
-  killMvp: (mvp: Mvp, time?: Date) => void;
+  killMvp: (mvp: Mvp, time?: Date | null) => void;
   removeMvp: (mvp: Mvp) => void;
 
   setEditingMvp: (mvp: Mvp) => void;
@@ -27,14 +27,14 @@ export const MvpsContext = createContext({} as MvpsContextData);
 
 export function MvpProvider({ children, ...rest }: MvpProviderProps) {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const [editingMvp, setEditingMvp] = useState<Mvp>({} as Mvp);
-
   const [respawnAsCountdown, setRespawnAsCountdown] = useState(false);
-
+  const [editingMvp, setEditingMvp] = useState<Mvp>({} as Mvp);
   const [activeMvps, setActiveMvps] = useState<Array<Mvp>>([]);
   const [allMvps, setAllMvps] = useState<Array<Mvp>>(
     mvpsData.sort((a, b) => a.stats.level - b.stats.level)
   );
+
+  const toggleEditModal = () => setIsEditModalOpen((prev) => !prev);
 
   function resetMvpTimer(mvp: Mvp) {
     const newMvp = { ...mvp, deathTime: new Date() };
@@ -45,11 +45,10 @@ export function MvpProvider({ children, ...rest }: MvpProviderProps) {
     setActiveMvps(activeMvps.filter((m) => m.deathMap !== mvp.deathMap));
   }
 
-  function killMvp(mvp: Mvp, time?: Date) {
+  function killMvp(mvp: Mvp, time?: Date | null) {
     const killedMvp = {
       ...mvp,
-      deathTime: time ? time : new Date(),
-      deathMap: mvp.spawn[0].mapname,
+      deathTime: time || new Date(),
     };
     setActiveMvps([...activeMvps, killedMvp]);
   }
@@ -63,8 +62,6 @@ export function MvpProvider({ children, ...rest }: MvpProviderProps) {
       });
     }
   }
-
-  const toggleEditModal = () => setIsEditModalOpen((prev) => !prev);
 
   function openAndEditModal(mvp: Mvp) {
     setEditingMvp(mvp);

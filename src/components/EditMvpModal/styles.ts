@@ -50,6 +50,7 @@ export const Sprite = styled.img`
 
 export const Name = styled.span`
   color: #ffa800;
+  margin-top: -25px;
 
   font-size: 24px;
   font-weight: 600;
@@ -99,4 +100,9 @@ export const ConfirmButton = styled.button`
 
   color: white;
   background-color: #ffa800;
+
+  :disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
 `;

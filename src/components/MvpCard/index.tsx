@@ -39,12 +39,22 @@ export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
   const [respawnTime, setRespawnTime] = useState<string>('');
   const [isMapModalOpen, setIsMapModalOpen] = useState<boolean>(false);
 
+  const hasMoreThanOneMap = mvp.spawn.length > 1;
+
   function getMvpRespawnTime() {
     const deathMap = mvp.spawn.find((spawn) => spawn.mapname === mvp.deathMap);
     const respawnTime = deathMap?.respawnTime;
     if (respawnTime) {
       return respawnTime;
     }
+  }
+
+  function handleKilledNow() {
+    mvp.deathMap
+      ? killMvp(mvp)
+      : hasMoreThanOneMap
+      ? openAndEditModal(mvp)
+      : killMvp({ ...mvp, deathMap: mvp.spawn[0].mapname });
   }
 
   useEffect(() => {
@@ -85,7 +95,7 @@ export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
         </>
       ) : (
         <Controls isActive={!isActive}>
-          <KilledNow onClick={() => killMvp(mvp)}>I killed now !</KilledNow>
+          <KilledNow onClick={handleKilledNow}>I killed now !</KilledNow>
           <EditButton onClick={() => openAndEditModal(mvp)}>Edit</EditButton>
         </Controls>
       )}
