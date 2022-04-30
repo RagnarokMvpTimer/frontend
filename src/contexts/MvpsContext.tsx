@@ -20,7 +20,7 @@ interface MvpsContextData {
   setEditingMvp: (mvp: Mvp) => void;
   openAndEditModal: (mvp: Mvp) => void;
   toggleEditModal: () => void;
-  toggleDeathMapModal: (mvp: Mvp) => void;
+  //toggleDeathMapModal: (mvp: Mvp) => void;
 }
 
 export const MvpsContext = createContext({} as MvpsContextData);
@@ -68,7 +68,7 @@ export function MvpProvider({ children, ...rest }: MvpProviderProps) {
     toggleEditModal();
   }
 
-  function toggleDeathMapModal(mvp: Mvp) {}
+  //function toggleDeathMapModal(mvp: Mvp) {}
 
   useEffect(() => {
     if (Notification.permission === 'granted') return;
@@ -100,7 +100,7 @@ export function MvpProvider({ children, ...rest }: MvpProviderProps) {
         toggleEditModal,
         setEditingMvp,
         openAndEditModal,
-        toggleDeathMapModal,
+        //toggleDeathMapModal,
       }}
     >
       {children}

@@ -39,9 +39,9 @@ export function Map({
     onChange(markCoordinates);
   }, [markCoordinates]);
 
-  useEffect(() => {
+  /*useEffect(() => {
     setMarkCoordinates(defaultCoordinates);
-  }, [mapName]);
+  }, [mapName]);*/
 
   return (
     <div>

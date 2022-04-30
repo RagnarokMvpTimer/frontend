@@ -51,6 +51,7 @@ export function EditMvpModal({ mvp }: EditMvpModalProps) {
     const updatedMvp: Mvp = {
       ...mvp,
       deathMap: selectedMap,
+      deathPosition: markCoordinates,
     };
 
     killMvp(updatedMvp, newTime);

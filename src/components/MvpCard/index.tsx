@@ -32,7 +32,6 @@ export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
     resetMvpTimer,
     removeMvp,
     openAndEditModal,
-    toggleDeathMapModal,
     respawnAsCountdown,
   } = useContext(MvpsContext);
 
