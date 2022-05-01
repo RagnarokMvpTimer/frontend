@@ -21,4 +21,5 @@ function createIndex(folderName, exportName) {
 }
 
 createIndex('mvp_icons', 'mvpIcons');
+createIndex('mvp_icons_animated', 'mvpIconsAnimated');
 createIndex('mvp_maps', 'mvpMaps');

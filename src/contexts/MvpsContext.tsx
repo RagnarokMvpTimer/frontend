@@ -39,8 +39,10 @@ export function MvpProvider({ children, ...rest }: MvpProviderProps) {
   const toggleEditModal = () => setIsEditModalOpen((prev) => !prev);
 
   function resetMvpTimer(mvp: Mvp) {
-    const newMvp = { ...mvp, deathTime: new Date() };
-    setAllMvps(allMvps.map((m) => (m.id === mvp.id ? newMvp : m)));
+    const updatedMvp = { ...mvp, deathTime: new Date() };
+    setActiveMvps((state) =>
+      state.map((m) => (m.deathMap === mvp.deathMap ? updatedMvp : m))
+    );
   }
 
   function removeMvp(mvp: Mvp) {

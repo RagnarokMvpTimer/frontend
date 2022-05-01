@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
@@ -14,11 +14,16 @@ export const Container = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.primary};
 `;
 
-export const Sprite = styled.img`
+export const Sprite = styled.img<{ isAnimated?: boolean }>`
   width: auto;
   height: 100px;
   margin-top: 8px;
-  border-top-left-radius: 30px;
+
+  ${({ isAnimated }) =>
+    !isAnimated &&
+    css`
+      border-top-left-radius: 30px;
+    `}
 `;
 
 export const Bold = styled.span`

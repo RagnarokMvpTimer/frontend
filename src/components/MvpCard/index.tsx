@@ -7,6 +7,7 @@ import { MvpsContext } from '../../contexts/MvpsContext';
 import {
   getMvpRespawnTime,
   getMvpSprite,
+  getAnimatedMvpSprite,
   respawnAt,
   respawnCountdown,
 } from '../../utils';
@@ -65,7 +66,7 @@ export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
   return (
     <Container>
       <Name>{mvp.name}</Name>
-      <Sprite src={getMvpSprite(mvp.id)} alt={mvp.name} />
+      <Sprite src={getMvpSprite(mvp.id)} alt={mvp.name} isAnimated={false} />
       {isActive ? (
         <>
           <Respawn>

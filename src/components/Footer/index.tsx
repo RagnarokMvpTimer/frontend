@@ -35,6 +35,10 @@ export function Footer() {
           <Link href='https://www.divine-pride.net/' target='_blank'>
             DivinePride <ExternalLink size={14} />
           </Link>
+          &{' '}
+          <Link href='https://db.irowiki.org/' target='_blank'>
+            iRO Wiki DB <ExternalLink size={14} />
+          </Link>
         </Text>
 
         <Text>

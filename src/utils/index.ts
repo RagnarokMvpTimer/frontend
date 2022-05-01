@@ -2,6 +2,7 @@ import moment, { Moment } from 'moment';
 
 import { Mvp } from '../interfaces';
 import { mvpIcons } from '../assets/mvp_icons';
+import { mvpIconsAnimated } from '../assets/mvp_icons_animated';
 import { mvpMaps } from '../assets/mvp_maps';
 import Question from '../assets/question.gif';
 
@@ -36,6 +37,14 @@ export const respawnAt = (time: Moment) =>
 export const getMvpSprite = (id: number): string => mvpIcons[id] || Question;
 
 /**
+ * Returns the animated MVP sprite or default sprite or question emoticon
+ * @param id mvp id
+ * @returns image url
+ */
+export const getAnimatedMvpSprite = (id: number): string =>
+  mvpIconsAnimated[id] || getMvpSprite(id);
+
+/**
  * Returns the map image or question emoticon
  * @param mapname name of the map
  * @returns image url
@@ -43,6 +52,11 @@ export const getMvpSprite = (id: number): string => mvpIcons[id] || Question;
 export const getMapImg = (mapname: string): string =>
   mvpMaps[mapname] || Question;
 
+/**
+ * Returns the death map respawn time
+ * @param mvp Mvp object
+ * @returns respawn time in milisecondsw
+ */
 export function getMvpRespawnTime(mvp: Mvp): number | undefined {
   const deathMap = mvp.spawn.find((spawn) => spawn.mapname === mvp.deathMap);
   const respawnTime = deathMap?.respawnTime;
