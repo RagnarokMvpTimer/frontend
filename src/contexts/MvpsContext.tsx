@@ -95,6 +95,7 @@ export function MvpProvider({ children, ...rest }: MvpProviderProps) {
       const finalData = dataParse.map((mvp: Mvp) => ({
         ...mvpsData.find((m) => m.id === mvp.id),
         deathMap: mvp.deathMap,
+        deathPosition: mvp.deathPosition,
         deathTime: moment(mvp.deathTime).toDate(),
       }));
 
@@ -113,6 +114,7 @@ export function MvpProvider({ children, ...rest }: MvpProviderProps) {
       id: mvp.id,
       deathMap: mvp.deathMap,
       deathTime: mvp.deathTime,
+      deathPosition: mvp.deathPosition,
     }));
     localStorage.setItem('activeMvps', JSON.stringify(data));
   }, [activeMvps]);
