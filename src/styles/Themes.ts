@@ -30,6 +30,7 @@ export const Themes = {
       modal: {
         bg: '#262626',
         text: '#fff',
+        hl: '#fff',
       },
 
       footer: {
@@ -70,6 +71,7 @@ export const Themes = {
       modal: {
         bg: '#FFFFFF',
         text: '#421411',
+        hl: '#1b1c1d',
       },
 
       footer: {

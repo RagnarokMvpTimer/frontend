@@ -32,6 +32,7 @@ declare module 'styled-components' {
       modal: {
         bg: string;
         text: string;
+        hl: string;
       };
 
       footer: {
