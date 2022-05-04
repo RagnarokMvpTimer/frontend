@@ -50,7 +50,7 @@ export const MapName = styled.span`
   color: ${({ theme }) => theme.colors.mvpCard.text};
 `;
 
-export const KilledNow = styled.button`
+const ButtonStyle = css`
   width: 100%;
   padding: 5px 20px;
 
@@ -59,23 +59,21 @@ export const KilledNow = styled.button`
 
   font-size: 18px;
   font-weight: bold;
-
-  background-color: #ff0000;
   color: #fff;
+
+  :hover {
+    opacity: 0.8;
+  }
+`;
+
+export const KilledNow = styled.button`
+  ${ButtonStyle}
+  background-color: ${({ theme }) => theme.colors.mvpCard.killButton};
 `;
 
 export const EditButton = styled.button`
-  width: 100%;
-  padding: 5px 20px;
-
-  border: 0;
-  border-radius: 4px;
-
-  font-size: 18px;
-  font-weight: bold;
-
-  background-color: #ffa800;
-  color: #fff;
+  ${ButtonStyle}
+  background-color: ${({ theme }) => theme.colors.mvpCard.editButton};
 `;
 
 export const Controls = styled.div<{ isActive?: boolean }>`
@@ -105,6 +103,10 @@ export const Control = styled.button`
   :disabled {
     opacity: 0.5;
     cursor: not-allowed;
+  }
+
+  :hover {
+    opacity: 0.8;
   }
 
   :first-child {

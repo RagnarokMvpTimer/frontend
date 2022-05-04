@@ -10,4 +10,8 @@ export const Container = styled.div`
     color: white;
     fill: white;
   }
+
+  :hover {
+    opacity: 0.8;
+  }
 `;

@@ -22,6 +22,7 @@ import {
   Time,
   DatePickerContainer,
   SelectMap,
+  SelectMapOption,
   ConfirmButton,
 } from './styles';
 
@@ -98,20 +99,20 @@ export function EditMvpModal({ mvp }: EditMvpModalProps) {
               {hasMoreThanOneMap ? (
                 <>
                   {!selectedMap && (
-                    <option disabled value=''>
+                    <SelectMapOption disabled value=''>
                       Select the map
-                    </option>
+                    </SelectMapOption>
                   )}
 
                   {mvp.spawn.map((map) => (
-                    <option key={map.mapname} value={map.mapname}>
+                    <SelectMapOption key={map.mapname} value={map.mapname}>
                       {map.mapname} -{' '}
                       {moment.duration(map.respawnTime).asHours()}h
-                    </option>
+                    </SelectMapOption>
                   ))}
                 </>
               ) : (
-                <option>{mvp.spawn[0].mapname}</option>
+                <SelectMapOption>{mvp.spawn[0].mapname}</SelectMapOption>
               )}
             </SelectMap>
           </>

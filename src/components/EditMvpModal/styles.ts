@@ -88,7 +88,19 @@ export const DatePickerContainer = styled.div`
   }
 `;
 
-export const SelectMap = styled.select``;
+export const SelectMap = styled.select`
+  border: 1px solid #fff;
+  border-radius: 4px;
+  padding: 0 6px;
+
+  font-weight: 500;
+  font-size: 14px;
+
+  background: #fff;
+  outline: 0;
+`;
+
+export const SelectMapOption = styled.option``;
 
 export const ConfirmButton = styled.button`
   width: 250px;

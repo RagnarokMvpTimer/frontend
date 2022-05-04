@@ -12,6 +12,14 @@ export const Themes = {
         name: '#fff',
         bg: '#262626',
         text: '#fff',
+        killButton: '#ff0000',
+        editButton: '#ffa800',
+      },
+
+      timers: {
+        passed: '#a9252a',
+        normal: '#fff',
+        respawning: '#62831f',
       },
 
       switch: {
@@ -44,6 +52,14 @@ export const Themes = {
         name: '#FFA800',
         bg: '#FFFFFF',
         text: '#421411',
+        killButton: '#ff0000',
+        editButton: '#ffa800',
+      },
+
+      timers: {
+        passed: '#a9252a',
+        normal: '#fff',
+        respawning: '#62831f',
       },
 
       switch: {

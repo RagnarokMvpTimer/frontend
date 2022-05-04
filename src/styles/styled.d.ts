@@ -14,6 +14,14 @@ declare module 'styled-components' {
         name: string;
         bg: string;
         text: string;
+        killButton: string;
+        editButton: string;
+      };
+
+      timers: {
+        passed: string;
+        normal: string;
+        respawning: string;
       };
 
       switch: {
