@@ -82,14 +82,12 @@ export function MvpProvider({ children, ...rest }: MvpProviderProps) {
   }
 
   useEffect(() => {
-    try {
-      if (!isLoading) return;
-      const data = localStorage.getItem('activeMvps');
-      console.log(data);
-      if (!data) return;
+    if (!isLoading) return;
 
+    try {
+      const data = localStorage.getItem('activeMvps');
+      if (!data) return;
       const dataParse = JSON.parse(data);
-      console.log('dataParse', typeof dataParse, dataParse);
       if (!dataParse) return;
 
       const finalData = dataParse.map((mvp: Mvp) => ({
