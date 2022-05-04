@@ -1,6 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
-import { ThemeContext } from 'styled-components';
-import Switch from 'react-switch';
+import { useTimer } from '../../hooks/useTimer';
 
 import { LanguageSelector } from '../LanguageSelector';
 import { ThemeSwitcher } from '../ThemeSwitcher';
@@ -16,23 +14,12 @@ import {
   SwitchContainer,
 } from './styles';
 
-const currentTime = () => new Date();
-
 interface Props {
   toggleTheme(): void;
 }
 
 export function Header({ toggleTheme }: Props) {
-  const { colors, id } = useContext(ThemeContext);
-  const [time, setTime] = useState(currentTime());
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTime(currentTime());
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
+  const { time } = useTimer();
 
   return (
     <Container>
@@ -41,7 +28,7 @@ export function Header({ toggleTheme }: Props) {
         <Title>Ragnarok MVP Timer</Title>
       </LogoContainer>
 
-      <Hour>{time.toLocaleTimeString()}</Hour>
+      <Hour>{time.format('HH:mm:ss')}</Hour>
 
       <Customization>
         <LanguageSelector />
