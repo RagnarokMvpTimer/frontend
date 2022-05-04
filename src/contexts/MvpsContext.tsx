@@ -22,12 +22,12 @@ interface MvpsContextData {
   setEditingMvp: (mvp: Mvp) => void;
   openAndEditModal: (mvp: Mvp) => void;
   toggleEditModal: () => void;
-  //toggleDeathMapModal: (mvp: Mvp) => void;
 }
 
 export const MvpsContext = createContext({} as MvpsContextData);
 
 export function MvpProvider({ children, ...rest }: MvpProviderProps) {
+  const [isLoading, setIsLoading] = useState(true);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [respawnAsCountdown, setRespawnAsCountdown] = useState(false);
   const [editingMvp, setEditingMvp] = useState<Mvp>({} as Mvp);
@@ -81,14 +81,45 @@ export function MvpProvider({ children, ...rest }: MvpProviderProps) {
     toggleEditModal();
   }
 
-  //function toggleDeathMapModal(mvp: Mvp) {}
+  useEffect(() => {
+    try {
+      if (!isLoading) return;
+      const data = localStorage.getItem('activeMvps');
+      console.log(data);
+      if (!data) return;
+
+      const dataParse = JSON.parse(data);
+      console.log('dataParse', typeof dataParse, dataParse);
+      if (!dataParse) return;
+
+      const finalData = dataParse.map((mvp: Mvp) => ({
+        ...mvpsData.find((m) => m.id === mvp.id),
+        deathMap: mvp.deathMap,
+        deathTime: moment(mvp.deathTime).toDate(),
+      }));
+
+      setActiveMvps(finalData);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [isLoading]);
 
   useEffect(() => {
-    if (Notification.permission === 'granted') return;
-    Notification.requestPermission();
-  }, []);
+    if (isLoading) return;
+
+    const data = activeMvps.map((mvp) => ({
+      id: mvp.id,
+      deathMap: mvp.deathMap,
+      deathTime: mvp.deathTime,
+    }));
+    localStorage.setItem('activeMvps', JSON.stringify(data));
+  }, [activeMvps]);
 
   useEffect(() => {
+    if (isLoading) return;
+
     const activeSpawns = activeMvps.map((m) => m.deathMap);
     const filteredAllMvps = mvpsData
       .map((mvp) => ({
@@ -100,6 +131,11 @@ export function MvpProvider({ children, ...rest }: MvpProviderProps) {
       .filter((mvp) => mvp.spawn.length > 0);
     setAllMvps(filteredAllMvps);
   }, [activeMvps]);
+
+  useEffect(() => {
+    if (Notification.permission === 'granted') return;
+    Notification.requestPermission();
+  }, []);
 
   return (
     <MvpsContext.Provider
@@ -113,7 +149,6 @@ export function MvpProvider({ children, ...rest }: MvpProviderProps) {
         toggleEditModal,
         setEditingMvp,
         openAndEditModal,
-        //toggleDeathMapModal,
       }}
     >
       {children}
