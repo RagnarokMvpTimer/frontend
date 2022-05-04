@@ -63,6 +63,14 @@ export function EditMvpModal({ mvp }: EditMvpModalProps) {
     if (!hasMoreThanOneMap) setSelectedMap(mvp.spawn[0].mapname);
   }, [hasMoreThanOneMap, mvp.spawn]);
 
+  useEffect(() => {
+    const handleClose = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') toggleEditModal();
+    };
+    document.addEventListener('keydown', handleClose);
+    return () => document.removeEventListener('keydown', handleClose);
+  }, []);
+
   return (
     <Container>
       <Modal>
