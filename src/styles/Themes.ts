@@ -12,8 +12,14 @@ export const Themes = {
         name: '#fff',
         bg: '#262626',
         text: '#fff',
-        killButton: '#ff0000',
-        editButton: '#ffa800',
+        killButton: '#D10000',
+        editButton: '#f89200',
+
+        controls: {
+          showMap: '#00a8ff',
+          edit: '#f89200',
+          delete: '#D10000',
+        },
       },
 
       timers: {
@@ -31,11 +37,14 @@ export const Themes = {
         bg: '#262626',
         text: '#fff',
         hl: '#fff',
+        name: '#f89200',
+        time: '#f89200',
+        button: '#f89200',
       },
 
       footer: {
         text: '#fff',
-        link: '#ffa800',
+        link: '#f89200',
       },
     },
   },
@@ -44,17 +53,23 @@ export const Themes = {
     id: 'light',
 
     colors: {
-      primary: '#FFA800',
+      primary: '#f89200',
       secondary: '#F6F8FA',
 
       text: '#000000',
 
       mvpCard: {
-        name: '#FFA800',
+        name: '#f89200',
         bg: '#FFFFFF',
         text: '#421411',
-        killButton: '#ff0000',
-        editButton: '#ffa800',
+        killButton: '#D10000',
+        editButton: '#f89200',
+
+        controls: {
+          showMap: '#00a8ff',
+          edit: '#f89200',
+          delete: '#D10000',
+        },
       },
 
       timers: {
@@ -72,6 +87,9 @@ export const Themes = {
         bg: '#FFFFFF',
         text: '#421411',
         hl: '#1b1c1d',
+        name: '#ffa800',
+        time: '#ffa800',
+        button: '#f89200',
       },
 
       footer: {

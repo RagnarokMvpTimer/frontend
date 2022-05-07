@@ -59,5 +59,5 @@ export const CloseButton = styled.button`
   border-radius: 8px;
 
   color: white;
-  background-color: #ffa800;
+  background-color: ${({ theme }) => theme.colors.modal.button};
 `;

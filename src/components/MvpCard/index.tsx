@@ -74,10 +74,12 @@ export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
             {'\n'}
             <Bold>{respawnTime}</Bold>
           </Respawn>
+
           <MapName>
             Map:{'\n'}
             <Bold>{mvp.deathMap}</Bold>
           </MapName>
+
           <Controls>
             <Control onClick={() => setIsMapModalOpen(true)} title='Show map'>
               <Map color='#fff' height={17} width={17} />

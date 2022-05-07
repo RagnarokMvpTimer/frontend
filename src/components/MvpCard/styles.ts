@@ -110,14 +110,14 @@ export const Control = styled.button`
   }
 
   :first-child {
-    background-color: #00f0ff;
+    background-color: ${({ theme }) => theme.colors.mvpCard.controls.showMap};
   }
 
   :nth-child(2) {
-    background-color: #ffa800;
+    background-color: ${({ theme }) => theme.colors.mvpCard.controls.edit};
   }
 
   :nth-child(3) {
-    background-color: #ff0000;
+    background-color: ${({ theme }) => theme.colors.mvpCard.controls.delete};
   }
 `;

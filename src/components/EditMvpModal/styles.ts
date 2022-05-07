@@ -49,7 +49,7 @@ export const Sprite = styled.img`
 `;
 
 export const Name = styled.span`
-  color: #ffa800;
+  color: ${({ theme }) => theme.colors.modal.name};
   margin-top: -25px;
 
   font-size: 24px;
@@ -74,10 +74,10 @@ export const Optional = styled.span`
 `;
 
 export const Time = styled.span`
-  color: #ffa800;
+  color: ${({ theme }) => theme.colors.modal.time};
 
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 600;
 `;
 
 export const DatePickerContainer = styled.div`
@@ -111,10 +111,16 @@ export const ConfirmButton = styled.button`
   border-radius: 8px;
 
   color: white;
-  background-color: #ffa800;
+  background-color: ${({ theme }) => theme.colors.modal.button};
 
   :disabled {
     opacity: 0.6;
     cursor: not-allowed;
+  }
+
+  :not(:disabled) {
+    :hover {
+      opacity: 0.8;
+    }
   }
 `;

@@ -16,6 +16,12 @@ declare module 'styled-components' {
         text: string;
         killButton: string;
         editButton: string;
+
+        controls: {
+          showMap: string;
+          edit: string;
+          delete: string;
+        };
       };
 
       timers: {
@@ -33,6 +39,9 @@ declare module 'styled-components' {
         bg: string;
         text: string;
         hl: string;
+        name: string;
+        time: string;
+        button: string;
       };
 
       footer: {
