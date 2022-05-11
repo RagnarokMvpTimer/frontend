@@ -2,11 +2,11 @@ import styled, { css } from 'styled-components';
 import { mobile, phone, tablet } from '../../utils/media';
 
 export const Container = styled.header`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 75px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
 
+  height: 75px;
   padding: 0 30px;
 
   background-color: ${({ theme }) => theme.colors.primary};
@@ -15,10 +15,7 @@ export const Container = styled.header`
 export const LogoContainer = styled.div`
   display: flex;
   align-items: center;
-
-  ${tablet(css`
-    width: 86.2px;
-  `)}
+  grid-area: 1 / 1 / 2 / 2;
 `;
 
 export const Logo = styled.img`
@@ -32,7 +29,6 @@ export const Title = styled.p`
   font-weight: bold;
   font-size: 22px;
 
-  //color: ${({ theme }) => theme.colors.text};
   color: #fff;
 
   ${tablet(css`
@@ -44,31 +40,19 @@ export const Hour = styled.span`
   font-size: 24px;
   font-weight: bold;
 
-  //color: ${({ theme }) => theme.colors.text};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-area: 1 / 2 / 2 / 3;
+
   color: #fff;
-
-  @media only screen and (min-width: 768px) {
-    margin-left: -220px;
-  }
-
-  ${tablet(css`
-    margin-left: 0;
-  `)}
 `;
 
 export const Customization = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+  grid-area: 1 / 3 / 2 / 4;
 
   gap: 15px;
-
-  ${tablet(css`
-    width: 86.2px;
-  `)}
-`;
-
-export const SwitchContainer = styled.div`
-  width: auto;
-  margin-top: 6px;
 `;

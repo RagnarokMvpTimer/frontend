@@ -13,7 +13,6 @@ interface MvpProviderProps {
 interface MvpsContextData {
   activeMvps: Array<Mvp>;
   allMvps: Array<Mvp>;
-  respawnAsCountdown: boolean;
 
   resetMvpTimer: (mvp: Mvp) => void;
   killMvp: (mvp: Mvp, time?: Date | null) => void;
@@ -26,10 +25,9 @@ interface MvpsContextData {
 
 export const MvpsContext = createContext({} as MvpsContextData);
 
-export function MvpProvider({ children, ...rest }: MvpProviderProps) {
+export function MvpProvider({ children }: MvpProviderProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const [respawnAsCountdown, setRespawnAsCountdown] = useState(false);
   const [editingMvp, setEditingMvp] = useState<Mvp>({} as Mvp);
   const [activeMvps, setActiveMvps] = useState<Array<Mvp>>([]);
   const [allMvps, setAllMvps] = useState<Array<Mvp>>(
@@ -87,6 +85,7 @@ export function MvpProvider({ children, ...rest }: MvpProviderProps) {
     try {
       const data = localStorage.getItem('activeMvps');
       if (!data) return;
+
       const dataParse = JSON.parse(data);
       if (!dataParse) return;
 
@@ -99,7 +98,7 @@ export function MvpProvider({ children, ...rest }: MvpProviderProps) {
 
       setActiveMvps(finalData);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     } finally {
       setIsLoading(false);
     }
@@ -142,7 +141,6 @@ export function MvpProvider({ children, ...rest }: MvpProviderProps) {
       value={{
         activeMvps,
         allMvps,
-        respawnAsCountdown,
         resetMvpTimer,
         killMvp,
         removeMvp,

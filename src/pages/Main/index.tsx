@@ -1,12 +1,15 @@
 import { useContext } from 'react';
 
 import { MvpCard } from '../../components/MvpCard';
+import { SettingsModal } from '../../components/SettingsModal';
 import { MvpsContext } from '../../contexts/MvpsContext';
+import { SettingsContext } from '../../contexts/SettingsContext';
 
 import { Container, ContainerTypeText, MvpsContainer } from './styles';
 
 export function Main() {
   const { activeMvps, allMvps } = useContext(MvpsContext);
+  const { isSettingsModalOpen } = useContext(SettingsContext);
 
   return (
     <Container>
@@ -20,6 +23,7 @@ export function Main() {
           </MvpsContainer>
         </>
       )}
+
       {allMvps.length > 0 && (
         <>
           <ContainerTypeText>All</ContainerTypeText>
@@ -30,6 +34,8 @@ export function Main() {
           </MvpsContainer>
         </>
       )}
+
+      {isSettingsModalOpen && <SettingsModal />}
     </Container>
   );
 }

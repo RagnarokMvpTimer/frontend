@@ -4,6 +4,7 @@ import moment, { Moment } from 'moment';
 
 import { Mvp } from '../../interfaces';
 import { MvpsContext } from '../../contexts/MvpsContext';
+import { SettingsContext } from '../../contexts/SettingsContext';
 import {
   getMvpRespawnTime,
   getMvpSprite,
@@ -33,13 +34,9 @@ interface MvpCardProps {
 }
 
 export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
-  const {
-    killMvp,
-    resetMvpTimer,
-    removeMvp,
-    openAndEditModal,
-    respawnAsCountdown,
-  } = useContext(MvpsContext);
+  const { killMvp, resetMvpTimer, removeMvp, openAndEditModal } =
+    useContext(MvpsContext);
+  const { respawnAsCountdown, animatedSprites } = useContext(SettingsContext);
 
   const [respawnTime, setRespawnTime] = useState<string>('');
   const [isMapModalOpen, setIsMapModalOpen] = useState<boolean>(false);
@@ -66,10 +63,16 @@ export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
   return (
     <Container>
       <Name>{mvp.name}</Name>
-      <Sprite src={getMvpSprite(mvp.id)} alt={mvp.name} isAnimated={false} />
+      <Sprite
+        src={
+          animatedSprites ? getAnimatedMvpSprite(mvp.id) : getMvpSprite(mvp.id)
+        }
+        alt={mvp.name}
+        isAnimated={animatedSprites}
+      />
       {isActive ? (
         <>
-          <Respawn>
+          <Respawn title={respawnTime}>
             Respawn {respawnAsCountdown ? 'in' : 'at'}
             {'\n'}
             <Bold>{respawnTime}</Bold>

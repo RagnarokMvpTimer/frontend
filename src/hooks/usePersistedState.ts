@@ -10,9 +10,11 @@ export function usePersistedState<T>(
     const storageValue = localStorage.getItem(key);
 
     if (storageValue) {
-      return JSON.parse(storageValue);
-    } else {
-      return initialState;
+      try {
+        return JSON.parse(storageValue);
+      } catch (e) {
+        return initialState;
+      }
     }
   });
 

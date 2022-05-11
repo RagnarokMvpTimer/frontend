@@ -7,8 +7,9 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 import { useScrollBlock } from '../../hooks/useScrollBlock';
 import { MvpsContext } from '../../contexts/MvpsContext';
+import { SettingsContext } from '../../contexts/SettingsContext';
 import { IMapMark, Mvp } from '../../interfaces';
-import { getMvpSprite } from '../../utils';
+import { getMvpSprite, getAnimatedMvpSprite } from '../../utils';
 import { Map } from '../Map';
 
 import {
@@ -33,6 +34,7 @@ interface EditMvpModalProps {
 export function EditMvpModal({ mvp }: EditMvpModalProps) {
   useScrollBlock(true);
   const { toggleEditModal, killMvp } = useContext(MvpsContext);
+  const { animatedSprites } = useContext(SettingsContext);
 
   const [newTime, setNewTime] = useState<Date | null>(
     mvp.deathTime || new Date()
@@ -79,7 +81,13 @@ export function EditMvpModal({ mvp }: EditMvpModalProps) {
         </CloseButton>
 
         <Name>{mvp.name}</Name>
-        <Sprite src={getMvpSprite(mvp.id)} />
+        <Sprite
+          src={
+            animatedSprites
+              ? getAnimatedMvpSprite(mvp.id)
+              : getMvpSprite(mvp.id)
+          }
+        />
 
         <Question>When was the mvp killed?</Question>
 

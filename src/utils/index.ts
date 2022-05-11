@@ -62,3 +62,10 @@ export function getMvpRespawnTime(mvp: Mvp): number | undefined {
   const respawnTime = deathMap?.respawnTime;
   return respawnTime;
 }
+
+/**
+ * Clear the local storage
+ */
+export function clearData() {
+  localStorage.clear();
+}

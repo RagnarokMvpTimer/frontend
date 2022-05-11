@@ -3,13 +3,11 @@ import { ThemeContext } from 'styled-components';
 import { Moon, Sun } from '@styled-icons/feather';
 
 import { Container } from './styles';
+import { SettingsContext } from '../../contexts/SettingsContext';
 
-interface Props {
-  toggleTheme(): void;
-}
-
-export function ThemeSwitcher({ toggleTheme }: Props) {
+export function ThemeSwitcher() {
   const { id } = useContext(ThemeContext);
+  const { toggleTheme } = useContext(SettingsContext);
 
   return (
     <Container onClick={toggleTheme}>
