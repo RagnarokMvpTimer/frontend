@@ -70,7 +70,22 @@ export const Setting = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
+  gap: 4px;
+`;
+
+export const ThemeContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+
+  > svg {
+    width: 20px;
+    height: 20px;
+    stroke-width: 2px;
+    fill: white;
+    color: ${({ theme }) => theme.colors.modal.text};
+  }
 `;
 
 export const ClearButton = styled.button`

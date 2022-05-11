@@ -1,7 +1,16 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { ChevronDown, ChevronUp } from '@styled-icons/feather';
 
-import { Container, GlobeLang, Chevrons, Picker, LangItem } from './styles';
+import { SettingsContext } from '../../contexts/SettingsContext';
+
+import {
+  Container,
+  CurrentLanguage,
+  GlobeLang,
+  Chevrons,
+  Picker,
+  LangItem,
+} from './styles';
 
 const languages = {
   en: 'English',
@@ -9,6 +18,7 @@ const languages = {
 };
 
 export function LanguageSelector() {
+  const { language, changeLanguage } = useContext(SettingsContext);
   const [isLangSelectorOpen, setIsLangSelectorOpen] = useState(false);
 
   function handleLanguageSelector() {
@@ -16,6 +26,7 @@ export function LanguageSelector() {
   }
 
   function handleLangClick(id: string) {
+    changeLanguage(id);
     setIsLangSelectorOpen(false);
   }
 
@@ -23,7 +34,7 @@ export function LanguageSelector() {
     <Container>
       <div onClick={handleLanguageSelector}>
         <GlobeLang />
-        EN{' '}
+        <CurrentLanguage>{language.toUpperCase()}</CurrentLanguage>
         <Chevrons>
           {isLangSelectorOpen ? <ChevronUp /> : <ChevronDown />}
         </Chevrons>

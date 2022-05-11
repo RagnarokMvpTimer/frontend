@@ -1,30 +1,29 @@
 import styled, { css } from 'styled-components';
 import { Globe } from '@styled-icons/feather';
 
-import { phone } from '../../utils/media';
-
 export const Container = styled.span`
   > div {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
 
     gap: 4px;
 
-    color: #fff;
+    color: ${({ theme }) => theme.colors.modal.text};
     cursor: pointer;
   }
+`;
 
-  ${phone(css`
-    display: none;
-  `)}
+export const CurrentLanguage = styled.span`
+  font-weight: 500;
 `;
 
 export const Chevrons = styled.div`
   > svg {
-    width: 14px;
-    height: 14px;
-    stroke-width: 3px;
+    width: 18px;
+    height: 18px;
+    stroke-width: 2px;
   }
 `;
 
@@ -37,14 +36,13 @@ export const GlobeLang = styled(Globe)`
 export const Picker = styled.ul<{ isOpen: boolean }>`
   display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
 
-  position: absolute;
+  position: relative;
   flex-direction: column;
-  right: 50px;
   margin-top: 10px;
 
   border-radius: 8px;
   border: 1px solid #1b1c1d;
-  background-color: #262626;
+  background-color: #454545;
   z-index: 1;
 
   cursor: none;

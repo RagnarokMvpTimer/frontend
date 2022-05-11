@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { X, Trash } from '@styled-icons/feather';
+import { X, Trash, Sun, Moon } from '@styled-icons/feather';
 import Switch from 'react-switch';
 
 import { Themes } from '../../styles/Themes';
@@ -15,8 +15,10 @@ import {
   Subtitle,
   SettingsContainer,
   Setting,
+  ThemeContainer,
   ClearButton,
 } from './styles';
+import { LanguageSelector } from '../LanguageSelector';
 
 interface SwitchProps {
   checked: boolean;
@@ -70,7 +72,11 @@ export function SettingsModal() {
         <SettingsContainer>
           <Setting>
             <Subtitle>Theme</Subtitle>
-            <Switch2 onChange={toggleTheme} checked={theme !== 'light'} />
+            <ThemeContainer>
+              <Sun />
+              <Switch2 onChange={toggleTheme} checked={theme !== 'light'} />
+              <Moon />
+            </ThemeContainer>
           </Setting>
 
           <Setting>
@@ -87,6 +93,11 @@ export function SettingsModal() {
               onChange={toggleAnimatedSprites}
               checked={animatedSprites}
             />
+          </Setting>
+
+          <Setting>
+            <Subtitle>Language</Subtitle>
+            <LanguageSelector />
           </Setting>
 
           <Setting>

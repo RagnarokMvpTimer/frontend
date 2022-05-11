@@ -16,6 +16,8 @@ interface SettingsContextData {
   toggleRespawnCountdown: () => void;
   animatedSprites: boolean;
   toggleAnimatedSprites: () => void;
+  language: string;
+  changeLanguage: (id: string) => void;
 }
 
 export const SettingsContext = createContext({} as SettingsContextData);
@@ -26,6 +28,7 @@ export function SettingsProvider({ children }: SettingsProviderProps) {
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
   const [respawnAsCountdown, setRespawnAsCountdown] = useState(false);
   const [animatedSprites, setAnimatedSprites] = useState(false);
+  const [language, setLanguage] = useState('en');
 
   function toggleTheme() {
     setTheme(theme === 'light' ? Themes.dark.id : Themes.light.id);
@@ -41,6 +44,10 @@ export function SettingsProvider({ children }: SettingsProviderProps) {
 
   function toggleAnimatedSprites() {
     setAnimatedSprites((prev) => !prev);
+  }
+
+  function changeLanguage(id: string) {
+    setLanguage(id);
   }
 
   useEffect(() => {
@@ -83,6 +90,8 @@ export function SettingsProvider({ children }: SettingsProviderProps) {
         toggleRespawnCountdown,
         animatedSprites,
         toggleAnimatedSprites,
+        language,
+        changeLanguage,
       }}
     >
       {children}
