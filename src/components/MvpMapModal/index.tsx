@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import { Copy } from '@styled-icons/feather';
+import { useEffect, useState } from 'react';
+import { Clipboard, Check } from '@styled-icons/feather';
 
 import { IMapMark } from '../../interfaces';
 import { Map } from '../Map';
@@ -17,10 +17,18 @@ export function MvpMapModal({
   deathPosition,
   close,
 }: MvpMapModalProps) {
+  const [copied, setCopied] = useState(false);
+
   const navString = `/navi ${deathMap} 50/50`;
 
   function copyToClipboard() {
+    if (copied) return;
+
+    setCopied(true);
     navigator.clipboard.writeText(navString);
+    setTimeout(() => {
+      setCopied(false);
+    }, 1000);
   }
 
   useEffect(() => {
@@ -36,8 +44,18 @@ export function MvpMapModal({
       <Modal>
         <Name>{deathMap}</Name>
         <Map mapName={deathMap} coordinates={deathPosition} />
-        <NavCommand onClick={copyToClipboard}>
-          <Copy size={18} /> {navString}
+        <NavCommand onClick={copyToClipboard} disabled={copied}>
+          {copied ? (
+            <>
+              <Check />
+              {'Copied !'}
+            </>
+          ) : (
+            <>
+              <Clipboard />
+              {navString}
+            </>
+          )}
         </NavCommand>
 
         <CloseButton onClick={close}>Close</CloseButton>

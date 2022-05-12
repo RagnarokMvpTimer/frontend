@@ -35,18 +35,35 @@ export const Name = styled.span`
   font-size: 18px;
 `;
 
-export const NavCommand = styled.span`
+export const NavCommand = styled.button`
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
   color: ${({ theme }) => theme.colors.modal.text};
   border: 1px solid ${({ theme }) => theme.colors.modal.hl};
-
   border-radius: 6px;
-  padding: 5px;
+  padding: 6px;
 
   font-size: 16px;
   cursor: pointer;
+  background: none;
 
   > svg {
+    width: 18px;
+    height: 18px;
     stroke-width: 2px;
+  }
+
+  :disabled {
+    cursor: not-allowed;
+    > svg {
+      margin-top: 1px;
+    }
+  }
+
+  :hover {
+    opacity: 0.8;
   }
 `;
 
@@ -60,4 +77,8 @@ export const CloseButton = styled.button`
 
   color: white;
   background-color: ${({ theme }) => theme.colors.modal.button};
+
+  :hover {
+    opacity: 0.8;
+  }
 `;
