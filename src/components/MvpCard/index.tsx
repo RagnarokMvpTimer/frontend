@@ -58,7 +58,7 @@ export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
       );
       setRespawnTime(time);
     }
-  }, []);
+  }, [mvp.deathTime]);
 
   return (
     <Container>
