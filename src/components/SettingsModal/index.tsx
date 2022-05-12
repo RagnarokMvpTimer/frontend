@@ -5,6 +5,7 @@ import Switch from 'react-switch';
 import { Themes } from '../../styles/Themes';
 import { SettingsContext } from '../../contexts/SettingsContext';
 
+import { useScrollBlock } from '../../hooks/useScrollBlock';
 import { clearData } from '../../utils';
 
 import {
@@ -26,6 +27,7 @@ interface SwitchProps {
 }
 
 export function SettingsModal() {
+  useScrollBlock(true);
   const {
     theme,
     toggleTheme,
