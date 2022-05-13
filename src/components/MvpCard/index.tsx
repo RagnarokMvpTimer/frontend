@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from 'react';
 import { Map, RefreshCcw, Trash2 } from '@styled-icons/feather';
-import moment, { Moment } from 'moment';
+import moment from 'moment';
 
 import { Mvp } from '../../interfaces';
 import { MvpsContext } from '../../contexts/MvpsContext';
@@ -56,7 +56,7 @@ export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
     if (!respawnAsCountdown && mvp.deathTime && mvp.deathMap) {
       setRespawnTime(respawnAt(nextRespawn));
     }
-  }, [respawnAsCountdown, mvp.deathTime]);
+  }, [respawnAsCountdown, mvp.deathTime, mvp.deathMap, nextRespawn]);
 
   useEffect(() => {
     if (!respawnAsCountdown) return;

@@ -1,8 +1,4 @@
-import { useContext } from 'react';
-
 import { useTimer } from '../../hooks/useTimer';
-import { SettingsContext } from '../../contexts/SettingsContext';
-
 import { SettingsButton } from '../SettingsButton';
 
 import mvpImg from '../../assets/mvp.png';
