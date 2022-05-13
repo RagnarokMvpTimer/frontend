@@ -10,7 +10,7 @@ import {
   getMvpSprite,
   getAnimatedMvpSprite,
   respawnAt,
-  respawnCountdown,
+  respawnIn,
 } from '../../utils';
 
 import { MvpMapModal } from '../MvpMapModal';
@@ -42,6 +42,7 @@ export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
   const [isMapModalOpen, setIsMapModalOpen] = useState<boolean>(false);
 
   const hasMoreThanOneMap = mvp.spawn.length > 1;
+  const nextRespawn = moment(mvp.deathTime).add(getMvpRespawnTime(mvp), 'ms');
 
   function handleKilledNow() {
     mvp.deathMap
@@ -52,13 +53,24 @@ export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
   }
 
   useEffect(() => {
-    if (mvp.deathTime && mvp.deathMap) {
-      const time = respawnAt(
-        moment(mvp.deathTime).add(getMvpRespawnTime(mvp), 'ms')
-      );
-      setRespawnTime(time);
+    if (!respawnAsCountdown && mvp.deathTime && mvp.deathMap) {
+      setRespawnTime(respawnAt(nextRespawn));
     }
-  }, [mvp.deathTime]);
+  }, [respawnAsCountdown, mvp.deathTime]);
+
+  useEffect(() => {
+    if (!respawnAsCountdown) return;
+
+    const interval = setInterval(() => {
+      const diff = nextRespawn.diff(moment());
+      const duration = moment.duration(diff);
+      const time = `${duration.hours()}:${duration.minutes()}:${duration.seconds()}`;
+
+      setRespawnTime(time);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [respawnAsCountdown, nextRespawn]);
 
   return (
     <Container>

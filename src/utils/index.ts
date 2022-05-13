@@ -19,7 +19,7 @@ export const milisecondsToHours = (miliseconds: number) =>
  * @param time Moment object
  * @returns string with this format 'HH:mm:ss' ex: '16:10:20'
  */
-export const respawnCountdown = (time: Moment) => time.format('HH:mm:ss');
+export const respawnIn = (time: Moment) => time.format('HH:mm:ss');
 
 /**
  * Convert Moment object to string with the interval that MVP can respawn
