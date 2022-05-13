@@ -1,19 +1,10 @@
-import { useTimer } from '../../hooks/useTimer';
 import { SettingsButton } from '../SettingsButton';
 
 import mvpImg from '../../assets/mvp.png';
-import {
-  Container,
-  LogoContainer,
-  Logo,
-  Title,
-  Hour,
-  Customization,
-} from './styles';
+import { Container, LogoContainer, Logo, Title, Customization } from './styles';
+import { HeaderTimer } from '../HeaderTimer';
 
 export function Header() {
-  const { time } = useTimer();
-
   return (
     <Container>
       <LogoContainer>
@@ -21,7 +12,7 @@ export function Header() {
         <Title>Ragnarok MVP Timer</Title>
       </LogoContainer>
 
-      <Hour>{time.format('HH:mm:ss')}</Hour>
+      <HeaderTimer />
 
       <Customization>
         <SettingsButton />

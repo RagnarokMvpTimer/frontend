@@ -36,18 +36,6 @@ export const Title = styled.p`
   `)}
 `;
 
-export const Hour = styled.span`
-  font-size: 24px;
-  font-weight: bold;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  grid-area: 1 / 2 / 2 / 3;
-
-  color: #fff;
-`;
-
 export const Customization = styled.div`
   display: flex;
   align-items: center;

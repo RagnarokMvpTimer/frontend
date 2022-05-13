@@ -5,6 +5,8 @@ import moment from 'moment';
 import { Mvp } from '../../interfaces';
 import { MvpsContext } from '../../contexts/MvpsContext';
 import { SettingsContext } from '../../contexts/SettingsContext';
+import { MvpMapModal } from '../MvpMapModal';
+import { MvpCardCountdown } from '../MvpCardCountdown';
 import {
   getMvpRespawnTime,
   getMvpSprite,
@@ -12,8 +14,6 @@ import {
   respawnAt,
   respawnIn,
 } from '../../utils';
-
-import { MvpMapModal } from '../MvpMapModal';
 
 import {
   Container,
@@ -58,20 +58,6 @@ export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
     }
   }, [respawnAsCountdown, mvp.deathTime, mvp.deathMap, nextRespawn]);
 
-  useEffect(() => {
-    if (!respawnAsCountdown) return;
-
-    const interval = setInterval(() => {
-      const diff = nextRespawn.diff(moment());
-      const duration = moment.duration(diff);
-      const time = `${duration.hours()}:${duration.minutes()}:${duration.seconds()}`;
-
-      setRespawnTime(time);
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, [respawnAsCountdown, nextRespawn]);
-
   return (
     <Container>
       <Name>{mvp.name}</Name>
@@ -85,9 +71,17 @@ export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
       {isActive ? (
         <>
           <Respawn title={respawnTime}>
-            Respawn {respawnAsCountdown ? 'in' : 'at'}
-            {'\n'}
-            <Bold>{respawnTime}</Bold>
+            {respawnAsCountdown ? (
+              <>
+                Respawn in {'\n'}
+                <MvpCardCountdown nextRespawn={nextRespawn} />
+              </>
+            ) : (
+              <>
+                Respawn at {'\n'}
+                <Bold>{respawnTime}</Bold>
+              </>
+            )}
           </Respawn>
 
           <MapName>
