@@ -9,19 +9,42 @@ interface MvpCardCountdownProps {
   nextRespawn: Moment;
 }
 
+const SOON_THRESHOLD = 300000; // 5 minutes
+
 export function MvpCardCountdown({ nextRespawn }: MvpCardCountdownProps) {
-  const { duration, isRunning, pause, resume } = useCountown(nextRespawn);
+  const { duration, isRunning } = useCountown(nextRespawn);
   const [timeString, setTimeString] = useState<string>('');
+  const [respawningSoon, setRespawningSoon] = useState(false);
+  const [isBefore, setIsBefore] = useState(false);
 
   useEffect(() => {
     if (!duration || !isRunning) return;
 
-    const time = `${String(duration.hours()).padStart(2, '0')}:${String(
-      duration.minutes()
-    ).padStart(2, '0')}:${String(duration.seconds()).padStart(2, '0')}`;
+    const durationAsMs = duration.asMilliseconds();
+    const soon = durationAsMs >= 0 && durationAsMs <= SOON_THRESHOLD;
 
-    setTimeString(time);
+    soon
+      ? setRespawningSoon(true)
+      : durationAsMs <= 0
+      ? (setIsBefore(true), setRespawningSoon(false))
+      : null;
   }, [duration, isRunning]);
 
-  return <Bold>{timeString}</Bold>;
+  useEffect(() => {
+    if (!duration || !isRunning) return;
+
+    const negative = duration.asMilliseconds() < 0;
+
+    const time = [duration.hours(), duration.minutes(), duration.seconds()]
+      .map((time) => String(time).replace('-', '').padStart(2, '0'))
+      .join(':');
+
+    setTimeString(`${negative ? '-' : ''}${time}`);
+  }, [duration, isRunning]);
+
+  return (
+    <Bold respawningSoon={respawningSoon} isBefore={isBefore}>
+      {timeString}
+    </Bold>
+  );
 }

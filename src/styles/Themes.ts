@@ -23,7 +23,7 @@ export const Themes = {
       },
 
       timers: {
-        passed: '#a9252a',
+        passed: '#D10000',
         normal: '#fff',
         respawning: '#62831f',
       },
@@ -73,7 +73,7 @@ export const Themes = {
       },
 
       timers: {
-        passed: '#a9252a',
+        passed: '#D10000',
         normal: '#fff',
         respawning: '#62831f',
       },
