@@ -18,6 +18,7 @@ interface SettingsContextData {
   toggleAnimatedSprites: () => void;
   language: string;
   changeLanguage: (id: string) => void;
+  resetSettings: () => void;
 }
 
 export const SettingsContext = createContext({} as SettingsContextData);
@@ -26,7 +27,7 @@ export function SettingsProvider({ children }: SettingsProviderProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [theme, setTheme] = usePersistedState<string>('theme', Themes.dark.id);
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
-  const [respawnAsCountdown, setRespawnAsCountdown] = useState(false);
+  const [respawnAsCountdown, setRespawnAsCountdown] = useState(true);
   const [animatedSprites, setAnimatedSprites] = useState(false);
   const [language, setLanguage] = useState('en');
 
@@ -48,6 +49,13 @@ export function SettingsProvider({ children }: SettingsProviderProps) {
 
   function changeLanguage(id: string) {
     setLanguage(id);
+  }
+
+  function resetSettings() {
+    setTheme(Themes.dark.id);
+    setRespawnAsCountdown(true);
+    setAnimatedSprites(false);
+    setLanguage('en');
   }
 
   useEffect(() => {
@@ -92,6 +100,7 @@ export function SettingsProvider({ children }: SettingsProviderProps) {
         toggleAnimatedSprites,
         language,
         changeLanguage,
+        resetSettings,
       }}
     >
       {children}

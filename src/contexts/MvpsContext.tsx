@@ -13,14 +13,13 @@ interface MvpProviderProps {
 interface MvpsContextData {
   activeMvps: Array<Mvp>;
   allMvps: Array<Mvp>;
-
   resetMvpTimer: (mvp: Mvp) => void;
   killMvp: (mvp: Mvp, time?: Date | null) => void;
   removeMvp: (mvp: Mvp) => void;
-
   setEditingMvp: (mvp: Mvp) => void;
   openAndEditModal: (mvp: Mvp) => void;
   toggleEditModal: () => void;
+  clearActiveMvps: () => void;
 }
 
 export const MvpsContext = createContext({} as MvpsContextData);
@@ -77,6 +76,10 @@ export function MvpProvider({ children }: MvpProviderProps) {
   function openAndEditModal(mvp: Mvp) {
     setEditingMvp(mvp);
     toggleEditModal();
+  }
+
+  function clearActiveMvps() {
+    setActiveMvps([]);
   }
 
   useEffect(() => {
@@ -147,6 +150,7 @@ export function MvpProvider({ children }: MvpProviderProps) {
         toggleEditModal,
         setEditingMvp,
         openAndEditModal,
+        clearActiveMvps,
       }}
     >
       {children}

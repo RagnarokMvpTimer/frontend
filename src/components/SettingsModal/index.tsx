@@ -4,7 +4,8 @@ import Switch from 'react-switch';
 
 import { Themes } from '../../styles/Themes';
 import { SettingsContext } from '../../contexts/SettingsContext';
-
+import { MvpsContext } from '../../contexts/MvpsContext';
+import { LanguageSelector } from '../LanguageSelector';
 import { useScrollBlock } from '../../hooks/useScrollBlock';
 import { clearData } from '../../utils';
 
@@ -19,7 +20,6 @@ import {
   ThemeContainer,
   ClearButton,
 } from './styles';
-import { LanguageSelector } from '../LanguageSelector';
 
 interface SwitchProps {
   checked: boolean;
@@ -36,7 +36,9 @@ export function SettingsModal() {
     toggleRespawnCountdown,
     animatedSprites,
     toggleAnimatedSprites,
+    resetSettings,
   } = useContext(SettingsContext);
+  const { clearActiveMvps } = useContext(MvpsContext);
 
   const ctheme = theme ? Themes[theme] : Themes.dark;
 
@@ -58,8 +60,12 @@ export function SettingsModal() {
 
   function handleClearData() {
     const confirmed = confirm('Are you sure you want to clear all data?');
-
-    confirmed && clearData();
+    if (confirmed) {
+      clearData();
+      clearActiveMvps();
+      resetSettings();
+      toggleSettingsModal();
+    }
   }
 
   return (
