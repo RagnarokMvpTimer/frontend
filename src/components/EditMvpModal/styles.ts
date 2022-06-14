@@ -31,7 +31,9 @@ export const Modal = styled.div`
 
   background-color: ${({ theme }) => theme.colors.modal.bg};
 
-  ${mobile(css``)}
+  ${mobile(css`
+    width: 95%;
+  `)}
 `;
 
 export const CloseButton = styled.button`
