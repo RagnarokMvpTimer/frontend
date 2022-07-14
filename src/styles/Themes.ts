@@ -74,7 +74,7 @@ export const Themes = {
 
       timers: {
         passed: '#D10000',
-        normal: '#fff',
+        normal: '#421411',
         respawning: '#62831f',
       },
 
