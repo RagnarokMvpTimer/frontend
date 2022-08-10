@@ -50,7 +50,7 @@ export const MapName = styled.span`
   color: ${({ theme }) => theme.colors.mvpCard.text};
 `;
 
-const ButtonStyle = css`
+const Button = styled.button`
   width: 100%;
   padding: 5px 20px;
 
@@ -66,13 +66,11 @@ const ButtonStyle = css`
   }
 `;
 
-export const KilledNow = styled.button`
-  ${ButtonStyle}
+export const KilledNow = styled(Button)`
   background-color: ${({ theme }) => theme.colors.mvpCard.killButton};
 `;
 
-export const EditButton = styled.button`
-  ${ButtonStyle}
+export const EditButton = styled(Button)`
   background-color: ${({ theme }) => theme.colors.mvpCard.editButton};
 `;
 

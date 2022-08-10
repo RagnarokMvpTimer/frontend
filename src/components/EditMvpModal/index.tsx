@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import moment, { Moment } from 'moment';
+import moment from 'moment';
 import DatePicker from 'react-datepicker';
 import { X } from '@styled-icons/feather';
 

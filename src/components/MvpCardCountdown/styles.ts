@@ -4,6 +4,12 @@ interface Props {
   isBefore: boolean;
   respawningSoon: boolean;
 }
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Text = styled.span``;
 
 export const Bold = styled.span<Props>`
   font-weight: bold;

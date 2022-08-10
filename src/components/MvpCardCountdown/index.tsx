@@ -1,21 +1,27 @@
 import { useEffect, useState } from 'react';
-import moment, { Moment } from 'moment';
+import { Moment } from 'moment';
 
 import { useCountown } from '../../hooks/useCountdown';
 
-import { Bold } from './styles';
+import { Container, Text, Bold } from './styles';
 
 interface MvpCardCountdownProps {
   nextRespawn: Moment;
 }
 
-const SOON_THRESHOLD = 300000; // 5 minutes
+const SOON_THRESHOLD = 600000; // 10 minutes
 
 export function MvpCardCountdown({ nextRespawn }: MvpCardCountdownProps) {
   const { duration, isRunning } = useCountown(nextRespawn);
   const [timeString, setTimeString] = useState<string>('');
   const [respawningSoon, setRespawningSoon] = useState(false);
   const [isBefore, setIsBefore] = useState(false);
+
+  const respawnText = respawningSoon
+    ? 'Respawning'
+    : isBefore
+    ? 'Already Respawned'
+    : 'Respawn in';
 
   useEffect(() => {
     if (!duration || !isRunning) return;
@@ -24,7 +30,7 @@ export function MvpCardCountdown({ nextRespawn }: MvpCardCountdownProps) {
     const soon = durationAsMs >= 0 && durationAsMs <= SOON_THRESHOLD;
 
     soon
-      ? setRespawningSoon(true)
+      ? (setIsBefore(false), setRespawningSoon(true))
       : durationAsMs <= 0
       ? (setIsBefore(true), setRespawningSoon(false))
       : null;
@@ -42,9 +48,17 @@ export function MvpCardCountdown({ nextRespawn }: MvpCardCountdownProps) {
     setTimeString(`${negative ? '-' : ''}${time}`);
   }, [duration, isRunning]);
 
+  useEffect(() => {
+    setRespawningSoon(false);
+    setIsBefore(false);
+  }, [nextRespawn]);
+
   return (
-    <Bold respawningSoon={respawningSoon} isBefore={isBefore}>
-      {timeString}
-    </Bold>
+    <Container>
+      <Text>{respawnText}</Text>
+      <Bold respawningSoon={respawningSoon} isBefore={isBefore}>
+        {timeString} {'\n'}
+      </Bold>
+    </Container>
   );
 }

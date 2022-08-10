@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from 'react';
+import { useContext, useState } from 'react';
 import { Map, RefreshCcw, Trash2 } from '@styled-icons/feather';
 import moment from 'moment';
 
@@ -64,10 +64,7 @@ export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
         <>
           <Respawn title={respawnTime}>
             {respawnAsCountdown ? (
-              <>
-                Respawn in {'\n'}
-                <MvpCardCountdown nextRespawn={nextRespawn} />
-              </>
+              <MvpCardCountdown nextRespawn={nextRespawn} />
             ) : (
               <>
                 Respawn at {'\n'}

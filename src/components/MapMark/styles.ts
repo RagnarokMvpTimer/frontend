@@ -10,8 +10,8 @@ export const Container = styled.div<Props>`
   height: 0;
   width: 0;
   position: relative;
-  top: ${({ coordinates }) => Number(coordinates.y) - 265}px;
-  left: ${({ coordinates }) => Number(coordinates.x) - 10}px;
+  top: ${({ coordinates }) => coordinates.y - 265}px;
+  left: ${({ coordinates }) => coordinates.x - 10}px;
   pointer-events: none;
 `;
 
