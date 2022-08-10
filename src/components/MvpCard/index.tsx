@@ -12,7 +12,6 @@ import {
   getMvpSprite,
   getAnimatedMvpSprite,
   respawnAt,
-  respawnIn,
 } from '../../utils';
 
 import {
@@ -37,12 +36,11 @@ export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
   const { killMvp, resetMvpTimer, removeMvp, openAndEditModal } =
     useContext(MvpsContext);
   const { respawnAsCountdown, animatedSprites } = useContext(SettingsContext);
-
-  const [respawnTime, setRespawnTime] = useState<string>('');
   const [isMapModalOpen, setIsMapModalOpen] = useState<boolean>(false);
 
   const hasMoreThanOneMap = mvp.spawn.length > 1;
   const nextRespawn = moment(mvp.deathTime).add(getMvpRespawnTime(mvp), 'ms');
+  const respawnTime = respawnAt(nextRespawn);
 
   function handleKilledNow() {
     mvp.deathMap
@@ -51,12 +49,6 @@ export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
       ? openAndEditModal(mvp)
       : killMvp({ ...mvp, deathMap: mvp.spawn[0].mapname });
   }
-
-  useEffect(() => {
-    if (!respawnAsCountdown && mvp.deathTime && mvp.deathMap) {
-      setRespawnTime(respawnAt(nextRespawn));
-    }
-  }, [respawnAsCountdown, mvp.deathTime, mvp.deathMap, nextRespawn]);
 
   return (
     <Container>
@@ -91,13 +83,13 @@ export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
 
           <Controls>
             <Control onClick={() => setIsMapModalOpen(true)} title='Show map'>
-              <Map color='#fff' height={17} width={17} />
+              <Map />
             </Control>
             <Control onClick={() => resetMvpTimer(mvp)} title='Reset timer'>
-              <RefreshCcw color='#fff' height={17} width={17} />
+              <RefreshCcw />
             </Control>
             <Control onClick={() => removeMvp(mvp)} title='Remove this mvp'>
-              <Trash2 color='#fff' height={17} width={17} />
+              <Trash2 />
             </Control>
           </Controls>
         </>

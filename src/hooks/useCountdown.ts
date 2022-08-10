@@ -27,5 +27,9 @@ export function useCountown(startTime: Moment, delay = 1000) {
     return () => clearInterval(interval);
   }, [time, delay, isRunning]);
 
+  useEffect(() => {
+    setTime(startTime);
+  }, [startTime]);
+
   return { duration, isRunning, pause, resume };
 }

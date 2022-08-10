@@ -98,6 +98,9 @@ export const Control = styled.button`
 
   svg {
     stroke-width: 3px;
+    width: 17px;
+    height: 17px;
+    color: #fff;
   }
 
   :disabled {
