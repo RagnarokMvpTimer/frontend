@@ -1,10 +1,17 @@
-import { SettingsButton } from '../SettingsButton';
+import { useContext } from 'react';
 
-import mvpImg from '../../assets/mvp.png';
-import { Container, LogoContainer, Logo, Title, Customization } from './styles';
+import { SettingsButton } from '../SettingsButton';
 import { HeaderTimer } from '../HeaderTimer';
+import { SettingsModal } from '../SettingsModal';
+
+import { SettingsContext } from '../../contexts/SettingsContext';
+import mvpImg from '../../assets/mvp.png';
+
+import { Container, Customization, Logo, LogoContainer, Title } from './styles';
 
 export function Header() {
+  const { isSettingsModalOpen } = useContext(SettingsContext);
+
   return (
     <Container>
       <LogoContainer>
@@ -17,6 +24,8 @@ export function Header() {
       <Customization>
         <SettingsButton />
       </Customization>
+
+      {isSettingsModalOpen && <SettingsModal />}
     </Container>
   );
 }

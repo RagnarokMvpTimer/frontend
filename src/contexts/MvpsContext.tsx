@@ -13,6 +13,7 @@ interface MvpProviderProps {
 interface MvpsContextData {
   activeMvps: Array<Mvp>;
   allMvps: Array<Mvp>;
+  editingMvp: Mvp;
   resetMvpTimer: (mvp: Mvp) => void;
   killMvp: (mvp: Mvp, time?: Date | null) => void;
   removeMvp: (mvp: Mvp) => void;
@@ -51,26 +52,24 @@ export function MvpProvider({ children }: MvpProviderProps) {
       ...mvp,
       deathTime: time || new Date(),
     };
-    setActiveMvps(
-      [...activeMvps, killedMvp].sort((a: Mvp, b: Mvp) => {
-        if (a.deathTime && b.deathTime) {
-          return moment(a.deathTime)
-            .add(getMvpRespawnTime(a), 'ms')
-            .diff(moment(b.deathTime).add(getMvpRespawnTime(b), 'ms'));
-        }
-        return 0;
-      })
+    setActiveMvps((s) =>
+      [...s, killedMvp].sort((a: Mvp, b: Mvp) =>
+        a.deathTime && b.deathTime
+          ? moment(a.deathTime)
+              .add(getMvpRespawnTime(a), 'ms')
+              .diff(moment(b.deathTime).add(getMvpRespawnTime(b), 'ms'))
+          : 0
+      )
     );
   }
 
   function respawnNotification(mvp: Mvp) {
     new Audio('./notification1.mp3').play();
 
-    if (Notification.permission === 'granted') {
-      new Notification(`${mvp.name} will respawn soon...`, {
-        body: `At ${mvp.deathTime?.toLocaleTimeString()}`,
-      });
-    }
+    if (Notification.permission !== 'granted') return;
+    new Notification(`${mvp.name} will respawn soon...`, {
+      body: `At ${mvp.deathTime?.toLocaleTimeString()}`,
+    });
   }
 
   function openAndEditModal(mvp: Mvp) {
@@ -148,13 +147,14 @@ export function MvpProvider({ children }: MvpProviderProps) {
         killMvp,
         removeMvp,
         toggleEditModal,
+        editingMvp,
         setEditingMvp,
         openAndEditModal,
         clearActiveMvps,
       }}
     >
       {children}
-      {isEditModalOpen && <EditMvpModal mvp={editingMvp} />}
+      {isEditModalOpen && <EditMvpModal />}
     </MvpsContext.Provider>
   );
 }

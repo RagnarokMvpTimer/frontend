@@ -1,11 +1,11 @@
 import { useContext } from 'react';
 import { X, Trash, Sun, Moon } from '@styled-icons/feather';
-import Switch from 'react-switch';
 
-import { Themes } from '../../styles/Themes';
+import { Switch } from '../Switch';
+import { LanguageSelector } from '../LanguageSelector';
+
 import { SettingsContext } from '../../contexts/SettingsContext';
 import { MvpsContext } from '../../contexts/MvpsContext';
-import { LanguageSelector } from '../LanguageSelector';
 import { useScrollBlock } from '../../hooks/useScrollBlock';
 import { clearData } from '../../utils';
 
@@ -21,15 +21,9 @@ import {
   ClearButton,
 } from './styles';
 
-interface SwitchProps {
-  checked: boolean;
-  onChange: () => void;
-}
-
 export function SettingsModal() {
   useScrollBlock(true);
   const {
-    theme,
     toggleTheme,
     toggleSettingsModal,
     respawnAsCountdown,
@@ -38,34 +32,16 @@ export function SettingsModal() {
     toggleAnimatedSprites,
     resetSettings,
   } = useContext(SettingsContext);
+  const { theme } = useContext(SettingsContext);
   const { clearActiveMvps } = useContext(MvpsContext);
-
-  const ctheme = theme ? Themes[theme] : Themes.dark;
-
-  const Switch2 = ({ onChange, checked }: SwitchProps) => (
-    <Switch
-      onChange={onChange}
-      checked={checked}
-      height={25}
-      width={50}
-      handleDiameter={15}
-      checkedIcon={false}
-      uncheckedIcon={false}
-      offColor={ctheme.colors.switch.bg}
-      onColor={ctheme.colors.switch.bg}
-      offHandleColor={ctheme.colors.switch.handle}
-      onHandleColor={ctheme.colors.switch.handle}
-    />
-  );
 
   function handleClearData() {
     const confirmed = confirm('Are you sure you want to clear all data?');
-    if (confirmed) {
-      clearData();
-      clearActiveMvps();
-      resetSettings();
-      toggleSettingsModal();
-    }
+    if (!confirmed) return;
+    clearData();
+    clearActiveMvps();
+    resetSettings();
+    toggleSettingsModal();
   }
 
   return (
@@ -82,14 +58,14 @@ export function SettingsModal() {
             <Subtitle>Theme</Subtitle>
             <ThemeContainer>
               <Sun />
-              <Switch2 onChange={toggleTheme} checked={theme !== 'light'} />
+              <Switch onChange={toggleTheme} checked={theme !== 'light'} />
               <Moon />
             </ThemeContainer>
           </Setting>
 
           <Setting>
             <Subtitle>Respawn time as countdown</Subtitle>
-            <Switch2
+            <Switch
               onChange={toggleRespawnCountdown}
               checked={respawnAsCountdown}
             />
@@ -97,7 +73,7 @@ export function SettingsModal() {
 
           <Setting>
             <Subtitle>Animated MVP Sprites</Subtitle>
-            <Switch2
+            <Switch
               onChange={toggleAnimatedSprites}
               checked={animatedSprites}
             />

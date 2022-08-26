@@ -68,8 +68,10 @@ export function SettingsProvider({ children }: SettingsProviderProps) {
       const settingsParse = JSON.parse(settings);
       if (!settingsParse) return;
 
-      setRespawnAsCountdown(settingsParse.respawnAsCountdown);
-      setAnimatedSprites(settingsParse.animatedSprites);
+      const { respawnAsCountdown, animatedSprites } = settingsParse;
+
+      setRespawnAsCountdown(respawnAsCountdown);
+      setAnimatedSprites(animatedSprites);
     } catch (error) {
       console.error(error);
     } finally {

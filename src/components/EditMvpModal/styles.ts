@@ -42,12 +42,13 @@ export const CloseButton = styled.button`
   color: ${({ theme }) => theme.colors.modal.text};
 `;
 
-export const Sprite = styled.img`
-  width: auto;
-  height: auto;
-  max-width: 150px;
-  max-height: 150px;
-  border-top-left-radius: 30px;
+export const SpriteWrapper = styled.div`
+  > img {
+    width: auto;
+    height: auto;
+    max-width: 150px;
+    max-height: 150px;
+  }
 `;
 
 export const Name = styled.span`

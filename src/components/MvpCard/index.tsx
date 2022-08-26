@@ -2,22 +2,18 @@ import { useContext, useState } from 'react';
 import { Map, RefreshCcw, Trash2 } from '@styled-icons/feather';
 import moment from 'moment';
 
+import { MvpSprite } from '../MvpSprite';
+import { MvpMapModal } from '../MvpMapModal';
+import { MvpCardCountdown } from '../MvpCardCountdown';
+
 import { Mvp } from '../../interfaces';
 import { MvpsContext } from '../../contexts/MvpsContext';
 import { SettingsContext } from '../../contexts/SettingsContext';
-import { MvpMapModal } from '../MvpMapModal';
-import { MvpCardCountdown } from '../MvpCardCountdown';
-import {
-  getMvpRespawnTime,
-  getMvpSprite,
-  getAnimatedMvpSprite,
-  respawnAt,
-} from '../../utils';
+import { getMvpRespawnTime, respawnAt } from '../../utils';
 
 import {
   Container,
   Name,
-  Sprite,
   Respawn,
   MapName,
   Controls,
@@ -35,7 +31,7 @@ interface MvpCardProps {
 export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
   const { killMvp, resetMvpTimer, removeMvp, openAndEditModal } =
     useContext(MvpsContext);
-  const { respawnAsCountdown, animatedSprites } = useContext(SettingsContext);
+  const { respawnAsCountdown } = useContext(SettingsContext);
   const [isMapModalOpen, setIsMapModalOpen] = useState<boolean>(false);
 
   const hasMoreThanOneMap = mvp.spawn.length > 1;
@@ -53,13 +49,9 @@ export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
   return (
     <Container>
       <Name>{mvp.name}</Name>
-      <Sprite
-        src={
-          animatedSprites ? getAnimatedMvpSprite(mvp.id) : getMvpSprite(mvp.id)
-        }
-        alt={mvp.name}
-        isAnimated={animatedSprites}
-      />
+
+      <MvpSprite mvp={mvp} />
+
       {isActive ? (
         <>
           <Respawn title={respawnTime}>

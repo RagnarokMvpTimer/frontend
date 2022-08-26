@@ -9,14 +9,15 @@ import { useScrollBlock } from '../../hooks/useScrollBlock';
 import { MvpsContext } from '../../contexts/MvpsContext';
 import { SettingsContext } from '../../contexts/SettingsContext';
 import { IMapMark, Mvp } from '../../interfaces';
-import { getMvpSprite, getAnimatedMvpSprite } from '../../utils';
+
+import { MvpSprite } from '../MvpSprite';
 import { Map } from '../Map';
 
 import {
   Container,
   Modal,
   CloseButton,
-  Sprite,
+  SpriteWrapper,
   Name,
   Question,
   Optional,
@@ -27,14 +28,9 @@ import {
   ConfirmButton,
 } from './styles';
 
-interface EditMvpModalProps {
-  mvp: Mvp;
-}
-
-export function EditMvpModal({ mvp }: EditMvpModalProps) {
+export function EditMvpModal() {
   useScrollBlock(true);
-  const { toggleEditModal, killMvp } = useContext(MvpsContext);
-  const { animatedSprites } = useContext(SettingsContext);
+  const { toggleEditModal, killMvp, editingMvp: mvp } = useContext(MvpsContext);
 
   const [newTime, setNewTime] = useState<Date | null>(
     mvp.deathTime || new Date()
@@ -71,7 +67,7 @@ export function EditMvpModal({ mvp }: EditMvpModalProps) {
     };
     document.addEventListener('keydown', handleClose);
     return () => document.removeEventListener('keydown', handleClose);
-  }, []);
+  }, [toggleEditModal]);
 
   return (
     <Container>
@@ -81,13 +77,10 @@ export function EditMvpModal({ mvp }: EditMvpModalProps) {
         </CloseButton>
 
         <Name>{mvp.name}</Name>
-        <Sprite
-          src={
-            animatedSprites
-              ? getAnimatedMvpSprite(mvp.id)
-              : getMvpSprite(mvp.id)
-          }
-        />
+
+        <SpriteWrapper>
+          <MvpSprite mvp={mvp} />
+        </SpriteWrapper>
 
         <Question>When was the mvp killed?</Question>
 
