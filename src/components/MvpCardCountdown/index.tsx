@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Moment } from 'moment';
 
 import { useCountown } from '../../hooks/useCountdown';
+import { GetTranslateText } from '../../utils/GetTranslateText';
 
 import { Container, Text, Bold } from './styles';
 
@@ -18,10 +19,10 @@ export function MvpCardCountdown({ nextRespawn }: MvpCardCountdownProps) {
   const [isBefore, setIsBefore] = useState(false);
 
   const respawnText = respawningSoon
-    ? 'Respawning'
+    ? GetTranslateText('respawning')
     : isBefore
-    ? 'Already Respawned'
-    : 'Respawn in';
+    ? GetTranslateText('already_respawned')
+    : GetTranslateText('respawn_in');
 
   useEffect(() => {
     if (!duration || !isRunning) return;

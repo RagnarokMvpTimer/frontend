@@ -94,7 +94,8 @@ export const ClearButton = styled.button`
   align-items: center;
 
   width: 100%;
-  padding: 5px 20px;
+  padding: 5px 15px;
+  gap: 6px;
 
   border: 0;
   border-radius: 4px;

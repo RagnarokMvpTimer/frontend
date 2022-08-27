@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { FormattedMessage } from 'react-intl';
 import { X, Trash, Sun, Moon } from '@styled-icons/feather';
 
 import { Switch } from '../Switch';
@@ -8,6 +9,7 @@ import { SettingsContext } from '../../contexts/SettingsContext';
 import { MvpsContext } from '../../contexts/MvpsContext';
 import { useScrollBlock } from '../../hooks/useScrollBlock';
 import { clearData } from '../../utils';
+import { GetTranslateText } from '../../utils/GetTranslateText';
 
 import {
   Container,
@@ -35,8 +37,10 @@ export function SettingsModal() {
   const { theme } = useContext(SettingsContext);
   const { clearActiveMvps } = useContext(MvpsContext);
 
+  const clearDataMessage = GetTranslateText('clear_data_message');
+
   function handleClearData() {
-    const confirmed = confirm('Are you sure you want to clear all data?');
+    const confirmed = confirm(clearDataMessage);
     if (!confirmed) return;
     clearData();
     clearActiveMvps();
@@ -51,11 +55,15 @@ export function SettingsModal() {
           <X size={20} />
         </CloseButton>
 
-        <Title>Settings</Title>
+        <Title>
+          <FormattedMessage id='settings' />
+        </Title>
 
         <SettingsContainer>
           <Setting>
-            <Subtitle>Theme</Subtitle>
+            <Subtitle>
+              <FormattedMessage id='theme' />
+            </Subtitle>
             <ThemeContainer>
               <Sun />
               <Switch onChange={toggleTheme} checked={theme !== 'light'} />
@@ -64,7 +72,9 @@ export function SettingsModal() {
           </Setting>
 
           <Setting>
-            <Subtitle>Respawn time as countdown</Subtitle>
+            <Subtitle>
+              <FormattedMessage id='respawn_as_countdown' />
+            </Subtitle>
             <Switch
               onChange={toggleRespawnCountdown}
               checked={respawnAsCountdown}
@@ -72,7 +82,9 @@ export function SettingsModal() {
           </Setting>
 
           <Setting>
-            <Subtitle>Animated MVP Sprites</Subtitle>
+            <Subtitle>
+              <FormattedMessage id='animate_sprites' />
+            </Subtitle>
             <Switch
               onChange={toggleAnimatedSprites}
               checked={animatedSprites}
@@ -80,14 +92,19 @@ export function SettingsModal() {
           </Setting>
 
           <Setting>
-            <Subtitle>Language</Subtitle>
+            <Subtitle>
+              <FormattedMessage id='language' />
+            </Subtitle>
             <LanguageSelector />
           </Setting>
 
           <Setting>
-            <Subtitle>Clear data</Subtitle>
+            <Subtitle>
+              <FormattedMessage id='clear_data' />
+            </Subtitle>
             <ClearButton onClick={handleClearData}>
-              <Trash /> Clear
+              <FormattedMessage id='clear' />
+              <Trash />
             </ClearButton>
           </Setting>
         </SettingsContainer>

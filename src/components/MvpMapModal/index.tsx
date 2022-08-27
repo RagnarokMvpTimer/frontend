@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Clipboard, Check } from '@styled-icons/feather';
+import { FormattedMessage } from 'react-intl';
 
 import { IMapMark } from '../../interfaces';
 import { Map } from '../Map';
@@ -37,7 +38,7 @@ export function MvpMapModal({
     };
     document.addEventListener('keydown', handleClose);
     return () => document.removeEventListener('keydown', handleClose);
-  }, []);
+  }, [close]);
 
   return (
     <Container>
@@ -48,7 +49,7 @@ export function MvpMapModal({
           {copied ? (
             <>
               <Check />
-              {'Copied !'}
+              <FormattedMessage id='copied' />
             </>
           ) : (
             <>
@@ -58,7 +59,9 @@ export function MvpMapModal({
           )}
         </NavCommand>
 
-        <CloseButton onClick={close}>Close</CloseButton>
+        <CloseButton onClick={close}>
+          <FormattedMessage id='close' />
+        </CloseButton>
       </Modal>
     </Container>
   );

@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { FormattedMessage } from 'react-intl';
 
 import { MvpCard } from '../../components/MvpCard';
 import { MvpsContext } from '../../contexts/MvpsContext';
@@ -12,7 +13,9 @@ export function Main() {
     <Container>
       {activeMvps.length > 0 && (
         <>
-          <ContainerTypeText>Active</ContainerTypeText>
+          <ContainerTypeText>
+            <FormattedMessage id='active' />
+          </ContainerTypeText>
           <MvpsContainer>
             {activeMvps.map((mvp) => (
               <MvpCard key={`${mvp.id}-${mvp.deathMap}`} mvp={mvp} isActive />
@@ -23,7 +26,9 @@ export function Main() {
 
       {allMvps.length > 0 && (
         <>
-          <ContainerTypeText>All</ContainerTypeText>
+          <ContainerTypeText>
+            <FormattedMessage id='all' />
+          </ContainerTypeText>
           <MvpsContainer>
             {allMvps.map((mvp) => (
               <MvpCard key={mvp.id} mvp={mvp} />

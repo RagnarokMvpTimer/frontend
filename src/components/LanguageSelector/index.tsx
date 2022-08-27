@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 import { ChevronDown, ChevronUp } from '@styled-icons/feather';
 
 import { SettingsContext } from '../../contexts/SettingsContext';
+import { LANGUAGES } from '../../locales';
 
 import {
   Container,
@@ -11,11 +12,6 @@ import {
   Picker,
   LangItem,
 } from './styles';
-
-const languages = {
-  en: 'English',
-  pt: 'Português BR',
-};
 
 export function LanguageSelector() {
   const { language, changeLanguage } = useContext(SettingsContext);
@@ -41,7 +37,7 @@ export function LanguageSelector() {
       </div>
 
       <Picker isOpen={isLangSelectorOpen}>
-        {Object.entries(languages).map(([id, name]) => (
+        {LANGUAGES.map(({ name, id }) => (
           <LangItem key={id} onClick={() => handleLangClick(id)}>
             {name}
           </LangItem>

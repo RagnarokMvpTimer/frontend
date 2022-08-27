@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { ThemeProvider } from 'styled-components';
+import { IntlProvider } from 'react-intl';
 
 import { GlobalStyle } from './styles/Global';
 import { Themes } from './styles/Themes';
@@ -12,23 +13,31 @@ import { Footer } from './components/Footer';
 
 import { SettingsContext } from './contexts/SettingsContext';
 import { MvpProvider } from './contexts/MvpsContext';
+import { LOCALES } from './locales';
+import { messages } from './locales/messages';
 
 export default function App() {
-  const { theme } = useContext(SettingsContext);
+  const { theme, language } = useContext(SettingsContext);
 
   return (
     <ThemeProvider theme={Themes[theme] || Themes.dark}>
-      <WarningHeader text='Under development' />
-      {Notification.permission !== 'granted' && (
-        <WarningHeader text='Notifications are disabled' />
-      )}
+      <IntlProvider
+        messages={messages[language]}
+        locale={language}
+        defaultLocale={LOCALES.ENGLISH}
+      >
+        <WarningHeader text={messages[language]['under_development']} />
+        {Notification.permission !== 'granted' && (
+          <WarningHeader text={messages[language]['disabled_notifications']} />
+        )}
 
-      <Header />
+        <Header />
 
-      <MvpProvider>
-        <Main />
-      </MvpProvider>
-      <Footer />
+        <MvpProvider>
+          <Main />
+        </MvpProvider>
+        <Footer />
+      </IntlProvider>
 
       <GlobalStyle />
     </ThemeProvider>

@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react';
 import { Map, RefreshCcw, Trash2 } from '@styled-icons/feather';
+import { FormattedMessage } from 'react-intl';
 import moment from 'moment';
 
 import { MvpSprite } from '../MvpSprite';
@@ -59,14 +60,15 @@ export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
               <MvpCardCountdown nextRespawn={nextRespawn} />
             ) : (
               <>
-                Respawn at {'\n'}
+                <FormattedMessage id='respawn_at' /> {'\n'}
                 <Bold>{respawnTime}</Bold>
               </>
             )}
           </Respawn>
 
           <MapName>
-            Map:{'\n'}
+            <FormattedMessage id='map' />
+            {'\n'}
             <Bold>{mvp.deathMap}</Bold>
           </MapName>
 
@@ -84,8 +86,12 @@ export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
         </>
       ) : (
         <Controls isActive={!isActive}>
-          <KilledNow onClick={handleKilledNow}>I killed now !</KilledNow>
-          <EditButton onClick={() => openAndEditModal(mvp)}>Edit</EditButton>
+          <KilledNow onClick={handleKilledNow}>
+            <FormattedMessage id='killed_now' />
+          </KilledNow>
+          <EditButton onClick={() => openAndEditModal(mvp)}>
+            <FormattedMessage id='edit' />
+          </EditButton>
         </Controls>
       )}
 
