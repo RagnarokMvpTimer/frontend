@@ -68,10 +68,11 @@ export function SettingsProvider({ children }: SettingsProviderProps) {
       const settingsParse = JSON.parse(settings);
       if (!settingsParse) return;
 
-      const { respawnAsCountdown, animatedSprites } = settingsParse;
+      const { respawnAsCountdown, animatedSprites, language } = settingsParse;
 
       setRespawnAsCountdown(respawnAsCountdown);
       setAnimatedSprites(animatedSprites);
+      setLanguage(language || 'en');
     } catch (error) {
       console.error(error);
     } finally {
@@ -85,9 +86,10 @@ export function SettingsProvider({ children }: SettingsProviderProps) {
     const settings = {
       respawnAsCountdown,
       animatedSprites,
+      language,
     };
     localStorage.setItem('settings', JSON.stringify(settings));
-  }, [respawnAsCountdown, animatedSprites]);
+  }, [respawnAsCountdown, animatedSprites, language]);
 
   return (
     <SettingsContext.Provider
