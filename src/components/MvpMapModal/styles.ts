@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
@@ -65,6 +65,17 @@ export const NavCommand = styled.button`
   :hover {
     opacity: 0.8;
   }
+`;
+
+export const Warning = styled.span`
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding: 0 30px;
+
+  color: ${({ theme }) => theme.colors.modal.text};
+  font-weight: bold;
+  font-size: 14px;
 `;
 
 export const CloseButton = styled.button`

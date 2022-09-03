@@ -10,6 +10,12 @@ export const GlobalStyle = createGlobalStyle`
     //font-family: 'Roboto', sans-serif;
   }
 
+  #root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
   a {
     text-decoration: none;
   }

@@ -4,20 +4,23 @@ import { mobile, phone } from '../../utils/media';
 export const Container = styled.main`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-
-  //padding: 1% 10% 5% 10%;
+  flex: 1;
   padding-bottom: 30px;
-
   background-color: ${({ theme }) => theme.colors.secondary};
 `;
 
-export const ContainerTypeText = styled.span`
+export const Section = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  gap: 15px;
+`;
+
+export const SectionTitle = styled.span`
   font-weight: bold;
-
-  margin: 10px 0;
-
   color: ${({ theme }) => theme.colors.text};
 `;
 

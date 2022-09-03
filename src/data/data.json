@@ -576,23 +576,6 @@
     }
   },
   {
-    "id": 3633,
-    "dbname": "EP16_2_VENOM_KIMERA",
-    "name": "Venomous Chimera",
-    "spawn": [
-      {
-        "mapname": "slabw01",
-        "respawnTime": 5000
-      }
-    ],
-    "stats": {
-      "level": 110,
-      "health": 2800000,
-      "baseExperience": 800000,
-      "jobExperience": 400000
-    }
-  },
-  {
     "id": 1785,
     "dbname": "ATROCE",
     "name": "Atroce",

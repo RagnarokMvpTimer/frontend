@@ -5,7 +5,14 @@ import { FormattedMessage } from 'react-intl';
 import { IMapMark } from '../../interfaces';
 import { Map } from '../Map';
 
-import { Container, Modal, Name, NavCommand, CloseButton } from './styles';
+import {
+  Container,
+  Modal,
+  Name,
+  NavCommand,
+  Warning,
+  CloseButton,
+} from './styles';
 
 interface MvpMapModalProps {
   deathMap: string;
@@ -44,8 +51,14 @@ export function MvpMapModal({
     <Container>
       <Modal>
         <Name>{deathMap}</Name>
+
         <Map mapName={deathMap} coordinates={deathPosition} />
-        <NavCommand onClick={copyToClipboard} disabled={copied}>
+
+        <NavCommand
+          onClick={copyToClipboard}
+          disabled={copied}
+          title='Copy to Clipboard'
+        >
           {copied ? (
             <>
               <Check />
@@ -58,6 +71,10 @@ export function MvpMapModal({
             </>
           )}
         </NavCommand>
+
+        <Warning>
+          <FormattedMessage id='nav_command_warning' />
+        </Warning>
 
         <CloseButton onClick={close}>
           <FormattedMessage id='close' />

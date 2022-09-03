@@ -29,6 +29,13 @@ export const messages = {
     sprites_from: 'Sprites from',
     affiliation: 'This site is not affiliated with',
     or: 'or',
+    nav_command_warning:
+      '*The above command dont represent the position you marked*',
+    none: 'None',
+    level: 'Level',
+    health: 'Health',
+    respawnTime: 'Respawn',
+    name: 'Name',
   },
   [LOCALES.PORTUGUESE]: {
     under_development: 'Em desenvolvimento',
@@ -58,5 +65,11 @@ export const messages = {
     sprites_from: 'Sprites de',
     affiliation: 'Esse site não é afiliado com',
     or: 'ou',
+    nav_command_warning: '*O comando acima não representa sua marcação*',
+    none: 'Nenhum',
+    level: 'Nível',
+    health: 'Vida',
+    respawnTime: 'Renascimento',
+    name: 'Nome',
   },
 };
