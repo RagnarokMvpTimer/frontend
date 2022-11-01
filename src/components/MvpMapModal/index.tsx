@@ -3,16 +3,10 @@ import { Clipboard, Check } from '@styled-icons/feather';
 import { FormattedMessage } from 'react-intl';
 
 import { IMapMark } from '../../interfaces';
+import { ModalBase } from '../ModalBase';
 import { Map } from '../Map';
 
-import {
-  Container,
-  Modal,
-  Name,
-  NavCommand,
-  Warning,
-  CloseButton,
-} from './styles';
+import { Modal, Name, NavCommand, Warning, CloseButton } from './styles';
 
 interface MvpMapModalProps {
   deathMap: string;
@@ -48,7 +42,7 @@ export function MvpMapModal({
   }, [close]);
 
   return (
-    <Container>
+    <ModalBase>
       <Modal>
         <Name>{deathMap}</Name>
 
@@ -80,6 +74,6 @@ export function MvpMapModal({
           <FormattedMessage id='close' />
         </CloseButton>
       </Modal>
-    </Container>
+    </ModalBase>
   );
 }

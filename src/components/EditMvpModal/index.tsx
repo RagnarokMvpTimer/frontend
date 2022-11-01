@@ -10,11 +10,11 @@ import { MvpsContext } from '../../contexts/MvpsContext';
 import { SettingsContext } from '../../contexts/SettingsContext';
 import { IMapMark, Mvp } from '../../interfaces';
 
+import { ModalBase } from '../ModalBase';
 import { MvpSprite } from '../MvpSprite';
 import { Map } from '../Map';
 
 import {
-  Container,
   Modal,
   CloseButton,
   SpriteWrapper,
@@ -70,7 +70,7 @@ export function EditMvpModal() {
   }, [toggleEditModal]);
 
   return (
-    <Container>
+    <ModalBase>
       <Modal>
         <CloseButton onClick={toggleEditModal}>
           <X size={20} />
@@ -141,6 +141,6 @@ export function EditMvpModal() {
           Confirm
         </ConfirmButton>
       </Modal>
-    </Container>
+    </ModalBase>
   );
 }

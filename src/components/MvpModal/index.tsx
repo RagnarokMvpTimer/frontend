@@ -1,3 +1,9 @@
+import { ModalBase } from '../ModalBase';
+
 export function MvpModal() {
-  return <div></div>;
+  return (
+    <ModalBase>
+      <div></div>
+    </ModalBase>
+  );
 }

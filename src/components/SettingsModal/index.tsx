@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { X, Trash, Sun, Moon } from '@styled-icons/feather';
 
+import { ModalBase } from '../ModalBase';
 import { Switch } from '../Switch';
 import { LanguageSelector } from '../LanguageSelector';
 
@@ -12,7 +13,6 @@ import { clearData } from '../../utils';
 import { GetTranslateText } from '../../utils/GetTranslateText';
 
 import {
-  Container,
   Modal,
   CloseButton,
   Title,
@@ -49,7 +49,7 @@ export function SettingsModal() {
   }
 
   return (
-    <Container>
+    <ModalBase>
       <Modal>
         <CloseButton onClick={toggleSettingsModal}>
           <X size={20} />
@@ -109,6 +109,6 @@ export function SettingsModal() {
           </Setting>
         </SettingsContainer>
       </Modal>
-    </Container>
+    </ModalBase>
   );
 }
