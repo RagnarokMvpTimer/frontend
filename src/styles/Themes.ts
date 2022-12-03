@@ -6,6 +6,7 @@ export const Themes = {
       primary: '#1B1C1D',
       secondary: '#2e2e2e',
 
+      logoname: '#fff',
       text: '#FFFFFF',
 
       mvpCard: {
@@ -42,6 +43,12 @@ export const Themes = {
         button: '#f89200',
       },
 
+      filterSearch: {
+        bg: '#262626',
+        border: '#1b1c1d',
+        text: '#fff',
+      },
+
       footer: {
         text: '#fff',
         link: '#f89200',
@@ -56,6 +63,7 @@ export const Themes = {
       primary: '#f89200',
       secondary: '#F6F8FA',
 
+      logoname: '#fff',
       text: '#000000',
 
       mvpCard: {
@@ -79,7 +87,7 @@ export const Themes = {
       },
 
       switch: {
-        bg: '#000000',
+        bg: '#ffa800',
         handle: '#F6F8FA',
       },
 
@@ -90,6 +98,12 @@ export const Themes = {
         name: '#ffa800',
         time: '#ffa800',
         button: '#f89200',
+      },
+
+      filterSearch: {
+        bg: '#FFFFFF',
+        border: '#f89200',
+        text: '#000',
       },
 
       footer: {

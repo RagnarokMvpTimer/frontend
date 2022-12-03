@@ -29,7 +29,13 @@ export const Title = styled.p`
   font-weight: bold;
   font-size: 22px;
 
-  color: #fff;
+  white-space: nowrap;
+
+  color: ${({ theme }) => theme.colors.logoname};
+
+  @media (min-width: 768px) and (max-width: 935px) {
+    font-size: 16px;
+  }
 
   ${tablet(css`
     display: none;

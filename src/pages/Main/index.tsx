@@ -6,9 +6,9 @@ import { MvpsContext } from '../../contexts/MvpsContext';
 import { MvpsContainerFilter } from '../../components/MvpsContainerFilter';
 
 import { sortBy } from '../../utils/sort';
+import { Mvp } from '../../interfaces';
 
 import { Container, Section, SectionTitle, MvpsContainer } from './styles';
-import { Mvp } from '../../interfaces';
 
 export function Main() {
   const { activeMvps, allMvps } = useContext(MvpsContext);

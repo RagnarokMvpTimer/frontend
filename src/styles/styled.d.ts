@@ -8,6 +8,7 @@ declare module 'styled-components' {
       primary: string;
       secondary: string;
 
+      logoname: string;
       text: string;
 
       mvpCard: {
@@ -42,6 +43,12 @@ declare module 'styled-components' {
         name: string;
         time: string;
         button: string;
+      };
+
+      filterSearch: {
+        bg: string;
+        border: string;
+        text: string;
       };
 
       footer: {

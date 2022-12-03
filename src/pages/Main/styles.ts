@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { mobile, phone } from '../../utils/media';
+import { mobile, phone, tablet } from '../../utils/media';
 
 export const Container = styled.main`
   display: flex;
@@ -28,6 +28,10 @@ export const MvpsContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 1.5rem;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 
   ${mobile(css`
     grid-template-columns: repeat(2, 1fr);
