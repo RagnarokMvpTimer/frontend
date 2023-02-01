@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import moment, { Moment, Duration } from 'moment';
 
 export function useCountown(startTime: Moment, delay = 1000) {
@@ -6,13 +6,8 @@ export function useCountown(startTime: Moment, delay = 1000) {
   const [duration, setDuration] = useState<Duration>();
   const [isRunning, setIsRunning] = useState(true);
 
-  function pause() {
-    setIsRunning(false);
-  }
-
-  function resume() {
-    setIsRunning(true);
-  }
+  const pause = useCallback(() => setIsRunning(false), []);
+  const resume = useCallback(() => setIsRunning(true), []);
 
   useEffect(() => {
     const interval = setInterval(

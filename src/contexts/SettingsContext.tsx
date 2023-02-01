@@ -1,6 +1,12 @@
-import { createContext, useState, useEffect, ReactNode } from 'react';
+import {
+  createContext,
+  useState,
+  useEffect,
+  ReactNode,
+  useCallback,
+} from 'react';
 
-import { usePersistedState } from '../hooks/usePersistedState';
+import { usePersistedState } from '../hooks';
 import { Themes } from '../styles/Themes';
 
 interface SettingsProviderProps {
@@ -31,32 +37,35 @@ export function SettingsProvider({ children }: SettingsProviderProps) {
   const [animatedSprites, setAnimatedSprites] = useState(false);
   const [language, setLanguage] = useState('en');
 
-  function toggleTheme() {
-    setTheme(theme === 'light' ? Themes.dark.id : Themes.light.id);
-  }
+  const toggleTheme = useCallback(
+    () => setTheme(theme === 'light' ? Themes.dark.id : Themes.light.id),
+    [setTheme, theme]
+  );
 
-  function toggleSettingsModal() {
-    setIsSettingsModalOpen((prev) => !prev);
-  }
+  const toggleSettingsModal = useCallback(
+    () => setIsSettingsModalOpen((prev) => !prev),
+    []
+  );
 
-  function toggleRespawnCountdown() {
-    setRespawnAsCountdown((prev) => !prev);
-  }
+  const toggleRespawnCountdown = useCallback(
+    () => setRespawnAsCountdown((prev) => !prev),
+    []
+  );
 
-  function toggleAnimatedSprites() {
+  const toggleAnimatedSprites = useCallback(() => {
     setAnimatedSprites((prev) => !prev);
-  }
+  }, []);
 
-  function changeLanguage(id: string) {
+  const changeLanguage = useCallback((id: string) => {
     setLanguage(id);
-  }
+  }, []);
 
-  function resetSettings() {
+  const resetSettings = useCallback(() => {
     setTheme(Themes.dark.id);
     setRespawnAsCountdown(true);
     setAnimatedSprites(false);
     setLanguage('en');
-  }
+  }, [setTheme]);
 
   useEffect(() => {
     if (!isLoading) return;

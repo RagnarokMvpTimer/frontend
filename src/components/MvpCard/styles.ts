@@ -109,4 +109,8 @@ export const Control = styled.button`
   :nth-child(3) {
     background-color: ${({ theme }) => theme.colors.mvpCard.controls.delete};
   }
+
+  /* :nth-child(4) {
+    background-color: ${({ theme }) => theme.colors.mvpCard.controls.edit};
+  } */
 `;

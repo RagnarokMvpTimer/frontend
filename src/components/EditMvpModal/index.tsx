@@ -1,11 +1,11 @@
-import { useContext, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import moment from 'moment';
 import DatePicker from 'react-datepicker';
 import { X } from '@styled-icons/feather';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
-import { useScrollBlock } from '../../hooks/useScrollBlock';
+import { useScrollBlock } from '../../hooks';
 import { MvpsContext } from '../../contexts/MvpsContext';
 import { SettingsContext } from '../../contexts/SettingsContext';
 import { IMapMark, Mvp } from '../../interfaces';
@@ -41,10 +41,13 @@ export function EditMvpModal() {
     y: -1,
   });
 
-  const canChangeMap = !mvp.deathMap;
-  const hasMoreThanOneMap = mvp.spawn.length > 1;
+  const canChangeMap = useMemo(() => !mvp.deathMap, [mvp.deathMap]);
+  const hasMoreThanOneMap = useMemo(
+    () => mvp.spawn.length > 1,
+    [mvp.spawn.length]
+  );
 
-  function handleConfirm() {
+  const handleConfirm = useCallback(() => {
     if (!selectedMap) return;
 
     const updatedMvp: Mvp = {
@@ -55,7 +58,7 @@ export function EditMvpModal() {
 
     killMvp(updatedMvp, newTime);
     toggleEditModal();
-  }
+  }, [selectedMap, mvp, markCoordinates, killMvp, newTime, toggleEditModal]);
 
   useEffect(() => {
     if (!hasMoreThanOneMap) setSelectedMap(mvp.spawn[0].mapname);

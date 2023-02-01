@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useCallback, useContext, useMemo } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { X, Trash, Sun, Moon } from '@styled-icons/feather';
 
@@ -8,7 +8,7 @@ import { LanguageSelector } from '../LanguageSelector';
 
 import { SettingsContext } from '../../contexts/SettingsContext';
 import { MvpsContext } from '../../contexts/MvpsContext';
-import { useScrollBlock } from '../../hooks/useScrollBlock';
+import { useScrollBlock } from '../../hooks';
 import { clearData } from '../../utils';
 import { GetTranslateText } from '../../utils/GetTranslateText';
 
@@ -37,16 +37,19 @@ export function SettingsModal() {
   const { theme } = useContext(SettingsContext);
   const { clearActiveMvps } = useContext(MvpsContext);
 
-  const clearDataMessage = GetTranslateText('clear_data_message');
+  const clearDataMessage = useMemo(
+    () => GetTranslateText('clear_data_message'),
+    []
+  );
 
-  function handleClearData() {
+  const handleClearData = useCallback(() => {
     const confirmed = confirm(clearDataMessage);
     if (!confirmed) return;
     clearData();
     clearActiveMvps();
     resetSettings();
     toggleSettingsModal();
-  }
+  }, [clearActiveMvps, clearDataMessage, resetSettings, toggleSettingsModal]);
 
   return (
     <ModalBase>

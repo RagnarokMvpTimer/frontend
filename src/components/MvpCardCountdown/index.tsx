@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Moment } from 'moment';
 
-import { useCountown } from '../../hooks/useCountdown';
+import { useCountown } from '../../hooks';
 import { GetTranslateText } from '../../utils/GetTranslateText';
 
 import { Container, Text, Bold } from './styles';

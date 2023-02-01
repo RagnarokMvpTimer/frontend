@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useMemo, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import { MvpCard } from '../../components/MvpCard';
@@ -12,18 +12,28 @@ import { Container, Section, SectionTitle, MvpsContainer } from './styles';
 
 export function Main() {
   const { activeMvps, allMvps } = useContext(MvpsContext);
-  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [searchQuery, setSearchQuery] = useState<string>();
   const [currentSort, setCurrentSort] = useState<string>('id');
   const [reverseSort, setReverseSort] = useState<boolean>(false);
 
-  const allMvpsFilteredAndSorted = (
-    searchQuery?.length > 0
-      ? allMvps.filter((i) =>
-          i.name.toLocaleLowerCase().includes(searchQuery.toLocaleLowerCase())
-        )
-      : allMvps
-  ).sort(sortBy(currentSort));
-  reverseSort && allMvpsFilteredAndSorted.reverse();
+  const allMvpsFilteredAndSorted = useMemo(
+    () =>
+      (searchQuery
+        ? allMvps.filter((i) =>
+            i.name.toLocaleLowerCase().includes(searchQuery.toLocaleLowerCase())
+          )
+        : allMvps
+      ).sort(sortBy(currentSort)),
+    [searchQuery, allMvps, currentSort]
+  );
+
+  const displayAllMvps = useMemo(
+    () =>
+      reverseSort
+        ? allMvpsFilteredAndSorted.slice().reverse()
+        : allMvpsFilteredAndSorted,
+    [reverseSort, allMvpsFilteredAndSorted]
+  );
 
   return (
     <Container>
@@ -32,6 +42,7 @@ export function Main() {
           <SectionTitle>
             <FormattedMessage id='active' />
           </SectionTitle>
+
           <MvpsContainer>
             {activeMvps.map((mvp: Mvp) => (
               <MvpCard key={`${mvp.id}-${mvp.deathMap}`} mvp={mvp} isActive />
@@ -52,9 +63,9 @@ export function Main() {
           onReverse={() => setReverseSort((s) => !s)}
         />
 
-        {allMvpsFilteredAndSorted.length > 0 && (
+        {displayAllMvps.length > 0 && (
           <MvpsContainer>
-            {allMvpsFilteredAndSorted.map((mvp: Mvp) => (
+            {displayAllMvps.map((mvp: Mvp) => (
               <MvpCard key={mvp.id} mvp={mvp} />
             ))}
           </MvpsContainer>

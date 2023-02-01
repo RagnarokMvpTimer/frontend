@@ -1,5 +1,5 @@
-import { useContext, useState } from 'react';
-import { Map, RefreshCcw, Trash2 } from '@styled-icons/feather';
+import { useCallback, useContext, useMemo, useState } from 'react';
+import { Map, RefreshCcw, Trash2, Edit2 } from '@styled-icons/feather';
 import { FormattedMessage } from 'react-intl';
 import moment from 'moment';
 
@@ -35,17 +35,25 @@ export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
   const { respawnAsCountdown } = useContext(SettingsContext);
   const [isMapModalOpen, setIsMapModalOpen] = useState<boolean>(false);
 
-  const hasMoreThanOneMap = mvp.spawn.length > 1;
-  const nextRespawn = moment(mvp.deathTime).add(getMvpRespawnTime(mvp), 'ms');
-  const respawnTime = respawnAt(nextRespawn);
+  const hasMoreThanOneMap = useMemo(
+    () => mvp.spawn.length > 1,
+    [mvp.spawn.length]
+  );
 
-  function handleKilledNow() {
+  const nextRespawn = useMemo(
+    () => moment(mvp.deathTime).add(getMvpRespawnTime(mvp), 'ms'),
+    [mvp]
+  );
+
+  const respawnTime = useMemo(() => respawnAt(nextRespawn), [nextRespawn]);
+
+  const handleKilledNow = useCallback(() => {
     mvp.deathMap
       ? killMvp(mvp)
       : hasMoreThanOneMap
       ? openAndEditModal(mvp)
       : killMvp({ ...mvp, deathMap: mvp.spawn[0].mapname });
-  }
+  }, [mvp, killMvp, hasMoreThanOneMap, openAndEditModal]);
 
   return (
     <Container>
@@ -82,6 +90,12 @@ export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
             <Control onClick={() => removeMvp(mvp)} title='Remove this mvp'>
               <Trash2 />
             </Control>
+            {/* <Control
+              onClick={() => openAndEditModal(mvp)}
+              title='Edit this mvp'
+            >
+              <Edit2 />
+            </Control> */}
           </Controls>
         </>
       ) : (

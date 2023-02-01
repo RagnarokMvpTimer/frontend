@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Clipboard, Check } from '@styled-icons/feather';
 import { FormattedMessage } from 'react-intl';
 
@@ -21,9 +21,9 @@ export function MvpMapModal({
 }: MvpMapModalProps) {
   const [copied, setCopied] = useState(false);
 
-  const navString = `/navi ${deathMap} 50/50`;
+  const navString = useMemo(() => `/navi ${deathMap} 50/50`, [deathMap]);
 
-  function copyToClipboard() {
+  const copyToClipboard = useCallback(() => {
     if (copied) return;
 
     setCopied(true);
@@ -31,7 +31,7 @@ export function MvpMapModal({
     setTimeout(() => {
       setCopied(false);
     }, 1000);
-  }
+  }, [copied, navString]);
 
   useEffect(() => {
     const handleClose = (e: KeyboardEvent) => {

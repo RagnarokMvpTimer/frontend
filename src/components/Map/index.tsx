@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 import { IMapMark } from '../../interfaces';
 import { getMapImg } from '../../utils';
@@ -24,17 +24,20 @@ export function Map({
 }: MapProps) {
   const [markCoordinates, setMarkCoordinates] = useState<IMapMark>(coordinates);
 
-  function mapMark(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
-    if (!onChange) return;
+  const mapMark = useCallback(
+    (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+      if (!onChange) return;
 
-    const { offsetX, offsetY } = e.nativeEvent;
-    const newCoords = {
-      x: offsetX,
-      y: offsetY,
-    };
-    setMarkCoordinates(newCoords);
-    onChange(newCoords);
-  }
+      const { offsetX, offsetY } = e.nativeEvent;
+      const newCoords = {
+        x: offsetX,
+        y: offsetY,
+      };
+      setMarkCoordinates(newCoords);
+      onChange(newCoords);
+    },
+    [onChange]
+  );
 
   useEffect(() => {
     if (!onChange) return;

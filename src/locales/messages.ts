@@ -34,8 +34,11 @@ export const messages = {
     none: 'None',
     level: 'Level',
     health: 'Health',
+    baseExperience: 'Base EXP',
+    jobExperience: 'Job Exp',
     respawnTime: 'Respawn',
     name: 'Name',
+    id: 'ID',
   },
   [LOCALES.PORTUGUESE]: {
     under_development: 'Em desenvolvimento',
@@ -69,7 +72,10 @@ export const messages = {
     none: 'Nenhum',
     level: 'Nível',
     health: 'Vida',
+    baseExperience: 'EXP de Base',
+    jobExperience: 'EXP de Classe',
     respawnTime: 'Renascimento',
     name: 'Nome',
+    id: 'ID',
   },
 };

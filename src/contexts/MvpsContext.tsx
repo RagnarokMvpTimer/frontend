@@ -1,4 +1,10 @@
-import { createContext, useState, useEffect, ReactNode } from 'react';
+import {
+  createContext,
+  useState,
+  useEffect,
+  ReactNode,
+  useCallback,
+} from 'react';
 import moment from 'moment';
 
 import { getMvpRespawnTime } from '../utils';
@@ -34,24 +40,32 @@ export function MvpProvider({ children }: MvpProviderProps) {
     mvpsData.sort((a, b) => a.stats.level - b.stats.level)
   );
 
-  const toggleEditModal = () => setIsEditModalOpen((prev) => !prev);
+  const toggleEditModal = useCallback(
+    () => setIsEditModalOpen((prev) => !prev),
+    []
+  );
 
-  function resetMvpTimer(mvp: Mvp) {
+  const resetMvpTimer = useCallback((mvp: Mvp) => {
     const updatedMvp = { ...mvp, deathTime: new Date() };
     setActiveMvps((state) =>
       state.map((m) => (m.deathMap === mvp.deathMap ? updatedMvp : m))
     );
-  }
+  }, []);
 
-  function removeMvp(mvp: Mvp) {
-    setActiveMvps((state) => state.filter((m) => m.deathMap !== mvp.deathMap));
-  }
+  const removeMvp = useCallback(
+    (mvp: Mvp) =>
+      setActiveMvps((state) =>
+        state.filter((m) => m.deathMap !== mvp.deathMap)
+      ),
+    []
+  );
 
-  function killMvp(mvp: Mvp, time?: Date | null) {
+  const killMvp = useCallback((mvp: Mvp, time?: Date | null) => {
     const killedMvp = {
       ...mvp,
       deathTime: time || new Date(),
     };
+
     setActiveMvps((s) =>
       [...s, killedMvp].sort((a: Mvp, b: Mvp) =>
         a.deathTime && b.deathTime
@@ -61,25 +75,26 @@ export function MvpProvider({ children }: MvpProviderProps) {
           : 0
       )
     );
-  }
+  }, []);
 
-  function respawnNotification(mvp: Mvp) {
+  /* function respawnNotification(mvp: Mvp) {
     new Audio('./notification1.mp3').play();
 
     if (Notification.permission !== 'granted') return;
     new Notification(`${mvp.name} will respawn soon...`, {
       body: `At ${mvp.deathTime?.toLocaleTimeString()}`,
     });
-  }
+  } */
 
-  function openAndEditModal(mvp: Mvp) {
-    setEditingMvp(mvp);
-    toggleEditModal();
-  }
+  const openAndEditModal = useCallback(
+    (mvp: Mvp) => {
+      setEditingMvp(mvp);
+      toggleEditModal();
+    },
+    [toggleEditModal]
+  );
 
-  function clearActiveMvps() {
-    setActiveMvps([]);
-  }
+  const clearActiveMvps = useCallback(() => setActiveMvps([]), []);
 
   useEffect(() => {
     if (!isLoading) return;
@@ -115,6 +130,7 @@ export function MvpProvider({ children }: MvpProviderProps) {
       deathTime: mvp.deathTime,
       deathPosition: mvp.deathPosition,
     }));
+
     localStorage.setItem('activeMvps', JSON.stringify(data));
   }, [activeMvps]);
 
