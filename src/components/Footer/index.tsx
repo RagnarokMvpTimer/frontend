@@ -44,7 +44,8 @@ export function Footer() {
 
         <Text>
           <FormattedMessage id='affiliation' />
-          <Bold>DivinePride</Bold>
+          <Bold>DivinePride, </Bold>
+          <Bold>iRO Wiki DB</Bold>
           <FormattedMessage id='or' />
           <Bold>Gravity Interactive</Bold>
         </Text>
