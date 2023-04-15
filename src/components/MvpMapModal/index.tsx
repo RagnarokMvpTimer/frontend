@@ -1,8 +1,10 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { Clipboard, Check } from '@styled-icons/feather';
 import { FormattedMessage } from 'react-intl';
 
 import { IMapMark } from '../../interfaces';
+import { useKey } from '../../hooks';
+
 import { ModalBase } from '../ModalBase';
 import { Map } from '../Map';
 
@@ -33,13 +35,7 @@ export function MvpMapModal({
     }, 1000);
   }, [copied, navString]);
 
-  useEffect(() => {
-    const handleClose = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') close();
-    };
-    document.addEventListener('keydown', handleClose);
-    return () => document.removeEventListener('keydown', handleClose);
-  }, [close]);
+  useKey('Escape', close);
 
   return (
     <ModalBase>

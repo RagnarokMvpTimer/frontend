@@ -8,7 +8,7 @@ import { LanguageSelector } from '../LanguageSelector';
 
 import { SettingsContext } from '../../contexts/SettingsContext';
 import { MvpsContext } from '../../contexts/MvpsContext';
-import { useScrollBlock } from '../../hooks';
+import { useScrollBlock, useClickOutside } from '../../hooks';
 import { clearData } from '../../utils';
 import { GetTranslateText } from '../../utils/GetTranslateText';
 
@@ -37,6 +37,10 @@ export function SettingsModal() {
   const { theme } = useContext(SettingsContext);
   const { clearActiveMvps } = useContext(MvpsContext);
 
+  const modalRef = useClickOutside({
+    onClick: toggleSettingsModal,
+  });
+
   const clearDataMessage = useMemo(
     () => GetTranslateText('clear_data_message'),
     []
@@ -53,7 +57,7 @@ export function SettingsModal() {
 
   return (
     <ModalBase>
-      <Modal>
+      <Modal ref={modalRef}>
         <CloseButton onClick={toggleSettingsModal}>
           <X size={20} />
         </CloseButton>

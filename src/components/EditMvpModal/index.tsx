@@ -5,9 +5,8 @@ import { X } from '@styled-icons/feather';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
-import { useScrollBlock } from '../../hooks';
+import { useScrollBlock, useKey } from '../../hooks';
 import { MvpsContext } from '../../contexts/MvpsContext';
-import { SettingsContext } from '../../contexts/SettingsContext';
 import { IMapMark, Mvp } from '../../interfaces';
 
 import { ModalBase } from '../ModalBase';
@@ -64,13 +63,7 @@ export function EditMvpModal() {
     if (!hasMoreThanOneMap) setSelectedMap(mvp.spawn[0].mapname);
   }, [hasMoreThanOneMap, mvp.spawn]);
 
-  useEffect(() => {
-    const handleClose = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') toggleEditModal();
-    };
-    document.addEventListener('keydown', handleClose);
-    return () => document.removeEventListener('keydown', handleClose);
-  }, [toggleEditModal]);
+  useKey('Escape', toggleEditModal);
 
   return (
     <ModalBase>

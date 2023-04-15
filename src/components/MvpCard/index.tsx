@@ -56,58 +56,60 @@ export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
   }, [mvp, killMvp, hasMoreThanOneMap, openAndEditModal]);
 
   return (
-    <Container>
-      <Name>{mvp.name}</Name>
+    <>
+      <Container>
+        <Name>{mvp.name}</Name>
 
-      <MvpSprite mvp={mvp} />
+        <MvpSprite mvp={mvp} />
 
-      {isActive ? (
-        <>
-          <Respawn title={respawnTime}>
-            {respawnAsCountdown ? (
-              <MvpCardCountdown nextRespawn={nextRespawn} />
-            ) : (
-              <>
-                <FormattedMessage id='respawn_at' /> {'\n'}
-                <Bold>{respawnTime}</Bold>
-              </>
-            )}
-          </Respawn>
+        {isActive ? (
+          <>
+            <Respawn title={respawnTime}>
+              {respawnAsCountdown ? (
+                <MvpCardCountdown nextRespawn={nextRespawn} />
+              ) : (
+                <>
+                  <FormattedMessage id='respawn_at' /> {'\n'}
+                  <Bold>{respawnTime}</Bold>
+                </>
+              )}
+            </Respawn>
 
-          <MapName>
-            <FormattedMessage id='map' />
-            {'\n'}
-            <Bold>{mvp.deathMap}</Bold>
-          </MapName>
+            <MapName>
+              <FormattedMessage id='map' />
+              {'\n'}
+              <Bold>{mvp.deathMap}</Bold>
+            </MapName>
 
-          <Controls>
-            <Control onClick={() => setIsMapModalOpen(true)} title='Show map'>
-              <Map />
-            </Control>
-            <Control onClick={() => resetMvpTimer(mvp)} title='Reset timer'>
-              <RefreshCcw />
-            </Control>
-            <Control onClick={() => removeMvp(mvp)} title='Remove this mvp'>
-              <Trash2 />
-            </Control>
-            {/* <Control
+            <Controls>
+              <Control onClick={() => setIsMapModalOpen(true)} title='Show map'>
+                <Map />
+              </Control>
+              <Control onClick={() => resetMvpTimer(mvp)} title='Reset timer'>
+                <RefreshCcw />
+              </Control>
+              <Control onClick={() => removeMvp(mvp)} title='Remove this mvp'>
+                <Trash2 />
+              </Control>
+              {/* <Control
               onClick={() => openAndEditModal(mvp)}
               title='Edit this mvp'
             >
               <Edit2 />
             </Control> */}
+            </Controls>
+          </>
+        ) : (
+          <Controls isActive={!isActive}>
+            <KilledNow onClick={handleKilledNow}>
+              <FormattedMessage id='killed_now' />
+            </KilledNow>
+            <EditButton onClick={() => openAndEditModal(mvp)}>
+              <FormattedMessage id='edit' />
+            </EditButton>
           </Controls>
-        </>
-      ) : (
-        <Controls isActive={!isActive}>
-          <KilledNow onClick={handleKilledNow}>
-            <FormattedMessage id='killed_now' />
-          </KilledNow>
-          <EditButton onClick={() => openAndEditModal(mvp)}>
-            <FormattedMessage id='edit' />
-          </EditButton>
-        </Controls>
-      )}
+        )}
+      </Container>
 
       {mvp.deathMap && isMapModalOpen && (
         <MvpMapModal
@@ -116,6 +118,6 @@ export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
           close={() => setIsMapModalOpen(false)}
         />
       )}
-    </Container>
+    </>
   );
 }
