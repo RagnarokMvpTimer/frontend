@@ -7,6 +7,18 @@ const __dirname = path.dirname(__filename);
 
 const VALID_EXTENSIONS = ['png', 'gif'];
 
+function fileProps(file) {
+  const id = file.split('.')[0];
+  const name = `icon${id}`;
+  const importLine = `import ${name} from './${file}'`;
+  const exportLine = `"${id}": ${name}`;
+
+  return {
+    importLine,
+    exportLine,
+  };
+}
+
 function createIndex(folderName, exportName) {
   const imagesDir = path.resolve(__dirname, folderName);
   const files = readdirSync(imagesDir).filter((img) => {
@@ -14,15 +26,16 @@ function createIndex(folderName, exportName) {
     return VALID_EXTENSIONS.includes(ext);
   });
 
-  const item = (file) => `"${file.split('.')[0]}": require("./${file}")`;
+  const filesProps = files.map(fileProps);
 
-  const ex = files.map(item).join(',\n  ');
+  const importLines = filesProps.map((f) => f.importLine).join(';\n');
+  const exportLines = filesProps.map((f) => f.exportLine).join(',\n  ');
 
-  const res = `export const ${exportName} = {
-  ${ex}
-}`;
+  console.log(exportLines);
 
-  writeFileSync(`${imagesDir}/index.ts`, res);
+  const indexContent = `${importLines}\n\nexport const ${exportName} = {\n${exportLines}\n}`;
+
+  writeFileSync(`${imagesDir}/index.ts`, indexContent);
 }
 
 createIndex('mvp_icons', 'mvpIcons');
