@@ -14,7 +14,7 @@ const SOON_THRESHOLD = 600000; // 10 minutes
 
 export function MvpCardCountdown({ nextRespawn }: MvpCardCountdownProps) {
   const { duration, isRunning } = useCountown(nextRespawn);
-  const [timeString, setTimeString] = useState<string>('');
+  const [timeString, setTimeString] = useState<string>('-- : -- : --');
   const [respawningSoon, setRespawningSoon] = useState(false);
   const [isBefore, setIsBefore] = useState(false);
 
