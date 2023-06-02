@@ -49,6 +49,12 @@ export const Themes = {
         text: '#fff',
       },
 
+      languagePicker: {
+        bg: '#454545',
+        border: '#1b1c1d',
+        text: '#fff',
+      },
+
       footer: {
         text: '#fff',
         link: '#f89200',
@@ -104,6 +110,12 @@ export const Themes = {
         bg: '#FFFFFF',
         border: '#f89200',
         text: '#000',
+      },
+
+      languagePicker: {
+        bg: '#F6F8FA',
+        border: '#f89200',
+        text: '#421411',
       },
 
       footer: {

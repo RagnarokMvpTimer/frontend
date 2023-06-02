@@ -41,8 +41,8 @@ export const Picker = styled.ul<{ isOpen: boolean }>`
   margin-top: 10px;
 
   border-radius: 8px;
-  border: 1px solid #1b1c1d;
-  background-color: #454545;
+  border: 1px solid ${({ theme }) => theme.colors.languagePicker.border};
+  background-color: ${({ theme }) => theme.colors.languagePicker.bg};
   z-index: 1;
 
   cursor: none;
@@ -63,7 +63,9 @@ export const LangItem = styled.li`
 
   cursor: pointer;
   pointer-events: all;
-  color: #fff;
+
+  color: ${({ theme }) => theme.colors.languagePicker.text};
+  font-weight: 600;
 
   :hover {
     background-color: #ffa800;

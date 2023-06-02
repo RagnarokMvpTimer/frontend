@@ -51,6 +51,12 @@ declare module 'styled-components' {
         text: string;
       };
 
+      languagePicker: {
+        bg: string;
+        border: string;
+        text: string;
+      };
+
       footer: {
         text: string;
         link: string;
