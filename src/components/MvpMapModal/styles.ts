@@ -8,9 +8,10 @@ export const Modal = styled.div`
   align-items: center;
   flex-direction: column;
 
-  gap: 10px;
-  padding: 20px 0;
+  gap: 1rem;
+  padding: 2rem 0;
   border-radius: 6px;
+  margin: 0 1rem;
 
   background-color: ${({ theme }) => theme.colors.modal.bg};
 `;
@@ -18,26 +19,26 @@ export const Modal = styled.div`
 export const Name = styled.span`
   color: ${({ theme }) => theme.colors.modal.text};
   font-weight: bold;
-  font-size: 18px;
+  font-size: 1.8rem;
 `;
 
 export const NavCommand = styled.button`
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 0.6rem;
 
   color: ${({ theme }) => theme.colors.modal.text};
   border: 1px solid ${({ theme }) => theme.colors.modal.hl};
-  border-radius: 6px;
-  padding: 6px;
+  border-radius: 0.6rem;
+  padding: 0.6rem;
 
-  font-size: 16px;
+  font-size: 1.6rem;
   cursor: pointer;
   background: none;
 
   > svg {
-    width: 18px;
-    height: 18px;
+    width: 1.8rem;
+    height: 1.8rem;
     stroke-width: 2px;
   }
 
@@ -57,20 +58,20 @@ export const Warning = styled.span`
   display: flex;
   align-items: center;
   text-align: center;
-  padding: 0 30px;
+  padding: 0 3rem;
 
   color: ${({ theme }) => theme.colors.modal.text};
   font-weight: bold;
-  font-size: 14px;
+  font-size: 1.4rem;
 `;
 
 export const CloseButton = styled.button`
-  width: 150px;
-  height: 50px;
+  width: 15rem;
+  height: 5rem;
 
   font-weight: 600;
-  font-size: 18px;
-  border-radius: 8px;
+  font-size: 1.8rem;
+  border-radius: 0.8rem;
 
   color: white;
   background-color: ${({ theme }) => theme.colors.modal.button};

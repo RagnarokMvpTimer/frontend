@@ -16,6 +16,18 @@ export const GlobalStyle = createGlobalStyle`
     min-height: 100vh;
   }
 
+  /* :root {
+    --test: '#fff';
+  } */
+
+  html {
+    font-size: 62.5%;
+  }
+
+  body {
+    font-size: 1.6rem;
+  }
+
   a {
     text-decoration: none;
   }
