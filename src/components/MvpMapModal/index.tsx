@@ -1,5 +1,3 @@
-import { useCallback, useMemo, useState } from 'react';
-import { Clipboard, Check } from '@styled-icons/feather';
 import { FormattedMessage } from 'react-intl';
 
 import { IMapMark } from '../../interfaces';
@@ -8,7 +6,8 @@ import { useKey } from '../../hooks';
 import { ModalBase } from '../ModalBase';
 import { Map } from '../Map';
 
-import { Modal, Name, NavCommand, Warning, CloseButton } from './styles';
+import { Modal, Name, Warning, CloseButton } from './styles';
+import { NaviCommand } from '../NaviCommand';
 
 interface MvpMapModalProps {
   deathMap: string;
@@ -21,20 +20,6 @@ export function MvpMapModal({
   deathPosition,
   close,
 }: MvpMapModalProps) {
-  const [copied, setCopied] = useState(false);
-
-  const navString = useMemo(() => `/navi ${deathMap} 50/50`, [deathMap]);
-
-  const copyToClipboard = useCallback(() => {
-    if (copied) return;
-
-    setCopied(true);
-    navigator.clipboard.writeText(navString);
-    setTimeout(() => {
-      setCopied(false);
-    }, 1000);
-  }, [copied, navString]);
-
   useKey('Escape', close);
 
   return (
@@ -44,23 +29,7 @@ export function MvpMapModal({
 
         <Map mapName={deathMap} coordinates={deathPosition} />
 
-        <NavCommand
-          onClick={copyToClipboard}
-          disabled={copied}
-          title='Copy to Clipboard'
-        >
-          {copied ? (
-            <>
-              <Check />
-              <FormattedMessage id='copied' />
-            </>
-          ) : (
-            <>
-              <Clipboard />
-              {navString}
-            </>
-          )}
-        </NavCommand>
+        <NaviCommand mapName={deathMap} />
 
         <Warning>
           <FormattedMessage id='nav_command_warning' />
