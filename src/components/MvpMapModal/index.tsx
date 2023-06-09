@@ -5,9 +5,9 @@ import { useKey } from '../../hooks';
 
 import { ModalBase } from '../ModalBase';
 import { Map } from '../Map';
+import { NaviCommand } from '../NaviCommand';
 
 import { Modal, Name, Warning, CloseButton } from './styles';
-import { NaviCommand } from '../NaviCommand';
 
 interface MvpMapModalProps {
   deathMap: string;

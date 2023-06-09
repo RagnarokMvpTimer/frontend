@@ -20,12 +20,6 @@ export const Modal = styled.div`
   ${mobile(css``)}
 `;
 
-export const CloseButton = styled.button`
-  align-self: flex-end;
-  background: none;
-  color: ${({ theme }) => theme.colors.modal.text};
-`;
-
 export const Title = styled.span`
   color: ${({ theme }) => theme.colors.modal.name};
   margin-top: -25px;

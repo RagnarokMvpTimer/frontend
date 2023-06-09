@@ -1,10 +1,11 @@
 import { useCallback, useContext, useMemo } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { X, Trash, Sun, Moon } from '@styled-icons/feather';
+import { Trash, Sun, Moon } from '@styled-icons/feather';
 
 import { ModalBase } from '../ModalBase';
 import { Switch } from '../Switch';
 import { LanguageSelector } from '../LanguageSelector';
+import { ModalCloseButton } from '../ModalCloseButton';
 
 import { SettingsContext } from '../../contexts/SettingsContext';
 import { MvpsContext } from '../../contexts/MvpsContext';
@@ -14,7 +15,6 @@ import { GetTranslateText } from '../../utils/GetTranslateText';
 
 import {
   Modal,
-  CloseButton,
   Title,
   Subtitle,
   SettingsContainer,
@@ -58,9 +58,7 @@ export function SettingsModal() {
   return (
     <ModalBase>
       <Modal ref={modalRef}>
-        <CloseButton onClick={toggleSettingsModal}>
-          <X size={20} />
-        </CloseButton>
+        <ModalCloseButton onClick={toggleSettingsModal} />
 
         <Title>
           <FormattedMessage id='settings' />

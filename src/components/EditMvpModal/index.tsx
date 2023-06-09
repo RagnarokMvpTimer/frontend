@@ -1,7 +1,6 @@
 import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import moment from 'moment';
 import DatePicker from 'react-datepicker';
-import { X } from '@styled-icons/feather';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -12,10 +11,10 @@ import { IMapMark, Mvp } from '../../interfaces';
 import { ModalBase } from '../ModalBase';
 import { MvpSprite } from '../MvpSprite';
 import { Map } from '../Map';
+import { ModalCloseButton } from '../ModalCloseButton';
 
 import {
   Modal,
-  CloseButton,
   SpriteWrapper,
   Name,
   Question,
@@ -68,9 +67,7 @@ export function EditMvpModal() {
   return (
     <ModalBase>
       <Modal>
-        <CloseButton onClick={toggleEditModal}>
-          <X size={20} />
-        </CloseButton>
+        <ModalCloseButton onClick={toggleEditModal} />
 
         <Name>{mvp.name}</Name>
 

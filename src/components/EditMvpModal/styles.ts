@@ -22,12 +22,6 @@ export const Modal = styled.div`
   `)}
 `;
 
-export const CloseButton = styled.button`
-  align-self: flex-end;
-  background: none;
-  color: ${({ theme }) => theme.colors.modal.text};
-`;
-
 export const SpriteWrapper = styled.div`
   > img {
     width: auto;
