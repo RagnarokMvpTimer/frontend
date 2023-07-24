@@ -1,9 +1,9 @@
-export interface IMapMark {
+interface IMapMark {
   x: number;
   y: number;
 }
 
-export interface Mvp {
+interface IMvp {
   id: number;
   name: string;
   spawn: Array<{

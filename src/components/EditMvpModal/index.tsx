@@ -6,7 +6,6 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 import { useScrollBlock, useKey } from '../../hooks';
 import { MvpsContext } from '../../contexts/MvpsContext';
-import { IMapMark, Mvp } from '../../interfaces';
 
 import { ModalBase } from '../ModalBase';
 import { MvpSprite } from '../MvpSprite';
@@ -48,7 +47,7 @@ export function EditMvpModal() {
   const handleConfirm = useCallback(() => {
     if (!selectedMap) return;
 
-    const updatedMvp: Mvp = {
+    const updatedMvp: IMvp = {
       ...mvp,
       deathMap: selectedMap,
       deathPosition: markCoordinates,

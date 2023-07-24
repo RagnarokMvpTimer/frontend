@@ -31,7 +31,7 @@ export const SettingsContext = createContext({} as SettingsContextData);
 
 export function SettingsProvider({ children }: SettingsProviderProps) {
   const [isLoading, setIsLoading] = useState(true);
-  const [theme, setTheme] = usePersistedState<string>('theme', Themes.dark.id);
+  const [theme, setTheme] = usePersistedState<string>('theme', Themes.light.id);
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
   const [respawnAsCountdown, setRespawnAsCountdown] = useState(true);
   const [animatedSprites, setAnimatedSprites] = useState(false);

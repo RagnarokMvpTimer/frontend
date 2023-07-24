@@ -5,7 +5,7 @@ export const Modal = styled.div`
   width: 100%;
   max-width: 500px;
 
-  padding: 8px;
+  padding: 2rem;
   gap: 8px;
 
   border-radius: 6px;
@@ -19,6 +19,7 @@ export const Modal = styled.div`
 
   ${mobile(css`
     width: 95%;
+    padding: 1rem;
   `)}
 `;
 
@@ -64,15 +65,20 @@ export const Time = styled.span`
 `;
 
 export const DatePickerContainer = styled.div`
-  input {
-    border-radius: 4px;
-    text-align: center;
-    cursor: pointer;
+  > div {
+    > div {
+      > input {
+        border-radius: 4px;
+        text-align: center;
+        cursor: pointer;
+        border: 1px solid ${({ theme }) => theme.colors.modal.datePicker.border};
+      }
+    }
   }
 `;
 
 export const SelectMap = styled.select`
-  border: 1px solid #fff;
+  border: 1px solid ${({ theme }) => theme.colors.modal.mapSelect.border};
   border-radius: 4px;
   padding: 0 6px;
 

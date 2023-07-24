@@ -3,5 +3,5 @@
   "files.exclude": {
     "node_modules": true
   },
-  "cSpell.words": ["Mvps", "navi"]
+  "cSpell.words": ["mapname", "mvps", "Mvps", "navi"]
 }

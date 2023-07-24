@@ -1,6 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
 
-import { IMapMark } from '../../interfaces';
 import { getMapImg } from '../../utils';
 import { MapMark } from '../MapMark';
 

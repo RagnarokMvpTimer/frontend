@@ -38,7 +38,7 @@
     "vite": "^4.3.9"
   },
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --open",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "cmi": "node ./src/assets/createMvpIndex.js",

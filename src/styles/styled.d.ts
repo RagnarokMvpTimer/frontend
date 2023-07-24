@@ -12,6 +12,7 @@ declare module 'styled-components' {
       text: string;
 
       mvpCard: {
+        id: string;
         name: string;
         bg: string;
         text: string;
@@ -43,6 +44,14 @@ declare module 'styled-components' {
         name: string;
         time: string;
         button: string;
+
+        datePicker: {
+          border: string;
+        };
+
+        mapSelect: {
+          border: string;
+        };
       };
 
       filterSearch: {

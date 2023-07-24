@@ -1,6 +1,5 @@
 import moment, { Moment } from 'moment';
 
-import { Mvp } from '../interfaces';
 import { mvpIcons } from '../assets/mvp_icons';
 import { mvpIconsAnimated } from '../assets/mvp_icons_animated';
 import { mvpMaps } from '../assets/mvp_maps';
@@ -57,7 +56,7 @@ export const getMapImg = (mapname: string): string =>
  * @param mvp Mvp object
  * @returns respawn time in milisecondsw
  */
-export function getMvpRespawnTime(mvp: Mvp): number | undefined {
+export function getMvpRespawnTime(mvp: IMvp): number | undefined {
   const deathMap = mvp.spawn.find((spawn) => spawn.mapname === mvp.deathMap);
   const respawnTime = deathMap?.respawnTime;
   return respawnTime;

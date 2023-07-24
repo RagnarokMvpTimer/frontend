@@ -6,7 +6,7 @@ export const Container = styled.div`
   align-items: center;
 
   width: 220px;
-  height: 300px;
+  padding: 10px 0;
 
   border-radius: 8px;
 
@@ -18,9 +18,20 @@ export const Bold = styled.span`
   font-weight: bold;
 `;
 
+export const Header = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const ID = styled.span`
+  font-size: 12px;
+  font-weight: 600;
+  color: ${({ theme }) => theme.colors.mvpCard.id};
+`;
+
 export const Name = styled.span`
   font-weight: bold;
-  margin-top: 10px;
   color: ${({ theme }) => theme.colors.mvpCard.name};
 `;
 
@@ -68,7 +79,7 @@ export const Controls = styled.div<{ isActive?: boolean }>`
   flex-direction: ${({ isActive }) => (isActive ? 'column' : 'row')};
 
   margin-top: ${({ isActive }) => (isActive ? 35 : 8)}px;
-  gap: 15px;
+  gap: 10px;
 `;
 
 export const Control = styled.button`

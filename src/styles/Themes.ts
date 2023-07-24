@@ -10,6 +10,7 @@ export const Themes = {
       text: '#FFFFFF',
 
       mvpCard: {
+        id: '#fff',
         name: '#fff',
         bg: '#262626',
         text: '#fff',
@@ -41,6 +42,14 @@ export const Themes = {
         name: '#f89200',
         time: '#f89200',
         button: '#f89200',
+
+        datePicker: {
+          border: '#fff',
+        },
+
+        mapSelect: {
+          border: '#fff',
+        },
       },
 
       filterSearch: {
@@ -73,6 +82,7 @@ export const Themes = {
       text: '#000000',
 
       mvpCard: {
+        id: '#421411',
         name: '#f89200',
         bg: '#FFFFFF',
         text: '#421411',
@@ -104,6 +114,14 @@ export const Themes = {
         name: '#ffa800',
         time: '#ffa800',
         button: '#f89200',
+
+        datePicker: {
+          border: '#000',
+        },
+
+        mapSelect: {
+          border: '#000',
+        },
       },
 
       filterSearch: {

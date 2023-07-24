@@ -1,6 +1,4 @@
-import { Mvp } from '../interfaces';
-
-function getFastestRespawn(mvp: Mvp) {
+function getFastestRespawn(mvp: IMvp) {
   if (mvp.spawn.length === 0) return 0;
   return mvp.spawn.sort((i) => i.respawnTime)[0].respawnTime;
 }
@@ -11,12 +9,12 @@ export function sortBy(field: string) {
   }
 
   if (['level', 'health', 'baseExperience', 'jobExperience'].includes(field)) {
-    return (a: Mvp, b: Mvp) => a['stats'][field] - b['stats'][field];
+    return (a: IMvp, b: IMvp) => a['stats'][field] - b['stats'][field];
   }
 
   if (field === 'respawnTime') {
-    return (a: Mvp, b: Mvp) => getFastestRespawn(a) - getFastestRespawn(b);
+    return (a: IMvp, b: IMvp) => getFastestRespawn(a) - getFastestRespawn(b);
   }
 
-  return (a: Mvp, b: Mvp) => a[field] - b[field];
+  return (a: IMvp, b: IMvp) => a[field] - b[field];
 }

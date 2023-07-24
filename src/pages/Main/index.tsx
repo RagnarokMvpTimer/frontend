@@ -6,7 +6,6 @@ import { MvpsContext } from '../../contexts/MvpsContext';
 import { MvpsContainerFilter } from '../../components/MvpsContainerFilter';
 
 import { sortBy } from '../../utils/sort';
-import { Mvp } from '../../interfaces';
 
 import { Container, Section, SectionTitle, MvpsContainer } from './styles';
 
@@ -44,7 +43,7 @@ export function Main() {
           </SectionTitle>
 
           <MvpsContainer>
-            {activeMvps.map((mvp: Mvp) => (
+            {activeMvps.map((mvp: IMvp) => (
               <MvpCard key={`${mvp.id}-${mvp.deathMap}`} mvp={mvp} isActive />
             ))}
           </MvpsContainer>
@@ -65,7 +64,7 @@ export function Main() {
 
         {displayAllMvps.length > 0 && (
           <MvpsContainer>
-            {displayAllMvps.map((mvp: Mvp) => (
+            {displayAllMvps.map((mvp: IMvp) => (
               <MvpCard key={mvp.id} mvp={mvp} />
             ))}
           </MvpsContainer>

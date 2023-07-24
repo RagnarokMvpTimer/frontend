@@ -9,7 +9,6 @@ import moment from 'moment';
 
 import { getMvpRespawnTime } from '../utils';
 import { EditMvpModal } from '../components/EditMvpModal';
-import { Mvp } from '../interfaces';
 import mvpsData from '../data/data.json';
 
 interface MvpProviderProps {
@@ -17,14 +16,14 @@ interface MvpProviderProps {
 }
 
 interface MvpsContextData {
-  activeMvps: Array<Mvp>;
-  allMvps: Array<Mvp>;
-  editingMvp: Mvp;
-  resetMvpTimer: (mvp: Mvp) => void;
-  killMvp: (mvp: Mvp, time?: Date | null) => void;
-  removeMvp: (mvp: Mvp) => void;
-  setEditingMvp: (mvp: Mvp) => void;
-  openAndEditModal: (mvp: Mvp) => void;
+  activeMvps: Array<IMvp>;
+  allMvps: Array<IMvp>;
+  editingMvp: IMvp;
+  resetMvpTimer: (mvp: IMvp) => void;
+  killMvp: (mvp: IMvp, time?: Date | null) => void;
+  removeMvp: (mvp: IMvp) => void;
+  setEditingMvp: (mvp: IMvp) => void;
+  openAndEditModal: (mvp: IMvp) => void;
   toggleEditModal: () => void;
   clearActiveMvps: () => void;
 }
@@ -34,9 +33,9 @@ export const MvpsContext = createContext({} as MvpsContextData);
 export function MvpProvider({ children }: MvpProviderProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const [editingMvp, setEditingMvp] = useState<Mvp>({} as Mvp);
-  const [activeMvps, setActiveMvps] = useState<Array<Mvp>>([]);
-  const [allMvps, setAllMvps] = useState<Array<Mvp>>(
+  const [editingMvp, setEditingMvp] = useState<IMvp>({} as IMvp);
+  const [activeMvps, setActiveMvps] = useState<Array<IMvp>>([]);
+  const [allMvps, setAllMvps] = useState<Array<IMvp>>(
     mvpsData.sort((a, b) => a.stats.level - b.stats.level)
   );
 
@@ -45,7 +44,7 @@ export function MvpProvider({ children }: MvpProviderProps) {
     []
   );
 
-  const resetMvpTimer = useCallback((mvp: Mvp) => {
+  const resetMvpTimer = useCallback((mvp: IMvp) => {
     const updatedMvp = { ...mvp, deathTime: new Date() };
     setActiveMvps((state) =>
       state.map((m) => (m.deathMap === mvp.deathMap ? updatedMvp : m))
@@ -53,21 +52,21 @@ export function MvpProvider({ children }: MvpProviderProps) {
   }, []);
 
   const removeMvp = useCallback(
-    (mvp: Mvp) =>
+    (mvp: IMvp) =>
       setActiveMvps((state) =>
         state.filter((m) => m.deathMap !== mvp.deathMap)
       ),
     []
   );
 
-  const killMvp = useCallback((mvp: Mvp, time?: Date | null) => {
+  const killMvp = useCallback((mvp: IMvp, time?: Date | null) => {
     const killedMvp = {
       ...mvp,
       deathTime: time || new Date(),
     };
 
     setActiveMvps((s) =>
-      [...s, killedMvp].sort((a: Mvp, b: Mvp) =>
+      [...s, killedMvp].sort((a: IMvp, b: IMvp) =>
         a.deathTime && b.deathTime
           ? moment(a.deathTime)
               .add(getMvpRespawnTime(a), 'ms')
@@ -77,7 +76,7 @@ export function MvpProvider({ children }: MvpProviderProps) {
     );
   }, []);
 
-  /* function respawnNotification(mvp: Mvp) {
+  /* function respawnNotification(mvp: IMvp) {
     new Audio('./notification1.mp3').play();
 
     if (Notification.permission !== 'granted') return;
@@ -87,7 +86,7 @@ export function MvpProvider({ children }: MvpProviderProps) {
   } */
 
   const openAndEditModal = useCallback(
-    (mvp: Mvp) => {
+    (mvp: IMvp) => {
       setEditingMvp(mvp);
       toggleEditModal();
     },
@@ -106,7 +105,7 @@ export function MvpProvider({ children }: MvpProviderProps) {
       const dataParse = JSON.parse(data);
       if (!dataParse) return;
 
-      const finalData = dataParse.map((mvp: Mvp) => ({
+      const finalData = dataParse.map((mvp: IMvp) => ({
         ...mvpsData.find((m) => m.id === mvp.id),
         deathMap: mvp.deathMap,
         deathPosition: mvp.deathPosition,

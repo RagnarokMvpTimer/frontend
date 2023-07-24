@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import { IMapMark } from '../../interfaces';
-
 interface Props {
   coordinates: IMapMark;
 }

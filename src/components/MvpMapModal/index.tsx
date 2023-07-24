@@ -1,6 +1,5 @@
 import { FormattedMessage } from 'react-intl';
 
-import { IMapMark } from '../../interfaces';
 import { useKey } from '../../hooks';
 
 import { ModalBase } from '../ModalBase';

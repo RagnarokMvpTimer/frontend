@@ -7,13 +7,14 @@ import { MvpSprite } from '../MvpSprite';
 import { MvpMapModal } from '../MvpMapModal';
 import { MvpCardCountdown } from '../MvpCardCountdown';
 
-import { Mvp } from '../../interfaces';
 import { MvpsContext } from '../../contexts/MvpsContext';
 import { SettingsContext } from '../../contexts/SettingsContext';
 import { getMvpRespawnTime, respawnAt } from '../../utils';
 
 import {
   Container,
+  Header,
+  ID,
   Name,
   Respawn,
   MapName,
@@ -25,7 +26,7 @@ import {
 } from './styles';
 
 interface MvpCardProps {
-  mvp: Mvp;
+  mvp: IMvp;
   isActive?: boolean;
 }
 
@@ -58,7 +59,10 @@ export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
   return (
     <>
       <Container>
-        <Name>{mvp.name}</Name>
+        <Header>
+          <ID>{`(${mvp.id})`}</ID>
+          <Name>{mvp.name}</Name>
+        </Header>
 
         <MvpSprite mvp={mvp} />
 
