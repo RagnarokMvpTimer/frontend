@@ -1,5 +1,6 @@
 import {
   createContext,
+  useContext,
   useState,
   useEffect,
   ReactNode,
@@ -172,4 +173,12 @@ export function MvpProvider({ children }: MvpProviderProps) {
       {isEditModalOpen && <EditMvpModal />}
     </MvpsContext.Provider>
   );
+}
+
+export function useMvpsContext() {
+  const context = useContext(MvpsContext);
+  if (!context) {
+    throw new Error('useMvpsContext must be used within a MvpProvider');
+  }
+  return context;
 }

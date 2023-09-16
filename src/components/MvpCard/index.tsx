@@ -1,4 +1,4 @@
-import { useCallback, useContext, useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { Map, RefreshCcw, Trash2, Edit2 } from '@styled-icons/feather';
 import { FormattedMessage } from 'react-intl';
 import moment from 'moment';
@@ -7,8 +7,8 @@ import { MvpSprite } from '../MvpSprite';
 import { MvpMapModal } from '../MvpMapModal';
 import { MvpCardCountdown } from '../MvpCardCountdown';
 
-import { MvpsContext } from '../../contexts/MvpsContext';
-import { SettingsContext } from '../../contexts/SettingsContext';
+import { useMvpsContext } from '../../contexts/MvpsContext';
+import { useSettings } from '../../contexts/SettingsContext';
 import { getMvpRespawnTime, respawnAt } from '../../utils';
 
 import {
@@ -32,8 +32,8 @@ interface MvpCardProps {
 
 export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
   const { killMvp, resetMvpTimer, removeMvp, openAndEditModal } =
-    useContext(MvpsContext);
-  const { respawnAsCountdown } = useContext(SettingsContext);
+    useMvpsContext();
+  const { respawnAsCountdown } = useSettings();
   const [isMapModalOpen, setIsMapModalOpen] = useState<boolean>(false);
 
   const hasMoreThanOneMap = useMemo(

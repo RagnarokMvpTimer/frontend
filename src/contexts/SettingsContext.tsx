@@ -1,5 +1,6 @@
 import {
   createContext,
+  useContext,
   useState,
   useEffect,
   ReactNode,
@@ -24,6 +25,8 @@ interface SettingsContextData {
   toggleAnimatedSprites: () => void;
   language: string;
   changeLanguage: (id: string) => void;
+  server: string;
+  changeServer: (id: string) => void;
   resetSettings: () => void;
 }
 
@@ -36,6 +39,7 @@ export function SettingsProvider({ children }: SettingsProviderProps) {
   const [respawnAsCountdown, setRespawnAsCountdown] = useState(true);
   const [animatedSprites, setAnimatedSprites] = useState(false);
   const [language, setLanguage] = useState('en');
+  const [server, setServer] = useState('iRO');
 
   const toggleTheme = useCallback(
     () => setTheme(theme === 'light' ? Themes.dark.id : Themes.light.id),
@@ -58,6 +62,10 @@ export function SettingsProvider({ children }: SettingsProviderProps) {
 
   const changeLanguage = useCallback((id: string) => {
     setLanguage(id);
+  }, []);
+
+  const changeServer = useCallback((id: string) => {
+    setServer(id);
   }, []);
 
   const resetSettings = useCallback(() => {
@@ -113,10 +121,20 @@ export function SettingsProvider({ children }: SettingsProviderProps) {
         toggleAnimatedSprites,
         language,
         changeLanguage,
+        server,
+        changeServer,
         resetSettings,
       }}
     >
       {children}
     </SettingsContext.Provider>
   );
+}
+
+export function useSettings() {
+  const context = useContext(SettingsContext);
+  if (!context) {
+    throw new Error('useSettings must be used within a SettingsProvider');
+  }
+  return context;
 }

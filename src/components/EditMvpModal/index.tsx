@@ -1,11 +1,11 @@
-import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import moment from 'moment';
 import DatePicker from 'react-datepicker';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
 import { useScrollBlock, useKey } from '../../hooks';
-import { MvpsContext } from '../../contexts/MvpsContext';
+import { useMvpsContext } from '../../contexts/MvpsContext';
 
 import { ModalBase } from '../ModalBase';
 import { MvpSprite } from '../MvpSprite';
@@ -27,7 +27,7 @@ import {
 
 export function EditMvpModal() {
   useScrollBlock(true);
-  const { toggleEditModal, killMvp, editingMvp: mvp } = useContext(MvpsContext);
+  const { toggleEditModal, killMvp, editingMvp: mvp } = useMvpsContext();
 
   const [newTime, setNewTime] = useState<Date | null>(
     mvp.deathTime || new Date()

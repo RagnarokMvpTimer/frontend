@@ -1,7 +1,7 @@
-import { useCallback, useContext, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { ChevronDown, ChevronUp } from '@styled-icons/feather';
 
-import { SettingsContext } from '../../contexts/SettingsContext';
+import { useSettings } from '../../contexts/SettingsContext';
 import { LANGUAGES } from '../../locales';
 
 import {
@@ -14,7 +14,7 @@ import {
 } from './styles';
 
 export function LanguageSelector() {
-  const { language, changeLanguage } = useContext(SettingsContext);
+  const { language, changeLanguage } = useSettings();
   const [isLangSelectorOpen, setIsLangSelectorOpen] = useState(false);
 
   const handleLanguageSelector = useCallback(

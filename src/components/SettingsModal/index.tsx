@@ -1,4 +1,4 @@
-import { useCallback, useContext, useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Trash, Sun, Moon } from '@styled-icons/feather';
 
@@ -7,8 +7,8 @@ import { Switch } from '../Switch';
 import { LanguageSelector } from '../LanguageSelector';
 import { ModalCloseButton } from '../ModalCloseButton';
 
-import { SettingsContext } from '../../contexts/SettingsContext';
-import { MvpsContext } from '../../contexts/MvpsContext';
+import { useSettings } from '../../contexts/SettingsContext';
+import { useMvpsContext } from '../../contexts/MvpsContext';
 import { useScrollBlock, useClickOutside } from '../../hooks';
 import { clearData } from '../../utils';
 import { GetTranslateText } from '../../utils/GetTranslateText';
@@ -33,9 +33,9 @@ export function SettingsModal() {
     animatedSprites,
     toggleAnimatedSprites,
     resetSettings,
-  } = useContext(SettingsContext);
-  const { theme } = useContext(SettingsContext);
-  const { clearActiveMvps } = useContext(MvpsContext);
+    theme,
+  } = useSettings();
+  const { clearActiveMvps } = useMvpsContext();
 
   const modalRef = useClickOutside({
     onClick: toggleSettingsModal,

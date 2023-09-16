@@ -1,8 +1,6 @@
-import { Themes } from '../../styles/Themes';
-
 import RSwitch from 'react-switch';
-import { useContext } from 'react';
-import { SettingsContext } from '../../contexts/SettingsContext';
+import { useSettings } from '../../contexts/SettingsContext';
+import { Themes } from '../../styles/Themes';
 
 interface SwitchProps {
   checked: boolean;
@@ -10,7 +8,7 @@ interface SwitchProps {
 }
 
 export function Switch({ onChange, checked }: SwitchProps) {
-  const { theme } = useContext(SettingsContext);
+  const { theme } = useSettings();
   const { colors } = Themes[theme] || Themes.dark;
 
   return (

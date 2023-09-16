@@ -1,8 +1,8 @@
-import { useContext, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import { MvpCard } from '../../components/MvpCard';
-import { MvpsContext } from '../../contexts/MvpsContext';
+import { useMvpsContext } from '../../contexts/MvpsContext';
 import { MvpsContainerFilter } from '../../components/MvpsContainerFilter';
 
 import { sortBy } from '../../utils/sort';
@@ -10,7 +10,7 @@ import { sortBy } from '../../utils/sort';
 import { Container, Section, SectionTitle, MvpsContainer } from './styles';
 
 export function Main() {
-  const { activeMvps, allMvps } = useContext(MvpsContext);
+  const { activeMvps, allMvps } = useMvpsContext();
   const [searchQuery, setSearchQuery] = useState<string>();
   const [currentSort, setCurrentSort] = useState<string>('id');
   const [reverseSort, setReverseSort] = useState<boolean>(false);

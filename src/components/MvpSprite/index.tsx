@@ -1,5 +1,4 @@
-import { useContext } from 'react';
-import { SettingsContext } from '../../contexts/SettingsContext';
+import { useSettings } from '../../contexts/SettingsContext';
 import { getMvpSprite, getAnimatedMvpSprite } from '../../utils';
 
 import { Sprite } from './styles';
@@ -14,7 +13,7 @@ interface MvpSpriteProps {
 }
 
 export function MvpSprite({ mvp }: MvpSpriteProps) {
-  const { animatedSprites } = useContext(SettingsContext);
+  const { animatedSprites } = useSettings();
 
   return (
     <Sprite
