@@ -26,13 +26,9 @@ export function Main() {
     [searchQuery, allMvps, currentSort]
   );
 
-  const displayAllMvps = useMemo(
-    () =>
-      reverseSort
-        ? allMvpsFilteredAndSorted.slice().reverse()
-        : allMvpsFilteredAndSorted,
-    [reverseSort, allMvpsFilteredAndSorted]
-  );
+  const displayAllMvps = reverseSort
+    ? allMvpsFilteredAndSorted.slice().reverse()
+    : allMvpsFilteredAndSorted;
 
   return (
     <Container>

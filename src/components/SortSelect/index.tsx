@@ -7,21 +7,18 @@ interface SortSwitchProps {
 }
 
 const OPTIONS = [
+  { id: 'id', name: 'ID' },
   { id: 'level', name: 'Level' },
+  { id: 'name', name: 'Name' },
+  { id: 'respawnTime', name: 'Respawn' },
   { id: 'health', name: 'Health' },
   { id: 'baseExperience', name: 'Base EXP' },
   { id: 'jobExperience', name: 'Job EXP' },
-  { id: 'respawnTime', name: 'Respawn' },
-  { id: 'name', name: 'Name' },
-  { id: 'id', name: 'ID' },
 ];
 
 export function SortSelect({ onChange }: SortSwitchProps) {
   return (
     <Select defaultValue='id' onChange={(e) => onChange(e.target.value)}>
-      <Option value='none'>
-        <FormattedMessage id={'none'} defaultMessage='None' />
-      </Option>
       {OPTIONS.map(({ id, name }) => (
         <Option key={id} value={id}>
           <FormattedMessage id={id} defaultMessage={name} />
