@@ -8,7 +8,7 @@ declare module 'styled-components' {
       primary: string;
       secondary: string;
 
-      logoname: string;
+      headerTexts: string;
       text: string;
 
       mvpCard: {
@@ -51,6 +51,11 @@ declare module 'styled-components' {
 
         mapSelect: {
           border: string;
+        };
+
+        serverSelect: {
+          bg: string;
+          bgActive: string;
         };
       };
 

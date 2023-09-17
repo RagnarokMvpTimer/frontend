@@ -1,11 +1,10 @@
-import { useCallback, useMemo } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Trash, Sun, Moon } from '@styled-icons/feather';
 
 import { ModalBase } from '../ModalBase';
 import { Switch } from '../Switch';
 import { LanguageSelector } from '../LanguageSelector';
-import { ModalCloseButton } from '../ModalCloseButton';
+import { ModalCloseIconButton } from '../../ui/ModalCloseIconButton';
 
 import { useSettings } from '../../contexts/SettingsContext';
 import { useMvpsContext } from '../../contexts/MvpsContext';
@@ -41,24 +40,20 @@ export function SettingsModal() {
     onClick: toggleSettingsModal,
   });
 
-  const clearDataMessage = useMemo(
-    () => GetTranslateText('clear_data_message'),
-    []
-  );
-
-  const handleClearData = useCallback(() => {
+  function handleClearData() {
+    const clearDataMessage = GetTranslateText('clear_data_message');
     const confirmed = confirm(clearDataMessage);
     if (!confirmed) return;
     clearData();
     clearActiveMvps();
     resetSettings();
     toggleSettingsModal();
-  }, [clearActiveMvps, clearDataMessage, resetSettings, toggleSettingsModal]);
+  }
 
   return (
     <ModalBase>
       <Modal ref={modalRef}>
-        <ModalCloseButton onClick={toggleSettingsModal} />
+        <ModalCloseIconButton onClick={toggleSettingsModal} />
 
         <Title>
           <FormattedMessage id='settings' />

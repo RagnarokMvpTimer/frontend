@@ -4,6 +4,7 @@ export const GlobalStyle = createGlobalStyle`
   *, *::after, *::before {
     padding: 0;
     margin: 0;
+    outline: 0;
     box-sizing: border-box;
     font-family: 'Jost', sans-serif;
     //font-family: 'Nunito', sans-serif;
@@ -24,7 +25,10 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 62.5%;
   }
 
-  body {
+  body,
+  button,
+  input,
+  textarea {
     font-size: 1.6rem;
   }
 
@@ -33,7 +37,6 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   button, input {
-    outline: 0;
     border: 0;
   }
 

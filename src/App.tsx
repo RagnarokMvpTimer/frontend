@@ -9,6 +9,7 @@ import { Main } from './pages/Main';
 import { Header } from './components/Header';
 import { WarningHeader } from './components/WarningHeader';
 import { Footer } from './components/Footer';
+import { SettingsModal } from './components/SettingsModal';
 
 import { useSettings } from './contexts/SettingsContext';
 import { MvpProvider } from './contexts/MvpsContext';
@@ -16,7 +17,7 @@ import { LOCALES } from './locales';
 import { messages } from './locales/messages';
 
 export default function App() {
-  const { theme, language } = useSettings();
+  const { theme, language, isSettingsModalOpen } = useSettings();
 
   return (
     <ThemeProvider theme={Themes[theme] || Themes.dark}>
@@ -35,7 +36,10 @@ export default function App() {
         <MvpProvider>
           <Main />
         </MvpProvider>
+
         <Footer />
+
+        {isSettingsModalOpen && <SettingsModal />}
       </IntlProvider>
 
       <GlobalStyle />

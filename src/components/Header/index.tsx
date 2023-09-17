@@ -1,15 +1,12 @@
-import { SettingsButton } from '../SettingsButton';
 import { HeaderTimer } from '../HeaderTimer';
-import { SettingsModal } from '../SettingsModal';
+import { ServerButton } from '../ServerButton';
+import { SettingsButton } from '../SettingsButton';
 
-import { useSettings } from '../../contexts/SettingsContext';
 import mvpImg from '../../assets/mvp.png';
 
 import { Container, Customization, Logo, LogoContainer, Title } from './styles';
 
 export function Header() {
-  const { isSettingsModalOpen } = useSettings();
-
   return (
     <Container>
       <LogoContainer>
@@ -20,10 +17,9 @@ export function Header() {
       <HeaderTimer />
 
       <Customization>
+        <ServerButton />
         <SettingsButton />
       </Customization>
-
-      {isSettingsModalOpen && <SettingsModal />}
     </Container>
   );
 }

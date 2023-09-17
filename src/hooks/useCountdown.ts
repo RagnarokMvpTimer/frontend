@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import moment, { Moment, Duration } from 'moment';
 
-export function useCountown(startTime: Moment, delay = 1000) {
+export function useCountdown(startTime: Moment, delay = 1000) {
   const [time, setTime] = useState(startTime || moment());
   const [duration, setDuration] = useState<Duration>();
   const [isRunning, setIsRunning] = useState(true);

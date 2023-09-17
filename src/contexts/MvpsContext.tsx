@@ -9,8 +9,7 @@ import {
 import moment from 'moment';
 
 import { getMvpRespawnTime } from '../utils';
-import { EditMvpModal } from '../components/EditMvpModal';
-import mvpsData from '../data/data.json';
+import mvpsData from '../data/iRO.json';
 
 interface MvpProviderProps {
   children: ReactNode;
@@ -25,6 +24,7 @@ interface MvpsContextData {
   removeMvp: (mvp: IMvp) => void;
   setEditingMvp: (mvp: IMvp) => void;
   openAndEditModal: (mvp: IMvp) => void;
+  isEditModalOpen: boolean;
   toggleEditModal: () => void;
   clearActiveMvps: () => void;
 }
@@ -162,6 +162,7 @@ export function MvpProvider({ children }: MvpProviderProps) {
         resetMvpTimer,
         killMvp,
         removeMvp,
+        isEditModalOpen,
         toggleEditModal,
         editingMvp,
         setEditingMvp,
@@ -170,7 +171,6 @@ export function MvpProvider({ children }: MvpProviderProps) {
       }}
     >
       {children}
-      {isEditModalOpen && <EditMvpModal />}
     </MvpsContext.Provider>
   );
 }

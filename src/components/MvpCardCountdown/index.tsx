@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Moment } from 'moment';
 
-import { useCountown } from '../../hooks';
+import { useCountdown } from '../../hooks';
 import { GetTranslateText } from '../../utils/GetTranslateText';
 
 import { Container, Text, Bold } from './styles';
@@ -13,7 +13,7 @@ interface MvpCardCountdownProps {
 const SOON_THRESHOLD = 600000; // 10 minutes
 
 export function MvpCardCountdown({ nextRespawn }: MvpCardCountdownProps) {
-  const { duration, isRunning } = useCountown(nextRespawn);
+  const { duration, isRunning } = useCountdown(nextRespawn);
   const [timeString, setTimeString] = useState<string>('-- : -- : --');
   const [respawningSoon, setRespawningSoon] = useState(false);
   const [isBefore, setIsBefore] = useState(false);
