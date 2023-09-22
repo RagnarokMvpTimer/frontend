@@ -463,7 +463,7 @@
     "spawn": [
       {
         "mapname": "teg_dun01",
-        "respawnTime": 28800000
+        "respawnTime": 7200000
       }
     ],
     "stats": {
@@ -573,6 +573,23 @@
       "health": 1252000,
       "baseExperience": 540000,
       "jobExperience": 396000
+    }
+  },
+  {
+    "id": 3633,
+    "dbname": "EP16_2_VENOM_KIMERA",
+    "name": "Venomous Chimera",
+    "spawn": [
+      {
+        "mapname": "slabw01",
+        "respawnTime": 3600000
+      }
+    ],
+    "stats": {
+      "level": 110,
+      "health": 2800000,
+      "baseExperience": 800000,
+      "jobExperience": 400000
     }
   },
   {
@@ -881,6 +898,23 @@
     }
   },
   {
+    "id": 1873,
+    "dbname": "BEELZEBUB",
+    "name": "Beelzebub",
+    "spawn": [
+      {
+        "mapname": "abbey03",
+        "respawnTime": 43200000
+      }
+    ],
+    "stats": {
+      "level": 147,
+      "health": 6805000,
+      "baseExperience": 0,
+      "jobExperience": 0
+    }
+  },
+  {
     "id": 1917,
     "dbname": "MOROCC_",
     "name": "Wounded Morocc",
@@ -914,21 +948,213 @@
       "jobExperience": 1102549
     }
   },
+
   {
-    "id": 3741,
-    "dbname": "MECHASPIDER",
-    "name": "Spider Chariot",
+    "id": 20648,
+    "dbname": "EP17_2_PITAYA_BOSS",
+    "name": "Boss Meow",
     "spawn": [
       {
-        "mapname": "rockmi1",
+        "mapname": "ba_lost",
+        "respawnTime": 21600000
+      }
+    ],
+    "stats": {
+      "level": 168,
+      "health": 19298694,
+      "baseExperience": 1608224,
+      "jobExperience": 1125757
+    }
+  },
+  {
+    "id": 3074,
+    "dbname": "TIMEHOLDER",
+    "name": "Time Holder",
+    "spawn": [
+      {
+        "mapname": "c_tower3_",
         "respawnTime": 7200000
       }
     ],
     "stats": {
-      "level": 158,
-      "health": 9799123,
-      "baseExperience": 3150895,
-      "jobExperience": 2112795
+      "level": 170,
+      "health": 25000000,
+      "baseExperience": 4582500,
+      "jobExperience": 3877500
+    }
+  },
+  {
+    "id": 20381,
+    "dbname": "EP17_1_R4885_BESTIA",
+    "name": "R48-85-Bestia",
+    "spawn": [
+      {
+        "mapname": "sp_rudus2",
+        "respawnTime": 3600000
+      }
+    ],
+    "stats": {
+      "level": 174,
+      "health": 4885000,
+      "baseExperience": 9770000,
+      "jobExperience": 6513333
+    }
+  },
+
+  {
+    "id": 20419,
+    "dbname": "MUSPELLSKOLL_H",
+    "name": "Rigid Muspellskoll",
+    "spawn": [
+      {
+        "mapname": "mag_dun03",
+        "respawnTime": 7200000
+      }
+    ],
+    "stats": {
+      "level": 188,
+      "health": 48530254,
+      "baseExperience": 9706050,
+      "jobExperience": 6794235
+    }
+  },
+  {
+    "id": 20422,
+    "dbname": "DARK_LORD_H",
+    "name": "Corrupted Dark Lord",
+    "spawn": [
+      {
+        "mapname": "gl_cas01_",
+        "respawnTime": 3600000
+      }
+    ],
+    "stats": {
+      "level": 194,
+      "health": 74476822,
+      "baseExperience": 14895364,
+      "jobExperience": 10426755
+    }
+  },
+  {
+    "id": 20421,
+    "dbname": "BRINARANEA_H",
+    "name": "Corrupted Spider Queen",
+    "spawn": [
+      {
+        "mapname": "gl_cas01_",
+        "respawnTime": 7200000
+      }
+    ],
+    "stats": {
+      "level": 195,
+      "health": 74623473,
+      "baseExperience": 14924695,
+      "jobExperience": 10447286
+    }
+  },
+  {
+    "id": 20601,
+    "dbname": "JUNGOLIANT",
+    "name": "Jewel Ungoliant",
+    "spawn": [
+      {
+        "mapname": "ein_dun03",
+        "respawnTime": 7200000
+      }
+    ],
+    "stats": {
+      "level": 197,
+      "health": 37847096,
+      "baseExperience": 2703364,
+      "jobExperience": 1892355
+    }
+  },
+
+  {
+    "id": 20618,
+    "dbname": "BONE_DETALE",
+    "name": "Bone Detardeurus",
+    "spawn": [
+      {
+        "mapname": "abyss_04",
+        "respawnTime": 10800000
+      }
+    ],
+    "stats": {
+      "level": 209,
+      "health": 88466828,
+      "baseExperience": 6150908,
+      "jobExperience": 4305636
+    }
+  },
+  {
+    "id": 21301,
+    "dbname": "EP18_BURNING_FANG",
+    "name": "Burning Fang",
+    "spawn": [
+      {
+        "mapname": "oz_dun02",
+        "respawnTime": 21600000
+      }
+    ],
+    "stats": {
+      "level": 212,
+      "health": 98158095,
+      "baseExperience": 6581326,
+      "jobExperience": 4606928
+    }
+  },
+  {
+    "id": 20934,
+    "dbname": "R001_BESTIA",
+    "name": "R001-Bestia",
+    "spawn": [
+      {
+        "mapname": "sp_rudus4",
+        "respawnTime": 10800000
+      }
+    ],
+    "stats": {
+      "level": 215,
+      "health": 134179630,
+      "baseExperience": 6578140,
+      "jobExperience": 4604698
+    }
+  },
+
+  {
+    "id": 20928,
+    "dbname": "CHIMERA_THEONE",
+    "name": "The One",
+    "spawn": [
+      {
+        "mapname": "amicitia2",
+        "respawnTime": 10800000
+      }
+    ],
+    "stats": {
+      "level": 245,
+      "health": 275042400,
+      "baseExperience": 7599887,
+      "jobExperience": 5319921
+    }
+  },
+
+  {
+    "id": 20943,
+    "dbname": "DEATH_WITCH",
+    "name": "Death Witch",
+    "spawn": [
+      {
+        "mapname": "nif_dun02",
+        "respawnTime": 10800000
+      }
+    ],
+    "stats": {
+      "level": 255,
+      "health": 398856250,
+      "baseExperience": 9051055,
+      "jobExperience": 6335739
     }
   }
 ]

@@ -35,8 +35,20 @@ import icon1832 from './1832.gif';
 import icon1871 from './1871.gif';
 import icon1885 from './1885.gif';
 import icon1917 from './1917.gif';
+import icon20381 from './20381.png';
+import icon20419 from './20419.png';
+import icon20421 from './20421.png';
+import icon20422 from './20422.png';
+import icon20601 from './20601.png';
+import icon20610 from './20610.png';
+import icon20611 from './20611.png';
+import icon20618 from './20618.png';
+import icon20648 from './20648.png';
 import icon2068 from './2068.gif';
 import icon2087 from './2087.gif';
+import icon20928 from './20928.png';
+import icon20934 from './20934.png';
+import icon20943 from './20943.png';
 import icon2156 from './2156.gif';
 import icon2165 from './2165.png';
 import icon2202 from './2202.gif';
@@ -48,6 +60,7 @@ import icon2362 from './2362.gif';
 import icon2441 from './2441.gif';
 import icon2442 from './2442.gif';
 import icon2483 from './2483.gif';
+import icon3074 from './3074.png';
 import icon3505 from './3505.png';
 import icon3633 from './3633.png';
 import icon3741 from './3741.gif'
@@ -90,8 +103,20 @@ export const mvpIconsAnimated = {
   "1871": icon1871,
   "1885": icon1885,
   "1917": icon1917,
+  "20381": icon20381,
+  "20419": icon20419,
+  "20421": icon20421,
+  "20422": icon20422,
+  "20601": icon20601,
+  "20610": icon20610,
+  "20611": icon20611,
+  "20618": icon20618,
+  "20648": icon20648,
   "2068": icon2068,
   "2087": icon2087,
+  "20928": icon20928,
+  "20934": icon20934,
+  "20943": icon20943,
   "2156": icon2156,
   "2165": icon2165,
   "2202": icon2202,
@@ -103,6 +128,7 @@ export const mvpIconsAnimated = {
   "2441": icon2441,
   "2442": icon2442,
   "2483": icon2483,
+  "3074": icon3074,
   "3505": icon3505,
   "3633": icon3633,
   "3741": icon3741
