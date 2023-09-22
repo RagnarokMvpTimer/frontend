@@ -8,6 +8,8 @@ import {
 } from 'react';
 import moment from 'moment';
 
+import { useSettings } from './SettingsContext';
+
 import { getMvpRespawnTime } from '../utils';
 import mvpsData from '../data/iRO.json';
 
@@ -16,8 +18,8 @@ interface MvpProviderProps {
 }
 
 interface MvpsContextData {
-  activeMvps: Array<IMvp>;
-  allMvps: Array<IMvp>;
+  activeMvps: IMvp[];
+  allMvps: IMvp[];
   editingMvp: IMvp;
   resetMvpTimer: (mvp: IMvp) => void;
   killMvp: (mvp: IMvp, time?: Date | null) => void;
@@ -32,13 +34,12 @@ interface MvpsContextData {
 export const MvpsContext = createContext({} as MvpsContextData);
 
 export function MvpProvider({ children }: MvpProviderProps) {
+  const { server, changeServer } = useSettings();
   const [isLoading, setIsLoading] = useState(true);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [editingMvp, setEditingMvp] = useState<IMvp>({} as IMvp);
-  const [activeMvps, setActiveMvps] = useState<Array<IMvp>>([]);
-  const [allMvps, setAllMvps] = useState<Array<IMvp>>(
-    mvpsData.sort((a, b) => a.stats.level - b.stats.level)
-  );
+  const [activeMvps, setActiveMvps] = useState<IMvp[]>([]);
+  const [allMvps, setAllMvps] = useState<IMvp[]>(mvpsData);
 
   const toggleEditModal = useCallback(
     () => setIsEditModalOpen((prev) => !prev),
@@ -95,6 +96,16 @@ export function MvpProvider({ children }: MvpProviderProps) {
   );
 
   const clearActiveMvps = useCallback(() => setActiveMvps([]), []);
+
+  useEffect(() => {
+    import(`../data/${server || 'iRO'}.json`)
+      .then((res) => setAllMvps(res.default as IMvp[]))
+      .catch((err) => {
+        console.error(err);
+        changeServer('iRO');
+        throw new Error(`Failed to load the '${server}' server data.`);
+      });
+  }, [server]);
 
   useEffect(() => {
     if (!isLoading) return;

@@ -73,6 +73,7 @@ export function SettingsProvider({ children }: SettingsProviderProps) {
     setRespawnAsCountdown(true);
     setAnimatedSprites(false);
     setLanguage('en');
+    setServer('iRO');
   }, [setTheme]);
 
   useEffect(() => {
@@ -85,11 +86,13 @@ export function SettingsProvider({ children }: SettingsProviderProps) {
       const settingsParse = JSON.parse(settings);
       if (!settingsParse) return;
 
-      const { respawnAsCountdown, animatedSprites, language } = settingsParse;
+      const { respawnAsCountdown, animatedSprites, language, server } =
+        settingsParse;
 
       setRespawnAsCountdown(respawnAsCountdown);
       setAnimatedSprites(animatedSprites);
       setLanguage(language || 'en');
+      setServer(server || 'iRO');
     } catch (error) {
       console.error(error);
     } finally {
@@ -104,9 +107,10 @@ export function SettingsProvider({ children }: SettingsProviderProps) {
       respawnAsCountdown,
       animatedSprites,
       language,
+      server,
     };
     localStorage.setItem('settings', JSON.stringify(settings));
-  }, [respawnAsCountdown, animatedSprites, language]);
+  }, [respawnAsCountdown, animatedSprites, language, server]);
 
   return (
     <SettingsContext.Provider
