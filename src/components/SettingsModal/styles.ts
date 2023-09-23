@@ -11,6 +11,9 @@ export const Modal = styled.div`
 
   border-radius: 6px;
 
+  overflow-y: auto;
+  max-height: 85vh;
+
   display: flex;
   align-items: center;
   flex-direction: column;

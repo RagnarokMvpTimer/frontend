@@ -10,6 +10,9 @@ export const Modal = styled.div`
   padding-bottom: 2rem;
   margin: 0 1rem;
 
+  overflow-y: auto;
+  max-height: 85vh;
+
   border-radius: 6px;
 
   display: flex;

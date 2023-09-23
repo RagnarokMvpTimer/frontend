@@ -11,7 +11,9 @@ import { useMvpsContext } from '../../contexts/MvpsContext';
 import { ModalBase } from '../ModalBase';
 import { MvpSprite } from '../MvpSprite';
 import { Map } from '../Map';
+
 import { ModalCloseIconButton } from '../../ui/ModalCloseIconButton';
+import { ModalPrimaryButton } from '../../ui/ModalPrimaryButton';
 
 import {
   Modal,
@@ -23,7 +25,6 @@ import {
   DatePickerContainer,
   SelectMap,
   SelectMapOption,
-  ConfirmButton,
 } from './styles';
 
 export function EditMvpModal() {
@@ -130,9 +131,13 @@ export function EditMvpModal() {
           </>
         )}
 
-        <ConfirmButton onClick={handleConfirm} disabled={!selectedMap}>
+        <ModalPrimaryButton
+          size='lg'
+          onClick={handleConfirm}
+          disabled={!selectedMap}
+        >
           <FormattedMessage id='confirm' />
-        </ConfirmButton>
+        </ModalPrimaryButton>
       </Modal>
     </ModalBase>
   );
