@@ -5,6 +5,11 @@ import { mvpIconsAnimated } from '../assets/mvp_icons_animated';
 import { mvpMaps } from '../assets/mvp_maps';
 import Question from '../assets/question.gif';
 
+const SERVERS = import.meta.glob('../data/*.json', {
+  import: 'default',
+  eager: true,
+});
+
 /**
  * Convert Moment object to string with this format 'HH:mm:ss'
  * @param milliseconds time in milliseconds
@@ -69,22 +74,17 @@ export function clearData() {
   localStorage.clear();
 }
 
-export function getServers() {
-  return [
-    'aRO',
-    'bRO',
-    'fRO',
-    'idRO',
-    'iRO',
-    'jRO',
-    'kROM',
-    'kROZ',
-    'kROZS',
-    'GGH',
-    'ruRO',
-    'thROG',
-    'twRO',
-    'cRO',
-    'iROC',
-  ];
+type IGetServers = {
+  [key: string]: IMvp[];
+};
+
+export function getServers(): IGetServers {
+  const finalObj = {};
+
+  for (const [key, value] of Object.entries(SERVERS)) {
+    const newKey = key.split('/')[2].split('.')[0];
+    finalObj[newKey] = value;
+  }
+
+  return finalObj;
 }

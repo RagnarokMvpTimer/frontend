@@ -15,7 +15,9 @@ interface ModalSelectServerProps {
   close: () => void;
 }
 
-const SERVERS = getServers();
+const serversNames = Object.keys(getServers()).sort((a, b) =>
+  a.toLowerCase().localeCompare(b.toLowerCase())
+);
 
 export function ModalSelectServer({ close }: ModalSelectServerProps) {
   const { server, changeServer } = useSettings();
@@ -42,7 +44,7 @@ export function ModalSelectServer({ close }: ModalSelectServerProps) {
         </Title>
 
         <ServerList>
-          {SERVERS.map((i) => (
+          {serversNames.map((i) => (
             <ServerItem
               key={i}
               onClick={() => setSelectedServer(i)}

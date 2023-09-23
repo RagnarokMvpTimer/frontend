@@ -10,8 +10,8 @@ import moment from 'moment';
 
 import { useSettings } from './SettingsContext';
 
-import { getMvpRespawnTime } from '../utils';
-import mvpsData from '../data/iRO.json';
+import { getMvpRespawnTime, getServers } from '../utils';
+const SERVERS = getServers();
 
 interface MvpProviderProps {
   children: ReactNode;
@@ -34,7 +34,9 @@ interface MvpsContextData {
 export const MvpsContext = createContext({} as MvpsContextData);
 
 export function MvpProvider({ children }: MvpProviderProps) {
-  const { server, changeServer } = useSettings();
+  const { server } = useSettings();
+  const mvpsData = SERVERS[server || 'iRO'];
+
   const [isLoading, setIsLoading] = useState(true);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [editingMvp, setEditingMvp] = useState<IMvp>({} as IMvp);
@@ -98,18 +100,6 @@ export function MvpProvider({ children }: MvpProviderProps) {
   const clearActiveMvps = useCallback(() => setActiveMvps([]), []);
 
   useEffect(() => {
-    import(`../data/${server || 'iRO'}.json`)
-      .then((res) => setAllMvps(res.default as IMvp[]))
-      .catch((err) => {
-        console.error(err);
-        changeServer('iRO');
-        throw new Error(`Failed to load the '${server}' server data.`);
-      });
-  }, [server]);
-
-  useEffect(() => {
-    if (!isLoading) return;
-
     try {
       const data = localStorage.getItem('activeMvps');
       if (!data) return;
@@ -117,8 +107,16 @@ export function MvpProvider({ children }: MvpProviderProps) {
       const dataParse = JSON.parse(data);
       if (!dataParse) return;
 
-      const finalData = dataParse.map((mvp: IMvp) => ({
-        ...mvpsData.find((m) => m.id === mvp.id),
+      const savedServerData = dataParse[server];
+
+      const hasSavedServerData = !!savedServerData;
+      if (!hasSavedServerData) {
+        setActiveMvps([]);
+        return;
+      }
+
+      const finalData = savedServerData.map((mvp: IMvp) => ({
+        ...SERVERS[server].find((m) => m.id === mvp.id),
         deathMap: mvp.deathMap,
         deathPosition: mvp.deathPosition,
         deathTime: moment(mvp.deathTime).toDate(),
@@ -126,14 +124,14 @@ export function MvpProvider({ children }: MvpProviderProps) {
 
       setActiveMvps(finalData);
     } catch (error) {
-      console.error(error);
+      console.error('Failed to load mvps from local storage', error);
     } finally {
       setIsLoading(false);
     }
-  }, [isLoading]);
+  }, [server, mvpsData]);
 
   useEffect(() => {
-    if (isLoading) return;
+    if (isLoading || !activeMvps.length) return;
 
     const data = activeMvps.map((mvp) => ({
       id: mvp.id,
@@ -142,13 +140,26 @@ export function MvpProvider({ children }: MvpProviderProps) {
       deathPosition: mvp.deathPosition,
     }));
 
-    localStorage.setItem('activeMvps', JSON.stringify(data));
+    const currentLocalMvps = localStorage.getItem('activeMvps');
+    const currentData = currentLocalMvps ? JSON.parse(currentLocalMvps) : {};
+
+    const updatedActiveData = {
+      ...currentData,
+      [server]: data,
+    };
+
+    Object.keys(updatedActiveData).forEach(
+      (key) => !isNaN(Number(key)) && delete updatedActiveData[key]
+    );
+
+    localStorage.setItem('activeMvps', JSON.stringify(updatedActiveData));
   }, [activeMvps]);
 
   useEffect(() => {
     if (isLoading) return;
 
     const activeSpawns = activeMvps.map((m) => m.deathMap);
+
     const filteredAllMvps = mvpsData
       .map((mvp) => ({
         ...mvp,
@@ -157,8 +168,9 @@ export function MvpProvider({ children }: MvpProviderProps) {
         ),
       }))
       .filter((mvp) => mvp.spawn.length > 0);
+
     setAllMvps(filteredAllMvps);
-  }, [activeMvps]);
+  }, [activeMvps, mvpsData]);
 
   useEffect(() => {
     if (Notification.permission === 'granted') return;
