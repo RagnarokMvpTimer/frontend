@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { tablet } from '../../utils/media';
+import { mobile, tablet } from '../../utils/media';
 
 export const Modal = styled.div`
   width: 100%;
@@ -10,9 +10,6 @@ export const Modal = styled.div`
   padding-bottom: 2rem;
   margin: 0 1rem;
 
-  overflow-y: auto;
-  max-height: 85vh;
-
   border-radius: 6px;
 
   display: flex;
@@ -20,6 +17,11 @@ export const Modal = styled.div`
   flex-direction: column;
 
   background-color: ${({ theme }) => theme.colors.modal.bg};
+
+  ${mobile(css`
+    overflow-y: auto;
+    max-height: 85vh;
+  `)}
 `;
 
 export const Title = styled.span`

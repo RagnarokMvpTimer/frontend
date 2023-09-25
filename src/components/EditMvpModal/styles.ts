@@ -10,9 +10,6 @@ export const Modal = styled.div`
 
   border-radius: 6px;
 
-  overflow-y: auto;
-  max-height: 85vh;
-
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -21,7 +18,11 @@ export const Modal = styled.div`
   background-color: ${({ theme }) => theme.colors.modal.bg};
 
   ${mobile(css`
+    overflow-y: auto;
+    max-height: 85vh;
+
     width: 95%;
+    margin: 1rem;
     padding: 1rem;
   `)}
 `;

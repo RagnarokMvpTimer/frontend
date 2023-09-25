@@ -11,16 +11,16 @@ export const Modal = styled.div`
 
   border-radius: 6px;
 
-  overflow-y: auto;
-  max-height: 85vh;
-
   display: flex;
   align-items: center;
   flex-direction: column;
 
   background-color: ${({ theme }) => theme.colors.modal.bg};
 
-  ${mobile(css``)}
+  ${mobile(css`
+    overflow-y: auto;
+    max-height: 85vh;
+  `)}
 `;
 
 export const Title = styled.span`
