@@ -54,6 +54,8 @@ export const Themes = {
         serverSelect: {
           bg: '#454545',
           bgActive: '#f89200',
+          text: '#fff',
+          textActive: '#fff',
         },
       },
 
@@ -131,6 +133,8 @@ export const Themes = {
         serverSelect: {
           bg: '#F6F8FA',
           bgActive: '#f89200',
+          text: '#000',
+          textActive: '#fff',
         },
       },
 

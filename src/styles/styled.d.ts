@@ -56,6 +56,8 @@ declare module 'styled-components' {
         serverSelect: {
           bg: string;
           bgActive: string;
+          text: string;
+          textActive: string;
         };
       };
 

@@ -46,12 +46,15 @@ export const ServerList = styled.div`
 export const ServerItem = styled.button<{
   active: boolean;
 }>`
-  background: ${({ theme, active }) =>
+  background-color: ${({ theme, active }) =>
     active
       ? theme.colors.modal.serverSelect.bgActive
       : theme.colors.modal.serverSelect.bg};
 
-  color: ${({ theme }) => theme.colors.text};
+  color: ${({ theme, active }) =>
+    active
+      ? theme.colors.modal.serverSelect.textActive
+      : theme.colors.modal.serverSelect.text};
   font-weight: 600;
 
   padding: 1rem 2rem;
@@ -62,4 +65,8 @@ export const ServerItem = styled.button<{
     css`
       border: 1px solid #f89200;
     `}
+
+  :hover {
+    opacity: 0.8;
+  }
 `;
