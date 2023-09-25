@@ -31,8 +31,6 @@ function createIndex(folderName, exportName) {
   const importLines = filesProps.map((f) => f.importLine).join(';\n');
   const exportLines = filesProps.map((f) => f.exportLine).join(',\n  ');
 
-  console.log(exportLines);
-
   const indexContent = `${importLines}\n\nexport const ${exportName} = {\n${exportLines}\n}`;
 
   writeFileSync(`${imagesDir}/index.ts`, indexContent);

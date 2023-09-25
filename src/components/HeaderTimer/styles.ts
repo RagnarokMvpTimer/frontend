@@ -9,5 +9,5 @@ export const Hour = styled.span`
   justify-content: center;
   grid-area: 1 / 2 / 2 / 3;
 
-  color: #fff;
+  color: ${({ theme }) => theme.colors.headerTexts};
 `;

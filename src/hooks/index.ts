@@ -1,5 +1,5 @@
 export { useClickOutside } from './useClickOutside';
-export { useCountown } from './useCountdown';
+export { useCountdown } from './useCountdown';
 export { useKey } from './useKey';
 export { usePersistedState } from './usePersistedState';
 export { useScrollBlock } from './useScrollBlock';

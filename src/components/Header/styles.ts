@@ -10,6 +10,10 @@ export const Container = styled.header`
   padding: 0 30px;
 
   background-color: ${({ theme }) => theme.colors.primary};
+
+  ${tablet(css`
+    padding: 0 15px;
+  `)}
 `;
 
 export const LogoContainer = styled.div`
@@ -31,7 +35,7 @@ export const Title = styled.p`
 
   white-space: nowrap;
 
-  color: ${({ theme }) => theme.colors.logoname};
+  color: ${({ theme }) => theme.colors.headerTexts};
 
   @media (min-width: 768px) and (max-width: 935px) {
     font-size: 16px;
@@ -46,7 +50,6 @@ export const Customization = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  grid-area: 1 / 3 / 2 / 4;
 
-  gap: 15px;
+  gap: 1.6rem;
 `;

@@ -4,13 +4,14 @@ import { FormattedMessage } from 'react-intl';
 import { MvpCard } from '../../components/MvpCard';
 import { useMvpsContext } from '../../contexts/MvpsContext';
 import { MvpsContainerFilter } from '../../components/MvpsContainerFilter';
+import { EditMvpModal } from '../../components/EditMvpModal';
 
 import { sortBy } from '../../utils/sort';
 
 import { Container, Section, SectionTitle, MvpsContainer } from './styles';
 
 export function Main() {
-  const { activeMvps, allMvps } = useMvpsContext();
+  const { activeMvps, allMvps, isEditModalOpen } = useMvpsContext();
   const [searchQuery, setSearchQuery] = useState<string>();
   const [currentSort, setCurrentSort] = useState<string>('id');
   const [reverseSort, setReverseSort] = useState<boolean>(false);
@@ -31,41 +32,45 @@ export function Main() {
     : allMvpsFilteredAndSorted;
 
   return (
-    <Container>
-      {activeMvps.length > 0 && (
+    <>
+      <Container>
+        {activeMvps.length > 0 && (
+          <Section>
+            <SectionTitle>
+              <FormattedMessage id='active' />
+            </SectionTitle>
+
+            <MvpsContainer>
+              {activeMvps.map((mvp: IMvp) => (
+                <MvpCard key={`${mvp.id}-${mvp.deathMap}`} mvp={mvp} isActive />
+              ))}
+            </MvpsContainer>
+          </Section>
+        )}
+
         <Section>
           <SectionTitle>
-            <FormattedMessage id='active' />
+            <FormattedMessage id='all' />
           </SectionTitle>
 
-          <MvpsContainer>
-            {activeMvps.map((mvp: IMvp) => (
-              <MvpCard key={`${mvp.id}-${mvp.deathMap}`} mvp={mvp} isActive />
-            ))}
-          </MvpsContainer>
+          <MvpsContainerFilter
+            onChangeQuery={(value) => setSearchQuery(value)}
+            onSelectSort={(value) => setCurrentSort(value)}
+            isReverse={reverseSort}
+            onReverse={() => setReverseSort((s) => !s)}
+          />
+
+          {displayAllMvps.length > 0 && (
+            <MvpsContainer>
+              {displayAllMvps.map((mvp: IMvp) => (
+                <MvpCard key={mvp.id} mvp={mvp} />
+              ))}
+            </MvpsContainer>
+          )}
         </Section>
-      )}
+      </Container>
 
-      <Section>
-        <SectionTitle>
-          <FormattedMessage id='all' />
-        </SectionTitle>
-
-        <MvpsContainerFilter
-          onChangeQuery={(value) => setSearchQuery(value)}
-          onSelectSort={(value) => setCurrentSort(value)}
-          isReverse={reverseSort}
-          onReverse={() => setReverseSort((s) => !s)}
-        />
-
-        {displayAllMvps.length > 0 && (
-          <MvpsContainer>
-            {displayAllMvps.map((mvp: IMvp) => (
-              <MvpCard key={mvp.id} mvp={mvp} />
-            ))}
-          </MvpsContainer>
-        )}
-      </Section>
-    </Container>
+      {isEditModalOpen && <EditMvpModal />}
+    </>
   );
 }

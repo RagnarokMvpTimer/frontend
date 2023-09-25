@@ -6,7 +6,8 @@ import { ModalBase } from '../ModalBase';
 import { Map } from '../Map';
 import { NaviCommand } from '../NaviCommand';
 
-import { Modal, Name, Warning, CloseButton } from './styles';
+import { ModalPrimaryButton } from '../../ui/ModalPrimaryButton';
+import { Modal, Name, Warning } from './styles';
 
 interface MvpMapModalProps {
   deathMap: string;
@@ -34,9 +35,9 @@ export function MvpMapModal({
           <FormattedMessage id='nav_command_warning' />
         </Warning>
 
-        <CloseButton onClick={close}>
+        <ModalPrimaryButton onClick={close}>
           <FormattedMessage id='close' />
-        </CloseButton>
+        </ModalPrimaryButton>
       </Modal>
     </ModalBase>
   );

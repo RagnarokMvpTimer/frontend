@@ -61,14 +61,26 @@ import icon1885 from './1885.png';
 import icon1917 from './1917.png';
 import icon1929 from './1929.png';
 import icon1980 from './1980.png';
+import icon20118 from './20118.png';
 import icon2022 from './2022.png';
+import icon20273 from './20273.png';
+import icon20277 from './20277.png';
+import icon20381 from './20381.png';
 import icon20419 from './20419.png';
 import icon20421 from './20421.png';
 import icon20422 from './20422.png';
+import icon20601 from './20601.png';
+import icon20610 from './20610.png';
+import icon20611 from './20611.png';
+import icon20618 from './20618.png';
+import icon20648 from './20648.png';
 import icon2068 from './2068.png';
 import icon2075 from './2075.png';
 import icon2087 from './2087.png';
+import icon20928 from './20928.png';
+import icon20934 from './20934.png';
 import icon2094 from './2094.png';
+import icon20943 from './20943.png';
 import icon2095 from './2095.png';
 import icon2096 from './2096.png';
 import icon2097 from './2097.png';
@@ -88,15 +100,30 @@ import icon2110 from './2110.png';
 import icon2111 from './2111.png';
 import icon2112 from './2112.png';
 import icon2113 from './2113.png';
+import icon21301 from './21301.png';
 import icon2131 from './2131.png';
+import icon21395 from './21395.png';
+import icon21537 from './21537.png';
+import icon21555 from './21555.png';
 import icon2156 from './2156.png';
+import icon21563 from './21563.png';
+import icon21571 from './21571.png';
+import icon21579 from './21579.png';
 import icon2165 from './2165.png';
 import icon2186 from './2186.png';
 import icon2187 from './2187.png';
 import icon2188 from './2188.png';
 import icon2189 from './2189.png';
 import icon2190 from './2190.png';
+import icon21904 from './21904.png';
+import icon21927 from './21927.png';
+import icon21935 from './21935.png';
 import icon2194 from './2194.png';
+import icon21943 from './21943.png';
+import icon21950 from './21950.png';
+import icon21955 from './21955.png';
+import icon21980 from './21980.png';
+import icon21996 from './21996.png';
 import icon2202 from './2202.png';
 import icon2235 from './2235.png';
 import icon2236 from './2236.png';
@@ -227,14 +254,26 @@ export const mvpIcons = {
   "1917": icon1917,
   "1929": icon1929,
   "1980": icon1980,
+  "20118": icon20118,
   "2022": icon2022,
+  "20273": icon20273,
+  "20277": icon20277,
+  "20381": icon20381,
   "20419": icon20419,
   "20421": icon20421,
   "20422": icon20422,
+  "20601": icon20601,
+  "20610": icon20610,
+  "20611": icon20611,
+  "20618": icon20618,
+  "20648": icon20648,
   "2068": icon2068,
   "2075": icon2075,
   "2087": icon2087,
+  "20928": icon20928,
+  "20934": icon20934,
   "2094": icon2094,
+  "20943": icon20943,
   "2095": icon2095,
   "2096": icon2096,
   "2097": icon2097,
@@ -254,15 +293,30 @@ export const mvpIcons = {
   "2111": icon2111,
   "2112": icon2112,
   "2113": icon2113,
+  "21301": icon21301,
   "2131": icon2131,
+  "21395": icon21395,
+  "21537": icon21537,
+  "21555": icon21555,
   "2156": icon2156,
+  "21563": icon21563,
+  "21571": icon21571,
+  "21579": icon21579,
   "2165": icon2165,
   "2186": icon2186,
   "2187": icon2187,
   "2188": icon2188,
   "2189": icon2189,
   "2190": icon2190,
+  "21904": icon21904,
+  "21927": icon21927,
+  "21935": icon21935,
   "2194": icon2194,
+  "21943": icon21943,
+  "21950": icon21950,
+  "21955": icon21955,
+  "21980": icon21980,
+  "21996": icon21996,
   "2202": icon2202,
   "2235": icon2235,
   "2236": icon2236,

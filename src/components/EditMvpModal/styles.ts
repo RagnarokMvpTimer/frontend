@@ -18,7 +18,11 @@ export const Modal = styled.div`
   background-color: ${({ theme }) => theme.colors.modal.bg};
 
   ${mobile(css`
+    overflow-y: auto;
+    max-height: 85vh;
+
     width: 95%;
+    margin: 1rem;
     padding: 1rem;
   `)}
 `;
@@ -90,26 +94,3 @@ export const SelectMap = styled.select`
 `;
 
 export const SelectMapOption = styled.option``;
-
-export const ConfirmButton = styled.button`
-  width: 250px;
-  height: 50px;
-
-  font-weight: 600;
-  font-size: 18px;
-  border-radius: 8px;
-
-  color: white;
-  background-color: ${({ theme }) => theme.colors.modal.button};
-
-  :disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
-
-  :not(:disabled) {
-    :hover {
-      opacity: 0.8;
-    }
-  }
-`;

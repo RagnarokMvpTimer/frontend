@@ -17,7 +17,10 @@ export const Modal = styled.div`
 
   background-color: ${({ theme }) => theme.colors.modal.bg};
 
-  ${mobile(css``)}
+  ${mobile(css`
+    overflow-y: auto;
+    max-height: 85vh;
+  `)}
 `;
 
 export const Title = styled.span`

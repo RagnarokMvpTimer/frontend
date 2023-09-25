@@ -6,7 +6,7 @@ export const Themes = {
       primary: '#1B1C1D',
       secondary: '#2e2e2e',
 
-      logoname: '#fff',
+      headerTexts: '#fff',
       text: '#FFFFFF',
 
       mvpCard: {
@@ -50,6 +50,11 @@ export const Themes = {
         mapSelect: {
           border: '#fff',
         },
+
+        serverSelect: {
+          bg: '#454545',
+          bgActive: '#f89200',
+        },
       },
 
       filterSearch: {
@@ -78,7 +83,7 @@ export const Themes = {
       primary: '#f89200',
       secondary: '#F6F8FA',
 
-      logoname: '#fff',
+      headerTexts: '#fff',
       text: '#000000',
 
       mvpCard: {
@@ -121,6 +126,11 @@ export const Themes = {
 
         mapSelect: {
           border: '#000',
+        },
+
+        serverSelect: {
+          bg: '#F6F8FA',
+          bgActive: '#f89200',
         },
       },
 

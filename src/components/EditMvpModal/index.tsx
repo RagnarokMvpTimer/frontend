@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import moment from 'moment';
 import DatePicker from 'react-datepicker';
+import { FormattedMessage } from 'react-intl';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -10,7 +11,9 @@ import { useMvpsContext } from '../../contexts/MvpsContext';
 import { ModalBase } from '../ModalBase';
 import { MvpSprite } from '../MvpSprite';
 import { Map } from '../Map';
-import { ModalCloseButton } from '../ModalCloseButton';
+
+import { ModalCloseIconButton } from '../../ui/ModalCloseIconButton';
+import { ModalPrimaryButton } from '../../ui/ModalPrimaryButton';
 
 import {
   Modal,
@@ -22,7 +25,6 @@ import {
   DatePickerContainer,
   SelectMap,
   SelectMapOption,
-  ConfirmButton,
 } from './styles';
 
 export function EditMvpModal() {
@@ -66,7 +68,7 @@ export function EditMvpModal() {
   return (
     <ModalBase>
       <Modal>
-        <ModalCloseButton onClick={toggleEditModal} />
+        <ModalCloseIconButton onClick={toggleEditModal} />
 
         <Name>{mvp.name}</Name>
 
@@ -129,9 +131,13 @@ export function EditMvpModal() {
           </>
         )}
 
-        <ConfirmButton onClick={handleConfirm} disabled={!selectedMap}>
-          Confirm
-        </ConfirmButton>
+        <ModalPrimaryButton
+          size='lg'
+          onClick={handleConfirm}
+          disabled={!selectedMap}
+        >
+          <FormattedMessage id='confirm' />
+        </ModalPrimaryButton>
       </Modal>
     </ModalBase>
   );

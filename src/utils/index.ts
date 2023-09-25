@@ -5,13 +5,18 @@ import { mvpIconsAnimated } from '../assets/mvp_icons_animated';
 import { mvpMaps } from '../assets/mvp_maps';
 import Question from '../assets/question.gif';
 
+const SERVERS = import.meta.glob('../data/*.json', {
+  import: 'default',
+  eager: true,
+});
+
 /**
  * Convert Moment object to string with this format 'HH:mm:ss'
- * @param miliseconds time in miliseconds
+ * @param milliseconds time in milliseconds
  * @returns string with this format 'HH:mm:ss' ex: '16:10:20'
  */
-export const milisecondsToHours = (miliseconds: number) =>
-  moment.duration(miliseconds, 'milliseconds').asHours();
+export const millisecondsToHours = (milliseconds: number) =>
+  moment.duration(milliseconds, 'milliseconds').asHours();
 
 /**
  * Convert Moment object to string with this format 'HH:mm:ss'
@@ -54,7 +59,7 @@ export const getMapImg = (mapname: string): string =>
 /**
  * Returns the death map respawn time
  * @param mvp Mvp object
- * @returns respawn time in milisecondsw
+ * @returns respawn time in milliseconds
  */
 export function getMvpRespawnTime(mvp: IMvp): number | undefined {
   const deathMap = mvp.spawn.find((spawn) => spawn.mapname === mvp.deathMap);
@@ -67,4 +72,19 @@ export function getMvpRespawnTime(mvp: IMvp): number | undefined {
  */
 export function clearData() {
   localStorage.clear();
+}
+
+type IGetServers = {
+  [key: string]: IMvp[];
+};
+
+export function getServers(): IGetServers {
+  const finalObj = {};
+
+  for (const [key, value] of Object.entries(SERVERS)) {
+    const newKey = key.split('/')[2].split('.')[0];
+    finalObj[newKey] = value;
+  }
+
+  return finalObj;
 }
