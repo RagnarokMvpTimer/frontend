@@ -31,8 +31,7 @@ interface MvpCardProps {
 }
 
 export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
-  const { killMvp, resetMvpTimer, removeMvp, openAndEditModal } =
-    useMvpsContext();
+  const { killMvp, resetMvpTimer, removeMvp, setEditingMvp } = useMvpsContext();
   const { respawnAsCountdown } = useSettings();
   const [isMapModalOpen, setIsMapModalOpen] = useState<boolean>(false);
 
@@ -52,9 +51,9 @@ export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
     mvp.deathMap
       ? killMvp(mvp)
       : hasMoreThanOneMap
-      ? openAndEditModal(mvp)
+      ? setEditingMvp(mvp)
       : killMvp({ ...mvp, deathMap: mvp.spawn[0].mapname });
-  }, [mvp, killMvp, hasMoreThanOneMap, openAndEditModal]);
+  }, [mvp, killMvp, hasMoreThanOneMap, setEditingMvp]);
 
   return (
     <>
@@ -108,7 +107,7 @@ export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
             <KilledNow onClick={handleKilledNow}>
               <FormattedMessage id='killed_now' />
             </KilledNow>
-            <EditButton onClick={() => openAndEditModal(mvp)}>
+            <EditButton onClick={() => setEditingMvp(mvp)}>
               <FormattedMessage id='edit' />
             </EditButton>
           </Controls>

@@ -20,7 +20,7 @@ export const Modal = styled.div`
 
   ${mobile(css`
     overflow-y: auto;
-    max-height: 85vh;
+    max-height: 95vh;
   `)}
 `;
 

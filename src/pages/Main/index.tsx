@@ -11,7 +11,7 @@ import { sortBy } from '../../utils/sort';
 import { Container, Section, SectionTitle, MvpsContainer } from './styles';
 
 export function Main() {
-  const { activeMvps, allMvps, isEditModalOpen } = useMvpsContext();
+  const { activeMvps, allMvps, editingMvp } = useMvpsContext();
   const [searchQuery, setSearchQuery] = useState<string>();
   const [currentSort, setCurrentSort] = useState<string>('id');
   const [reverseSort, setReverseSort] = useState<boolean>(false);
@@ -70,7 +70,7 @@ export function Main() {
         </Section>
       </Container>
 
-      {isEditModalOpen && <EditMvpModal />}
+      {!!editingMvp && <EditMvpModal />}
     </>
   );
 }

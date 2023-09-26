@@ -4,6 +4,10 @@ import { mobile } from '../../utils/media';
 export const Modal = styled.div`
   width: 100%;
   max-width: 500px;
+  height: auto;
+  max-height: 95vh;
+
+  overflow-y: auto;
 
   padding: 2rem;
   gap: 8px;
@@ -13,17 +17,13 @@ export const Modal = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  //justify-content: center;
 
   background-color: ${({ theme }) => theme.colors.modal.bg};
 
   ${mobile(css`
-    overflow-y: auto;
-    max-height: 85vh;
-
-    width: 95%;
-    margin: 1rem;
-    padding: 1rem;
+    width: 100%;
+    height: 100%;
+    max-height: 100vh;
   `)}
 `;
 

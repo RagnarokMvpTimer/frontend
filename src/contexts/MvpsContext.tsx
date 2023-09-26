@@ -20,14 +20,12 @@ interface MvpProviderProps {
 interface MvpsContextData {
   activeMvps: IMvp[];
   allMvps: IMvp[];
-  editingMvp: IMvp;
+  editingMvp: IMvp | undefined;
   resetMvpTimer: (mvp: IMvp) => void;
   killMvp: (mvp: IMvp, time?: Date | null) => void;
   removeMvp: (mvp: IMvp) => void;
   setEditingMvp: (mvp: IMvp) => void;
-  openAndEditModal: (mvp: IMvp) => void;
-  isEditModalOpen: boolean;
-  toggleEditModal: () => void;
+  closeEditMvpModal: () => void;
   clearActiveMvps: () => void;
 }
 
@@ -35,18 +33,12 @@ export const MvpsContext = createContext({} as MvpsContextData);
 
 export function MvpProvider({ children }: MvpProviderProps) {
   const { server } = useSettings();
-  const mvpsData = SERVERS[server || 'iRO'];
+  const mvpsData = SERVERS[server];
 
   const [isLoading, setIsLoading] = useState(true);
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const [editingMvp, setEditingMvp] = useState<IMvp>({} as IMvp);
+  const [editingMvp, setEditingMvp] = useState<IMvp>();
   const [activeMvps, setActiveMvps] = useState<IMvp[]>([]);
   const [allMvps, setAllMvps] = useState<IMvp[]>(mvpsData);
-
-  const toggleEditModal = useCallback(
-    () => setIsEditModalOpen((prev) => !prev),
-    []
-  );
 
   const resetMvpTimer = useCallback((mvp: IMvp) => {
     const updatedMvp = { ...mvp, deathTime: new Date() };
@@ -89,13 +81,7 @@ export function MvpProvider({ children }: MvpProviderProps) {
     });
   } */
 
-  const openAndEditModal = useCallback(
-    (mvp: IMvp) => {
-      setEditingMvp(mvp);
-      toggleEditModal();
-    },
-    [toggleEditModal]
-  );
+  const closeEditMvpModal = useCallback(() => setEditingMvp(undefined), []);
 
   const clearActiveMvps = useCallback(() => setActiveMvps([]), []);
 
@@ -182,14 +168,12 @@ export function MvpProvider({ children }: MvpProviderProps) {
       value={{
         activeMvps,
         allMvps,
+        editingMvp,
         resetMvpTimer,
         killMvp,
         removeMvp,
-        isEditModalOpen,
-        toggleEditModal,
-        editingMvp,
         setEditingMvp,
-        openAndEditModal,
+        closeEditMvpModal,
         clearActiveMvps,
       }}
     >

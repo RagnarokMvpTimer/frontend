@@ -29,7 +29,7 @@ import {
 
 export function EditMvpModal() {
   useScrollBlock(true);
-  const { toggleEditModal, killMvp, editingMvp: mvp } = useMvpsContext();
+  const { killMvp, editingMvp: mvp, closeEditMvpModal } = useMvpsContext();
 
   const [newTime, setNewTime] = useState<Date | null>(
     mvp.deathTime || new Date()
@@ -56,19 +56,19 @@ export function EditMvpModal() {
     };
 
     killMvp(updatedMvp, newTime);
-    toggleEditModal();
-  }, [selectedMap, mvp, markCoordinates, killMvp, newTime, toggleEditModal]);
+    closeEditMvpModal();
+  }, [selectedMap, mvp, markCoordinates, killMvp, newTime, closeEditMvpModal]);
 
   useEffect(() => {
     if (!hasMoreThanOneMap) setSelectedMap(mvp.spawn[0].mapname);
   }, [hasMoreThanOneMap, mvp.spawn]);
 
-  useKey('Escape', toggleEditModal);
+  useKey('Escape', closeEditMvpModal);
 
   return (
     <ModalBase>
       <Modal>
-        <ModalCloseIconButton onClick={toggleEditModal} />
+        <ModalCloseIconButton onClick={closeEditMvpModal} />
 
         <Name>{mvp.name}</Name>
 
