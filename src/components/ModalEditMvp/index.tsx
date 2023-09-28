@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import moment from 'moment';
 import DatePicker from 'react-datepicker';
 import { FormattedMessage } from 'react-intl';
@@ -27,7 +27,7 @@ import {
   SelectMapOption,
 } from './styles';
 
-export function EditMvpModal() {
+export function ModalEditMvp() {
   useScrollBlock(true);
   const { killMvp, editingMvp: mvp, closeEditMvpModal } = useMvpsContext();
 
@@ -40,13 +40,10 @@ export function EditMvpModal() {
     y: -1,
   });
 
-  const canChangeMap = useMemo(() => !mvp.deathMap, [mvp.deathMap]);
-  const hasMoreThanOneMap = useMemo(
-    () => mvp.spawn.length > 1,
-    [mvp.spawn.length]
-  );
+  const canChangeMap = !mvp.deathMap;
+  const hasMoreThanOneMap = mvp.spawn.length > 1;
 
-  const handleConfirm = useCallback(() => {
+  function handleConfirm() {
     if (!selectedMap) return;
 
     const updatedMvp: IMvp = {
@@ -57,7 +54,7 @@ export function EditMvpModal() {
 
     killMvp(updatedMvp, newTime);
     closeEditMvpModal();
-  }, [selectedMap, mvp, markCoordinates, killMvp, newTime, closeEditMvpModal]);
+  }
 
   useEffect(() => {
     if (!hasMoreThanOneMap) setSelectedMap(mvp.spawn[0].mapname);

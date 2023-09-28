@@ -22,7 +22,7 @@ import {
   ClearButton,
 } from './styles';
 
-export function SettingsModal() {
+export function ModalSettings() {
   useScrollBlock(true);
   const {
     toggleTheme,

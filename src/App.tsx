@@ -9,7 +9,7 @@ import { Main } from './pages/Main';
 import { Header } from './components/Header';
 import { WarningHeader } from './components/WarningHeader';
 import { Footer } from './components/Footer';
-import { SettingsModal } from './components/SettingsModal';
+import { ModalSettings } from './components/ModalSettings';
 
 import { useSettings } from './contexts/SettingsContext';
 import { MvpProvider } from './contexts/MvpsContext';
@@ -39,7 +39,7 @@ export default function App() {
 
         <Footer />
 
-        {isSettingsModalOpen && <SettingsModal />}
+        {isSettingsModalOpen && <ModalSettings />}
       </IntlProvider>
 
       <GlobalStyle />

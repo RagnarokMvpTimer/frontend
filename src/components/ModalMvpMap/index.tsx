@@ -15,7 +15,7 @@ interface MvpMapModalProps {
   close: () => void;
 }
 
-export function MvpMapModal({
+export function ModalMvpMap({
   deathMap,
   deathPosition,
   close,

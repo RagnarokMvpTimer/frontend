@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import moment from 'moment';
 
 import { MvpSprite } from '../MvpSprite';
-import { MvpMapModal } from '../MvpMapModal';
+import { ModalMvpMap } from '../ModalMvpMap';
 import { MvpCardCountdown } from '../MvpCardCountdown';
 
 import { useMvpsContext } from '../../contexts/MvpsContext';
@@ -113,7 +113,7 @@ export function MvpCard({ mvp }: MvpCardProps) {
       </Container>
 
       {isActive && isMapModalOpen && (
-        <MvpMapModal
+        <ModalMvpMap
           deathMap={mvp.deathMap}
           deathPosition={mvp.deathPosition}
           close={() => setIsMapModalOpen(false)}
