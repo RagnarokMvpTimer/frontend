@@ -76,7 +76,9 @@ export function EditMvpModal() {
           <MvpSprite mvp={mvp} />
         </SpriteWrapper>
 
-        <Question>When was the mvp killed?</Question>
+        <Question>
+          <FormattedMessage id='when_was_killed' />
+        </Question>
 
         <DatePickerContainer>
           <DatePicker
@@ -90,11 +92,16 @@ export function EditMvpModal() {
           />
         </DatePickerContainer>
 
-        <Time>At {newTime && moment(newTime).format('HH:mm')}</Time>
+        <Time>
+          <FormattedMessage id='at' />{' '}
+          {newTime && moment(newTime).format('HH:mm')}
+        </Time>
 
         {canChangeMap && hasMoreThanOneMap && (
           <>
-            <Question>Please select the map</Question>
+            <Question>
+              <FormattedMessage id='please_select_map' />
+            </Question>
             <SelectMap
               value={selectedMap}
               onChange={(e) => setSelectedMap(e.target.value)}
@@ -103,7 +110,7 @@ export function EditMvpModal() {
                 <>
                   {!selectedMap && (
                     <SelectMapOption disabled value=''>
-                      Select the map
+                      <FormattedMessage id='select_the_map' />
                     </SelectMapOption>
                   )}
 
@@ -124,8 +131,10 @@ export function EditMvpModal() {
         {selectedMap && (
           <>
             <Question>
-              Where's mvp tombstone:
-              <Optional>(optional - click to mark)</Optional>
+              <FormattedMessage id='wheres_tombstone' />
+              <Optional>
+                (<FormattedMessage id='optional_mark' />)
+              </Optional>
             </Question>
             <Map mapName={selectedMap} onChange={setMarkCoordinates} />
           </>
