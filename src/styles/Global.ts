@@ -43,4 +43,19 @@ export const GlobalStyle = createGlobalStyle`
   button {
     cursor: pointer;
   }
+
+  *:not(body,html)::-webkit-scrollbar-track {
+    background-color: ${({ theme }) => theme.colors.scrollbar.bg};
+  }
+
+  *:not(body,html)::-webkit-scrollbar {
+    width: 1.6rem;
+  }
+
+  *:not(body,html)::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    border: 4px solid transparent;
+    background-clip: content-box;
+    background-color: ${({ theme }) => theme.colors.scrollbar.thumb};
+  }
 `;

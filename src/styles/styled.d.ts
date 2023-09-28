@@ -11,6 +11,11 @@ declare module 'styled-components' {
       headerTexts: string;
       text: string;
 
+      scrollbar: {
+        bg: string;
+        thumb: string;
+      };
+
       mvpCard: {
         id: string;
         name: string;

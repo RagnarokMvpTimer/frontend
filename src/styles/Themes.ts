@@ -9,6 +9,11 @@ export const Themes = {
       headerTexts: '#fff',
       text: '#FFFFFF',
 
+      scrollbar: {
+        bg: '#2e2e2e',
+        thumb: '#f89200',
+      },
+
       mvpCard: {
         id: '#fff',
         name: '#fff',
@@ -87,6 +92,11 @@ export const Themes = {
 
       headerTexts: '#fff',
       text: '#000000',
+
+      scrollbar: {
+        bg: '#F6F8FA',
+        thumb: '#f89200',
+      },
 
       mvpCard: {
         id: '#421411',
