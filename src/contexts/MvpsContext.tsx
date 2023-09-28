@@ -117,7 +117,7 @@ export function MvpProvider({ children }: MvpProviderProps) {
   }, [server, mvpsData]);
 
   useEffect(() => {
-    if (isLoading || !activeMvps.length) return;
+    if (isLoading) return;
 
     const data = activeMvps.map((mvp) => ({
       id: mvp.id,
