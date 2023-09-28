@@ -1,8 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
-import moment, { Moment, Duration } from 'moment';
+import moment, { Duration } from 'moment';
 
-export function useCountdown(startTime: Moment, delay = 1000) {
-  const [time, setTime] = useState(startTime || moment());
+export function useCountdown(startTime = moment(), delay = 1000) {
   const [duration, setDuration] = useState<Duration>();
   const [isRunning, setIsRunning] = useState(true);
 
@@ -12,7 +11,7 @@ export function useCountdown(startTime: Moment, delay = 1000) {
   useEffect(() => {
     const interval = setInterval(
       () => {
-        const diff = time.diff(moment());
+        const diff = startTime.diff(moment());
         const dur = moment.duration(diff);
         setDuration(dur);
       },
@@ -20,11 +19,7 @@ export function useCountdown(startTime: Moment, delay = 1000) {
     );
 
     return () => clearInterval(interval);
-  }, [time, delay, isRunning]);
-
-  useEffect(() => {
-    setTime(startTime);
-  }, [startTime]);
+  }, [startTime, delay, isRunning]);
 
   return { duration, isRunning, pause, resume };
 }

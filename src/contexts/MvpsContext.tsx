@@ -72,15 +72,6 @@ export function MvpProvider({ children }: MvpProviderProps) {
     );
   }, []);
 
-  /* function respawnNotification(mvp: IMvp) {
-    new Audio('./notification1.mp3').play();
-
-    if (Notification.permission !== 'granted') return;
-    new Notification(`${mvp.name} will respawn soon...`, {
-      body: `At ${mvp.deathTime?.toLocaleTimeString()}`,
-    });
-  } */
-
   const closeEditMvpModal = useCallback(() => setEditingMvp(undefined), []);
 
   const clearActiveMvps = useCallback(() => setActiveMvps([]), []);

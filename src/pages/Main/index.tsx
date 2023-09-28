@@ -23,7 +23,7 @@ export function Main() {
             i.name.toLocaleLowerCase().includes(searchQuery.toLocaleLowerCase())
           )
         : allMvps
-      ).sort(sortBy(currentSort)),
+      )?.sort(sortBy(currentSort)),
     [searchQuery, allMvps, currentSort]
   );
 
@@ -42,7 +42,7 @@ export function Main() {
 
             <MvpsContainer>
               {activeMvps.map((mvp: IMvp) => (
-                <MvpCard key={`${mvp.id}-${mvp.deathMap}`} mvp={mvp} isActive />
+                <MvpCard key={`${mvp.id}-${mvp.deathMap}`} mvp={mvp} />
               ))}
             </MvpsContainer>
           </Section>

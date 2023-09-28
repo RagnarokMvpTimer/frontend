@@ -27,18 +27,14 @@ import {
 
 interface MvpCardProps {
   mvp: IMvp;
-  isActive?: boolean;
 }
 
-export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
+export function MvpCard({ mvp }: MvpCardProps) {
   const { killMvp, resetMvpTimer, removeMvp, setEditingMvp } = useMvpsContext();
   const { respawnAsCountdown } = useSettings();
   const [isMapModalOpen, setIsMapModalOpen] = useState<boolean>(false);
 
-  const hasMoreThanOneMap = useMemo(
-    () => mvp.spawn.length > 1,
-    [mvp.spawn.length]
-  );
+  const isActive = !!mvp.deathMap;
 
   const nextRespawn = useMemo(
     () => moment(mvp.deathTime).add(getMvpRespawnTime(mvp), 'ms'),
@@ -47,13 +43,15 @@ export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
 
   const respawnTime = useMemo(() => respawnAt(nextRespawn), [nextRespawn]);
 
-  const handleKilledNow = useCallback(() => {
-    mvp.deathMap
+  function handleKilledNow() {
+    const hasMoreThanOneMap = mvp.spawn.length > 1;
+
+    isActive
       ? killMvp(mvp)
       : hasMoreThanOneMap
       ? setEditingMvp(mvp)
       : killMvp({ ...mvp, deathMap: mvp.spawn[0].mapname });
-  }, [mvp, killMvp, hasMoreThanOneMap, setEditingMvp]);
+  }
 
   return (
     <>
@@ -114,7 +112,7 @@ export function MvpCard({ mvp, isActive = false }: MvpCardProps) {
         )}
       </Container>
 
-      {mvp.deathMap && isMapModalOpen && (
+      {isActive && isMapModalOpen && (
         <MvpMapModal
           deathMap={mvp.deathMap}
           deathPosition={mvp.deathPosition}
