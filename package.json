@@ -16,7 +16,7 @@
   "dependencies": {
     "@styled-icons/feather": "^10.34.0",
     "body-scroll-lock": "^4.0.0-beta.0",
-    "moment": "^2.29.2",
+    "dayjs": "^1.11.10",
     "react": "^18.0.0",
     "react-datepicker": "^4.7.0",
     "react-dom": "^18.0.0",

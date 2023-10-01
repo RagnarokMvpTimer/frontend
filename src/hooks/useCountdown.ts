@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
-import moment, { Duration } from 'moment';
+import dayjs from 'dayjs';
+import type { Duration } from 'dayjs/plugin/duration';
 
-export function useCountdown(startTime = moment(), delay = 1000) {
+export function useCountdown(startTime = dayjs(), delay = 1000) {
   const [duration, setDuration] = useState<Duration>();
   const [isRunning, setIsRunning] = useState(true);
 
@@ -11,8 +12,8 @@ export function useCountdown(startTime = moment(), delay = 1000) {
   useEffect(() => {
     const interval = setInterval(
       () => {
-        const diff = startTime.diff(moment());
-        const dur = moment.duration(diff);
+        const diff = startTime.diff(dayjs());
+        const dur = dayjs.duration(diff);
         setDuration(dur);
       },
       isRunning ? delay : 0

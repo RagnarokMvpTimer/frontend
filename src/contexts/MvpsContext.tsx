@@ -6,7 +6,7 @@ import {
   ReactNode,
   useCallback,
 } from 'react';
-import moment from 'moment';
+import dayjs from 'dayjs';
 
 import { useSettings } from './SettingsContext';
 
@@ -64,9 +64,9 @@ export function MvpProvider({ children }: MvpProviderProps) {
     setActiveMvps((s) =>
       [...s, killedMvp].sort((a: IMvp, b: IMvp) =>
         a.deathTime && b.deathTime
-          ? moment(a.deathTime)
+          ? dayjs(a.deathTime)
               .add(getMvpRespawnTime(a), 'ms')
-              .diff(moment(b.deathTime).add(getMvpRespawnTime(b), 'ms'))
+              .diff(dayjs(b.deathTime).add(getMvpRespawnTime(b), 'ms'))
           : 0
       )
     );
@@ -96,7 +96,7 @@ export function MvpProvider({ children }: MvpProviderProps) {
         ...SERVERS[server].find((m) => m.id === mvp.id),
         deathMap: mvp.deathMap,
         deathPosition: mvp.deathPosition,
-        deathTime: moment(mvp.deathTime).toDate(),
+        deathTime: dayjs(mvp.deathTime).toDate(),
       }));
 
       setActiveMvps(finalData);

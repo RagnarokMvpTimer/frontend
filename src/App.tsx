@@ -1,5 +1,8 @@
 import { ThemeProvider } from 'styled-components';
 import { IntlProvider } from 'react-intl';
+import dayjs from 'dayjs';
+import duration from 'dayjs/plugin/duration';
+dayjs.extend(duration);
 
 import { GlobalStyle } from './styles/Global';
 import { Themes } from './styles/Themes';

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Moment } from 'moment';
+import type { Dayjs } from 'dayjs';
 
 import { useCountdown } from '../../hooks';
 import { GetTranslateText } from '../../utils/GetTranslateText';
@@ -7,13 +7,13 @@ import { GetTranslateText } from '../../utils/GetTranslateText';
 import { Container, Text, Bold } from './styles';
 
 interface MvpCardCountdownProps {
-  nextRespawn: Moment;
+  nextRespawn: Dayjs;
 }
 
 const SOON_THRESHOLD = 600000; // 10 minutes
 
 export function MvpCardCountdown({ nextRespawn }: MvpCardCountdownProps) {
-  const { duration, isRunning } = useCountdown(nextRespawn);
+  const { duration, isRunning } = useCountdown(nextRespawn.add(10, 'm'));
   const [respawningSoon, setRespawningSoon] = useState(false);
   const [isBefore, setIsBefore] = useState(false);
 

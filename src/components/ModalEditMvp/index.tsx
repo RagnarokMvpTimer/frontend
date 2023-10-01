@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import moment from 'moment';
 import DatePicker from 'react-datepicker';
 import { FormattedMessage } from 'react-intl';
+import dayjs from 'dayjs';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -84,14 +84,14 @@ export function ModalEditMvp() {
             showTimeInput
             placeholderText='Select mvp death time'
             withPortal
-            minDate={moment().subtract(4, 'days').toDate()}
-            maxDate={moment().add(1, 'days').toDate()}
+            minDate={dayjs().subtract(4, 'days').toDate()}
+            maxDate={dayjs().add(1, 'days').toDate()}
           />
         </DatePickerContainer>
 
         <Time>
           <FormattedMessage id='at' />{' '}
-          {newTime && moment(newTime).format('HH:mm')}
+          {newTime && dayjs(newTime).format('HH:mm')}
         </Time>
 
         {canChangeMap && hasMoreThanOneMap && (
@@ -114,7 +114,7 @@ export function ModalEditMvp() {
                   {mvp.spawn.map((map) => (
                     <SelectMapOption key={map.mapname} value={map.mapname}>
                       {map.mapname} -{' '}
-                      {moment.duration(map.respawnTime).asHours()}h
+                      {dayjs.duration(map.respawnTime).asHours()}h
                     </SelectMapOption>
                   ))}
                 </>
