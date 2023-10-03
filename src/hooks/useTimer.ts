@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import dayjs, { Dayjs } from 'dayjs';
+import dayjs from 'dayjs';
 
 const currentTime = () => dayjs();
 
-export function useTimer(startTime?: Dayjs) {
-  const [time, setTime] = useState(startTime || currentTime());
+export function useTimer(startTime = currentTime()) {
+  const [time, setTime] = useState(startTime);
 
   useEffect(() => {
     const interval = setInterval(() => {

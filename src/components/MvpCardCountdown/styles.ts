@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
-interface Props {
-  isBefore: boolean;
+interface TimerProps {
   respawningSoon: boolean;
+  missedRespawn: boolean;
 }
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -11,13 +12,13 @@ export const Container = styled.div`
 
 export const Text = styled.span``;
 
-export const Bold = styled.span<Props>`
+export const Bold = styled.span<TimerProps>`
   font-weight: bold;
 
-  color: ${({ theme, respawningSoon, isBefore }) =>
+  color: ${({ theme, respawningSoon, missedRespawn }) =>
     respawningSoon
       ? theme.colors.timers.respawning
-      : isBefore
+      : missedRespawn
       ? theme.colors.timers.passed
       : theme.colors.timers.normal};
 `;
