@@ -1,5 +1,13 @@
+import { useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { IntlProvider } from 'react-intl';
+
+import dayjs from 'dayjs';
+import 'dayjs/locale/pt-br';
+import duration from 'dayjs/plugin/duration';
+import relativeTime from 'dayjs/plugin/relativeTime';
+dayjs.extend(duration);
+dayjs.extend(relativeTime);
 
 import { GlobalStyle } from './styles/Global';
 import { Themes } from './styles/Themes';
@@ -18,6 +26,10 @@ import { messages } from './locales/messages';
 
 export default function App() {
   const { theme, language, isSettingsModalOpen } = useSettings();
+
+  useEffect(() => {
+    dayjs.locale(language);
+  }, [language]);
 
   return (
     <ThemeProvider theme={Themes[theme] || Themes.dark}>

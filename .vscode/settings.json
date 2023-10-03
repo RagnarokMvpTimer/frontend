@@ -3,5 +3,13 @@
   "files.exclude": {
     "node_modules": true
   },
-  "cSpell.words": ["mapname", "mvps", "Mvps", "navi", "ragnarok", "respawning"]
+  "cSpell.words": [
+    "dayjs",
+    "mapname",
+    "mvps",
+    "navi",
+    "ragnarok",
+    "respawning",
+    "datepicker"
+  ]
 }

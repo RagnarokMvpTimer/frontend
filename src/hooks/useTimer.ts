@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import moment, { Moment } from 'moment';
+import dayjs from 'dayjs';
 
-const currentTime = () => moment();
+const currentTime = () => dayjs();
 
-export function useTimer(startTime?: Moment) {
-  const [time, setTime] = useState(startTime || currentTime());
+export function useTimer(startTime = currentTime()) {
+  const [time, setTime] = useState(startTime);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -14,5 +14,5 @@ export function useTimer(startTime?: Moment) {
     return () => clearInterval(interval);
   }, []);
 
-  return { time };
+  return [time];
 }

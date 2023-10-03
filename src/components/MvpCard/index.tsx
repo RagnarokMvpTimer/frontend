@@ -1,7 +1,7 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Map, RefreshCcw, Trash2, Edit2 } from '@styled-icons/feather';
 import { FormattedMessage } from 'react-intl';
-import moment from 'moment';
+import dayjs from 'dayjs';
 
 import { MvpSprite } from '../MvpSprite';
 import { ModalMvpMap } from '../ModalMvpMap';
@@ -37,7 +37,7 @@ export function MvpCard({ mvp }: MvpCardProps) {
   const isActive = !!mvp.deathMap;
 
   const nextRespawn = useMemo(
-    () => moment(mvp.deathTime).add(getMvpRespawnTime(mvp), 'ms'),
+    () => dayjs(mvp.deathTime).add(getMvpRespawnTime(mvp), 'ms'),
     [mvp]
   );
 
