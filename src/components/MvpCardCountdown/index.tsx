@@ -1,4 +1,4 @@
-import type { Dayjs } from 'dayjs';
+import dayjs, { Dayjs } from 'dayjs';
 
 import { useCountdown } from '../../hooks';
 import { GetTranslateText } from '../../utils/GetTranslateText';
@@ -24,13 +24,17 @@ export function MvpCardCountdown({ nextRespawn }: MvpCardCountdownProps) {
     ? GetTranslateText('already_respawned')
     : GetTranslateText('respawn_in');
 
+  const isMoreThan24Hours = dayjs().diff(nextRespawn, 'h') >= 24;
+
   const formattedTimeString =
     duration &&
-    `${missedRespawn ? '-' : ''}${duration
-      .format('HH:mm:ss')
-      .split(':')
-      .map((time) => time.replace('-', '').padStart(2, '0'))
-      .join(':')}`;
+    (isMoreThan24Hours
+      ? duration?.humanize(true)
+      : `${missedRespawn ? '-' : ''}${duration
+          .format('HH:mm:ss')
+          .split(':')
+          .map((time) => time.replace('-', '').padStart(2, '0'))
+          .join(':')}`);
 
   return (
     <Container>
