@@ -25,9 +25,7 @@ export function ModalSelectServer({ close }: ModalSelectServerProps) {
 
   useScrollBlock(true);
 
-  const modalRef = useClickOutside({
-    onClick: close,
-  });
+  const modalRef = useClickOutside(close);
 
   function confirmChange() {
     changeServer(selectedServer);

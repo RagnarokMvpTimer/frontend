@@ -22,7 +22,7 @@ export function ModalMvpMap({
 }: MvpMapModalProps) {
   useScrollBlock(true);
   useKey('Escape', close);
-  const modalRef = useClickOutside({ onClick: close });
+  const modalRef = useClickOutside(close);
 
   return (
     <ModalBase>

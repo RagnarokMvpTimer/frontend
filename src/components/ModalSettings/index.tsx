@@ -36,9 +36,7 @@ export function ModalSettings() {
   } = useSettings();
   const { clearActiveMvps } = useMvpsContext();
 
-  const modalRef = useClickOutside({
-    onClick: toggleSettingsModal,
-  });
+  const modalRef = useClickOutside(toggleSettingsModal);
 
   function handleClearData() {
     const clearDataMessage = GetTranslateText('clear_data_message');

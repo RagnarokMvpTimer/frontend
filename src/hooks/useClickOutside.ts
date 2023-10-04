@@ -1,10 +1,6 @@
 import { useRef, useEffect } from 'react';
 
-interface Props {
-  onClick: () => void;
-}
-
-export function useClickOutside({ onClick }: Props) {
+export function useClickOutside(onClick: () => void) {
   const ref = useRef<any>(null);
 
   useEffect(() => {
