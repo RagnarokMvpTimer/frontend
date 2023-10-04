@@ -1,6 +1,6 @@
 import { FormattedMessage } from 'react-intl';
 
-import { useKey } from '../../hooks';
+import { useClickOutside, useKey, useScrollBlock } from '../../hooks';
 
 import { ModalBase } from '../ModalBase';
 import { Map } from '../Map';
@@ -20,11 +20,13 @@ export function ModalMvpMap({
   deathPosition,
   close,
 }: MvpMapModalProps) {
+  useScrollBlock(true);
   useKey('Escape', close);
+  const modalRef = useClickOutside({ onClick: close });
 
   return (
     <ModalBase>
-      <Modal>
+      <Modal ref={modalRef}>
         <Name>{deathMap}</Name>
 
         <Map mapName={deathMap} coordinates={deathPosition} />
