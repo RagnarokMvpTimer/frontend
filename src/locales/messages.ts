@@ -24,6 +24,8 @@ export const messages = {
     clear_data: 'Clear data',
     clear: 'Clear',
     clear_data_message: 'Are you sure you want to clear all data?',
+    clear_data_description:
+      "Permanently remove all MVPs and site settings? This action isn't reversible, so please continue with caution.",
     made_by: 'Made with ❤️ by',
     source_code: 'Source code available on',
     hosted_on: 'Hosted on',
@@ -72,6 +74,8 @@ export const messages = {
     clear_data: 'Limpar dados',
     clear: 'Limpar',
     clear_data_message: 'Você tem certeza que deseja apagar todos os dados?',
+    clear_data_description:
+      'Deseja apagar todos os chefes e configurações do site? Esta ação não é reversível, tenha cuidado.',
     made_by: 'Feito com ❤️ por',
     source_code: 'Código fonte disponível em',
     hosted_on: 'Hospedado na',

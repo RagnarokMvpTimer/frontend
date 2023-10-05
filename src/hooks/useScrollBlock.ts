@@ -16,14 +16,14 @@ const DocumentBody = document.body;
 type Response<S> = [S, Dispatch<SetStateAction<S>>];
 
 export function useScrollBlock<S>(initialState: S | (() => S)): Response<S> {
-  const [isSrollBlocked, setIsScrollBlocked] = useState<S>(initialState);
+  const [isScrollBlocked, setIsScrollBlocked] = useState<S>(initialState);
 
   useEffect(() => {
-    isSrollBlocked
+    isScrollBlocked
       ? disableBodyScroll(DocumentBody, options)
       : enableBodyScroll(DocumentBody);
     return () => enableBodyScroll(DocumentBody);
-  }, [isSrollBlocked]);
+  }, [isScrollBlocked]);
 
-  return [isSrollBlocked, setIsScrollBlocked];
+  return [isScrollBlocked, setIsScrollBlocked];
 }

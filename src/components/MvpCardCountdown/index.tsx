@@ -1,7 +1,8 @@
-import dayjs, { Dayjs } from 'dayjs';
+import dayjs, { type Dayjs } from 'dayjs';
 
 import { useCountdown } from '../../hooks';
 import { GetTranslateText } from '../../utils/GetTranslateText';
+import { RESPAWN_TIMER_SOON_THRESHOLD_MS } from '../../constants';
 
 import { Container, Text, Bold } from './styles';
 
@@ -9,13 +10,14 @@ interface MvpCardCountdownProps {
   nextRespawn: Dayjs;
 }
 
-const SOON_THRESHOLD = 600000; // 10 minutes
-
 export function MvpCardCountdown({ nextRespawn }: MvpCardCountdownProps) {
-  const { duration } = useCountdown(nextRespawn.add(10, 'm'));
+  const { duration } = useCountdown(
+    nextRespawn.add(RESPAWN_TIMER_SOON_THRESHOLD_MS, 'ms')
+  );
 
   const durationAsMs = duration?.asMilliseconds();
-  const respawningSoon = durationAsMs >= 0 && durationAsMs <= SOON_THRESHOLD;
+  const respawningSoon =
+    durationAsMs >= 0 && durationAsMs <= RESPAWN_TIMER_SOON_THRESHOLD_MS;
   const missedRespawn = durationAsMs < 0;
 
   const respawnText = respawningSoon
@@ -29,7 +31,7 @@ export function MvpCardCountdown({ nextRespawn }: MvpCardCountdownProps) {
   const formattedTimeString =
     duration &&
     (isMoreThan24Hours
-      ? duration?.humanize(true)
+      ? duration.humanize(true)
       : `${missedRespawn ? '-' : ''}${duration
           .format('HH:mm:ss')
           .split(':')

@@ -8,6 +8,13 @@ import {
 } from 'react';
 
 import { usePersistedState } from '../hooks';
+import {
+  LOCAL_STORAGE_THEME_KEY,
+  DEFAULT_THEME,
+  DEFAULT_LANG,
+  DEFAULT_SERVER,
+  LOCAL_STORAGE_SETTINGS_KEY,
+} from '../constants';
 import { Themes } from '../styles/Themes';
 
 interface SettingsProviderProps {
@@ -34,16 +41,22 @@ export const SettingsContext = createContext({} as SettingsContextData);
 
 export function SettingsProvider({ children }: SettingsProviderProps) {
   const [isLoading, setIsLoading] = useState(true);
-  const [theme, setTheme] = usePersistedState<string>('theme', Themes.light.id);
+  const [theme, setTheme] = usePersistedState<string>(
+    LOCAL_STORAGE_THEME_KEY,
+    DEFAULT_THEME
+  );
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
   const [respawnAsCountdown, setRespawnAsCountdown] = useState(true);
   const [animatedSprites, setAnimatedSprites] = useState(false);
-  const [language, setLanguage] = useState('en');
-  const [server, setServer] = useState('iRO');
+  const [language, setLanguage] = useState(DEFAULT_LANG);
+  const [server, setServer] = useState(DEFAULT_SERVER);
 
   const toggleTheme = useCallback(
-    () => setTheme(theme === 'light' ? Themes.dark.id : Themes.light.id),
-    [setTheme, theme]
+    () =>
+      setTheme((prev) =>
+        prev === Themes.light.id ? Themes.dark.id : Themes.light.id
+      ),
+    [setTheme]
   );
 
   const toggleSettingsModal = useCallback(
@@ -69,18 +82,18 @@ export function SettingsProvider({ children }: SettingsProviderProps) {
   }, []);
 
   const resetSettings = useCallback(() => {
-    setTheme(Themes.dark.id);
+    setTheme(DEFAULT_THEME);
     setRespawnAsCountdown(true);
     setAnimatedSprites(false);
-    setLanguage('en');
-    setServer('iRO');
+    setLanguage(DEFAULT_LANG);
+    setServer(DEFAULT_SERVER);
   }, [setTheme]);
 
   useEffect(() => {
     if (!isLoading) return;
 
     try {
-      const settings = localStorage.getItem('settings');
+      const settings = localStorage.getItem(LOCAL_STORAGE_SETTINGS_KEY);
       if (!settings) return;
 
       const settingsParse = JSON.parse(settings);
@@ -91,8 +104,8 @@ export function SettingsProvider({ children }: SettingsProviderProps) {
 
       setRespawnAsCountdown(respawnAsCountdown);
       setAnimatedSprites(animatedSprites);
-      setLanguage(language || 'en');
-      setServer(server || 'iRO');
+      setLanguage(language || DEFAULT_LANG);
+      setServer(server || DEFAULT_SERVER);
     } catch (error) {
       console.error(error);
     } finally {
@@ -109,7 +122,7 @@ export function SettingsProvider({ children }: SettingsProviderProps) {
       language,
       server,
     };
-    localStorage.setItem('settings', JSON.stringify(settings));
+    localStorage.setItem(LOCAL_STORAGE_SETTINGS_KEY, JSON.stringify(settings));
   }, [respawnAsCountdown, animatedSprites, language, server]);
 
   return (

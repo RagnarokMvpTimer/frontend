@@ -11,6 +11,7 @@ import dayjs from 'dayjs';
 import { useSettings } from './SettingsContext';
 
 import { getMvpRespawnTime, getServers } from '../utils';
+import { LOCAL_STORAGE_ACTIVE_MVPS_KEY } from '../constants';
 const SERVERS = getServers();
 
 interface MvpProviderProps {
@@ -78,7 +79,7 @@ export function MvpProvider({ children }: MvpProviderProps) {
 
   useEffect(() => {
     try {
-      const data = localStorage.getItem('activeMvps');
+      const data = localStorage.getItem(LOCAL_STORAGE_ACTIVE_MVPS_KEY);
       if (!data) return;
 
       const dataParse = JSON.parse(data);
@@ -117,7 +118,9 @@ export function MvpProvider({ children }: MvpProviderProps) {
       deathPosition: mvp.deathPosition,
     }));
 
-    const currentLocalMvps = localStorage.getItem('activeMvps');
+    const currentLocalMvps = localStorage.getItem(
+      LOCAL_STORAGE_ACTIVE_MVPS_KEY
+    );
     const currentData = currentLocalMvps ? JSON.parse(currentLocalMvps) : {};
 
     const updatedActiveData = {
@@ -129,7 +132,10 @@ export function MvpProvider({ children }: MvpProviderProps) {
       (key) => !isNaN(Number(key)) && delete updatedActiveData[key]
     );
 
-    localStorage.setItem('activeMvps', JSON.stringify(updatedActiveData));
+    localStorage.setItem(
+      LOCAL_STORAGE_ACTIVE_MVPS_KEY,
+      JSON.stringify(updatedActiveData)
+    );
   }, [activeMvps]);
 
   useEffect(() => {

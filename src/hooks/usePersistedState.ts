@@ -19,6 +19,7 @@ export function usePersistedState<T>(
   });
 
   useEffect(() => {
+    if (state === undefined) return;
     localStorage.setItem(key, JSON.stringify(state));
   }, [key, state]);
 

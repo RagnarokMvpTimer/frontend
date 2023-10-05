@@ -21,8 +21,11 @@ import { ModalSettings } from './components/ModalSettings';
 
 import { useSettings } from './contexts/SettingsContext';
 import { MvpProvider } from './contexts/MvpsContext';
+
 import { LOCALES } from './locales';
 import { messages } from './locales/messages';
+
+import { DEFAULT_THEME } from './constants';
 
 export default function App() {
   const { theme, language, isSettingsModalOpen } = useSettings();
@@ -32,7 +35,7 @@ export default function App() {
   }, [language]);
 
   return (
-    <ThemeProvider theme={Themes[theme] || Themes.dark}>
+    <ThemeProvider theme={Themes[theme || DEFAULT_THEME]}>
       <IntlProvider
         messages={messages[language]}
         locale={language}
