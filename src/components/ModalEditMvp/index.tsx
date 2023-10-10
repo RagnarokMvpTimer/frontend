@@ -86,13 +86,15 @@ export function ModalEditMvp() {
             withPortal
             minDate={dayjs().subtract(4, 'days').toDate()}
             maxDate={dayjs().add(1, 'days').toDate()}
+            dateFormat='dd/MM - HH:mm'
+            shouldCloseOnSelect={false}
           />
         </DatePickerContainer>
 
-        <Time>
+        {/* <Time>
           <FormattedMessage id='at' />{' '}
           {newTime && dayjs(newTime).format('HH:mm')}
-        </Time>
+        </Time> */}
 
         {canChangeMap && hasMoreThanOneMap && (
           <>

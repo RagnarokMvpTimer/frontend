@@ -40,15 +40,15 @@ export const Name = styled.span`
   color: ${({ theme }) => theme.colors.modal.name};
   margin-top: -25px;
 
-  font-size: 24px;
+  font-size: 2.4rem;
   font-weight: 600;
 `;
 
 export const Question = styled.span`
   color: ${({ theme }) => theme.colors.modal.text};
 
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 1.8rem;
+  font-weight: 600;
 
   display: flex;
   flex-direction: column;
@@ -58,13 +58,13 @@ export const Question = styled.span`
 export const Optional = styled.span`
   color: ${({ theme }) => theme.colors.modal.text};
 
-  font-size: 12px;
+  font-size: 1.2rem;
 `;
 
 export const Time = styled.span`
   color: ${({ theme }) => theme.colors.modal.time};
 
-  font-size: 18px;
+  font-size: 1.6rem;
   font-weight: 600;
 `;
 
@@ -87,10 +87,15 @@ export const SelectMap = styled.select`
   padding: 0 6px;
 
   font-weight: 500;
-  font-size: 14px;
+  font-size: 1.6rem;
 
   background: #fff;
   outline: 0;
+
+  cursor: pointer;
 `;
 
-export const SelectMapOption = styled.option``;
+export const SelectMapOption = styled.option`
+  font-weight: 500;
+  font-size: 1.6rem;
+`;
