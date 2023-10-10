@@ -20,7 +20,9 @@ export function Main() {
     () =>
       (searchQuery
         ? allMvps.filter((i) =>
-            i.name.toLocaleLowerCase().includes(searchQuery.toLocaleLowerCase())
+            `${i.id}-${i.name}`
+              .toLocaleLowerCase()
+              .includes(searchQuery.toLocaleLowerCase())
           )
         : allMvps
       )?.sort(sortBy(currentSort)),
