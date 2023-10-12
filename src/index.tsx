@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Analytics } from '@vercel/analytics/react';
 import App from './App';
 
 import { SettingsProvider } from './contexts/SettingsContext';
@@ -13,5 +14,6 @@ root.render(
     <SettingsProvider>
       <App />
     </SettingsProvider>
+    <Analytics />
   </React.StrictMode>
 );

@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@styled-icons/feather": "^10.34.0",
+    "@vercel/analytics": "^1.1.1",
     "body-scroll-lock": "^4.0.0-beta.0",
     "dayjs": "^1.11.10",
     "react": "^18.0.0",
@@ -42,7 +43,7 @@
     "eslint-plugin-react-hooks": "^4.5.0",
     "gh-pages": "^3.2.3",
     "prettier": "2.6.2",
-    "vercel": "^24.1.0",
+    "vercel": "^32.4.1",
     "vite": "^4.3.9",
     "vite-imagetools": "^5.0.9"
   },
