@@ -22,6 +22,7 @@ export function MvpSprite({ mvp }: MvpSpriteProps) {
       }
       alt={mvp?.name}
       isAnimated={animatedSprites}
+      loading='lazy'
     />
   );
 }

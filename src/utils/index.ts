@@ -1,9 +1,45 @@
 import type { Dayjs } from 'dayjs';
 
-import { mvpIcons } from '../assets/mvp_icons';
-import { mvpIconsAnimated } from '../assets/mvp_icons_animated';
-import { mvpMaps } from '../assets/mvp_maps';
 import Question from '../assets/question.gif';
+
+const MVP_SPRITES = import.meta.glob('../assets/mvp_icons/*', {
+  import: 'default',
+  eager: true,
+});
+
+const ANIMATED_MVP_SPRITES = import.meta.glob(
+  '../assets/mvp_icons_animated/*',
+  {
+    import: 'default',
+    eager: true,
+  }
+);
+
+const MAP_IMAGES = import.meta.glob('../assets/mvp_maps/*', {
+  import: 'default',
+  eager: true,
+});
+
+const mvpSprites = Object.entries(MVP_SPRITES).reduce((acc, [key, value]) => {
+  const newKey = key.split('/').slice(-1)[0].split('.')[0];
+  acc[newKey] = value;
+  return acc;
+}, {});
+
+const animatedMvpSprites = Object.entries(ANIMATED_MVP_SPRITES).reduce(
+  (acc, [key, value]) => {
+    const newKey = key.split('/').slice(-1)[0].split('.')[0];
+    acc[newKey] = value;
+    return acc;
+  },
+  {}
+);
+
+const mapImages = Object.entries(MAP_IMAGES).reduce((acc, [key, value]) => {
+  const newKey = key.split('/').slice(-1)[0].split('.')[0];
+  acc[newKey] = value;
+  return acc;
+}, {});
 
 const SERVERS = import.meta.glob('../data/*.json', {
   import: 'default',
@@ -30,7 +66,7 @@ export const respawnAt = (time: Dayjs) =>
  * @param id mvp id
  * @returns image url
  */
-export const getMvpSprite = (id: number): string => mvpIcons[id] || Question;
+export const getMvpSprite = (id: number): string => mvpSprites[id] || Question;
 
 /**
  * Returns the animated MVP sprite or default sprite or question emoticon
@@ -38,7 +74,7 @@ export const getMvpSprite = (id: number): string => mvpIcons[id] || Question;
  * @returns image url
  */
 export const getAnimatedMvpSprite = (id: number): string =>
-  mvpIconsAnimated[id] || getMvpSprite(id);
+  animatedMvpSprites[id] || getMvpSprite(id);
 
 /**
  * Returns the map image or question emoticon
@@ -46,7 +82,7 @@ export const getAnimatedMvpSprite = (id: number): string =>
  * @returns image url
  */
 export const getMapImg = (mapname: string): string =>
-  mvpMaps[mapname] || Question;
+  mapImages[mapname] || Question;
 
 /**
  * Returns the death map respawn time in milliseconds.

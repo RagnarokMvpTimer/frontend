@@ -12,6 +12,6 @@ export const Sprite = styled.img<SpriteProps>`
   ${({ isAnimated }) =>
     !isAnimated &&
     css`
-      border-top-left-radius: 30px;
+      border-top-left-radius: 25px;
     `}
 `;
