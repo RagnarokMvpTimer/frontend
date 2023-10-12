@@ -2,7 +2,6 @@ import {
   createContext,
   useContext,
   useState,
-  useEffect,
   ReactNode,
   useCallback,
 } from 'react';
@@ -11,8 +10,7 @@ import { usePersistedState } from '../hooks';
 import {
   LOCAL_STORAGE_THEME_KEY,
   DEFAULT_THEME,
-  DEFAULT_LANG,
-  DEFAULT_SERVER,
+  DEFAULT_SETTINGS,
   LOCAL_STORAGE_SETTINGS_KEY,
 } from '../constants';
 import { Themes } from '../styles/Themes';
@@ -40,16 +38,15 @@ interface SettingsContextData {
 export const SettingsContext = createContext({} as SettingsContextData);
 
 export function SettingsProvider({ children }: SettingsProviderProps) {
-  const [isLoading, setIsLoading] = useState(true);
-  const [theme, setTheme] = usePersistedState<string>(
+  const [theme, setTheme] = usePersistedState(
     LOCAL_STORAGE_THEME_KEY,
     DEFAULT_THEME
   );
+  const [settings, setSettings] = usePersistedState(
+    LOCAL_STORAGE_SETTINGS_KEY,
+    DEFAULT_SETTINGS
+  );
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
-  const [respawnAsCountdown, setRespawnAsCountdown] = useState(true);
-  const [animatedSprites, setAnimatedSprites] = useState(false);
-  const [language, setLanguage] = useState(DEFAULT_LANG);
-  const [server, setServer] = useState(DEFAULT_SERVER);
 
   const toggleTheme = useCallback(
     () =>
@@ -65,80 +62,57 @@ export function SettingsProvider({ children }: SettingsProviderProps) {
   );
 
   const toggleRespawnCountdown = useCallback(
-    () => setRespawnAsCountdown((prev) => !prev),
+    () =>
+      setSettings((prev) => ({
+        ...prev,
+        respawnAsCountdown: !prev.respawnAsCountdown,
+      })),
     []
   );
 
   const toggleAnimatedSprites = useCallback(() => {
-    setAnimatedSprites((prev) => !prev);
-  }, []);
+    setSettings((prev) => ({
+      ...prev,
+      animatedSprites: !prev.animatedSprites,
+    }));
+  }, [setSettings]);
 
-  const changeLanguage = useCallback((id: string) => {
-    setLanguage(id);
-  }, []);
+  const changeLanguage = useCallback(
+    (language: string) => {
+      setSettings((prev) => ({
+        ...prev,
+        language,
+      }));
+    },
+    [setSettings]
+  );
 
-  const changeServer = useCallback((id: string) => {
-    setServer(id);
-  }, []);
+  const changeServer = useCallback(
+    (server: string) => {
+      setSettings((prev) => ({
+        ...prev,
+        server,
+      }));
+    },
+    [setSettings]
+  );
 
   const resetSettings = useCallback(() => {
     setTheme(DEFAULT_THEME);
-    setRespawnAsCountdown(true);
-    setAnimatedSprites(false);
-    setLanguage(DEFAULT_LANG);
-    setServer(DEFAULT_SERVER);
-  }, [setTheme]);
-
-  useEffect(() => {
-    if (!isLoading) return;
-
-    try {
-      const settings = localStorage.getItem(LOCAL_STORAGE_SETTINGS_KEY);
-      if (!settings) return;
-
-      const settingsParse = JSON.parse(settings);
-      if (!settingsParse) return;
-
-      const { respawnAsCountdown, animatedSprites, language, server } =
-        settingsParse;
-
-      setRespawnAsCountdown(respawnAsCountdown);
-      setAnimatedSprites(animatedSprites);
-      setLanguage(language || DEFAULT_LANG);
-      setServer(server || DEFAULT_SERVER);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setIsLoading(false);
-    }
-  }, [isLoading]);
-
-  useEffect(() => {
-    if (isLoading) return;
-
-    const settings = {
-      respawnAsCountdown,
-      animatedSprites,
-      language,
-      server,
-    };
-    localStorage.setItem(LOCAL_STORAGE_SETTINGS_KEY, JSON.stringify(settings));
-  }, [respawnAsCountdown, animatedSprites, language, server]);
+    setSettings(DEFAULT_SETTINGS);
+  }, [setTheme, setSettings]);
 
   return (
     <SettingsContext.Provider
       value={{
+        ...settings,
         theme,
         toggleTheme,
         isSettingsModalOpen,
         toggleSettingsModal,
-        respawnAsCountdown,
         toggleRespawnCountdown,
-        animatedSprites,
         toggleAnimatedSprites,
-        language,
         changeLanguage,
-        server,
         changeServer,
         resetSettings,
       }}
