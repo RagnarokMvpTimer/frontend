@@ -10,9 +10,8 @@ import dayjs from 'dayjs';
 
 import { useSettings } from './SettingsContext';
 
-import { getMvpRespawnTime, getServers } from '../utils';
+import { getMvpRespawnTime, SERVERS } from '../utils';
 import { LOCAL_STORAGE_ACTIVE_MVPS_KEY } from '../constants';
-const SERVERS = getServers();
 
 interface MvpProviderProps {
   children: ReactNode;

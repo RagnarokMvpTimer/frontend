@@ -5,7 +5,7 @@ import { ModalBase } from '../ModalBase';
 import { ModalCloseIconButton } from '../../ui/ModalCloseIconButton';
 
 import { useSettings } from '../../contexts/SettingsContext';
-import { getServers } from '../../utils';
+import { SERVERS } from '../../utils';
 import { useClickOutside, useScrollBlock } from '../../hooks';
 
 import { ModalPrimaryButton } from '../../ui/ModalPrimaryButton';
@@ -15,7 +15,7 @@ interface ModalSelectServerProps {
   close: () => void;
 }
 
-const serversNames = Object.keys(getServers()).sort((a, b) =>
+const serversNames = Object.keys(SERVERS).sort((a, b) =>
   a.toLowerCase().localeCompare(b.toLowerCase())
 );
 

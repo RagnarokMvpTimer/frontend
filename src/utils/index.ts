@@ -2,6 +2,14 @@ import type { Dayjs } from 'dayjs';
 
 import Question from '../assets/question.gif';
 
+function remapGlobImport(data) {
+  return Object.entries(data).reduce((acc, [key, value]) => {
+    const newKey = key.split('/').slice(-1)[0].split('.')[0];
+    acc[newKey] = value;
+    return acc;
+  }, {});
+}
+
 const MVP_SPRITES = import.meta.glob('../assets/mvp_icons/*', {
   import: 'default',
   eager: true,
@@ -20,31 +28,27 @@ const MAP_IMAGES = import.meta.glob('../assets/mvp_maps/*', {
   eager: true,
 });
 
-const mvpSprites = Object.entries(MVP_SPRITES).reduce((acc, [key, value]) => {
-  const newKey = key.split('/').slice(-1)[0].split('.')[0];
-  acc[newKey] = value;
-  return acc;
-}, {});
+const mvpSprites = remapGlobImport(MVP_SPRITES);
+const animatedMvpSprites = remapGlobImport(ANIMATED_MVP_SPRITES);
+const mapImages = remapGlobImport(MAP_IMAGES);
 
-const animatedMvpSprites = Object.entries(ANIMATED_MVP_SPRITES).reduce(
+const SERVERS_DATA = import.meta.glob('../data/*.json', {
+  import: 'default',
+  eager: true,
+});
+
+type IServers = {
+  [key: string]: IMvp[];
+};
+
+export const SERVERS: IServers = Object.entries(SERVERS_DATA).reduce(
   (acc, [key, value]) => {
-    const newKey = key.split('/').slice(-1)[0].split('.')[0];
+    const newKey = key.split('/')[2].split('.')[0];
     acc[newKey] = value;
     return acc;
   },
   {}
 );
-
-const mapImages = Object.entries(MAP_IMAGES).reduce((acc, [key, value]) => {
-  const newKey = key.split('/').slice(-1)[0].split('.')[0];
-  acc[newKey] = value;
-  return acc;
-}, {});
-
-const SERVERS = import.meta.glob('../data/*.json', {
-  import: 'default',
-  eager: true,
-});
 
 /**
  * Convert Dayjs object to string with 'HH:mm:ss' format
@@ -110,19 +114,4 @@ export function respawnNotification(name: string, deathTime: Date) {
  */
 export function clearData() {
   localStorage.clear();
-}
-
-type IGetServers = {
-  [key: string]: IMvp[];
-};
-
-export function getServers(): IGetServers {
-  const finalObj = {};
-
-  for (const [key, value] of Object.entries(SERVERS)) {
-    const newKey = key.split('/')[2].split('.')[0];
-    finalObj[newKey] = value;
-  }
-
-  return finalObj;
 }
