@@ -4,12 +4,14 @@
     "node_modules": true
   },
   "cSpell.words": [
+    "datepicker",
     "dayjs",
     "mapname",
     "mvps",
     "navi",
     "ragnarok",
-    "respawning",
-    "datepicker"
+    "ragnarokmvptimer",
+    "respawn",
+    "respawning"
   ]
 }
