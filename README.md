@@ -19,10 +19,26 @@ The site will save the records in your browser's local storage.
 
 ## 🚀 Installation
 
-```Shell
+Clone Repository:
+
+```shell
 git clone https://github.com/RagnarokMvpTimer/frontend.git ragnarokmvptimer-frontend
+```
+
+Enter project folder:
+
+```shell
 cd ragnarokmvptimer-frontend
+```
+
+Install dependencies:
+
+```shell
 npm install
+```
+
+Start project with:
+```shell
 npm run dev
 ```
 
