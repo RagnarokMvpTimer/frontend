@@ -1,4 +1,4 @@
-import { useTimer } from '../../hooks';
+import { useTimer } from '@/hooks';
 import { Hour } from './styles';
 
 export function HeaderTimer() {

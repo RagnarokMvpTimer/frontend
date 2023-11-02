@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
-import { useSettings } from '../../contexts/SettingsContext';
+import { useSettings } from '@/contexts/SettingsContext';
 import { ModalSelectServer } from '../ModalSelectServer';
-import { GetTranslateText } from '../../utils/GetTranslateText';
+import { GetTranslateText } from '@/utils/GetTranslateText';
 
 import { Button } from './styles';
 

@@ -1,6 +1,6 @@
 import { ModalBase } from '../ModalBase';
-import { ModalCloseIconButton } from '../../ui/ModalCloseIconButton';
-import { useSecondsTimer } from '../../hooks';
+import { ModalCloseIconButton } from '@/ui/ModalCloseIconButton';
+import { useSecondsTimer } from '@/hooks';
 
 import {
   Modal,

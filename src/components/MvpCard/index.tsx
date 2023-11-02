@@ -7,9 +7,9 @@ import { MvpSprite } from '../MvpSprite';
 import { ModalMvpMap } from '../ModalMvpMap';
 import { MvpCardCountdown } from '../MvpCardCountdown';
 
-import { useMvpsContext } from '../../contexts/MvpsContext';
-import { useSettings } from '../../contexts/SettingsContext';
-import { getMvpRespawnTime, respawnAt } from '../../utils';
+import { useMvpsContext } from '@/contexts/MvpsContext';
+import { useSettings } from '@/contexts/SettingsContext';
+import { getMvpRespawnTime, respawnAt } from '@/utils';
 
 import {
   Container,

@@ -1,8 +1,8 @@
 import dayjs, { type Dayjs } from 'dayjs';
 
-import { useCountdown } from '../../hooks';
-import { GetTranslateText } from '../../utils/GetTranslateText';
-import { RESPAWN_TIMER_SOON_THRESHOLD_MS } from '../../constants';
+import { useCountdown } from '@/hooks';
+import { GetTranslateText } from '@/utils/GetTranslateText';
+import { RESPAWN_TIMER_SOON_THRESHOLD_MS } from '@/constants';
 
 import { Container, Text, Bold } from './styles';
 

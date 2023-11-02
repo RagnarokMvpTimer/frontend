@@ -5,6 +5,10 @@
     "module": "esnext",
     "skipLibCheck": true,
     "types": ["vite/client"],
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
 
     "moduleResolution": "node",
     "resolveJsonModule": true,

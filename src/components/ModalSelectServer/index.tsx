@@ -2,13 +2,13 @@ import { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import { ModalBase } from '../ModalBase';
-import { ModalCloseIconButton } from '../../ui/ModalCloseIconButton';
+import { ModalCloseIconButton } from '@/ui/ModalCloseIconButton';
 
-import { useSettings } from '../../contexts/SettingsContext';
-import { SERVERS } from '../../utils';
-import { useClickOutside, useScrollBlock } from '../../hooks';
+import { useSettings } from '@/contexts/SettingsContext';
+import { SERVERS } from '@/utils';
+import { useClickOutside, useScrollBlock } from '@/hooks';
 
-import { ModalPrimaryButton } from '../../ui/ModalPrimaryButton';
+import { ModalPrimaryButton } from '@/ui/ModalPrimaryButton';
 import { Modal, Title, ServerList, ServerItem } from './styles';
 
 interface ModalSelectServerProps {

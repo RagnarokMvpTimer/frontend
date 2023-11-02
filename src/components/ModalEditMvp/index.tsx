@@ -5,15 +5,15 @@ import dayjs from 'dayjs';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
-import { useScrollBlock, useKey } from '../../hooks';
-import { useMvpsContext } from '../../contexts/MvpsContext';
+import { useScrollBlock, useKey } from '@/hooks';
+import { useMvpsContext } from '@/contexts/MvpsContext';
 
 import { ModalBase } from '../ModalBase';
 import { MvpSprite } from '../MvpSprite';
 import { Map } from '../Map';
 
-import { ModalCloseIconButton } from '../../ui/ModalCloseIconButton';
-import { ModalPrimaryButton } from '../../ui/ModalPrimaryButton';
+import { ModalCloseIconButton } from '@/ui/ModalCloseIconButton';
+import { ModalPrimaryButton } from '@/ui/ModalPrimaryButton';
 
 import {
   Modal,

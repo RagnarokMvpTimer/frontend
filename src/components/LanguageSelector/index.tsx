@@ -1,8 +1,8 @@
 import { useCallback, useState } from 'react';
 import { ChevronDown, ChevronUp } from '@styled-icons/feather';
 
-import { useSettings } from '../../contexts/SettingsContext';
-import { LANGUAGES } from '../../locales';
+import { useSettings } from '@/contexts/SettingsContext';
+import { LANGUAGES } from '@/locales';
 
 import {
   Container,

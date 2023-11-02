@@ -1,7 +1,7 @@
 import RSwitch from 'react-switch';
-import { useSettings } from '../../contexts/SettingsContext';
-import { DEFAULT_THEME } from '../../constants';
-import { Themes } from '../../styles/Themes';
+import { useSettings } from '@/contexts/SettingsContext';
+import { DEFAULT_THEME } from '@/constants';
+import { Themes } from '@/styles/Themes';
 
 interface SwitchProps {
   checked: boolean;

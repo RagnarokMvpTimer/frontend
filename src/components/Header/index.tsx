@@ -2,7 +2,7 @@ import { HeaderTimer } from '../HeaderTimer';
 import { ServerButton } from '../ServerButton';
 import { SettingsButton } from '../SettingsButton';
 
-import mvpImg from '../../assets/mvp.png';
+import mvpImg from '@/assets/mvp.png';
 
 import { Container, Customization, Logo, LogoContainer, Title } from './styles';
 

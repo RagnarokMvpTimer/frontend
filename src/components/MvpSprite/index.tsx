@@ -1,5 +1,5 @@
-import { useSettings } from '../../contexts/SettingsContext';
-import { getMvpSprite, getAnimatedMvpSprite } from '../../utils';
+import { useSettings } from '@/contexts/SettingsContext';
+import { getMvpSprite, getAnimatedMvpSprite } from '@/utils';
 
 import { Sprite } from './styles';
 

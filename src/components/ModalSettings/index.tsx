@@ -6,14 +6,14 @@ import { ModalBase } from '../ModalBase';
 import { Switch } from '../Switch';
 import { LanguageSelector } from '../LanguageSelector';
 import { ModalWarning } from '../ModalWarning';
-import { ModalCloseIconButton } from '../../ui/ModalCloseIconButton';
+import { ModalCloseIconButton } from '@/ui/ModalCloseIconButton';
 
-import { useSettings } from '../../contexts/SettingsContext';
-import { useMvpsContext } from '../../contexts/MvpsContext';
-import { useScrollBlock, useClickOutside } from '../../hooks';
-import { clearData } from '../../utils';
-import { GetTranslateText } from '../../utils/GetTranslateText';
-import { Themes } from '../../styles/Themes';
+import { useSettings } from '@/contexts/SettingsContext';
+import { useMvpsContext } from '@/contexts/MvpsContext';
+import { useScrollBlock, useClickOutside } from '@/hooks';
+import { clearData } from '@/utils';
+import { GetTranslateText } from '@/utils/GetTranslateText';
+import { Themes } from '@/styles/Themes';
 
 import {
   Modal,

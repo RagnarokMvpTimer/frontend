@@ -1,4 +1,4 @@
-import mvp_tomb from '../../assets/mvp_tomb.png';
+import mvp_tomb from '@/assets/mvp_tomb.png';
 
 import { Container, Tomb } from './styles';
 

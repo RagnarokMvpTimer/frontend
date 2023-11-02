@@ -1,12 +1,12 @@
 import { FormattedMessage } from 'react-intl';
 
-import { useClickOutside, useKey, useScrollBlock } from '../../hooks';
+import { useClickOutside, useKey, useScrollBlock } from '@/hooks';
 
 import { ModalBase } from '../ModalBase';
 import { Map } from '../Map';
 import { NaviCommand } from '../NaviCommand';
 
-import { ModalPrimaryButton } from '../../ui/ModalPrimaryButton';
+import { ModalPrimaryButton } from '@/ui/ModalPrimaryButton';
 import { Modal, Name, Warning } from './styles';
 
 interface MvpMapModalProps {
