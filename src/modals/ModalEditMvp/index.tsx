@@ -9,8 +9,8 @@ import { useScrollBlock, useKey } from '@/hooks';
 import { useMvpsContext } from '@/contexts/MvpsContext';
 
 import { ModalBase } from '../ModalBase';
-import { MvpSprite } from '../MvpSprite';
-import { Map } from '../Map';
+import { MvpSprite } from '../../components/MvpSprite';
+import { Map } from '../../components/Map';
 
 import { ModalCloseIconButton } from '@/ui/ModalCloseIconButton';
 import { ModalPrimaryButton } from '@/ui/ModalPrimaryButton';

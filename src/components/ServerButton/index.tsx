@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import { useSettings } from '@/contexts/SettingsContext';
-import { ModalSelectServer } from '../ModalSelectServer';
+import { ModalSelectServer } from '@/modals';
 import { GetTranslateText } from '@/utils/GetTranslateText';
 
 import { Button } from './styles';

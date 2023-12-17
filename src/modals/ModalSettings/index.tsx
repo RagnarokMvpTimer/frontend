@@ -3,8 +3,8 @@ import { FormattedMessage } from 'react-intl';
 import { Trash, Sun, Moon } from '@styled-icons/feather';
 
 import { ModalBase } from '../ModalBase';
-import { Switch } from '../Switch';
-import { LanguageSelector } from '../LanguageSelector';
+import { Switch } from '../../components/Switch';
+import { LanguageSelector } from '../../components/LanguageSelector';
 import { ModalWarning } from '../ModalWarning';
 import { ModalCloseIconButton } from '@/ui/ModalCloseIconButton';
 

@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import { MvpCard } from '@/components/MvpCard';
 import { useMvpsContext } from '@/contexts/MvpsContext';
 import { MvpsContainerFilter } from '@/components/MvpsContainerFilter';
-import { ModalEditMvp } from '@/components/ModalEditMvp';
+import { ModalEditMvp } from '@/modals';
 
 import { sortBy } from '@/utils/sort';
 
