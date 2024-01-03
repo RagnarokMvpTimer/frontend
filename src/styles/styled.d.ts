@@ -54,15 +54,17 @@ declare module 'styled-components' {
           border: string;
         };
 
-        mapSelect: {
-          border: string;
-        };
-
         serverSelect: {
           bg: string;
           bgActive: string;
           text: string;
           textActive: string;
+        };
+
+        changeMap: {
+          border: string;
+          text: string;
+          selectedMapBorder: string;
         };
       };
 

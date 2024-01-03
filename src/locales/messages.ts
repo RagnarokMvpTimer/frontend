@@ -50,6 +50,8 @@ export const messages = {
     select_the_map: 'Select the map',
     wheres_tombstone: "Where's mvp tombstone:",
     optional_mark: 'optional - click to mark',
+    change_map: 'Change the map',
+    every: 'Every',
   },
   [LOCALES.PORTUGUESE]: {
     under_development: 'Em desenvolvimento',
@@ -99,5 +101,7 @@ export const messages = {
     select_the_map: 'Selecione o mapa',
     wheres_tombstone: 'Onde está o tumulo:',
     optional_mark: 'opcional - clique para marcar',
+    change_map: 'Mudar o mapa',
+    every: 'A cada',
   },
 };

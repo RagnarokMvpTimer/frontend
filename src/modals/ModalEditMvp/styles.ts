@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { mobile } from '../../utils/media';
+import { ModalPrimaryButton } from '@/ui/ModalPrimaryButton';
 
 export const Modal = styled.div`
   width: 100%;
@@ -61,13 +62,6 @@ export const Optional = styled.span`
   font-size: 1.2rem;
 `;
 
-export const Time = styled.span`
-  color: ${({ theme }) => theme.colors.modal.time};
-
-  font-size: 1.6rem;
-  font-weight: 600;
-`;
-
 export const DatePickerContainer = styled.div`
   > div {
     > div {
@@ -81,21 +75,20 @@ export const DatePickerContainer = styled.div`
   }
 `;
 
-export const SelectMap = styled.select`
-  border: 1px solid ${({ theme }) => theme.colors.modal.mapSelect.border};
-  border-radius: 4px;
-  padding: 0 6px;
+export const Footer = styled.footer`
+  display: flex;
+  max-width: 100%;
+  gap: 2rem;
 
-  font-weight: 500;
-  font-size: 1.6rem;
-
-  background: #fff;
-  outline: 0;
-
-  cursor: pointer;
+  ${mobile(css`
+    flex-direction: column;
+    gap: 1rem;
+  `)}
 `;
 
-export const SelectMapOption = styled.option`
+export const ChangeMapButton = styled(ModalPrimaryButton)`
   font-weight: 500;
-  font-size: 1.6rem;
+  background-color: transparent;
+  border: 3px solid ${({ theme }) => theme.colors.modal.changeMap.border};
+  color: ${({ theme }) => theme.colors.modal.changeMap.text};
 `;

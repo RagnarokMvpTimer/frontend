@@ -1,0 +1,16 @@
+export const COLORS = {
+  white: '#fff',
+  white2: '#F6F8FA',
+  black: '#000',
+  zinc700: '#454545',
+  zinc800: '#2e2e2e',
+  zinc8002: '#262626',
+  zinc900: '#1B1C1D',
+  red: '#D10000',
+  red2: '#421411',
+  yellow: '#ffa800',
+  orange: '#f89200',
+  blue: '#00a8ff',
+  green: '#62831f',
+  purple: '#53338D',
+};

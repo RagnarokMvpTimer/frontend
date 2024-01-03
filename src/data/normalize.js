@@ -2,6 +2,8 @@ import fs from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
+const MIN_RESPAWN_TIME = 5000;
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -15,7 +17,7 @@ for (const file of files) {
   const jsonData = JSON.parse(jsonFile);
 
   const updatedJson = jsonData.filter((mvp) =>
-    mvp.spawn.some((spawn) => spawn.respawnTime > 5000)
+    mvp.spawn.some((spawn) => spawn.respawnTime > MIN_RESPAWN_TIME)
   );
 
   fs.writeFileSync(jsonPath, JSON.stringify(updatedJson));

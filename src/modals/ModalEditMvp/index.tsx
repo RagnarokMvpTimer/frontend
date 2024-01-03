@@ -11,6 +11,7 @@ import { useMvpsContext } from '@/contexts/MvpsContext';
 import { ModalBase } from '../ModalBase';
 import { MvpSprite } from '../../components/MvpSprite';
 import { Map } from '../../components/Map';
+import { ModalSelectMap } from '../ModalSelectMap';
 
 import { ModalCloseIconButton } from '@/ui/ModalCloseIconButton';
 import { ModalPrimaryButton } from '@/ui/ModalPrimaryButton';
@@ -21,10 +22,9 @@ import {
   Name,
   Question,
   Optional,
-  Time,
   DatePickerContainer,
-  SelectMap,
-  SelectMapOption,
+  Footer,
+  ChangeMapButton,
 } from './styles';
 
 export function ModalEditMvp() {
@@ -62,6 +62,16 @@ export function ModalEditMvp() {
 
   useKey('Escape', closeEditMvpModal);
 
+  if (canChangeMap && !selectedMap) {
+    return (
+      <ModalSelectMap
+        spawnMaps={mvp.spawn}
+        onSelect={setSelectedMap}
+        onClose={closeEditMvpModal}
+      />
+    );
+  }
+
   return (
     <ModalBase>
       <Modal>
@@ -80,7 +90,7 @@ export function ModalEditMvp() {
         <DatePickerContainer>
           <DatePicker
             selected={newTime}
-            onChange={(date) => setNewTime(date)}
+            onChange={setNewTime}
             showTimeInput
             placeholderText='Select mvp death time'
             withPortal
@@ -90,42 +100,6 @@ export function ModalEditMvp() {
             shouldCloseOnSelect={false}
           />
         </DatePickerContainer>
-
-        {/* <Time>
-          <FormattedMessage id='at' />{' '}
-          {newTime && dayjs(newTime).format('HH:mm')}
-        </Time> */}
-
-        {canChangeMap && hasMoreThanOneMap && (
-          <>
-            <Question>
-              <FormattedMessage id='please_select_map' />
-            </Question>
-            <SelectMap
-              value={selectedMap}
-              onChange={(e) => setSelectedMap(e.target.value)}
-            >
-              {hasMoreThanOneMap ? (
-                <>
-                  {!selectedMap && (
-                    <SelectMapOption disabled value=''>
-                      <FormattedMessage id='select_the_map' />
-                    </SelectMapOption>
-                  )}
-
-                  {mvp.spawn.map((map) => (
-                    <SelectMapOption key={map.mapname} value={map.mapname}>
-                      {map.mapname} -{' '}
-                      {dayjs.duration(map.respawnTime).asHours()}h
-                    </SelectMapOption>
-                  ))}
-                </>
-              ) : (
-                <SelectMapOption>{mvp.spawn[0].mapname}</SelectMapOption>
-              )}
-            </SelectMap>
-          </>
-        )}
 
         {selectedMap && (
           <>
@@ -139,13 +113,20 @@ export function ModalEditMvp() {
           </>
         )}
 
-        <ModalPrimaryButton
-          size='lg'
-          onClick={handleConfirm}
-          disabled={!selectedMap}
-        >
-          <FormattedMessage id='confirm' />
-        </ModalPrimaryButton>
+        <Footer>
+          {hasMoreThanOneMap && (
+            <ChangeMapButton size='lg' onClick={() => setSelectedMap('')}>
+              <FormattedMessage id='change_map' />
+            </ChangeMapButton>
+          )}
+          <ModalPrimaryButton
+            size='lg'
+            onClick={handleConfirm}
+            disabled={!selectedMap}
+          >
+            <FormattedMessage id='confirm' />
+          </ModalPrimaryButton>
+        </Footer>
       </Modal>
     </ModalBase>
   );

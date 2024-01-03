@@ -1,84 +1,88 @@
+import { COLORS } from './colors';
+
 export const Themes = {
   dark: {
     id: 'dark',
 
     colors: {
-      primary: '#1B1C1D',
+      primary: COLORS.zinc900,
       secondary: '#2e2e2e',
 
-      headerTexts: '#fff',
-      text: '#FFFFFF',
+      headerTexts: COLORS.white,
+      text: COLORS.white,
 
       scrollbar: {
         bg: '#2e2e2e',
-        thumb: '#f89200',
+        thumb: COLORS.orange,
       },
 
       mvpCard: {
-        id: '#fff',
-        name: '#fff',
-        bg: '#262626',
-        text: '#fff',
-        killButton: '#D10000',
-        editButton: '#f89200',
+        id: COLORS.white,
+        name: COLORS.white,
+        bg: COLORS.zinc8002,
+        text: COLORS.white,
+        killButton: COLORS.red,
+        editButton: COLORS.orange,
 
         controls: {
-          showMap: '#00a8ff',
-          edit: '#f89200',
-          delete: '#D10000',
+          showMap: COLORS.blue,
+          edit: COLORS.orange,
+          delete: COLORS.red,
         },
       },
 
       timers: {
-        passed: '#D10000',
-        normal: '#fff',
-        respawning: '#62831f',
+        passed: COLORS.red,
+        normal: COLORS.white,
+        respawning: COLORS.green,
       },
 
       switch: {
-        bg: '#FFFFFF',
-        handle: '#000000',
+        bg: COLORS.white,
+        handle: COLORS.black,
       },
 
       modal: {
-        bg: '#262626',
-        text: '#fff',
-        hl: '#fff',
-        name: '#f89200',
-        time: '#f89200',
-        button: '#f89200',
+        bg: COLORS.zinc8002,
+        text: COLORS.white,
+        hl: COLORS.white,
+        name: COLORS.orange,
+        time: COLORS.orange,
+        button: COLORS.orange,
 
         datePicker: {
-          border: '#fff',
-        },
-
-        mapSelect: {
-          border: '#fff',
+          border: COLORS.white,
         },
 
         serverSelect: {
-          bg: '#454545',
-          bgActive: '#f89200',
-          text: '#fff',
-          textActive: '#fff',
+          bg: COLORS.zinc700,
+          bgActive: COLORS.orange,
+          text: COLORS.white,
+          textActive: COLORS.white,
+        },
+
+        changeMap: {
+          border: COLORS.blue,
+          text: COLORS.white,
+          selectedMapBorder: COLORS.yellow,
         },
       },
 
       filterSearch: {
-        bg: '#262626',
-        border: '#1b1c1d',
-        text: '#fff',
+        bg: COLORS.zinc8002,
+        border: COLORS.zinc900,
+        text: COLORS.white,
       },
 
       languagePicker: {
-        bg: '#454545',
-        border: '#1b1c1d',
-        text: '#fff',
+        bg: COLORS.zinc700,
+        border: COLORS.zinc900,
+        text: COLORS.white,
       },
 
       footer: {
-        text: '#fff',
-        link: '#f89200',
+        text: COLORS.white,
+        link: COLORS.orange,
       },
     },
   },
@@ -87,82 +91,84 @@ export const Themes = {
     id: 'light',
 
     colors: {
-      primary: '#f89200',
-      secondary: '#F6F8FA',
+      primary: COLORS.orange,
+      secondary: COLORS.white2,
 
-      headerTexts: '#fff',
-      text: '#000000',
+      headerTexts: COLORS.white,
+      text: COLORS.black,
 
       scrollbar: {
-        bg: '#F6F8FA',
-        thumb: '#f89200',
+        bg: COLORS.white2,
+        thumb: COLORS.orange,
       },
 
       mvpCard: {
-        id: '#421411',
-        name: '#f89200',
-        bg: '#FFFFFF',
-        text: '#421411',
-        killButton: '#D10000',
-        editButton: '#f89200',
+        id: COLORS.red2,
+        name: COLORS.orange,
+        bg: COLORS.white,
+        text: COLORS.red2,
+        killButton: COLORS.red,
+        editButton: COLORS.orange,
 
         controls: {
-          showMap: '#00a8ff',
-          edit: '#f89200',
-          delete: '#D10000',
+          showMap: COLORS.blue,
+          edit: COLORS.orange,
+          delete: COLORS.red,
         },
       },
 
       timers: {
-        passed: '#D10000',
-        normal: '#421411',
-        respawning: '#62831f',
+        passed: COLORS.red,
+        normal: COLORS.red2,
+        respawning: COLORS.green,
       },
 
       switch: {
-        bg: '#ffa800',
-        handle: '#F6F8FA',
+        bg: COLORS.yellow,
+        handle: COLORS.white2,
       },
 
       modal: {
-        bg: '#FFFFFF',
-        text: '#421411',
-        hl: '#1b1c1d',
-        name: '#ffa800',
-        time: '#ffa800',
-        button: '#f89200',
+        bg: COLORS.white,
+        text: COLORS.red2,
+        hl: COLORS.zinc900,
+        name: COLORS.yellow,
+        time: COLORS.yellow,
+        button: COLORS.orange,
 
         datePicker: {
-          border: '#000',
-        },
-
-        mapSelect: {
-          border: '#000',
+          border: COLORS.black,
         },
 
         serverSelect: {
-          bg: '#F6F8FA',
-          bgActive: '#f89200',
-          text: '#000',
-          textActive: '#fff',
+          bg: COLORS.white2,
+          bgActive: COLORS.orange,
+          text: COLORS.black,
+          textActive: COLORS.white,
+        },
+
+        changeMap: {
+          border: COLORS.blue,
+          text: COLORS.black,
+          selectedMapBorder: COLORS.yellow,
         },
       },
 
       filterSearch: {
-        bg: '#FFFFFF',
-        border: '#f89200',
-        text: '#000',
+        bg: COLORS.white,
+        border: COLORS.orange,
+        text: COLORS.black,
       },
 
       languagePicker: {
-        bg: '#F6F8FA',
-        border: '#f89200',
-        text: '#421411',
+        bg: COLORS.white2,
+        border: COLORS.orange,
+        text: COLORS.red2,
       },
 
       footer: {
-        text: '#000',
-        link: '#53338D',
+        text: COLORS.black,
+        link: COLORS.purple,
       },
     },
   },
