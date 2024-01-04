@@ -58,21 +58,16 @@ export const Question = styled.span`
 
 export const Optional = styled.span`
   color: ${({ theme }) => theme.colors.modal.text};
-
   font-size: 1.2rem;
 `;
 
-export const DatePickerContainer = styled.div`
-  > div {
-    > div {
-      > input {
-        border-radius: 4px;
-        text-align: center;
-        cursor: pointer;
-        border: 1px solid ${({ theme }) => theme.colors.modal.datePicker.border};
-      }
-    }
-  }
+export const DateTimePicker = styled.input.attrs(() => ({
+  type: 'datetime-local',
+}))`
+  text-align: center;
+  font-size: 1.7rem;
+  border-radius: 4px;
+  border: 1px solid ${({ theme }) => theme.colors.modal.datePicker.border};
 `;
 
 export const Footer = styled.footer`

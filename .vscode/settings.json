@@ -1,7 +1,6 @@
 {
   "typescript.tsdk": "node_modules\\typescript\\lib",
   "cSpell.words": [
-    "datepicker",
     "dayjs",
     "mapname",
     "mvps",
@@ -9,6 +8,7 @@
     "ragnarok",
     "ragnarokmvptimer",
     "respawn",
-    "respawning"
+    "respawning",
+    "DDTHH"
   ]
 }

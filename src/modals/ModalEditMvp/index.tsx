@@ -1,9 +1,6 @@
 import { useEffect, useState } from 'react';
-import DatePicker from 'react-datepicker';
 import { FormattedMessage } from 'react-intl';
 import dayjs from 'dayjs';
-
-import 'react-datepicker/dist/react-datepicker.css';
 
 import { useScrollBlock, useKey } from '@/hooks';
 import { useMvpsContext } from '@/contexts/MvpsContext';
@@ -22,9 +19,9 @@ import {
   Name,
   Question,
   Optional,
-  DatePickerContainer,
   Footer,
   ChangeMapButton,
+  DateTimePicker,
 } from './styles';
 
 export function ModalEditMvp() {
@@ -87,19 +84,12 @@ export function ModalEditMvp() {
           <FormattedMessage id='when_was_killed' />
         </Question>
 
-        <DatePickerContainer>
-          <DatePicker
-            selected={newTime}
-            onChange={setNewTime}
-            showTimeInput
-            placeholderText='Select mvp death time'
-            withPortal
-            minDate={dayjs().subtract(4, 'days').toDate()}
-            maxDate={dayjs().add(1, 'days').toDate()}
-            dateFormat='dd/MM - HH:mm'
-            shouldCloseOnSelect={false}
-          />
-        </DatePickerContainer>
+        <DateTimePicker
+          value={dayjs(newTime).format('YYYY-MM-DDTHH:mm')}
+          min={dayjs().subtract(4, 'days').format('YYYY-MM-DDTHH:mm')}
+          max={dayjs().add(1, 'days').format('YYYY-MM-DDTHH:mm')}
+          onChange={(e) => setNewTime(dayjs(e.target.value).toDate())}
+        />
 
         {selectedMap && (
           <>
@@ -122,7 +112,7 @@ export function ModalEditMvp() {
           <ModalPrimaryButton
             size='lg'
             onClick={handleConfirm}
-            disabled={!selectedMap}
+            disabled={!selectedMap || !dayjs(newTime).isValid()}
           >
             <FormattedMessage id='confirm' />
           </ModalPrimaryButton>

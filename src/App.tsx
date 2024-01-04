@@ -1,9 +1,6 @@
 import { useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { IntlProvider } from 'react-intl';
-import { registerLocale, setDefaultLocale } from 'react-datepicker';
-import ptBR from 'date-fns/locale/pt-BR';
-registerLocale('pt-BR', ptBR);
 
 import dayjs from 'dayjs';
 import 'dayjs/locale/pt-br';
@@ -35,7 +32,6 @@ export default function App() {
 
   useEffect(() => {
     dayjs.locale(language);
-    setDefaultLocale(language);
   }, [language]);
 
   return (
