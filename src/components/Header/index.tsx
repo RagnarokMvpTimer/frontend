@@ -1,12 +1,15 @@
 import { HeaderTimer } from '../HeaderTimer';
 import { ServerButton } from '../ServerButton';
 import { SettingsButton } from '../SettingsButton';
+import { useSettings } from '@/contexts/SettingsContext';
 
 import mvpImg from '@/assets/mvp.png';
 
 import { Container, Customization, Logo, LogoContainer, Title } from './styles';
 
 export function Header() {
+  const { use24HourFormat } = useSettings();
+
   return (
     <Container>
       <LogoContainer>
@@ -14,7 +17,7 @@ export function Header() {
         <Title>Ragnarok MVP Timer</Title>
       </LogoContainer>
 
-      <HeaderTimer />
+      <HeaderTimer use24HourFormat={use24HourFormat} />
 
       <Customization>
         <ServerButton />

@@ -8,11 +8,12 @@ interface TimerProps {
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  text-align: center;
+  white-space: pre-wrap;
+  color: ${({ theme }) => theme.colors.mvpCard.text};
 `;
 
-export const Text = styled.span``;
-
-export const Bold = styled.span<TimerProps>`
+export const RespawnTimeText = styled.span<TimerProps>`
   font-weight: bold;
 
   color: ${({ theme, respawningSoon, missedRespawn }) =>

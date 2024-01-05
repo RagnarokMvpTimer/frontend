@@ -33,6 +33,8 @@ export function ModalSettings() {
     toggleRespawnCountdown,
     animatedSprites,
     toggleAnimatedSprites,
+    use24HourFormat,
+    toggle24HourFormat,
     resetSettings,
     theme,
   } = useSettings();
@@ -103,6 +105,14 @@ export function ModalSettings() {
                 checked={animatedSprites}
               />
             </Setting>
+
+            {/* <Setting>
+              <Subtitle>
+                <FormattedMessage id='use_24_hour_format' />
+              </Subtitle>
+
+              <Switch onChange={toggle24HourFormat} checked={use24HourFormat} />
+            </Setting> */}
 
             <Setting>
               <Subtitle>

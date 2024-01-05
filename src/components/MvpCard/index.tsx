@@ -9,14 +9,13 @@ import { ModalMvpMap } from '@/modals';
 
 import { useMvpsContext } from '@/contexts/MvpsContext';
 import { useSettings } from '@/contexts/SettingsContext';
-import { getMvpRespawnTime, respawnAt } from '@/utils';
+import { getMvpRespawnTime } from '@/utils';
 
 import {
   Container,
   Header,
   ID,
   Name,
-  Respawn,
   MapName,
   Controls,
   Control,
@@ -41,8 +40,6 @@ export function MvpCard({ mvp }: MvpCardProps) {
     [mvp]
   );
 
-  const respawnTime = useMemo(() => respawnAt(nextRespawn), [nextRespawn]);
-
   function handleKilledNow() {
     const hasMoreThanOneMap = mvp.spawn.length > 1;
 
@@ -65,16 +62,10 @@ export function MvpCard({ mvp }: MvpCardProps) {
 
         {isActive ? (
           <>
-            <Respawn title={respawnTime}>
-              {respawnAsCountdown ? (
-                <MvpCardCountdown nextRespawn={nextRespawn} />
-              ) : (
-                <>
-                  <FormattedMessage id='respawn_at' /> {'\n'}
-                  <Bold>{respawnTime}</Bold>
-                </>
-              )}
-            </Respawn>
+            <MvpCardCountdown
+              nextRespawn={nextRespawn}
+              respawnAsCountdown={respawnAsCountdown}
+            />
 
             <MapName>
               <FormattedMessage id='map' />

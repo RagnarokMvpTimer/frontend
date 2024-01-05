@@ -28,6 +28,8 @@ interface SettingsContextData {
   toggleRespawnCountdown: () => void;
   animatedSprites: boolean;
   toggleAnimatedSprites: () => void;
+  use24HourFormat: boolean;
+  toggle24HourFormat: () => void;
   language: string;
   changeLanguage: (id: string) => void;
   server: string;
@@ -67,8 +69,15 @@ export function SettingsProvider({ children }: SettingsProviderProps) {
         ...prev,
         respawnAsCountdown: !prev.respawnAsCountdown,
       })),
-    []
+    [setSettings]
   );
+
+  const toggle24HourFormat = useCallback(() => {
+    setSettings((prev) => ({
+      ...prev,
+      use24HourFormat: !prev.use24HourFormat,
+    }));
+  }, [setSettings]);
 
   const toggleAnimatedSprites = useCallback(() => {
     setSettings((prev) => ({
@@ -112,6 +121,8 @@ export function SettingsProvider({ children }: SettingsProviderProps) {
         toggleSettingsModal,
         toggleRespawnCountdown,
         toggleAnimatedSprites,
+        use24HourFormat: true, // temporary
+        toggle24HourFormat,
         changeLanguage,
         changeServer,
         resetSettings,

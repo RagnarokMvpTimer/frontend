@@ -35,13 +35,6 @@ export const Name = styled.span`
   color: ${({ theme }) => theme.colors.mvpCard.name};
 `;
 
-export const Respawn = styled.span`
-  text-align: center;
-  white-space: pre-wrap;
-  margin-top: 10px;
-  color: ${({ theme }) => theme.colors.mvpCard.text};
-`;
-
 export const MapName = styled.span`
   text-align: center;
   white-space: pre-wrap;
