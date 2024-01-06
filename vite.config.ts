@@ -21,7 +21,7 @@ export default defineConfig({
       defaultDirectives: (url) => {
         return new URLSearchParams({
           format: 'webp',
-          lossless: 'true',
+          lossless: 'false',
         });
       },
     }),
