@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { Trash, Sun, Moon } from '@styled-icons/feather';
+import { Trash } from '@styled-icons/feather';
 
 import { ModalBase } from '../ModalBase';
 import { Switch } from '../../components/Switch';
@@ -18,9 +18,10 @@ import { Themes } from '@/styles/Themes';
 import {
   Modal,
   Title,
-  Subtitle,
   SettingsContainer,
   Setting,
+  SettingName,
+  SettingSecondary,
   ThemeContainer,
   ClearButton,
 } from './styles';
@@ -35,6 +36,8 @@ export function ModalSettings() {
     toggleAnimatedSprites,
     use24HourFormat,
     toggle24HourFormat,
+    isNotificationSoundEnabled,
+    toggleNotificationSound,
     resetSettings,
     theme,
   } = useSettings();
@@ -70,24 +73,22 @@ export function ModalSettings() {
 
           <SettingsContainer>
             <Setting>
-              <Subtitle>
+              <SettingName>
                 <FormattedMessage id='theme' />
-              </Subtitle>
+              </SettingName>
 
               <ThemeContainer>
-                <Sun />
                 <Switch
                   onChange={toggleTheme}
                   checked={theme === Themes.dark.id}
                 />
-                <Moon />
               </ThemeContainer>
             </Setting>
 
             <Setting>
-              <Subtitle>
+              <SettingName>
                 <FormattedMessage id='respawn_as_countdown' />
-              </Subtitle>
+              </SettingName>
 
               <Switch
                 onChange={toggleRespawnCountdown}
@@ -96,9 +97,9 @@ export function ModalSettings() {
             </Setting>
 
             <Setting>
-              <Subtitle>
+              <SettingName>
                 <FormattedMessage id='animate_sprites' />
-              </Subtitle>
+              </SettingName>
 
               <Switch
                 onChange={toggleAnimatedSprites}
@@ -107,31 +108,42 @@ export function ModalSettings() {
             </Setting>
 
             {/* <Setting>
-              <Subtitle>
+              <SettingName>
                 <FormattedMessage id='use_24_hour_format' />
-              </Subtitle>
+              </SettingName>
 
               <Switch onChange={toggle24HourFormat} checked={use24HourFormat} />
             </Setting> */}
 
             <Setting>
-              <Subtitle>
-                <FormattedMessage id='language' />
-              </Subtitle>
+              <SettingName>
+                <FormattedMessage id='notification_sound' />
+              </SettingName>
 
-              <LanguageSelector />
+              <Switch
+                onChange={toggleNotificationSound}
+                checked={isNotificationSoundEnabled}
+              />
             </Setting>
 
-            <Setting>
-              <Subtitle>
+            <SettingSecondary>
+              <SettingName>
+                <FormattedMessage id='language' />
+              </SettingName>
+
+              <LanguageSelector />
+            </SettingSecondary>
+
+            <SettingSecondary>
+              <SettingName>
                 <FormattedMessage id='clear_data' />
-              </Subtitle>
+              </SettingName>
 
               <ClearButton onClick={() => setIsConfirmationModalOpen(true)}>
                 <FormattedMessage id='clear' />
                 <Trash />
               </ClearButton>
-            </Setting>
+            </SettingSecondary>
           </SettingsContainer>
         </Modal>
       </ModalBase>

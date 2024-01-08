@@ -154,11 +154,6 @@ export function MvpProvider({ children }: MvpProviderProps) {
     setAllMvps(filteredAllMvps);
   }, [activeMvps, mvpsData]);
 
-  useEffect(() => {
-    if (Notification.permission === 'granted') return;
-    Notification.requestPermission();
-  }, []);
-
   return (
     <MvpsContext.Provider
       value={{

@@ -7,9 +7,12 @@ import { MvpSprite } from '../MvpSprite';
 import { MvpCardCountdown } from '../MvpCardCountdown';
 import { ModalMvpMap } from '@/modals';
 
+import { useNotification } from '@/hooks/useNotification';
+
 import { useMvpsContext } from '@/contexts/MvpsContext';
 import { useSettings } from '@/contexts/SettingsContext';
 import { getMvpRespawnTime } from '@/utils';
+import { GetTranslateText } from '@/utils/GetTranslateText';
 
 import {
   Container,
@@ -31,7 +34,8 @@ interface MvpCardProps {
 export function MvpCard({ mvp }: MvpCardProps) {
   const { killMvp, resetMvpTimer, removeMvp, setEditingMvp } = useMvpsContext();
   const { respawnAsCountdown } = useSettings();
-  const [isMapModalOpen, setIsMapModalOpen] = useState<boolean>(false);
+  const { respawnNotification } = useNotification();
+  const [isMapModalOpen, setIsMapModalOpen] = useState(false);
 
   const isActive = !!mvp.deathMap;
 
@@ -65,6 +69,13 @@ export function MvpCard({ mvp }: MvpCardProps) {
             <MvpCardCountdown
               nextRespawn={nextRespawn}
               respawnAsCountdown={respawnAsCountdown}
+              onTriggerNotification={() =>
+                respawnNotification(
+                  mvp.id,
+                  `${mvp.name} ${GetTranslateText('will_respawn')}`,
+                  `${mvp.deathMap} - ${nextRespawn.format('HH:mm')}`
+                )
+              }
             />
 
             <MapName>

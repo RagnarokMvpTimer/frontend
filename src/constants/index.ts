@@ -11,6 +11,7 @@ export const DEFAULT_SETTINGS = {
   respawnAsCountdown: true,
   animatedSprites: false,
   use24HourFormat: true,
+  isNotificationSoundEnabled: true,
   language: DEFAULT_LANG,
   server: DEFAULT_SERVER,
 };

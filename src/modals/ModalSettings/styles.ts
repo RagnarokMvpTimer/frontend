@@ -3,11 +3,12 @@ import { mobile } from '../../utils/media';
 
 export const Modal = styled.div`
   width: 100%;
-  max-width: 300px;
+  max-width: 500px;
 
-  padding: 8px;
-  gap: 8px;
-  padding-bottom: 20px;
+  padding: 1.6rem;
+  padding-bottom: 2.4rem;
+  margin: 0 1rem;
+  gap: 2rem;
 
   border-radius: 6px;
 
@@ -25,16 +26,32 @@ export const Modal = styled.div`
 
 export const Title = styled.span`
   color: ${({ theme }) => theme.colors.modal.name};
-  margin-top: -25px;
+  margin-top: -4rem;
 
-  font-size: 24px;
+  font-size: 2.4rem;
   font-weight: 600;
 `;
 
-export const Subtitle = styled.span`
+export const SettingsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 3rem;
+  padding: 0 2rem;
+`;
+
+export const Setting = styled.div<{ disabled?: boolean }>`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+`;
+
+export const SettingName = styled.span`
   color: ${({ theme }) => theme.colors.modal.text};
 
-  font-size: 16px;
+  font-size: 1.8rem;
   font-weight: 500;
 
   display: flex;
@@ -42,18 +59,9 @@ export const Subtitle = styled.span`
   align-items: center;
 `;
 
-export const SettingsContainer = styled.div`
-  display: flex;
+export const SettingSecondary = styled(Setting)`
+  width: auto;
   flex-direction: column;
-  align-items: center;
-  gap: 18px;
-`;
-
-export const Setting = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
 `;
 
 export const ThemeContainer = styled.div`

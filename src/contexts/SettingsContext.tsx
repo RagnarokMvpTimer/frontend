@@ -4,6 +4,7 @@ import {
   useState,
   ReactNode,
   useCallback,
+  useEffect,
 } from 'react';
 
 import { usePersistedState } from '../hooks';
@@ -30,6 +31,8 @@ interface SettingsContextData {
   toggleAnimatedSprites: () => void;
   use24HourFormat: boolean;
   toggle24HourFormat: () => void;
+  isNotificationSoundEnabled: boolean;
+  toggleNotificationSound: () => void;
   language: string;
   changeLanguage: (id: string) => void;
   server: string;
@@ -72,6 +75,13 @@ export function SettingsProvider({ children }: SettingsProviderProps) {
     [setSettings]
   );
 
+  const toggleAnimatedSprites = useCallback(() => {
+    setSettings((prev) => ({
+      ...prev,
+      animatedSprites: !prev.animatedSprites,
+    }));
+  }, [setSettings]);
+
   const toggle24HourFormat = useCallback(() => {
     setSettings((prev) => ({
       ...prev,
@@ -79,10 +89,10 @@ export function SettingsProvider({ children }: SettingsProviderProps) {
     }));
   }, [setSettings]);
 
-  const toggleAnimatedSprites = useCallback(() => {
+  const toggleNotificationSound = useCallback(() => {
     setSettings((prev) => ({
       ...prev,
-      animatedSprites: !prev.animatedSprites,
+      isNotificationSoundEnabled: !prev.isNotificationSoundEnabled,
     }));
   }, [setSettings]);
 
@@ -111,6 +121,11 @@ export function SettingsProvider({ children }: SettingsProviderProps) {
     setSettings(DEFAULT_SETTINGS);
   }, [setTheme, setSettings]);
 
+  useEffect(() => {
+    if (Notification.permission === 'granted') return;
+    Notification.requestPermission();
+  }, []);
+
   return (
     <SettingsContext.Provider
       value={{
@@ -123,6 +138,7 @@ export function SettingsProvider({ children }: SettingsProviderProps) {
         toggleAnimatedSprites,
         use24HourFormat: true, // temporary
         toggle24HourFormat,
+        toggleNotificationSound,
         changeLanguage,
         changeServer,
         resetSettings,

@@ -11,19 +11,22 @@ import { Container, RespawnTimeText } from './styles';
 interface MvpCardCountdownProps {
   nextRespawn: Dayjs;
   respawnAsCountdown?: boolean;
+  onTriggerNotification?: () => void;
 }
 
 export function MvpCardCountdown({
   nextRespawn,
   respawnAsCountdown,
+  onTriggerNotification,
 }: MvpCardCountdownProps) {
   const { duration } = useCountdown(
     nextRespawn.add(RESPAWN_TIMER_SOON_THRESHOLD_MS, 'ms')
   );
-
   const durationAsMs = duration?.asMilliseconds();
+
   const respawningSoon =
     durationAsMs >= 0 && durationAsMs <= RESPAWN_TIMER_SOON_THRESHOLD_MS;
+
   const missedRespawn = durationAsMs < 0;
 
   const isMoreThan24Hours = dayjs().diff(nextRespawn, 'h') >= 24;
@@ -42,6 +45,14 @@ export function MvpCardCountdown({
       : missedRespawn
       ? duration.humanize(true)
       : respawnTime;
+
+  const shouldTriggerNotification =
+    Math.trunc(duration?.asSeconds()) ===
+    RESPAWN_TIMER_SOON_THRESHOLD_MS / 1000;
+
+  if (onTriggerNotification && shouldTriggerNotification) {
+    onTriggerNotification();
+  }
 
   return (
     <Container>

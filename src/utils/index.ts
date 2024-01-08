@@ -99,16 +99,6 @@ export function getMvpRespawnTime(mvp: IMvp): number | undefined {
   return respawnTime;
 }
 
-export function respawnNotification(name: string, deathTime: Date) {
-  console.log(`Triggering death notification for ${name}`);
-  new Audio('./notification1.mp3').play();
-
-  if (Notification.permission !== 'granted') return;
-  new Notification(`${name} will respawn soon...`, {
-    body: `At ${deathTime?.toLocaleTimeString()}`,
-  });
-}
-
 /**
  * Clear the local storage
  */
