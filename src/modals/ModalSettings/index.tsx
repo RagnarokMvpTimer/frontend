@@ -10,7 +10,7 @@ import { ModalCloseIconButton } from '@/ui/ModalCloseIconButton';
 
 import { useSettings } from '@/contexts/SettingsContext';
 import { useMvpsContext } from '@/contexts/MvpsContext';
-import { useScrollBlock, useClickOutside, useTheme } from '@/hooks';
+import { useScrollBlock, useClickOutside, useKey, useTheme } from '@/hooks';
 import { clearData } from '@/utils';
 import { GetTranslateText } from '@/utils/GetTranslateText';
 
@@ -43,6 +43,7 @@ export function ModalSettings() {
   const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(false);
 
   useScrollBlock(true);
+  useKey('Escape', toggleSettingsModal);
   const modalRef = useClickOutside(
     !isConfirmationModalOpen ? toggleSettingsModal : () => null
   );

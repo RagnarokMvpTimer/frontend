@@ -6,8 +6,7 @@ import { ModalCloseIconButton } from '@/ui/ModalCloseIconButton';
 
 import { useSettings } from '@/contexts/SettingsContext';
 import { SERVERS } from '@/utils';
-import { useClickOutside, useScrollBlock } from '@/hooks';
-
+import { useClickOutside, useScrollBlock, useKey } from '@/hooks';
 import { ModalPrimaryButton } from '@/ui/ModalPrimaryButton';
 import { Modal, Title, ServerList, ServerItem } from './styles';
 
@@ -24,6 +23,7 @@ export function ModalSelectServer({ close }: ModalSelectServerProps) {
   const [selectedServer, setSelectedServer] = useState(server);
 
   useScrollBlock(true);
+  useKey('Escape', close);
 
   const modalRef = useClickOutside(close);
 
