@@ -24,7 +24,6 @@
     "allowJs": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src"],
-  "files": ["src/styles/styled.d.ts"]
+  "include": ["src"]
   /* "references": [{ "path": "./tsconfig.node.json" }] */
 }
