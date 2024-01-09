@@ -10,10 +10,9 @@ import { ModalCloseIconButton } from '@/ui/ModalCloseIconButton';
 
 import { useSettings } from '@/contexts/SettingsContext';
 import { useMvpsContext } from '@/contexts/MvpsContext';
-import { useScrollBlock, useClickOutside } from '@/hooks';
+import { useScrollBlock, useClickOutside, useTheme } from '@/hooks';
 import { clearData } from '@/utils';
 import { GetTranslateText } from '@/utils/GetTranslateText';
-import { Themes } from '@/styles/Themes';
 
 import {
   Modal,
@@ -27,8 +26,8 @@ import {
 } from './styles';
 
 export function ModalSettings() {
+  const { theme, toggleTheme } = useTheme();
   const {
-    toggleTheme,
     toggleSettingsModal,
     respawnAsCountdown,
     toggleRespawnCountdown,
@@ -39,7 +38,6 @@ export function ModalSettings() {
     isNotificationSoundEnabled,
     toggleNotificationSound,
     resetSettings,
-    theme,
   } = useSettings();
   const { clearActiveMvps } = useMvpsContext();
   const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(false);
@@ -78,10 +76,7 @@ export function ModalSettings() {
               </SettingName>
 
               <ThemeContainer>
-                <Switch
-                  onChange={toggleTheme}
-                  checked={theme === Themes.dark.id}
-                />
+                <Switch onChange={toggleTheme} checked={theme === 'dark'} />
               </ThemeContainer>
             </Setting>
 

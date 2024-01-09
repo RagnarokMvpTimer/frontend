@@ -7,22 +7,14 @@ import {
   useEffect,
 } from 'react';
 
-import { usePersistedState } from '../hooks';
-import {
-  LOCAL_STORAGE_THEME_KEY,
-  DEFAULT_THEME,
-  DEFAULT_SETTINGS,
-  LOCAL_STORAGE_SETTINGS_KEY,
-} from '../constants';
-import { Themes } from '../styles/Themes';
+import { usePersistedState, useTheme } from '../hooks';
+import { DEFAULT_SETTINGS, LOCAL_STORAGE_SETTINGS_KEY } from '../constants';
 
 interface SettingsProviderProps {
   children: ReactNode;
 }
 
 interface SettingsContextData {
-  theme: string;
-  toggleTheme: () => void;
   isSettingsModalOpen: boolean;
   toggleSettingsModal: () => void;
   respawnAsCountdown: boolean;
@@ -43,23 +35,12 @@ interface SettingsContextData {
 export const SettingsContext = createContext({} as SettingsContextData);
 
 export function SettingsProvider({ children }: SettingsProviderProps) {
-  const [theme, setTheme] = usePersistedState(
-    LOCAL_STORAGE_THEME_KEY,
-    DEFAULT_THEME
-  );
+  const { resetTheme } = useTheme();
   const [settings, setSettings] = usePersistedState(
     LOCAL_STORAGE_SETTINGS_KEY,
     DEFAULT_SETTINGS
   );
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
-
-  const toggleTheme = useCallback(
-    () =>
-      setTheme((prev) =>
-        prev === Themes.light.id ? Themes.dark.id : Themes.light.id
-      ),
-    [setTheme]
-  );
 
   const toggleSettingsModal = useCallback(
     () => setIsSettingsModalOpen((prev) => !prev),
@@ -117,9 +98,9 @@ export function SettingsProvider({ children }: SettingsProviderProps) {
   );
 
   const resetSettings = useCallback(() => {
-    setTheme(DEFAULT_THEME);
+    resetTheme();
     setSettings(DEFAULT_SETTINGS);
-  }, [setTheme, setSettings]);
+  }, [resetTheme, setSettings]);
 
   useEffect(() => {
     if (Notification.permission === 'granted') return;
@@ -130,8 +111,6 @@ export function SettingsProvider({ children }: SettingsProviderProps) {
     <SettingsContext.Provider
       value={{
         ...settings,
-        theme,
-        toggleTheme,
         isSettingsModalOpen,
         toggleSettingsModal,
         toggleRespawnCountdown,

@@ -20,7 +20,7 @@ export const Button = styled.button<{
   border-radius: 0.8rem;
 
   color: white;
-  background-color: ${({ theme }) => theme.colors.modal.button};
+  background-color: var(--modal_button);
 
   :hover {
     opacity: 0.8;

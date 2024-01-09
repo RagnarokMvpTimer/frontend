@@ -13,11 +13,11 @@ export const Modal = styled.div`
   border-radius: 6px;
   margin: 0 1rem;
 
-  background-color: ${({ theme }) => theme.colors.modal.bg};
+  background-color: var(--modal_bg);
 `;
 
 export const Name = styled.span`
-  color: ${({ theme }) => theme.colors.modal.text};
+  color: var(---modal_text);
   font-weight: bold;
   font-size: 1.8rem;
 `;
@@ -28,7 +28,7 @@ export const Warning = styled.span`
   text-align: center;
   padding: 0 3rem;
 
-  color: ${({ theme }) => theme.colors.modal.text};
+  color: var(---modal_text);
   font-weight: bold;
   font-size: 1.4rem;
 `;

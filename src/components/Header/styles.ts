@@ -9,7 +9,7 @@ export const Container = styled.header`
   height: 75px;
   padding: 0 30px;
 
-  background-color: ${({ theme }) => theme.colors.primary};
+  background-color: var(--primary);
 
   ${tablet(css`
     padding: 0 15px;
@@ -35,7 +35,7 @@ export const Title = styled.p`
 
   white-space: nowrap;
 
-  color: ${({ theme }) => theme.colors.headerTexts};
+  color: var(--header_text);
 
   @media (min-width: 768px) and (max-width: 935px) {
     font-size: 16px;

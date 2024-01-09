@@ -7,7 +7,7 @@ import { MvpSprite } from '../MvpSprite';
 import { MvpCardCountdown } from '../MvpCardCountdown';
 import { ModalMvpMap } from '@/modals';
 
-import { useNotification } from '@/hooks/useNotification';
+import { useNotification } from '@/hooks';
 
 import { useMvpsContext } from '@/contexts/MvpsContext';
 import { useSettings } from '@/contexts/SettingsContext';

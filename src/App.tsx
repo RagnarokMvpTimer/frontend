@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { ThemeProvider } from 'styled-components';
 import { IntlProvider } from 'react-intl';
 
 import dayjs from 'dayjs';
@@ -10,7 +9,6 @@ dayjs.extend(duration);
 dayjs.extend(relativeTime);
 
 import { GlobalStyle } from './styles/Global';
-import { Themes } from './styles/Themes';
 
 import { Main } from './pages/Main';
 
@@ -25,17 +23,15 @@ import { MvpProvider } from './contexts/MvpsContext';
 import { LOCALES } from './locales';
 import { messages } from './locales/messages';
 
-import { DEFAULT_THEME } from './constants';
-
 export default function App() {
-  const { theme, language, isSettingsModalOpen } = useSettings();
+  const { language, isSettingsModalOpen } = useSettings();
 
   useEffect(() => {
     dayjs.locale(language);
   }, [language]);
 
   return (
-    <ThemeProvider theme={Themes[theme || DEFAULT_THEME]}>
+    <>
       <IntlProvider
         messages={messages[language]}
         locale={language}
@@ -58,6 +54,6 @@ export default function App() {
       </IntlProvider>
 
       <GlobalStyle />
-    </ThemeProvider>
+    </>
   );
 }

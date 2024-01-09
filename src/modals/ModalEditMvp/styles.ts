@@ -19,7 +19,7 @@ export const Modal = styled.div`
   align-items: center;
   flex-direction: column;
 
-  background-color: ${({ theme }) => theme.colors.modal.bg};
+  background-color: var(--modal_bg);
 
   ${mobile(css`
     width: 100%;
@@ -38,7 +38,7 @@ export const SpriteWrapper = styled.div`
 `;
 
 export const Name = styled.span`
-  color: ${({ theme }) => theme.colors.modal.name};
+  color: var(--modal_name);
   margin-top: -25px;
 
   font-size: 2.4rem;
@@ -46,7 +46,7 @@ export const Name = styled.span`
 `;
 
 export const Question = styled.span`
-  color: ${({ theme }) => theme.colors.modal.text};
+  color: var(---modal_text);
 
   font-size: 1.8rem;
   font-weight: 600;
@@ -57,7 +57,7 @@ export const Question = styled.span`
 `;
 
 export const Optional = styled.span`
-  color: ${({ theme }) => theme.colors.modal.text};
+  color: var(---modal_text);
   font-size: 1.2rem;
 `;
 
@@ -67,7 +67,7 @@ export const DateTimePicker = styled.input.attrs(() => ({
   text-align: center;
   font-size: 1.7rem;
   border-radius: 4px;
-  border: 1px solid ${({ theme }) => theme.colors.modal.datePicker.border};
+  border: 1px solid var(--modal_datePicker_border);
 `;
 
 export const Footer = styled.footer`
@@ -84,6 +84,6 @@ export const Footer = styled.footer`
 export const ChangeMapButton = styled(ModalPrimaryButton)`
   font-weight: 500;
   background-color: transparent;
-  border: 3px solid ${({ theme }) => theme.colors.modal.changeMap.border};
-  color: ${({ theme }) => theme.colors.modal.changeMap.text};
+  border: 3px solid var(--modal_changeMap_border);
+  color: var(--modal_changeMap_text);
 `;

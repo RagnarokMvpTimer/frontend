@@ -5,8 +5,8 @@ export const NaviCommandContainer = styled.button`
   align-items: center;
   gap: 0.6rem;
 
-  color: ${({ theme }) => theme.colors.modal.text};
-  border: 1px solid ${({ theme }) => theme.colors.modal.hl};
+  color: var(--modal_text);
+  border: 1px solid var(--modal_hl);
   border-radius: 0.6rem;
   padding: 0.6rem;
 

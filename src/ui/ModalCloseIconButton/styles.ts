@@ -6,7 +6,7 @@ export const Button = styled.button`
   justify-content: center;
   align-self: flex-end;
   background: none;
-  color: ${({ theme }) => theme.colors.modal.text};
+  color: var(---modal_text);
 
   width: 2rem;
   height: 2rem;

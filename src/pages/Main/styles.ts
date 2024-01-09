@@ -7,7 +7,7 @@ export const Container = styled.main`
   align-items: center;
   flex: 1;
   padding-bottom: 30px;
-  background-color: ${({ theme }) => theme.colors.secondary};
+  background-color: var(--secondary);
 `;
 
 export const Section = styled.div`
@@ -21,7 +21,7 @@ export const Section = styled.div`
 
 export const SectionTitle = styled.span`
   font-weight: bold;
-  color: ${({ theme }) => theme.colors.text};
+  color: var(--text);
 `;
 
 export const MvpsContainer = styled.div`

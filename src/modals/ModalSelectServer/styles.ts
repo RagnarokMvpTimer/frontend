@@ -16,7 +16,7 @@ export const Modal = styled.div`
   align-items: center;
   flex-direction: column;
 
-  background-color: ${({ theme }) => theme.colors.modal.bg};
+  background-color: var(--modal_bg);
 
   ${mobile(css`
     overflow-y: auto;
@@ -25,7 +25,7 @@ export const Modal = styled.div`
 `;
 
 export const Title = styled.span`
-  color: ${({ theme }) => theme.colors.modal.name};
+  color: var(--modal_name);
   margin-top: -1rem;
 
   font-size: 24px;
@@ -46,24 +46,19 @@ export const ServerList = styled.div`
 export const ServerItem = styled.button<{
   active: boolean;
 }>`
-  background-color: ${({ theme, active }) =>
-    active
-      ? theme.colors.modal.serverSelect.bgActive
-      : theme.colors.modal.serverSelect.bg};
-
-  color: ${({ theme, active }) =>
-    active
-      ? theme.colors.modal.serverSelect.textActive
-      : theme.colors.modal.serverSelect.text};
   font-weight: 600;
-
   padding: 1rem 2rem;
-
   border-radius: 0.5rem;
-  ${({ theme }) =>
-    theme.id === 'light' &&
+
+  background-color: var(--modal_serverSelect_bg);
+  color: var(--modal_serverSelect_text);
+  border: 1px solid var(--modal_serverSelect_border);
+
+  ${({ active }) =>
+    active &&
     css`
-      border: 1px solid #f89200;
+      background-color: var(--modal_serverSelect_bgActive);
+      color: var(--modal_serverSelect_textActive);
     `}
 
   :hover {

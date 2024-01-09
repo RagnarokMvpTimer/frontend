@@ -5,7 +5,7 @@ export const FooterContainer = styled.footer`
   display: flex;
   width: 100%;
 
-  background-color: ${({ theme }) => theme.colors.primary};
+  background-color: var(--primary);
 `;
 
 export const Main = styled.div`
@@ -27,7 +27,7 @@ export const Text = styled.span`
 
   font-weight: 500;
 
-  color: ${({ theme }) => theme.colors.footer.text};
+  color: var(--footer_text);
 `;
 
 export const Bold = styled.span`
@@ -41,7 +41,7 @@ export const Link = styled.a`
   gap: 5px;
 
   text-decoration: none;
-  color: ${({ theme }) => theme.colors.footer.link};
+  color: var(--footer_link);
 
   > svg {
     stroke-width: 3px;

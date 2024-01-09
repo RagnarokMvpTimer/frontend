@@ -14,7 +14,7 @@ export const Modal = styled.div`
   align-items: center;
   flex-direction: column;
 
-  background-color: ${({ theme }) => theme.colors.modal.bg};
+  background-color: var(--modal_bg);
 
   ${mobile(css`
     width: 100%;
@@ -24,7 +24,7 @@ export const Modal = styled.div`
 `;
 
 export const Title = styled.span`
-  color: ${({ theme }) => theme.colors.modal.name};
+  color: var(--modal_name);
   margin-top: -30px;
   text-align: center;
 
@@ -47,7 +47,7 @@ export const MapCard = styled.button<{ isSelected: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: ${({ theme }) => theme.colors.modal.text};
+  color: var(---modal_text);
   background: none;
   cursor: pointer;
 
@@ -60,8 +60,7 @@ export const MapCard = styled.button<{ isSelected: boolean }>`
   ${({ isSelected }) =>
     isSelected &&
     css`
-      border-color: ${({ theme }) =>
-        theme.colors.modal.changeMap.selectedMapBorder};
+      border-color: var(--modal_changeMap_selectedMapBorder);
     `}
 `;
 

@@ -16,7 +16,7 @@ export const Modal = styled.div`
   align-items: center;
   flex-direction: column;
 
-  background-color: ${({ theme }) => theme.colors.modal.bg};
+  background-color: var(--modal_bg);
 
   ${tablet(css`
     max-width: 500px;
@@ -61,12 +61,12 @@ export const AlertIcon = styled(AlertTriangle)`
 
 export const Title = styled.h3`
   font-weight: 600;
-  color: ${({ theme }) => theme.colors.modal.name};
+  color: var(--modal_name);
 `;
 
 export const Description = styled.p`
   font-weight: 500;
-  color: ${({ theme }) => theme.colors.modal.text};
+  color: var(---modal_text);
 `;
 
 export const Footer = styled.footer`

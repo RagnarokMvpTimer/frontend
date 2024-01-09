@@ -11,5 +11,5 @@ export const Hour = styled.span`
 
   text-align: center;
 
-  color: ${({ theme }) => theme.colors.headerTexts};
+  color: var(--header_text);
 `;

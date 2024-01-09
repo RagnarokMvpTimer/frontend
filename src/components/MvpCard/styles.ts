@@ -10,8 +10,8 @@ export const Container = styled.div`
 
   border-radius: 8px;
 
-  background-color: ${({ theme }) => theme.colors.mvpCard.bg};
-  border: 1px solid ${({ theme }) => theme.colors.primary};
+  background-color: var(--mvpCard_bg);
+  border: 1px solid var(--primary);
 `;
 
 export const Bold = styled.span`
@@ -27,19 +27,19 @@ export const Header = styled.div`
 export const ID = styled.span`
   font-size: 12px;
   font-weight: 600;
-  color: ${({ theme }) => theme.colors.mvpCard.id};
+  color: var(--mvpCard_id);
 `;
 
 export const Name = styled.span`
   font-weight: bold;
-  color: ${({ theme }) => theme.colors.mvpCard.name};
+  color: var(--mvpCard_name);
 `;
 
 export const MapName = styled.span`
   text-align: center;
   white-space: pre-wrap;
   margin-top: 5px;
-  color: ${({ theme }) => theme.colors.mvpCard.text};
+  color: var(--mvpCard_text);
 `;
 
 const Button = styled.button`
@@ -59,11 +59,11 @@ const Button = styled.button`
 `;
 
 export const KilledNow = styled(Button)`
-  background-color: ${({ theme }) => theme.colors.mvpCard.killButton};
+  background-color: var(--mvpCard_killButton);
 `;
 
 export const EditButton = styled(Button)`
-  background-color: ${({ theme }) => theme.colors.mvpCard.editButton};
+  background-color: var(--mvpCard_editButton);
 `;
 
 export const Controls = styled.div<{ isActive?: boolean }>`
@@ -103,18 +103,18 @@ export const Control = styled.button`
   }
 
   :first-child {
-    background-color: ${({ theme }) => theme.colors.mvpCard.controls.showMap};
+    background-color: var(--mvpCard_controls_showMap);
   }
 
   :nth-child(2) {
-    background-color: ${({ theme }) => theme.colors.mvpCard.controls.edit};
+    background-color: var(--mvpCard_controls_edit);
   }
 
   :nth-child(3) {
-    background-color: ${({ theme }) => theme.colors.mvpCard.controls.delete};
+    background-color: var(--mvpCard_controls_delete);
   }
 
   /* :nth-child(4) {
-    background-color: ${({ theme }) => theme.colors.mvpCard.controls.edit};
+    background-color: var(--mvpCard_controls_edit);
   } */
 `;

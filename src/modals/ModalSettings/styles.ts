@@ -16,7 +16,7 @@ export const Modal = styled.div`
   align-items: center;
   flex-direction: column;
 
-  background-color: ${({ theme }) => theme.colors.modal.bg};
+  background-color: var(--modal_bg);
 
   ${mobile(css`
     overflow-y: auto;
@@ -25,7 +25,7 @@ export const Modal = styled.div`
 `;
 
 export const Title = styled.span`
-  color: ${({ theme }) => theme.colors.modal.name};
+  color: var(--modal_name);
   margin-top: -4rem;
 
   font-size: 2.4rem;
@@ -49,7 +49,7 @@ export const Setting = styled.div<{ disabled?: boolean }>`
 `;
 
 export const SettingName = styled.span`
-  color: ${({ theme }) => theme.colors.modal.text};
+  color: var(---modal_text);
 
   font-size: 1.8rem;
   font-weight: 500;
@@ -75,7 +75,7 @@ export const ThemeContainer = styled.div`
     height: 20px;
     stroke-width: 2px;
     fill: white;
-    color: ${({ theme }) => theme.colors.modal.text};
+    color: var(---modal_text);
   }
 `;
 
