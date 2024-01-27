@@ -22,6 +22,10 @@ export const SearchContainer = styled.div`
   border-radius: 8px;
   background-color: var(--filterSearch_bg);
   border: 1px solid var(--filterSearch_border);
+
+  :focus-within {
+    border-color: var(--filterSearch_border_focus);
+  }
 `;
 
 export const SearchInput = styled.input`

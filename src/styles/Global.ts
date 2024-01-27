@@ -71,6 +71,7 @@ export const GlobalStyle = createGlobalStyle`
     --filterSearch_bg: #FFF;
     --filterSearch_border: #f89200;
     --filterSearch_text: #000;
+    --filterSearch_border_focus: #000;
 
     --languagePicker_bg: #F6F8FA;
     --languagePicker_border: #f89200;
@@ -135,6 +136,7 @@ export const GlobalStyle = createGlobalStyle`
     --filterSearch_bg: #262626;
     --filterSearch_border: #1B1C1D;
     --filterSearch_text: #FFF;
+    --filterSearch_border_focus: #fff;
 
     --languagePicker_bg: #454545;
     --languagePicker_border: #1B1C1D;

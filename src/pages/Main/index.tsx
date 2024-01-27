@@ -16,21 +16,20 @@ export function Main() {
   const [currentSort, setCurrentSort] = useState<string>('id');
   const [reverseSort, setReverseSort] = useState<boolean>(false);
 
-  const allMvpsFilteredAndSorted = useMemo(
-    () =>
-      (searchQuery
-        ? allMvps.filter((i) =>
-            `${i.id}-${i.name}`
-              .toLocaleLowerCase()
-              .includes(searchQuery.toLocaleLowerCase())
-          )
-        : allMvps
-      )?.sort(sortBy(currentSort)),
-    [searchQuery, allMvps, currentSort]
-  );
+  const allMvpsFilteredAndSorted = useMemo(() => {
+    const filtered = searchQuery
+      ? allMvps.filter((i) =>
+          `${i.id}-${i.name}`
+            .toLocaleLowerCase()
+            .includes(searchQuery.toLocaleLowerCase())
+        )
+      : allMvps;
+
+    return filtered.sort(sortBy(currentSort));
+  }, [allMvps, searchQuery, currentSort]);
 
   const displayAllMvps = reverseSort
-    ? allMvpsFilteredAndSorted.slice().reverse()
+    ? allMvpsFilteredAndSorted.reverse()
     : allMvpsFilteredAndSorted;
 
   return (

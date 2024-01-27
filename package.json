@@ -2,6 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "description": "web app to track ragnarok mvp respawn",
   "type": "module",
   "scripts": {
     "dev": "vite --open",
@@ -20,8 +21,7 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-intl": "^5.24.8",
-    "styled-components": "^5.3.5",
-    "typescript": "^4.6.3"
+    "styled-components": "^5.3.5"
   },
   "devDependencies": {
     "@types/body-scroll-lock": "^3.1.0",
@@ -43,7 +43,8 @@
     "prettier": "2.6.2",
     "vercel": "^32.4.1",
     "vite": "^5.0.11",
-    "vite-imagetools": "^5.0.9"
+    "vite-imagetools": "^5.0.9",
+    "typescript": "^4.6.3"
   },
   "engines": {
     "node": ">=18"

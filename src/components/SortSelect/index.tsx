@@ -1,5 +1,4 @@
 import { FormattedMessage } from 'react-intl';
-
 import { Option, Select } from './styles';
 
 interface SortSwitchProps {
@@ -18,9 +17,13 @@ const OPTIONS = [
 
 export function SortSelect({ onChange }: SortSwitchProps) {
   return (
-    <Select defaultValue='id' onChange={(e) => onChange(e.target.value)}>
+    <Select
+      defaultValue='id'
+      onChange={(e) => onChange(e.target.value)}
+      aria-label='Sort mvps por by his properties'
+    >
       {OPTIONS.map(({ id, name }) => (
-        <Option key={id} value={id}>
+        <Option key={id} value={id} aria-label={name}>
           <FormattedMessage id={id} defaultMessage={name} />
         </Option>
       ))}

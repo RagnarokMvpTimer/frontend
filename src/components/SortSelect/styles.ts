@@ -7,6 +7,7 @@ export const Select = styled.select`
 
   font-size: 14px;
   font-weight: 500;
+  cursor: pointer;
 
   border: none;
   background: none;

@@ -10,7 +10,7 @@ export function useNotification() {
     }
 
     if (isNotificationSoundEnabled) {
-      const audio = new Audio('./notification2.mp3');
+      const audio = new Audio('notification.mp3');
       audio.volume = 0.2;
       audio.play();
     }

@@ -55,20 +55,22 @@ export function MvpProvider({ children }: MvpProviderProps) {
     []
   );
 
-  const killMvp = useCallback((mvp: IMvp, time?: Date | null) => {
+  const killMvp = useCallback((mvp: IMvp, deathTime = new Date()) => {
     const killedMvp = {
       ...mvp,
-      deathTime: time || new Date(),
+      deathTime,
     };
 
     setActiveMvps((s) =>
-      [...s, killedMvp].sort((a: IMvp, b: IMvp) =>
-        a.deathTime && b.deathTime
-          ? dayjs(a.deathTime)
-              .add(getMvpRespawnTime(a), 'ms')
-              .diff(dayjs(b.deathTime).add(getMvpRespawnTime(b), 'ms'))
-          : 0
-      )
+      [...s, killedMvp].sort((a: IMvp, b: IMvp) => {
+        const bothHaveDeathTime = a.deathTime && b.deathTime;
+        if (!bothHaveDeathTime) {
+          return 0;
+        }
+        return dayjs(a.deathTime)
+          .add(getMvpRespawnTime(a), 'ms')
+          .diff(dayjs(b.deathTime).add(getMvpRespawnTime(b), 'ms'));
+      })
     );
   }, []);
 
