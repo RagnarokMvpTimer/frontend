@@ -4,7 +4,6 @@ import {
   useState,
   ReactNode,
   useCallback,
-  useEffect,
 } from 'react';
 
 import { usePersistedState, useTheme } from '../hooks';
@@ -101,11 +100,6 @@ export function SettingsProvider({ children }: SettingsProviderProps) {
     resetTheme();
     setSettings(DEFAULT_SETTINGS);
   }, [resetTheme, setSettings]);
-
-  useEffect(() => {
-    if (Notification.permission === 'granted') return;
-    Notification.requestPermission();
-  }, []);
 
   return (
     <SettingsContext.Provider

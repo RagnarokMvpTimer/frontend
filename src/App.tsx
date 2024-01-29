@@ -19,12 +19,18 @@ import { ModalSettings } from './modals';
 
 import { useSettings } from './contexts/SettingsContext';
 import { MvpProvider } from './contexts/MvpsContext';
+import { useNotification } from './hooks';
 
 import { LOCALES } from './locales';
 import { messages } from './locales/messages';
 
 export default function App() {
   const { language, isSettingsModalOpen } = useSettings();
+  const {
+    hasNotificationPermission,
+    isNotificationPermissionDenied,
+    browserSupportsNotifications,
+  } = useNotification();
 
   useEffect(() => {
     dayjs.locale(language);
@@ -37,9 +43,18 @@ export default function App() {
         locale={language}
         defaultLocale={LOCALES.ENGLISH}
       >
-        <WarningHeader text={messages[language]['under_development']} />
-        {Notification.permission !== 'granted' && (
-          <WarningHeader text={messages[language]['disabled_notifications']} />
+        {!hasNotificationPermission && (
+          <WarningHeader
+            text={
+              messages[language][
+                !browserSupportsNotifications
+                  ? 'notifications_not_supported'
+                  : isNotificationPermissionDenied
+                  ? 'denied_notifications'
+                  : 'disabled_notifications'
+              ]
+            }
+          />
         )}
 
         <Header />
@@ -49,6 +64,7 @@ export default function App() {
         </MvpProvider>
 
         <Footer />
+        <WarningHeader text={messages[language]['under_development']} />
 
         {isSettingsModalOpen && <ModalSettings />}
       </IntlProvider>

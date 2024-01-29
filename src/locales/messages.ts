@@ -4,6 +4,8 @@ export const messages = {
   [LOCALES.ENGLISH]: {
     under_development: 'Under development',
     disabled_notifications: 'Notifications are disabled',
+    denied_notifications: 'Notifications have been denied',
+    notifications_not_supported: "Your browser doesn't support notifications",
     active: 'Active',
     all: 'All',
     respawning: 'Respawning',
@@ -59,6 +61,8 @@ export const messages = {
   [LOCALES.PORTUGUESE]: {
     under_development: 'Em desenvolvimento',
     disabled_notifications: 'As notificações estão desativadas',
+    denied_notifications: 'As notificações foram bloqueadas',
+    notifications_not_supported: 'Seu navegador não suporta notificações',
     active: 'Ativos',
     all: 'Todos',
     respawning: 'Renascendo',
