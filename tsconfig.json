@@ -4,12 +4,11 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "module": "esnext",
     "skipLibCheck": true,
-    "types": ["vite/client"],
+    "types": ["vite/client", "vite-plugin-pwa/client"],
     "baseUrl": "./",
     "paths": {
       "@/*": ["./src/*"]
     },
-
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": false,
@@ -24,6 +23,6 @@
     "allowJs": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src"]
+  "include": ["src", "pwa-assets.config.ts"]
   /* "references": [{ "path": "./tsconfig.node.json" }] */
 }
