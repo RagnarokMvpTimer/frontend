@@ -34,11 +34,10 @@ const mapImages = remapGlobImport(MAP_IMAGES);
 
 const SERVERS_DATA = import.meta.glob('../data/*.json', {
   import: 'default',
-  eager: true,
 });
 
 type IServers = {
-  [key: string]: IMvp[];
+  [key: string]: () => Promise<IMvp[]>;
 };
 
 export const SERVERS: IServers = Object.entries(SERVERS_DATA).reduce(
@@ -49,6 +48,15 @@ export const SERVERS: IServers = Object.entries(SERVERS_DATA).reduce(
   },
   {}
 );
+
+export async function getServerData(server: string) {
+  try {
+    const mvpsData = await SERVERS[server || 'iRO']();
+    return mvpsData;
+  } catch (error) {
+    return await SERVERS['iRO']();
+  }
+}
 
 /**
  * Convert Dayjs object to string with 'HH:mm:ss' format

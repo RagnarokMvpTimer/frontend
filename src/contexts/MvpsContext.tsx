@@ -10,8 +10,11 @@ import dayjs from 'dayjs';
 
 import { useSettings } from './SettingsContext';
 
-import { getMvpRespawnTime, SERVERS } from '../utils';
-import { LOCAL_STORAGE_ACTIVE_MVPS_KEY } from '../constants';
+import { getMvpRespawnTime, getServerData } from '../utils';
+import {
+  loadMvpsFromLocalStorage,
+  saveActiveMvpsToLocalStorage,
+} from '@/controllers/mvp';
 
 interface MvpProviderProps {
   children: ReactNode;
@@ -33,12 +36,11 @@ export const MvpsContext = createContext({} as MvpsContextData);
 
 export function MvpProvider({ children }: MvpProviderProps) {
   const { server } = useSettings();
-  const mvpsData = SERVERS[server];
 
   const [isLoading, setIsLoading] = useState(true);
   const [editingMvp, setEditingMvp] = useState<IMvp>();
   const [activeMvps, setActiveMvps] = useState<IMvp[]>([]);
-  const [allMvps, setAllMvps] = useState<IMvp[]>(mvpsData);
+  const [allMvps, setAllMvps] = useState<IMvp[]>([]);
 
   const resetMvpTimer = useCallback((mvp: IMvp) => {
     const updatedMvp = { ...mvp, deathTime: new Date() };
@@ -79,82 +81,37 @@ export function MvpProvider({ children }: MvpProviderProps) {
   const clearActiveMvps = useCallback(() => setActiveMvps([]), []);
 
   useEffect(() => {
-    try {
-      const data = localStorage.getItem(LOCAL_STORAGE_ACTIVE_MVPS_KEY);
-      if (!data) return;
-
-      const dataParse = JSON.parse(data);
-      if (!dataParse) return;
-
-      const savedServerData = dataParse[server];
-
-      const hasSavedServerData = !!savedServerData;
-      if (!hasSavedServerData) {
-        setActiveMvps([]);
-        return;
-      }
-
-      const finalData = savedServerData.map((mvp: IMvp) => ({
-        ...SERVERS[server].find((m) => m.id === mvp.id),
-        deathMap: mvp.deathMap,
-        deathPosition: mvp.deathPosition,
-        deathTime: dayjs(mvp.deathTime).toDate(),
-      }));
-
-      setActiveMvps(finalData);
-    } catch (error) {
-      console.error('Failed to load mvps from local storage', error);
-    } finally {
+    async function loadActiveMvps() {
+      setIsLoading(true);
+      const savedActiveMvps = await loadMvpsFromLocalStorage(server);
+      setActiveMvps(savedActiveMvps || []);
       setIsLoading(false);
     }
-  }, [server, mvpsData]);
+    loadActiveMvps();
+  }, [server]);
 
   useEffect(() => {
     if (isLoading) return;
 
-    const data = activeMvps.map((mvp) => ({
-      id: mvp.id,
-      deathMap: mvp.deathMap,
-      deathTime: mvp.deathTime,
-      deathPosition: mvp.deathPosition,
-    }));
+    async function filterAllMvps() {
+      const originalServerData = await getServerData(server);
+      const activeSpawns = activeMvps.map((m) => m.deathMap);
 
-    const currentLocalMvps = localStorage.getItem(
-      LOCAL_STORAGE_ACTIVE_MVPS_KEY
-    );
-    const currentData = currentLocalMvps ? JSON.parse(currentLocalMvps) : {};
+      const filteredAllMvps = originalServerData
+        .map((mvp) => ({
+          ...mvp,
+          spawn: mvp.spawn.filter(
+            (spawn) => !activeSpawns.includes(spawn.mapname)
+          ),
+        }))
+        .filter((mvp) => mvp.spawn.length > 0);
 
-    const updatedActiveData = {
-      ...currentData,
-      [server]: data,
-    };
+      setAllMvps(filteredAllMvps);
+    }
 
-    Object.keys(updatedActiveData).forEach(
-      (key) => !isNaN(Number(key)) && delete updatedActiveData[key]
-    );
-
-    localStorage.setItem(
-      LOCAL_STORAGE_ACTIVE_MVPS_KEY,
-      JSON.stringify(updatedActiveData)
-    );
-  }, [activeMvps]);
-
-  useEffect(() => {
-    if (isLoading) return;
-
-    const activeSpawns = activeMvps.map((m) => m.deathMap);
-
-    const filteredAllMvps = mvpsData
-      .map((mvp) => ({
-        ...mvp,
-        spawn: mvp.spawn.filter(
-          (spawn) => !activeSpawns.includes(spawn.mapname)
-        ),
-      }))
-      .filter((mvp) => mvp.spawn.length > 0);
-
-    setAllMvps(filteredAllMvps);
-  }, [activeMvps, mvpsData]);
+    filterAllMvps();
+    saveActiveMvpsToLocalStorage(activeMvps, server);
+  }, [isLoading, activeMvps, server]);
 
   return (
     <MvpsContext.Provider
