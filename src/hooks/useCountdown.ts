@@ -1,9 +1,14 @@
 import { useCallback, useEffect, useState } from 'react';
-import dayjs from 'dayjs';
+import dayjs, { type Dayjs } from 'dayjs';
 import type { Duration } from 'dayjs/plugin/duration';
 
+function timeToDuration(startTime: Dayjs) {
+  const diff = startTime.diff(dayjs());
+  return dayjs.duration(diff);
+}
+
 export function useCountdown(startTime = dayjs(), delay = 1000) {
-  const [duration, setDuration] = useState<Duration>();
+  const [duration, setDuration] = useState<Duration>(timeToDuration(startTime));
   const [isRunning, setIsRunning] = useState(true);
 
   const pause = useCallback(() => setIsRunning(false), []);
@@ -12,11 +17,9 @@ export function useCountdown(startTime = dayjs(), delay = 1000) {
   useEffect(() => {
     const interval = setInterval(
       () => {
-        const diff = startTime.diff(dayjs());
-        const dur = dayjs.duration(diff);
-        setDuration(dur);
+        setDuration(timeToDuration(startTime));
       },
-      isRunning ? delay : 0
+      isRunning ? delay : 99999999999999
     );
 
     return () => clearInterval(interval);
