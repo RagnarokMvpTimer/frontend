@@ -26,7 +26,7 @@ interface MvpsContextData {
   editingMvp: IMvp | undefined;
   resetMvpTimer: (mvp: IMvp) => void;
   killMvp: (mvp: IMvp, time?: Date | null) => void;
-  removeMvp: (mvp: IMvp) => void;
+  removeMvpByMap: (deathMap: string) => void;
   setEditingMvp: (mvp: IMvp) => void;
   closeEditMvpModal: () => void;
   clearActiveMvps: () => void;
@@ -49,11 +49,9 @@ export function MvpProvider({ children }: MvpProviderProps) {
     );
   }, []);
 
-  const removeMvp = useCallback(
-    (mvp: IMvp) =>
-      setActiveMvps((state) =>
-        state.filter((m) => m.deathMap !== mvp.deathMap)
-      ),
+  const removeMvpByMap = useCallback(
+    (deathMap: string) =>
+      setActiveMvps((state) => state.filter((m) => m.deathMap !== deathMap)),
     []
   );
 
@@ -121,7 +119,7 @@ export function MvpProvider({ children }: MvpProviderProps) {
         editingMvp,
         resetMvpTimer,
         killMvp,
-        removeMvp,
+        removeMvpByMap,
         setEditingMvp,
         closeEditMvpModal,
         clearActiveMvps,

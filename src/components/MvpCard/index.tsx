@@ -32,7 +32,8 @@ interface MvpCardProps {
 }
 
 export function MvpCard({ mvp }: MvpCardProps) {
-  const { killMvp, resetMvpTimer, removeMvp, setEditingMvp } = useMvpsContext();
+  const { killMvp, resetMvpTimer, removeMvpByMap, setEditingMvp } =
+    useMvpsContext();
   const { respawnAsCountdown } = useSettings();
   const { respawnNotification } = useNotification();
   const [isMapModalOpen, setIsMapModalOpen] = useState(false);
@@ -91,7 +92,10 @@ export function MvpCard({ mvp }: MvpCardProps) {
               <Control onClick={() => resetMvpTimer(mvp)} title='Reset timer'>
                 <RefreshCcw />
               </Control>
-              <Control onClick={() => removeMvp(mvp)} title='Remove this mvp'>
+              <Control
+                onClick={() => removeMvpByMap(mvp.deathMap)}
+                title='Remove this mvp'
+              >
                 <Trash2 />
               </Control>
               {/* <Control
