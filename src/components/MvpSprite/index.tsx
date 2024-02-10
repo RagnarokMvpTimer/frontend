@@ -1,27 +1,18 @@
-import { useSettings } from '@/contexts/SettingsContext';
 import { getMvpSprite, getAnimatedMvpSprite } from '@/utils';
-
 import { Sprite } from './styles';
 
-interface MvpSpriteProps {
-  mvp:
-    | {
-        id: number;
-        name?: string;
-      }
-    | IMvp;
-}
+type MvpSpriteProps = {
+  id: number;
+  name: string;
+  animated?: boolean;
+};
 
-export function MvpSprite({ mvp }: MvpSpriteProps) {
-  const { animatedSprites } = useSettings();
-
+export function MvpSprite({ id, name, animated }: MvpSpriteProps) {
   return (
     <Sprite
-      src={
-        !animatedSprites ? getMvpSprite(mvp.id) : getAnimatedMvpSprite(mvp.id)
-      }
-      alt={mvp?.name}
-      isAnimated={animatedSprites}
+      src={animated ? getAnimatedMvpSprite(id) : getMvpSprite(id)}
+      alt={name}
+      isAnimated={animated}
       loading='lazy'
     />
   );

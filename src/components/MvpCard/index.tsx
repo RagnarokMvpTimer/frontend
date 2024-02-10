@@ -34,7 +34,7 @@ interface MvpCardProps {
 export function MvpCard({ mvp }: MvpCardProps) {
   const { killMvp, resetMvpTimer, removeMvpByMap, setEditingMvp } =
     useMvpsContext();
-  const { respawnAsCountdown } = useSettings();
+  const { respawnAsCountdown, animatedSprites } = useSettings();
   const { respawnNotification } = useNotification();
   const [isMapModalOpen, setIsMapModalOpen] = useState(false);
 
@@ -63,7 +63,7 @@ export function MvpCard({ mvp }: MvpCardProps) {
           <Name>{mvp.name}</Name>
         </Header>
 
-        <MvpSprite mvp={mvp} />
+        <MvpSprite id={mvp.id} name={mvp.name} animated={animatedSprites} />
 
         {isActive ? (
           <>
