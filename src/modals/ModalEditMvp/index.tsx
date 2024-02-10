@@ -3,6 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import dayjs from 'dayjs';
 
 import { useScrollBlock, useKey } from '@/hooks';
+import { useSettings } from '@/contexts/SettingsContext';
 import { useMvpsContext } from '@/contexts/MvpsContext';
 
 import { ModalBase } from '../ModalBase';
@@ -27,6 +28,7 @@ import {
 export function ModalEditMvp() {
   useScrollBlock(true);
   const { killMvp, editingMvp: mvp, closeEditMvpModal } = useMvpsContext();
+  const { animatedSprites } = useSettings();
 
   const [newTime, setNewTime] = useState<Date | null>(
     mvp.deathTime || new Date()
@@ -77,7 +79,7 @@ export function ModalEditMvp() {
         <Name>{mvp.name}</Name>
 
         <SpriteWrapper>
-          <MvpSprite mvp={mvp} />
+          <MvpSprite id={mvp.id} name={mvp.name} animated={animatedSprites} />
         </SpriteWrapper>
 
         <Question>
