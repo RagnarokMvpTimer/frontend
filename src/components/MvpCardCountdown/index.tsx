@@ -55,7 +55,7 @@ export function MvpCardCountdown({
 
   const formattedTimeString = getTimeString(
     nextRespawn,
-    duration,
+    respawningSoon || missedRespawn ? durationWithRespawnDelay : duration,
     respawnAsCountdown,
     missedRespawn
   );

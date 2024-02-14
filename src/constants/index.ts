@@ -2,7 +2,7 @@ import { LOCALES } from '../locales';
 
 export const DEFAULT_THEME = 'light';
 
-export const RESPAWN_TIMER_SOON_THRESHOLD_MS = 600000; // 10 minutes
+export const RESPAWN_TIMER_SOON_THRESHOLD_MS = 1000 * 60 * 10; // 10 minutes
 export const DEFAULT_LANG = LOCALES.ENGLISH;
 export const DEFAULT_SERVER = 'iRO';
 
