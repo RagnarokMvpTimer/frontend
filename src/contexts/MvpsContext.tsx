@@ -26,7 +26,7 @@ interface MvpsContextData {
   editingMvp: IMvp | undefined;
   resetMvpTimer: (mvp: IMvp) => void;
   killMvp: (mvp: IMvp, time?: Date | null) => void;
-  removeMvpByMap: (deathMap: string) => void;
+  removeMvpByMap: (mvpID: number, deathMap: string) => void;
   setEditingMvp: (mvp: IMvp) => void;
   closeEditMvpModal: () => void;
   clearActiveMvps: () => void;
@@ -49,11 +49,11 @@ export function MvpProvider({ children }: MvpProviderProps) {
     );
   }, []);
 
-  const removeMvpByMap = useCallback(
-    (deathMap: string) =>
-      setActiveMvps((state) => state.filter((m) => m.deathMap !== deathMap)),
-    []
-  );
+  const removeMvpByMap = useCallback((mvpID: number, deathMap: string) => {
+    setActiveMvps((state) =>
+      state.filter((m) => mvpID !== m.id || m.deathMap !== deathMap)
+    );
+  }, []);
 
   const killMvp = useCallback((mvp: IMvp, deathTime = new Date()) => {
     const killedMvp = {
@@ -94,14 +94,20 @@ export function MvpProvider({ children }: MvpProviderProps) {
     async function filterAllMvps() {
       const originalServerData = await getServerData(server);
       const activeSpawns = activeMvps.map((m) => m.deathMap);
+      const activeIds = activeMvps.map((m) => m.id);
 
       const filteredAllMvps = originalServerData
-        .map((mvp) => ({
-          ...mvp,
-          spawn: mvp.spawn.filter(
-            (spawn) => !activeSpawns.includes(spawn.mapname)
-          ),
-        }))
+        .map((mvp) => {
+          const isActive = activeIds.includes(mvp.id);
+          if (!isActive) return mvp;
+
+          return {
+            ...mvp,
+            spawn: mvp.spawn.filter(
+              (spawn) => !activeSpawns.includes(spawn.mapname)
+            ),
+          };
+        })
         .filter((mvp) => mvp.spawn.length > 0);
 
       setAllMvps(filteredAllMvps);

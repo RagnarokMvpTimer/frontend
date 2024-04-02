@@ -93,7 +93,7 @@ export function MvpCard({ mvp }: MvpCardProps) {
                 <RefreshCcw />
               </Control>
               <Control
-                onClick={() => removeMvpByMap(mvp.deathMap)}
+                onClick={() => removeMvpByMap(mvp.id, mvp.deathMap)}
                 title='Remove this mvp'
               >
                 <Trash2 />
