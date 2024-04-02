@@ -7,8 +7,6 @@ export const GlobalStyle = createGlobalStyle`
     outline: 0;
     box-sizing: border-box;
     font-family: 'Jost', sans-serif;
-    //font-family: 'Nunito', sans-serif;
-    //font-family: 'Roboto', sans-serif;
   }
 
   #root {
@@ -18,6 +16,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   :root, html[data-theme='light'] {
+    color-scheme: light;
     --primary: #f89200;
     --secondary: #F6F8FA;
 
@@ -84,6 +83,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   html[data-theme='dark'] {
+    color-scheme: dark;
     --primary: #1B1C1D;
     --secondary: #2e2e2e;
 
