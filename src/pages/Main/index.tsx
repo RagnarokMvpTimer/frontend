@@ -22,20 +22,18 @@ export function Main() {
     sessionStorage.getItem('reverse') === 'true'
   );
 
-  const allMvpsFilteredAndSorted = useMemo(() => {
-    const filtered = searchQuery
+  const allMvpsFilteredAndSorted = (
+    searchQuery
       ? allMvps.filter((i) =>
           `${i.id}-${i.name}`
             .toLocaleLowerCase()
             .includes(searchQuery.toLocaleLowerCase())
         )
-      : allMvps;
-
-    return filtered.sort(sortBy(currentSort));
-  }, [allMvps, searchQuery, currentSort]);
+      : allMvps
+  ).sort(sortBy(currentSort));
 
   const displayAllMvps = reverseSort
-    ? allMvpsFilteredAndSorted.toReversed()
+    ? allMvpsFilteredAndSorted.reverse()
     : allMvpsFilteredAndSorted;
 
   return (
