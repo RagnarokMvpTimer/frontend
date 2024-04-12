@@ -55,6 +55,7 @@ export function Main() {
           </SectionTitle>
 
           <MvpsContainerFilter
+            searchQuery={searchQuery}
             onChangeQuery={(value) => setSearchQuery(value)}
             onSelectSort={(value) => setCurrentSort(value)}
             isReverse={reverseSort}

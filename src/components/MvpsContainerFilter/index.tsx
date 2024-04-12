@@ -5,6 +5,7 @@ import {
   SearchContainer,
   SearchIcon,
   SearchInput,
+  ClearButton,
   SortContainer,
   Reverse,
   UpArrow,
@@ -12,6 +13,7 @@ import {
 } from './styles';
 
 interface FilterProps {
+  searchQuery: string;
   onChangeQuery: (value: string) => void;
   onSelectSort: (value: string) => void;
   isReverse: boolean;
@@ -19,6 +21,7 @@ interface FilterProps {
 }
 
 export function MvpsContainerFilter({
+  searchQuery,
   onChangeQuery,
   onSelectSort,
   isReverse,
@@ -28,12 +31,21 @@ export function MvpsContainerFilter({
     <Container>
       <SearchContainer>
         <SearchIcon />
-        <SearchInput onChange={(e) => onChangeQuery(e.target.value)} />
+        <SearchInput
+          value={searchQuery}
+          onChange={(e) => onChangeQuery(e.target.value)}
+          title='Search mvps by his name or id'
+        />
+        <ClearButton
+          onClick={() => onChangeQuery('')}
+          title='Clear current search'
+          visibility={searchQuery ? 'visible' : 'hidden'}
+        />
       </SearchContainer>
 
       <SortContainer>
         <SortSelect onChange={(type) => onSelectSort(type)} />
-        <Reverse onClick={onReverse} title='Reverse'>
+        <Reverse onClick={onReverse} title='Reverse current sort'>
           {isReverse ? <UpArrow /> : <DownArrow />}
         </Reverse>
       </SortContainer>

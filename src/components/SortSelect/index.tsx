@@ -20,7 +20,8 @@ export function SortSelect({ onChange }: SortSwitchProps) {
     <Select
       defaultValue='id'
       onChange={(e) => onChange(e.target.value)}
-      aria-label='Sort mvps por by his properties'
+      aria-label='Sort mvps by his properties'
+      title='Sort mvps by his properties'
     >
       {OPTIONS.map(({ id, name }) => (
         <Option key={id} value={id} aria-label={name}>

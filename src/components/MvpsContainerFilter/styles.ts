@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { Search, ArrowUp, ArrowDown } from '@styled-icons/feather';
+import { Search, ArrowUp, ArrowDown, XCircle } from '@styled-icons/feather';
 import { phone } from '../../utils/media';
 
 export const Container = styled.div`
@@ -16,8 +16,8 @@ export const Container = styled.div`
 
 export const SearchContainer = styled.div`
   display: flex;
-  flex-direction: row;
-  padding: 4px;
+  align-items: center;
+  padding: 4px 8px;
   gap: 4px;
   border-radius: 8px;
   background-color: var(--filterSearch_bg);
@@ -37,10 +37,17 @@ export const SearchInput = styled.input`
 export const SearchIcon = styled(Search)`
   width: 24px;
   height: 24px;
-  margin: 0 4px;
   padding: 1px;
   color: var(--filterSearch_text);
   stroke-width: 2px;
+`;
+
+export const ClearButton = styled(XCircle)`
+  width: 16px;
+  height: 16px;
+  stroke-width: 2px;
+  color: var(--filterSearch_text);
+  cursor: pointer;
 `;
 
 export const SortContainer = styled.div`
