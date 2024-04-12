@@ -1,4 +1,5 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components';
+import { mobile } from '@/utils/media';
 
 export const GlobalStyle = createGlobalStyle`
   *, *::after, *::before {
@@ -178,6 +179,10 @@ export const GlobalStyle = createGlobalStyle`
 
   *:not(body,html)::-webkit-scrollbar {
     width: 1.6rem;
+
+    ${mobile(css`
+      width: 1.2rem;
+    `)}
   }
 
   *:not(body,html)::-webkit-scrollbar-thumb {
@@ -185,5 +190,9 @@ export const GlobalStyle = createGlobalStyle`
     border: 4px solid transparent;
     background-clip: content-box;
     background-color: var(--scrollbar_thumb);
+
+    ${mobile(css`
+      border-radius: 10px;
+    `)}
   }
 `;

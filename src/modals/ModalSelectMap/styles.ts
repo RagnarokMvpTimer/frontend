@@ -36,10 +36,13 @@ export const MapsDisplayGrid = styled.div<{ cols: number }>`
   display: grid;
   grid-template-columns: repeat(${({ cols }) => (cols > 2 ? 3 : 2)}, 1fr);
   overflow-y: auto;
+  overflow-x: hidden;
 
   ${mobile(css`
+    width: 100%;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
   `)}
 `;
 
