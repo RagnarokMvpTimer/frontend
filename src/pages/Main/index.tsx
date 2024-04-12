@@ -12,9 +12,15 @@ import { Container, Section, SectionTitle, MvpsContainer } from './styles';
 
 export function Main() {
   const { activeMvps, allMvps, editingMvp } = useMvpsContext();
-  const [searchQuery, setSearchQuery] = useState<string>();
-  const [currentSort, setCurrentSort] = useState<string>('id');
-  const [reverseSort, setReverseSort] = useState<boolean>(false);
+  const [searchQuery, setSearchQuery] = useState<string>(
+    sessionStorage.getItem('search') || ''
+  );
+  const [currentSort, setCurrentSort] = useState<string>(
+    sessionStorage.getItem('sort') || 'id'
+  );
+  const [reverseSort, setReverseSort] = useState<boolean>(
+    sessionStorage.getItem('reverse') === 'true'
+  );
 
   const allMvpsFilteredAndSorted = useMemo(() => {
     const filtered = searchQuery
@@ -29,7 +35,7 @@ export function Main() {
   }, [allMvps, searchQuery, currentSort]);
 
   const displayAllMvps = reverseSort
-    ? allMvpsFilteredAndSorted.reverse()
+    ? allMvpsFilteredAndSorted.toReversed()
     : allMvpsFilteredAndSorted;
 
   return (
@@ -56,8 +62,9 @@ export function Main() {
 
           <MvpsContainerFilter
             searchQuery={searchQuery}
-            onChangeQuery={(value) => setSearchQuery(value)}
-            onSelectSort={(value) => setCurrentSort(value)}
+            onChangeQuery={setSearchQuery}
+            currentSort={currentSort}
+            onSelectSort={setCurrentSort}
             isReverse={reverseSort}
             onReverse={() => setReverseSort((s) => !s)}
           />
