@@ -1,9 +1,10 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import { MvpCard } from '@/components/MvpCard';
 import { useMvpsContext } from '@/contexts/MvpsContext';
 import { MvpsContainerFilter } from '@/components/MvpsContainerFilter';
+import { MvpCardSkeleton } from '@/components/Skeletons/MvpCardSkeleton';
 import { ModalEditMvp } from '@/modals';
 
 import { sortBy } from '@/utils/sort';
@@ -11,7 +12,7 @@ import { sortBy } from '@/utils/sort';
 import { Container, Section, SectionTitle, MvpsContainer } from './styles';
 
 export function Main() {
-  const { activeMvps, allMvps, editingMvp } = useMvpsContext();
+  const { activeMvps, allMvps, editingMvp, isLoading } = useMvpsContext();
   const [searchQuery, setSearchQuery] = useState<string>(
     sessionStorage.getItem('search') || ''
   );
@@ -66,6 +67,14 @@ export function Main() {
             isReverse={reverseSort}
             onReverse={() => setReverseSort((s) => !s)}
           />
+
+          {isLoading && (
+            <MvpsContainer>
+              {[...Array(64)].map((_, index) => (
+                <MvpCardSkeleton key={`skeleton-${index}`} />
+              ))}
+            </MvpsContainer>
+          )}
 
           {displayAllMvps.length > 0 && (
             <MvpsContainer>

@@ -1,14 +1,20 @@
+import { useState } from 'react';
 import { Settings } from '@styled-icons/feather';
-
+import { ModalSettings } from '@/modals';
 import { Container } from './styles';
-import { useSettings } from '@/contexts/SettingsContext';
 
 export function SettingsButton() {
-  const { toggleSettingsModal } = useSettings();
+  const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
 
   return (
-    <Container onClick={toggleSettingsModal}>
-      <Settings />
-    </Container>
+    <>
+      <Container>
+        <Settings onClick={() => setIsSettingsModalOpen(true)} />
+      </Container>
+
+      {isSettingsModalOpen && (
+        <ModalSettings onClose={() => setIsSettingsModalOpen(false)} />
+      )}
+    </>
   );
 }

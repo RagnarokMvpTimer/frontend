@@ -9,7 +9,6 @@ import { ModalWarning } from '../ModalWarning';
 import { ModalCloseIconButton } from '@/ui/ModalCloseIconButton';
 
 import { useSettings } from '@/contexts/SettingsContext';
-import { useMvpsContext } from '@/contexts/MvpsContext';
 import { useScrollBlock, useClickOutside, useKey, useTheme } from '@/hooks';
 import { clearData } from '@/utils';
 import { GetTranslateText } from '@/utils/GetTranslateText';
@@ -25,10 +24,13 @@ import {
   ClearButton,
 } from './styles';
 
-export function ModalSettings() {
+type Props = {
+  onClose: () => void;
+};
+
+export function ModalSettings({ onClose }: Props) {
   const { theme, toggleTheme } = useTheme();
   const {
-    toggleSettingsModal,
     respawnAsCountdown,
     toggleRespawnCountdown,
     animatedSprites,
@@ -37,34 +39,27 @@ export function ModalSettings() {
     toggle24HourFormat,
     isNotificationSoundEnabled,
     toggleNotificationSound,
-    resetSettings,
   } = useSettings();
-  const { clearActiveMvps } = useMvpsContext();
   const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(false);
 
   useScrollBlock(true);
-  useKey('Escape', toggleSettingsModal);
+  useKey('Escape', onClose);
+
   const modalRef = useClickOutside(
-    !isConfirmationModalOpen ? toggleSettingsModal : () => null
+    !isConfirmationModalOpen ? onClose : () => null
   );
 
   function handleClearData() {
-    try {
-      clearActiveMvps();
-    } catch (error) {
-      //
-    }
     clearData();
-    resetSettings();
     setIsConfirmationModalOpen(false);
-    toggleSettingsModal();
+    window.location.reload();
   }
 
   return (
     <>
       <ModalBase>
         <Modal ref={modalRef}>
-          <ModalCloseIconButton onClick={toggleSettingsModal} />
+          <ModalCloseIconButton onClick={onClose} />
 
           <Title>
             <FormattedMessage id='settings' />

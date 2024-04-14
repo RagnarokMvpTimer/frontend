@@ -16,10 +16,9 @@ const OPTIONS = [
   { id: 'jobExperience', name: 'Job EXP' },
 ];
 
-export function SortSelect({ value, onChange }: SortSwitchProps) {
+export function SortSelect({ value = 'id', onChange }: SortSwitchProps) {
   return (
     <Select
-      defaultValue='id'
       value={value}
       onChange={(e) => onChange(e.target.value)}
       aria-label='Sort mvps by his properties'

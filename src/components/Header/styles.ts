@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { mobile, phone, tablet } from '../../utils/media';
+import { tablet } from '../../utils/media';
 
 export const Container = styled.header`
   display: grid;
@@ -27,7 +27,7 @@ export const Logo = styled.img`
   height: auto;
 `;
 
-export const Title = styled.p`
+export const Title = styled.h1`
   margin-left: 20px;
 
   font-weight: bold;

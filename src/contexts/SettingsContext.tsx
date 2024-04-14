@@ -1,10 +1,4 @@
-import {
-  createContext,
-  useContext,
-  useState,
-  ReactNode,
-  useCallback,
-} from 'react';
+import { createContext, useContext, ReactNode, useCallback } from 'react';
 
 import { usePersistedState, useTheme } from '../hooks';
 import { DEFAULT_SETTINGS, LOCAL_STORAGE_SETTINGS_KEY } from '../constants';
@@ -14,8 +8,6 @@ interface SettingsProviderProps {
 }
 
 interface SettingsContextData {
-  isSettingsModalOpen: boolean;
-  toggleSettingsModal: () => void;
   respawnAsCountdown: boolean;
   toggleRespawnCountdown: () => void;
   animatedSprites: boolean;
@@ -28,22 +20,16 @@ interface SettingsContextData {
   changeLanguage: (id: string) => void;
   server: string;
   changeServer: (id: string) => void;
-  resetSettings: () => void;
+  //resetSettings: () => void;
 }
 
 export const SettingsContext = createContext({} as SettingsContextData);
 
 export function SettingsProvider({ children }: SettingsProviderProps) {
-  const { resetTheme } = useTheme();
+  //const { resetTheme } = useTheme();
   const [settings, setSettings] = usePersistedState(
     LOCAL_STORAGE_SETTINGS_KEY,
     DEFAULT_SETTINGS
-  );
-  const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
-
-  const toggleSettingsModal = useCallback(
-    () => setIsSettingsModalOpen((prev) => !prev),
-    []
   );
 
   const toggleRespawnCountdown = useCallback(
@@ -96,17 +82,15 @@ export function SettingsProvider({ children }: SettingsProviderProps) {
     [setSettings]
   );
 
-  const resetSettings = useCallback(() => {
+  /* const resetSettings = useCallback(() => {
     resetTheme();
     setSettings(DEFAULT_SETTINGS);
-  }, [resetTheme, setSettings]);
+  }, [resetTheme, setSettings]); */
 
   return (
     <SettingsContext.Provider
       value={{
         ...settings,
-        isSettingsModalOpen,
-        toggleSettingsModal,
         toggleRespawnCountdown,
         toggleAnimatedSprites,
         use24HourFormat: true, // temporary
@@ -114,7 +98,7 @@ export function SettingsProvider({ children }: SettingsProviderProps) {
         toggleNotificationSound,
         changeLanguage,
         changeServer,
-        resetSettings,
+        //resetSettings,
       }}
     >
       {children}

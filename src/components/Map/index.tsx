@@ -50,6 +50,7 @@ export function Map({
         alt={mapName}
         onClick={mapMark}
         clickable={!!onChange}
+        loading='lazy'
       />
       {(markCoordinates.x !== -1 || markCoordinates.y !== -1) && (
         <MapMark x={markCoordinates.x} y={markCoordinates.y} />

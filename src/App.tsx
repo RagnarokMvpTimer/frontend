@@ -15,7 +15,6 @@ import { Main } from './pages/Main';
 import { Header } from './components/Header';
 import { WarningHeader } from './components/WarningHeader';
 import { Footer } from './components/Footer';
-import { ModalSettings } from './modals';
 
 import { useSettings } from './contexts/SettingsContext';
 import { MvpProvider } from './contexts/MvpsContext';
@@ -25,7 +24,7 @@ import { LOCALES } from './locales';
 import { messages } from './locales/messages';
 
 export default function App() {
-  const { language, isSettingsModalOpen } = useSettings();
+  const { language } = useSettings();
   const {
     hasNotificationPermission,
     isNotificationPermissionDenied,
@@ -65,8 +64,6 @@ export default function App() {
 
         <Footer />
         <WarningHeader text={messages[language]['under_development']} />
-
-        {isSettingsModalOpen && <ModalSettings />}
       </IntlProvider>
 
       <GlobalStyle />

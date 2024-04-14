@@ -6,8 +6,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite --open",
-    "preview": "vite preview",
     "build": "tsc && vite build",
+    "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "vercel-deploy": "vercel --env CI=false --prod"

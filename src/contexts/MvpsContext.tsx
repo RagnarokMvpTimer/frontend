@@ -24,12 +24,13 @@ interface MvpsContextData {
   activeMvps: IMvp[];
   allMvps: IMvp[];
   editingMvp: IMvp | undefined;
+  isLoading: boolean;
   resetMvpTimer: (mvp: IMvp) => void;
   killMvp: (mvp: IMvp, time?: Date | null) => void;
   removeMvpByMap: (mvpID: number, deathMap: string) => void;
   setEditingMvp: (mvp: IMvp) => void;
   closeEditMvpModal: () => void;
-  clearActiveMvps: () => void;
+  //clearActiveMvps: () => void;
 }
 
 export const MvpsContext = createContext({} as MvpsContextData);
@@ -76,7 +77,7 @@ export function MvpProvider({ children }: MvpProviderProps) {
 
   const closeEditMvpModal = useCallback(() => setEditingMvp(undefined), []);
 
-  const clearActiveMvps = useCallback(() => setActiveMvps([]), []);
+  //const clearActiveMvps = useCallback(() => setActiveMvps([]), []);
 
   useEffect(() => {
     async function loadActiveMvps() {
@@ -128,7 +129,8 @@ export function MvpProvider({ children }: MvpProviderProps) {
         removeMvpByMap,
         setEditingMvp,
         closeEditMvpModal,
-        clearActiveMvps,
+        //clearActiveMvps,
+        isLoading,
       }}
     >
       {children}

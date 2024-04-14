@@ -80,6 +80,8 @@ export const GlobalStyle = createGlobalStyle`
     --footer_text: #000;
     --footer_link: #53338D;
 
+    --pulse_color: #e5e5e5;
+
     color: var(--text);
   }
 
@@ -146,8 +148,9 @@ export const GlobalStyle = createGlobalStyle`
     --footer_text: #FFF;
     --footer_link: #f89200;
 
-    color: var(--text);
+    --pulse_color: #404040;
 
+    color: var(--text);
   }
 
   html {

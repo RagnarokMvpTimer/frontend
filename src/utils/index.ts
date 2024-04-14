@@ -74,7 +74,7 @@ export const respawnAt = (time: Dayjs) =>
   `${time.format('HH:mm')} ~ ${time.add(10, 'minutes').format('HH:mm')}`;
 
 /**
- * Returns the MVP sprite or question emoticon
+ * Returns the MVP sprite or question emoticon if not found
  * @param id mvp id
  * @returns image url
  */
