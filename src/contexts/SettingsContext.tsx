@@ -26,7 +26,7 @@ interface SettingsContextData {
 export const SettingsContext = createContext({} as SettingsContextData);
 
 export function SettingsProvider({ children }: SettingsProviderProps) {
-  //const { resetTheme } = useTheme();
+  const { resetTheme } = useTheme();
   const [settings, setSettings] = usePersistedState(
     LOCAL_STORAGE_SETTINGS_KEY,
     DEFAULT_SETTINGS
