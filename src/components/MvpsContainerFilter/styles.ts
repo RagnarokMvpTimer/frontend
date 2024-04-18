@@ -1,6 +1,5 @@
-import styled, { css } from 'styled-components';
+import { styled } from '@linaria/react';
 import { Search, ArrowUp, ArrowDown, XCircle } from '@styled-icons/feather';
-import { phone } from '../../utils/media';
 
 export const Container = styled.div`
   display: flex;
@@ -8,10 +7,10 @@ export const Container = styled.div`
 
   gap: 16px;
 
-  ${phone(css`
+  @media (max-width: ${650 / 16}em) {
     flex-direction: column;
     align-items: center;
-  `)}
+  }
 `;
 
 export const SearchContainer = styled.div`
@@ -23,7 +22,7 @@ export const SearchContainer = styled.div`
   background-color: var(--filterSearch_bg);
   border: 1px solid var(--filterSearch_border);
 
-  :focus-within {
+  &:focus-within {
     border-color: var(--filterSearch_border_focus);
   }
 `;
@@ -58,9 +57,9 @@ export const SortContainer = styled.div`
   background-color: var(--filterSearch_bg);
   border: 1px solid var(--filterSearch_border);
 
-  ${phone(css`
+  @media (max-width: ${650 / 16}em) {
     width: 100%;
-  `)}
+  }
 `;
 
 export const Reverse = styled.button`

@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import { styled } from '@linaria/react';
 
 interface TimerProps {
   respawningSoon: boolean;
@@ -15,17 +15,10 @@ export const Container = styled.div`
 
 export const RespawnTimeText = styled.span<TimerProps>`
   font-weight: bold;
-  color: var(--timers_normal);
-
-  ${({ respawningSoon }) =>
-    respawningSoon &&
-    css`
-      color: var(--timers_respawning);
-    `}
-
-  ${({ missedRespawn }) =>
-    missedRespawn &&
-    css`
-      color: var(--timers_passed);
-    `}
+  color: ${({ respawningSoon, missedRespawn }) =>
+    respawningSoon
+      ? 'var(--timers_respawning)'
+      : missedRespawn
+      ? 'var(--timers_passed)'
+      : 'var(--mvpCard_text)'};
 `;

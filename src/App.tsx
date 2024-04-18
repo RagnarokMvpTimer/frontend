@@ -8,8 +8,6 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 dayjs.extend(duration);
 dayjs.extend(relativeTime);
 
-import { GlobalStyle } from './styles/Global';
-
 import { Main } from './pages/Main';
 
 import { Header } from './components/Header';
@@ -65,8 +63,6 @@ export default function App() {
         <Footer />
         <WarningHeader text={messages[language]['under_development']} />
       </IntlProvider>
-
-      <GlobalStyle />
     </>
   );
 }

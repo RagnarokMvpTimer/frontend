@@ -1,6 +1,5 @@
-import styled, { css } from 'styled-components';
-import { mobile } from '../../utils/media';
 import { ModalPrimaryButton } from '@/ui/ModalPrimaryButton';
+import { styled } from '@linaria/react';
 
 export const Modal = styled.div`
   width: 100%;
@@ -21,11 +20,11 @@ export const Modal = styled.div`
 
   background-color: var(--modal_bg);
 
-  ${mobile(css`
+  @media (max-width: ${1000 / 16}em) {
     width: 100%;
     height: 100%;
     max-height: 100vh;
-  `)}
+  }
 `;
 
 export const SpriteWrapper = styled.div`
@@ -61,9 +60,7 @@ export const Optional = styled.span`
   font-size: 1.2rem;
 `;
 
-export const DateTimePicker = styled.input.attrs(() => ({
-  type: 'datetime-local',
-}))`
+export const DateTimePicker = styled.input`
   text-align: center;
   font-size: 1.7rem;
   border-radius: 4px;
@@ -75,10 +72,10 @@ export const Footer = styled.footer`
   max-width: 100%;
   gap: 2rem;
 
-  ${mobile(css`
+  @media (max-width: ${1000 / 16}em) {
     flex-direction: column;
     gap: 1rem;
-  `)}
+  }
 `;
 
 export const ChangeMapButton = styled(ModalPrimaryButton)`

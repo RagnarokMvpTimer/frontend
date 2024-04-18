@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import { styled } from '@linaria/react';
 
 interface SpriteProps {
   isAnimated?: boolean;
@@ -9,9 +9,5 @@ export const Sprite = styled.img<SpriteProps>`
   height: 100px;
   margin-top: 8px;
 
-  ${({ isAnimated }) =>
-    !isAnimated &&
-    css`
-      border-top-left-radius: 25px;
-    `}
+  border-top-left-radius: ${({ isAnimated }) => (isAnimated ? 0 : 25)}px;
 `;

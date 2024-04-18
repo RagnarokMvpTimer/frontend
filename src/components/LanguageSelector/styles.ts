@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import { styled } from '@linaria/react';
 import { Globe } from '@styled-icons/feather';
 
 export const Container = styled.span`
@@ -67,7 +67,7 @@ export const LangItem = styled.li`
   color: var(--languagePicker_text);
   font-weight: 600;
 
-  :hover {
+  &:hover {
     background-color: #ffa800;
   }
 `;

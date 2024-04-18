@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from '@linaria/react';
 
 export const Button = styled.button`
   display: flex;
@@ -14,7 +14,7 @@ export const Button = styled.button`
   > svg {
     stroke-width: 2.5px;
 
-    :hover {
+    &:hover {
       width: 1.8rem;
       height: 1.8rem;
       opacity: 0.7;

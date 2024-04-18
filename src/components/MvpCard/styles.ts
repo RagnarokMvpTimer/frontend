@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from '@linaria/react';
 
 export const Container = styled.div`
   display: flex;
@@ -53,7 +53,7 @@ const Button = styled.button`
   font-weight: bold;
   color: #fff;
 
-  :hover {
+  &:hover {
     opacity: 0.8;
   }
 `;
@@ -93,24 +93,24 @@ export const Control = styled.button`
     color: #fff;
   }
 
-  :disabled {
+  &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
   }
 
-  :hover {
+  &:hover {
     opacity: 0.8;
   }
 
-  :first-child {
+  &:first-child {
     background-color: var(--mvpCard_controls_showMap);
   }
 
-  :nth-child(2) {
+  &:nth-child(2) {
     background-color: var(--mvpCard_controls_edit);
   }
 
-  :nth-child(3) {
+  &:nth-child(3) {
     background-color: var(--mvpCard_controls_delete);
   }
 

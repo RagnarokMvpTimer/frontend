@@ -1,5 +1,4 @@
-import styled, { css } from 'styled-components';
-import { tablet } from '../../utils/media';
+import { styled } from '@linaria/react';
 
 export const Container = styled.header`
   display: grid;
@@ -11,9 +10,9 @@ export const Container = styled.header`
 
   background-color: var(--primary);
 
-  ${tablet(css`
+  @media (max-width: 768px) {
     padding: 0 15px;
-  `)}
+  }
 `;
 
 export const LogoContainer = styled.div`
@@ -41,9 +40,9 @@ export const Title = styled.h1`
     font-size: 16px;
   }
 
-  ${tablet(css`
+  @media (max-width: 768px) {
     display: none;
-  `)}
+  }
 `;
 
 export const Customization = styled.div`

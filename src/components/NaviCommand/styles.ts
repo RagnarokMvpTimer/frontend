@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from '@linaria/react';
 
 export const NaviCommandContainer = styled.button`
   display: flex;
@@ -20,14 +20,14 @@ export const NaviCommandContainer = styled.button`
     stroke-width: 2px;
   }
 
-  :disabled {
+  &:disabled {
     cursor: not-allowed;
     > svg {
       margin-top: 1px;
     }
   }
 
-  :hover {
+  &:hover {
     opacity: 0.8;
   }
 `;
