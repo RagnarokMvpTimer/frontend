@@ -87,6 +87,7 @@ export function ModalEditMvp() {
         </Question>
 
         <DateTimePicker
+          type='datetime-local'
           value={dayjs(newTime).format('YYYY-MM-DDTHH:mm')}
           min={dayjs().subtract(4, 'days').format('YYYY-MM-DDTHH:mm')}
           max={dayjs().add(1, 'days').format('YYYY-MM-DDTHH:mm')}

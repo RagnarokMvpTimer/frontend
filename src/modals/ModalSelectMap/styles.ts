@@ -1,5 +1,4 @@
-import styled, { css } from 'styled-components';
-import { mobile } from '@/utils/media';
+import { styled } from '@linaria/react';
 
 export const Modal = styled.div`
   height: auto;
@@ -16,11 +15,11 @@ export const Modal = styled.div`
 
   background-color: var(--modal_bg);
 
-  ${mobile(css`
+  @media (max-width: ${1000 / 16}em) {
     width: 100%;
     height: 100%;
     max-height: 100vh;
-  `)}
+  }
 `;
 
 export const Title = styled.span`
@@ -38,12 +37,12 @@ export const MapsDisplayGrid = styled.div<{ cols: number }>`
   overflow-y: auto;
   overflow-x: hidden;
 
-  ${mobile(css`
+  @media (max-width: ${1000 / 16}em) {
     width: 100%;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-  `)}
+  }
 `;
 
 export const MapCard = styled.button<{ isSelected: boolean }>`
@@ -54,17 +53,12 @@ export const MapCard = styled.button<{ isSelected: boolean }>`
   background: none;
   cursor: pointer;
 
+  padding: 1rem;
   border-width: 3px;
   border-style: solid;
   border-radius: 6px;
-  border-color: transparent;
-  padding: 1rem;
-
-  ${({ isSelected }) =>
-    isSelected &&
-    css`
-      border-color: var(--modal_changeMap_selectedMapBorder);
-    `}
+  border-color: ${({ isSelected }) =>
+    isSelected ? 'var(--modal_changeMap_selectedMapBorder)' : 'transparent'};
 `;
 
 export const MapDetails = styled.div`

@@ -1,14 +1,4 @@
-import styled, { keyframes } from 'styled-components';
-
-const rotate = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-`;
+import { styled } from '@linaria/react';
 
 export const Container = styled.div`
   cursor: pointer;
@@ -20,8 +10,18 @@ export const Container = styled.div`
     color: white;
   }
 
-  :hover {
+  &:hover {
     opacity: 0.8;
-    animation: ${rotate} 4s linear infinite;
+    animation: rotate 4s linear infinite;
+
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
   }
 `;

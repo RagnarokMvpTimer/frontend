@@ -1,5 +1,4 @@
-import styled, { css } from 'styled-components';
-import { mobile, phone, tablet } from '../../utils/media';
+import { styled } from '@linaria/react';
 
 export const Container = styled.main`
   display: flex;
@@ -33,11 +32,11 @@ export const MvpsContainer = styled.div`
     grid-template-columns: repeat(3, 1fr);
   }
 
-  ${mobile(css`
+  @media (max-width: ${1000 / 16}em) {
     grid-template-columns: repeat(2, 1fr);
-  `)}
+  }
 
-  ${phone(css`
+  @media (max-width: ${650 / 16}em) {
     grid-template-columns: repeat(1, 1fr);
-  `)}
+  }
 `;

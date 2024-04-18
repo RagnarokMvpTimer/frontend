@@ -1,6 +1,5 @@
-import styled, { css } from 'styled-components';
+import { styled } from '@linaria/react';
 import { AlertTriangle } from '@styled-icons/feather';
-import { tablet } from '../../utils/media';
 
 export const Modal = styled.div`
   width: 100%;
@@ -18,19 +17,19 @@ export const Modal = styled.div`
 
   background-color: var(--modal_bg);
 
-  ${tablet(css`
+  @media (max-width: 768px) {
     max-width: 500px;
-  `)}
+  }
 `;
 
 export const Wrapper = styled.div`
   display: flex;
   gap: 2rem;
 
-  ${tablet(css`
+  @media (max-width: 768px) {
     flex-direction: column;
     align-items: center;
-  `)}
+  }
 `;
 
 export const Content = styled.div`
@@ -84,7 +83,7 @@ export const CancelButton = styled.button`
   border-radius: 0.8rem;
   padding: 0.625rem 2rem;
 
-  :hover {
+  &:hover {
     color: #fff;
   }
 `;
@@ -98,11 +97,11 @@ export const DeleteButton = styled.button`
   font-size: 1.8rem;
   font-weight: 600;
 
-  :hover {
+  &:hover {
     background-color: #b91c1c;
   }
 
-  :disabled {
+  &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
   }

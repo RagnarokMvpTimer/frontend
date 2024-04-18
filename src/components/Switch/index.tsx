@@ -8,7 +8,7 @@ interface SwitchProps {
 export function Switch({ onChange, checked }: SwitchProps) {
   return (
     <Container>
-      <Input onChange={onChange} checked={checked} />
+      <Input type='checkbox' onChange={onChange} checked={checked} />
       <Thumb />
     </Container>
   );

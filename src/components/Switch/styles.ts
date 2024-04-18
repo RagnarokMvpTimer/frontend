@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from '@linaria/react';
 
 const HIGHT = 25;
 const WIDTH = 50;
@@ -11,9 +11,7 @@ export const Container = styled.label`
   min-height: ${HIGHT}px;
 `;
 
-export const Input = styled.input.attrs({
-  type: 'checkbox',
-})`
+export const Input = styled.input`
   display: none;
 `;
 
@@ -28,7 +26,7 @@ export const Thumb = styled.span`
   transition: 0.4s;
   border-radius: ${HIGHT}px;
 
-  ::before {
+  &::before {
     content: '';
     position: absolute;
     height: ${THUMB_DIAMETER}px;

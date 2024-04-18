@@ -1,18 +1,18 @@
-import styled, { css, keyframes } from 'styled-components';
+import { styled } from '@linaria/react';
 
-const pulse = keyframes`
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: .5;
-  }
-`;
+const animation = {
+  animation: 'pulse 1s infinite',
+  backgroundColor: 'var(--pulse_color)',
 
-const animation = css`
-  animation: ${pulse} 1s infinite;
-  background-color: var(--pulse_color);
-`;
+  '@keyframes pulse': {
+    '0%, 100%': {
+      opacity: '1',
+    },
+    '50%': {
+      opacity: 0.5,
+    },
+  },
+};
 
 export const Container = styled.div`
   display: flex;

@@ -1,5 +1,4 @@
-import styled, { css } from 'styled-components';
-import { mobile, phone, tablet } from '../../utils/media';
+import { styled } from '@linaria/react';
 
 export const FooterContainer = styled.footer`
   display: flex;

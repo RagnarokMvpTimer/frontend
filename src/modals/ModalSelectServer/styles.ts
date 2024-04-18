@@ -1,5 +1,4 @@
-import styled, { css } from 'styled-components';
-import { mobile, tablet } from '../../utils/media';
+import { styled } from '@linaria/react';
 
 export const Modal = styled.div`
   width: 100%;
@@ -18,10 +17,10 @@ export const Modal = styled.div`
 
   background-color: var(--modal_bg);
 
-  ${mobile(css`
+  @media (max-width: ${1000 / 16}em) {
     overflow-y: auto;
     max-height: 95vh;
-  `)}
+  }
 `;
 
 export const Title = styled.span`
@@ -38,9 +37,9 @@ export const ServerList = styled.div`
   gap: 0.5rem;
   padding: 1.6rem 0;
 
-  ${tablet(css`
+  @media (max-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
-  `)}
+  }
 `;
 
 export const ServerItem = styled.button<{
@@ -50,18 +49,19 @@ export const ServerItem = styled.button<{
   padding: 1rem 2rem;
   border-radius: 0.5rem;
 
-  background-color: var(--modal_serverSelect_bg);
-  color: var(--modal_serverSelect_text);
   border: 1px solid var(--modal_serverSelect_border);
 
-  ${({ active }) =>
-    active &&
-    css`
-      background-color: var(--modal_serverSelect_bgActive);
-      color: var(--modal_serverSelect_textActive);
-    `}
+  background-color: ${({ active }) =>
+    active
+      ? 'var(--modal_serverSelect_bgActive)'
+      : 'var(--modal_serverSelect_bg)'};
 
-  :hover {
+  color: ${({ active }) =>
+    active
+      ? 'var(--modal_serverSelect_textActive)'
+      : 'var(--modal_serverSelect_text)'};
+
+  &:hover {
     opacity: 0.8;
   }
 `;

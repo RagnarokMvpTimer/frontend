@@ -1,5 +1,4 @@
-import styled, { css } from 'styled-components';
-import { mobile } from '../../utils/media';
+import { styled } from '@linaria/react';
 
 export const Modal = styled.div`
   width: 100%;
@@ -18,10 +17,10 @@ export const Modal = styled.div`
 
   background-color: var(--modal_bg);
 
-  ${mobile(css`
+  @media (max-width: ${1000 / 16}em) {
     overflow-y: auto;
     max-height: 85vh;
-  `)}
+  }
 `;
 
 export const Title = styled.span`
@@ -97,7 +96,7 @@ export const ClearButton = styled.button`
 
   background-color: #d10000;
 
-  :hover {
+  &:hover {
     opacity: 0.8;
   }
 

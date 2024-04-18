@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from '@linaria/react';
 
 export type Sizes = 'sm' | 'lg';
 
@@ -22,17 +22,17 @@ export const Button = styled.button<{
   color: white;
   background-color: var(--modal_button);
 
-  :hover {
+  &:hover {
     opacity: 0.8;
   }
 
-  :disabled {
+  &:disabled {
     opacity: 0.6;
     cursor: not-allowed;
   }
 
-  :not(:disabled) {
-    :hover {
+  &:not(:disabled) {
+    &:hover {
       opacity: 0.8;
     }
   }
