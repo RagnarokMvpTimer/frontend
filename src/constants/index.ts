@@ -18,3 +18,25 @@ export const DEFAULT_SETTINGS = {
 export const LOCAL_STORAGE_THEME_KEY = 'theme';
 export const LOCAL_STORAGE_SETTINGS_KEY = 'settings';
 export const LOCAL_STORAGE_ACTIVE_MVPS_KEY = 'activeMvps';
+
+export const SUPPORTED_SERVERS = [
+  'bRO',
+  'cRO',
+  'dpRO',
+  'GGH',
+  'idRO',
+  'iRO',
+  'jRO',
+  'kROM',
+  'kROS',
+  'kROZ',
+  'kROZS',
+  'LATAM',
+  'ropEU',
+  'ropRU',
+  'thROC',
+  'thROG',
+  'twRO',
+  'twROZ',
+  'vnRO',
+];

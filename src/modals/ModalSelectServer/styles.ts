@@ -37,6 +37,8 @@ export const ServerList = styled.div`
   gap: 0.5rem;
   padding: 1.6rem 0;
 
+  width: 80%;
+
   @media (max-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -64,4 +66,11 @@ export const ServerItem = styled.button<{
   &:hover {
     opacity: 0.8;
   }
+`;
+
+export const UnsupportedMessage = styled.span`
+  font-size: 16px;
+  font-weight: 500;
+
+  margin: -1rem 0;
 `;
