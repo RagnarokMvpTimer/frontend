@@ -61,7 +61,7 @@ export default function App() {
         </MvpProvider>
 
         <Footer />
-        <WarningHeader text={messages[language]['under_development']} />
+        {/* <WarningHeader text={messages[language]['under_development']} /> */}
       </IntlProvider>
     </>
   );

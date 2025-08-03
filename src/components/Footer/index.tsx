@@ -24,12 +24,12 @@ export function Footer() {
           </Link>
         </Text>
 
-        <Text>
+        {/* <Text>
           <FormattedMessage id='hosted_on' />
           <Link href='https://vercel.com/' target='_blank'>
             ▲ Vercel <ExternalLink size={14} />
           </Link>
-        </Text>
+        </Text> */}
 
         <Text>
           <FormattedMessage id='sprites_from' />
