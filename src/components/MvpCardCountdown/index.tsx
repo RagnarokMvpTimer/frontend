@@ -85,6 +85,7 @@ export function MvpCardCountdown({
       <RespawnTimeText
         respawningSoon={respawningSoon}
         missedRespawn={missedRespawn}
+        title={nextRespawn.format('HH:mm:ss')}
       >
         {formattedTimeString || '-- : -- : --'} {'\n'}
       </RespawnTimeText>

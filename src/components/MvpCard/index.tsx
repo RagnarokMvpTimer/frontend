@@ -86,15 +86,21 @@ export function MvpCard({ mvp }: MvpCardProps) {
             </MapName>
 
             <Controls>
-              <Control onClick={() => setIsMapModalOpen(true)} title='Show map'>
+              <Control
+                onClick={() => setIsMapModalOpen(true)}
+                title={GetTranslateText('controls.show_map')}
+              >
                 <Map />
               </Control>
-              <Control onClick={() => resetMvpTimer(mvp)} title='Reset timer'>
+              <Control
+                onClick={() => resetMvpTimer(mvp)}
+                title={GetTranslateText('controls.reset_timer')}
+              >
                 <RefreshCcw />
               </Control>
               <Control
                 onClick={() => removeMvpByMap(mvp.id, mvp.deathMap)}
-                title='Remove this mvp'
+                title={GetTranslateText('controls.remove')}
               >
                 <Trash2 />
               </Control>
